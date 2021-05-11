@@ -41,7 +41,7 @@ if (!window[CHANNEL.name]) {
         this.Poll = {
             timeSinceLast: 0,
             toggleState: true,
-            volume: .99,
+            volume: .2,
             id: "votingpoll"
         };
         this.Priv = {
@@ -71,7 +71,7 @@ if (!window[CHANNEL.name]) {
         };
         this.choices = Object.assign({}, {
             squee: "https://resources.pink.horse/sounds/squee.ogg",
-            votingpoll: "https://files.catbox.moe/vd10t7.mp4",
+            votingpoll: "https://a.pomf.cat/zhmwrp.mp3",
             uhoh: "https://resources.pink.horse/sounds/uhoh.ogg",
             fairywand: "https://resources.pink.horse/sounds/fairy_wand.ogg",
             bell: "https://resources.pink.horse/sounds/bell.ogg"
