@@ -41,7 +41,7 @@ if (!window[CHANNEL.name]) {
         this.Poll = {
             timeSinceLast: 0,
             toggleState: true,
-            volume: .2,
+            volume: .1,
             id: "votingpoll"
         };
         this.Priv = {
@@ -70,11 +70,11 @@ if (!window[CHANNEL.name]) {
             Marked: "Marked Video"
         };
         this.choices = Object.assign({}, {
-            squee: "https://files.catbox.moe/zmi1q2.ogg",
+            squee: "https://resources.pink.horse/sounds/squee.ogg",
             votingpoll: "https://a.pomf.cat/zhmwrp.mp3",
-            uhoh: "https://files.catbox.moe/0928wc.mp3",
-            fairywand: "https://files.catbox.moe/toe4iv.ogg",
-            bell: "https://files.catbox.moe/k5pzsx.ogg"
+            uhoh: "https://resources.pink.horse/sounds/uhoh.ogg",
+            fairywand: "https://resources.pink.horse/sounds/fairy_wand.ogg",
+            bell: "https://resources.pink.horse/sounds/bell.ogg"
         }, window[CHANNEL.name].audioLibrary ? window[CHANNEL.name].audioLibrary.squees : undefined);
         this.handler = {
             Squee: function(data) {
