@@ -11,8 +11,8 @@ Options:
 - Change Background
 Change the default background. clicking on the box brings up several background suggestions, you can put your own url otherwise.
 
-- Add a poll sound alert
-Allows activating or deactivating the new poll sound notification
+- Remove poll sound alert
+Allows deactivating the new poll sound notification
 
 - Reveal spoilers
 Reveals the content of spoilers without having to move the mouse over them
