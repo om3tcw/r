@@ -1,0 +1,46 @@
+Holopeek user's guide
+
+Taken from our big brother /hlg/'s Flarepeek, so very big ups to them for making this fantastic cytube script that we (shamefully) stole.
+Original user guide: https://pastebin.com/nTZxm1Hn
+ 
+Holopeek is a customization script for cytube. It allows you to change the visual appearance of the chat room.
+You can open the script settings window by clicking on the bottom right of the page. Clicking a second time will close it.
+ 
+Options:
+ 
+- Change Background
+Change the default background. clicking on the box brings up several background suggestions, you can put your own url otherwise.
+
+- Add a poll sound alert
+Allows activating or deactivating the new poll sound notification
+
+- Reveal spoilers
+Reveals the content of spoilers without having to move the mouse over them
+
+- >chat:video ratio
+Change the size of the chat compared to the video
+
+- Chat Transparency
+Change the transparency of the chat background
+
+- Chat & video only, no bullshit
+Change the look of the page to keep only the video with the chat on top
+
+- Invert chat position
+Change the chat position to be to the right of the video
+
+- Hide playlist
+Hide the playlist
+
+- Hide navbar
+Hide the navbar
+
+- Hide scrollbar
+Hide the scrollbar
+
+- Custom CSS
+A text box that allows you to add custom ccs to the page, check the checkbox for a new change to take effect.
+
+- Vertical layout
+Change the position of the video to put it above the chat
+ 
