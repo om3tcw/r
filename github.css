@@ -12,7 +12,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/mk0mq7.png');
     background-position: center;
     background-repeat: no-repeat;
-	animation: secret 15s infinite alternate;}
+	animation: secret 15s alternate;} /* infinite before alternate for looping */
 	
  .chat-msg-Moriscythe .timestamp,  .chat-msg-calliopeforest .timestamp, .chat-msg-TehBatman .timestamp {
     color:transparent;
