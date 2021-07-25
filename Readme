@@ -1,0 +1,17 @@
+Poruka oruka? Oruyo!
+
+Repository for the /hlgg/ cytube
+
+  Please avoid making too much of a mess if you change anything
+
+EMOTES
+  Please keep emote names the same as they are on cytube
+  If an emote is renamed on the cytube, please rename the file here on the github as well
+  for the filenames, emotes with "?" and "/" in the name have those characters changed, ? becomes - and / becomes _ 
+
+
+CSS/JS
+  If you make changes to any of the css or js files that are pushed through jsdelivr, they seem to take around a day to actually update, so consider uploading a new temporary file   if you want the changes to be immediate
+
+
+Stay hydrated, hoocha!
