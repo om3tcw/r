@@ -59,8 +59,8 @@
         }
     }, {
         id: 'poll_alert',
-        desc: 'Remove poll sound alert',
-        func: self => !pollAlert = pollAlert
+        desc: 'Add a poll sound alert',
+        func: self => pollAlert = !pollAlert
     }, {
         id: 'reveal_spoilers',
         desc: 'Reveal spoilers',
