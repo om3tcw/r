@@ -70,11 +70,11 @@ if (!window[CHANNEL.name]) {
             Marked: "Marked Video"
         };
         this.choices = Object.assign({}, {
-            squee: "https://resources.pink.horse/sounds/squee.ogg",
-            votingpoll: "https://a.pomf.cat/zhmwrp.mp3",
-            uhoh: "https://resources.pink.horse/sounds/uhoh.ogg",
-            fairywand: "https://resources.pink.horse/sounds/fairy_wand.ogg",
-            bell: "https://resources.pink.horse/sounds/bell.ogg"
+            squee: "https://resources.pink.horse/sounds/squee.ogg",                         //https://resources.pink.horse/sounds/squee.ogg
+            votingpoll: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/ogeyrrat.mp3",
+            uhoh: "https://resources.pink.horse/sounds/uhoh.ogg",                           //https://resources.pink.horse/sounds/uhoh.ogg
+            fairywand: "https://resources.pink.horse/sounds/fairy_wand.ogg",                //https://resources.pink.horse/sounds/fairy_wand.ogg
+            bell: "https://resources.pink.horse/sounds/bell.ogg"                            //https://resources.pink.horse/sounds/bell.ogg
         }, window[CHANNEL.name].audioLibrary ? window[CHANNEL.name].audioLibrary.squees : undefined);
         this.handler = {
             Squee: function(data) {
