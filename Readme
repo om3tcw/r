@@ -6,9 +6,14 @@ Repository for the /hlgg/ cytube
 
 EMOTES
   Please keep emote names the same as they are on cytube
-  If an emote is renamed on the cytube, please rename the file here on the github as well
+  If you rename an emote on the cytube, please rename the file here on the github as well
   for the filenames, emotes with "?" and "/" in the name have those characters changed, ? becomes - and / becomes _ 
-
+  
+  TO UPLOAD EMOTES:
+    1. Click one the "emotes" folder
+    2. Click "Add file" and on the dropdown click "Upload files"
+    3. Add your emotes
+    4. click "Commit changes"
 
 CSS/JS
   If you make changes to any of the css or js files that are pushed through jsdelivr, they seem to take around a day to actually update, so consider uploading a new temporary file   if you want the changes to be immediate
