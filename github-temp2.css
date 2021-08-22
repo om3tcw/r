@@ -595,15 +595,15 @@ img.channel-emote[title$=":polkaaaaaaaaaaaaaaa:"]{animation: quickzoom 0.2s  inf
 img.channel-emote[title$=":sea:"], img.channel-emote[title$=":hydraback:"], img.channel-emote[title$=":space:"] {
   right: 105px; height: 75px; max-width:125px;  z-index: -1; }
 img.channel-emote[title$=":inahammer:"]  {
-  left: 135px;  max-width:125px;  z-index: 1; }
+  right: 135px;  max-width:125px;  z-index: 1; }
 img.channel-emote[title$=":petpet:"]  {
-  left: 104px; bottom: 20px; max-width:125px;  z-index: 1; }
+  right: 104px; bottom: 20px; max-width:125px;  z-index: 1; }
 img.channel-emote[title$=":friends:"], img.channel-emote[title$=":gfs:"] {
    max-width:100px; max-height:100px;}
 img.channel-emote[title$=":cute:"], img.channel-emote[title$=":funny:"] {
-left: 125px; height: 75px;  z-index: 1;}
+right: 125px; height: 75px;  z-index: 1;}
 img.channel-emote[title$=":valianteffort:"] {
-left: 125px; height: 60px;  z-index: 1;}
+right: 125px; height: 60px;  z-index: 1;}
 img.channel-emote[title$=":noose:"] {
-left: 100px; height: 100px;  z-index: 1;}
+right: 100px; height: 100px;  z-index: 1;}
 /* End of Emote Animations */
