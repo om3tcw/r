@@ -337,7 +337,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png');
     background-position: center;
     background-repeat: no-repeat;
-	animation: secret 15s infinite alternate;}
+	animation: noellers 15s infinite alternate;}
 
 .chat-msg-architect .timestamp {
     color:transparent;
@@ -581,6 +581,16 @@ img.channel-emote[title$=":polkaaaaaaaaaaaaaaa:"]{animation: quickzoom 0.2s  inf
 96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
 100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
 }
+
+@keyframes noellers {
+0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat; opacity:1;}
+85%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat; opacity:1;}
+90%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat; opacity:0;}
+92%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:0;}
+96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
+100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
+}
+
 
 img.channel-emote[title$=":sea:"], img.channel-emote[title$=":hydraback:"], img.channel-emote[title$=":space:"] {
   right: 105px; height: 75px; max-width:125px;  z-index: -1; }
