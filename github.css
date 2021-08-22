@@ -554,7 +554,7 @@ img.channel-emote[title$=":curtains:"] {
     0%   { right:54px; top:00px;}
     100% { right:54px; top:00px;}}
 	
-img.channel-emote[title$=":garoomba:"], img.channel-emote[title$=":ameroll:"], img.channel-emote[title$=":nyaroomba:"], img.channel-emote[title$=":kiaroll:"], img.channel-emote[title$=":shionchair:"]  {animation: garoomba 15s  infinite;}
+img.channel-emote[title$=":gardoomba:"], img.channel-emote[title$=":garoomba:"], img.channel-emote[title$=":ameroll:"], img.channel-emote[title$=":nyaroomba:"], img.channel-emote[title$=":kiaroll:"], img.channel-emote[title$=":shionchair:"]  {animation: garoomba 15s  infinite;}
 @keyframes garoomba {
     0%   {  left:00px; top:00px;}
     50%  { left:300px; bottom:000px;} 
