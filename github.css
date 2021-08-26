@@ -508,7 +508,7 @@ img.channel-emote[title$=":thisisbait:"], img.channel-emote[title$=":anyahang:"]
     animation: penr 4s alternate infinite;
     transform-origin: 50% 0%;}
 img.channel-emote[title$=":kiaraspin:"] { transform: rotate(180deg);}
-img.channel-emote[title$=":bina:"], img.channel-emote[title$=":bhaa:"],  img.channel-emote[title$=":bame:"],  img.channel-emote[title$=":banya:"],  img.channel-emote[title$=":bcoco:"],  img.channel-emote[title$=":bmori:"],  img.channel-emote[title$=":bpeko:"],  img.channel-emote[title$=":bpolka:"], img.channel-emote[title$=":bkiara:"], img.channel-emote[title$=":baqua:"], img.channel-emote[title$=":bollie:"], img.channel-emote[title$=":bsui:"]    {
+img.channel-emote[title$=":bina:"], img.channel-emote[title$=":bhaa:"],  img.channel-emote[title$=":bame:"],  img.channel-emote[title$=":banya:"],  img.channel-emote[title$=":bcoco:"],  img.channel-emote[title$=":bmori:"],  img.channel-emote[title$=":bpeko:"],  img.channel-emote[title$=":bpolka:"], img.channel-emote[title$=":bkiara:"], img.channel-emote[title$=":baqua:"], img.channel-emote[title$=":bollie:"], img.channel-emote[title$=":bsui:", img.channel-emote[title$=":bbaelz:"]    {
     animation: bina 3s linear infinite;}
 img.channel-emote[title$=":tent:"]  {
     height: 55px; 
