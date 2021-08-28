@@ -488,7 +488,7 @@
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
 img.channel-emote[title$=":anyasmug:"] {max-width: 150px; max-height: 100px}
-img.channel-emote[title$=":anyaded:"], img.channel-emote[title$=":artiaded:"], img.channel-emote[title$=":boohoo:"], img.channel-emote[title$=":dedchama:"], img.channel-emote[title$=":polkaded:"], img.channel-emote[title$=":akided:"], img.channel-emote[title$=":guraded:"], img.channel-emote[title$=":koopaded:"], img.channel-emote[title$=":jesded:"], img.channel-emote[title$=":ninkided:"], img.channel-emote[title$=":risuded:"], img.channel-emote[title$=":zainded:"] {animation: anyaded 6s alternate infinite;}
+img.channel-emote[title$=":anyaded:"], img.channel-emote[title$=":artiaded:"], img.channel-emote[title$=":boohoo:"], img.channel-emote[title$=":dedchama:"], img.channel-emote[title$=":polkaded:"], img.channel-emote[title$=":akided:"], img.channel-emote[title$=":guraded:"], img.channel-emote[title$=":koopaded:"], img.channel-emote[title$=":jesded:"], img.channel-emote[title$=":ninkided:"], img.channel-emote[title$=":risuded:"], img.channel-emote[title$=":zainded:"], img.channel-emote[title$=":mumeided:"] {animation: anyaded 6s alternate infinite;}
 img.channel-emote[title$=":kiaraamfrog:"], img.channel-emote[title$=":anyafrog:"] {animation: amfrog 1s alternate infinite;}
 img.channel-emote[title$=":redglowstick:"], img.channel-emote[title$=":pinkglowstick:"], img.channel-emote[title$=":purpleglowstick:"], img.channel-emote[title$=":greenglowstick:"], img.channel-emote[title$=":blueglowstick:"], img.channel-emote[title$=":yellowglowstick:"] {
     animation: penr 0.4s alternate infinite;
