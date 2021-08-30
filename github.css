@@ -14,7 +14,7 @@
     background-repeat: no-repeat;
 	animation: secret 15s infinite alternate;}
 	
- .chat-msg-Moriscythe .timestamp,  .chat-msg-calliopeforest .timestamp, .chat-msg-TehBatman .timestamp {
+ .chat-msg-Moriscythe .timestamp,  .chat-msg-calliopeforest .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/moripog.png');
@@ -454,7 +454,8 @@
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragi.png');
     background-position: bottom;
-    background-repeat: no-repeat}
+    background-repeat: no-repeat
+	animation: ceresob 15s infinite alternate;}
 
 .chat-msg-Noroba .timestamp {
     color:transparent;
@@ -656,6 +657,15 @@ img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
 92%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat; opacity:0;}
 96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat; opacity:1;}
 100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat; opacity:1;}
+}
+
+@keyframes ceresob {
+0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ceres.png') 0 0 no-repeat; opacity:1;}
+85%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ceres.png') 0 0 no-repeat; opacity:1;}
+90%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ceres.png') 0 0 no-repeat; opacity:0;}
+92%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragicry.png') 0 0 no-repeat; opacity:0;}
+96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragicry.png') 0 0 no-repeat; opacity:1;}
+100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragicry.png') 0 0 no-repeat; opacity:1;}
 }
 
 /* Displaced emotes */
