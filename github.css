@@ -695,6 +695,7 @@ img.channel-emote[title$=":loading:"] {
     bottom:20px; right: 65px; height: 35px;  z-index: 1;} 
 img.channel-emote[title$=":badass:"]  {
     bottom:0px; right: 100px; height: 35px;  z-index: 1;} 
-
+img.channel-emote[title$=":nvg:"]  {
+    bottom: 10px; right: 100px;  z-index: 1;} 
 
 /* End of Emote Animations */
