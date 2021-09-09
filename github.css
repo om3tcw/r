@@ -502,7 +502,8 @@
     img.channel-emote[title$=":risuded:"], 
     img.channel-emote[title$=":zainded:"], 
     img.channel-emote[title$=":mumeided:"],
-    img.channel-emote[title$=":flareded:"]
+    img.channel-emote[title$=":flareded:"],
+    img.channel-emote[title$=":sanaded:"]
     {animation: anyaded 6s alternate infinite;}
 
 /* Glowstick */
