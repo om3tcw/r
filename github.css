@@ -502,10 +502,10 @@
     img.channel-emote[title$=":risuded:"], 
     img.channel-emote[title$=":zainded:"], 
     img.channel-emote[title$=":mumeided:"],
-    img.channel-emote[title$=":flareded:"],
-    img.channel-emote[title$=":sanaded:"]
+    img.channel-emote[title$=":flareded:"]
     {animation: anyaded 6s alternate infinite;}
-
+    img.channel-emote[title$=":sanaded:"] 
+    {animation: sanaded 20s forwards; animation-timing-function: linear; z-index: -4;}
 /* Glowstick */
     img.channel-emote[title$=":redglowstick:"],
     img.channel-emote[title$=":pinkglowstick:"],
@@ -642,6 +642,15 @@ img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
     50%  { transform: scale(.33) rotate(360deg); left:200px; bottom:200px; }
     75%  { transform: scale(.16) rotate(540deg); left:250px; bottom:250px;} 
     100% { transform: scale(0)   rotate(720deg); left:275px; bottom:275px; }}
+
+@keyframes sanaded {
+    0%   { transform: scale(1)   rotate(0deg);   left:00px;  bottom:00px; }
+    25%  { transform: scale(2) rotate(180deg); left:100px; bottom:200px;} 
+    50%  { transform: scale(4) rotate(360deg); left:200px; bottom:400px; }
+    75%  { transform: scale(6) rotate(540deg); left:250px; bottom:500px;}
+    76%  { transform: scale(0) rotate(540deg); left:250px; bottom:500px;} 
+    100% { transform: scale(0)   rotate(720deg); left:275px; bottom:550px; }}
+
 
 @keyframes secret {
 0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat; opacity:1;}
