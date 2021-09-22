@@ -537,7 +537,14 @@
     img.channel-emote[title$=":baqua:"], 
     img.channel-emote[title$=":bollie:"], 
     img.channel-emote[title$=":bsui:"], 
-    img.channel-emote[title$=":bbaelz:"]    
+    img.channel-emote[title$=":bbaelz:"],
+    img.channel-emote[title$=":bsana:"],
+    img.channel-emote[title$=":bmumei:"],
+    img.channel-emote[title$=":bkronii:"],
+    img.channel-emote[title$=":bfauna:"],
+    img.channel-emote[title$=":birs:"],
+    img.channel-emote[title$=":bselen:"],
+    img.channel-emote[title$=":bpomu:"]
     {animation: bina 3s linear infinite;}
 
 /* Garoomba */
