@@ -51,7 +51,7 @@
             if (checkboxElem && textElem) self.css = checkboxElem.checked && textElem.value && textElem.value !== '' ? `body { background-image: url(${textElem.value}); }` : null;
         },
         text: {
-            value: '',
+            value: 'https://raw.githubusercontent.com/om3tcw/r/emotes/holopeek/black.png',
             inputEvent: self => {
                 document.getElementById(`holopeek_${self.id}`).checked = false;
                 self.text.value = document.getElementById(`holopeek_${self.id}_text`).value;
@@ -190,12 +190,13 @@
 #queue,#queue + div,.queue_entry,#pollwrap>div{box-shadow: none !important;border-radius: 0;}
 .queue_entry:hover:not(.queue_active),.userlist_item:hover{background-color: #84f8 !important;}
 .navbar{min-height:32px;}
+a.navbar-brand{background-size: auto 45px;}
 .navbar-brand{height:32px;padding:0;display: flex;align-items: center;cursor: pointer;}
-.navbar-brand img{padding:0;margin:0;width:32px;height:32px}
 .nav-tabs {background: #0008;}
 .nav>li, .nav>li:focus{margin-bottom: 0;background: none !important;}
 .nav>li>a, #nav-collapsible>form{color: #ccc;margin:0;border:none !important; padding:6px 16px !important;border-radius: 0;}
 .nav>li>a:hover, .nav>li.activ, .nav>li.open>a.dropdown-toggle{background: none !important;text-shadow: #0ff 0 0 4px}
+.navbar-collapse .btn-sm {margin: 2px;}
 #MainTabContainer>ul>li.active>a, #MainTabContainer>ul>li:hover>a{color: #fff;background: none;text-shadow: #0ff 0 0 4px;cursor: pointer !important;}
 .container-fluid{padding:0}
 #videowrap{padding:0 0 0 350px}
@@ -230,7 +231,8 @@ form input#chatline {background-position: -32px -16px;background-size: 88px;}
 .queue_active.queue_temp {border-radius: 0;}
 #rightcontrols, #rightpane {box-shadow: none;background: #0008;border-radius: 0;}
 #pollwrap {min-height:0px}
-#pin-dropdown>.dropdown-menu {max-height: calc(100vh - 32px) !important}`,
+#pin-dropdown>.dropdown-menu {max-height: calc(100vh - 32px) !important}
+#messagebuffer {padding: 0px}`,
             inputEvent: self => {
                 document.getElementById(`holopeek_${self.id}`).checked = false;
                 self.textarea.value = document.getElementById(`holopeek_${self.id}_textarea`).value;
