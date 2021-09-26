@@ -211,7 +211,7 @@ a.navbar-brand{background-size: auto 45px;}
 #emotelistbtn {outline: none;padding:0 16px;background-size: contain;background-position: center;}
 #chatinputrow button {border: none;border-radius: 0;width:32px;height:32px;background-color:#0000}
 #chatinputrow,#chatinputrow form {height:32px}
-form input#chatline {padding: 0 0 0 64px;height:32px}
+form input#chatline {padding: 0 0 0 5px;height:32px}
 #emotebtndiv + form {background-color: #000a;image-rendering: pixelated;}
 form input#chatline {background-position: -32px -16px;background-size: 88px;}
 #messagebuffer{background: none;}
