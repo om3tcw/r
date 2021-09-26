@@ -208,7 +208,7 @@ a.navbar-brand{background-size: auto 45px;}
 .profile-box p {margin: 4px 0 8px 0;}
 .profile-image {border: none;margin: 0 8px 4px 0;}
 .linewrap {z-index: 10;}
-#emotelistbtn {outline: none;padding:0 16px;background-size: cover;background-position: initial;}
+#emotelistbtn {outline: none;padding:0 16px;background-size: contain;background-position: center;}
 #chatinputrow button {border: none;border-radius: 0;width:32px;height:32px;background-color:#0000}
 #chatinputrow,#chatinputrow form {height:32px}
 form input#chatline {padding: 0 0 0 64px;height:32px}
@@ -217,7 +217,6 @@ form input#chatline {background-position: -32px -16px;background-size: 88px;}
 #messagebuffer{background: none;}
 #messagebuffer .username {margin-top:0;}
 #main {height: 100% !important;}
-.timestamp {background: none !important;box-shadow: none !important;text-shadow: 0 0 8px #000, 0 0 4px #000 !important;border-radius: 0 !important;font-style: normal !important;}
 #messagebuffer div{background-color: #0008;}
 #messagebuffer div.nick-hover {background-color: #4288 !important;box-shadow: none !important;}
 #messagebuffer div.nick-highlight {background-color: #84f8 !important;box-shadow: none !important;}
