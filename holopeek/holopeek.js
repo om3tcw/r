@@ -213,7 +213,7 @@ a.navbar-brand{background-size: auto 45px;}
 #chatinputrow,#chatinputrow form {height:32px}
 form input#chatline {padding: 0 0 0 5px;height:32px}
 #emotebtndiv + form {background-color: #000a;image-rendering: pixelated;}
-form input#chatline {background-position: -32px -16px;background-size: 88px;}
+form input#chatline {background-size: auto:}
 #messagebuffer{background: none;}
 #messagebuffer .username {margin-top:0;}
 #main {height: 100% !important;}
