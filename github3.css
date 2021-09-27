@@ -18,8 +18,7 @@
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png');
     background-position: center;
-    background-repeat: no-repeat;
-	animation: secret 15s infinite alternate;}
+    background-repeat: no-repeat;}
 	
  .chat-msg-Moriscythe .timestamp,  .chat-msg-calliopeforest .timestamp {
     color:transparent;
@@ -342,8 +341,7 @@
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png');
     background-position: center;
-    background-repeat: no-repeat;
-	animation: noellers 15s infinite alternate;}
+    background-repeat: no-repeat;}
 
 .chat-msg-architect .timestamp {
     color:transparent;
@@ -461,8 +459,7 @@
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ceres.png');
     background-position: bottom;
-    background-repeat: no-repeat;
-	animation: ceresob 15s infinite alternate;}
+    background-repeat: no-repeat;}
 
 .chat-msg-Noroba .timestamp {
     color:transparent;
@@ -509,7 +506,7 @@
 .chat-msg-Rratboi .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/naname.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/naname.jpg');
     background-position: center;
     background-repeat: no-repeat}
 
@@ -520,6 +517,12 @@
     background-position: center;
     background-repeat: no-repeat}
 
+.chat-msg-Jawsome .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/takotired.jpg');
+    background-position: center;
+    background-repeat: no-repeat}
 
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
@@ -695,32 +698,6 @@ img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
     100% { transform: scale(0)   rotate(720deg); left:275px; bottom:550px; }}
 
 
-@keyframes secret {
-0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat; opacity:1;}
-85%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat; opacity:1;}
-90%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat; opacity:0;}
-92%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:0;}
-96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
-100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
-}
-
-@keyframes noellers {
-0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat; opacity:1;}
-85%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat; opacity:1;}
-90%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat; opacity:0;}
-92%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat; opacity:0;}
-96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat; opacity:1;}
-100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat; opacity:1;}
-}
-
-@keyframes ceresob {
-0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ceres.png') 0 0 no-repeat; opacity:1;}
-85%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ceres.png') 0 0 no-repeat; opacity:1;}
-90%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ceres.png') 0 0 no-repeat; opacity:0;}
-92%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragicry.png') 0 0 no-repeat; opacity:0;}
-96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragicry.png') 0 0 no-repeat; opacity:1;}
-100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragicry.png') 0 0 no-repeat; opacity:1;}
-}
 
 /* Displaced emotes */
 
