@@ -9,7 +9,7 @@ You can open the script settings window by clicking on the bottom right of the p
 Options:
  
 - Change Background
-Change the default background. clicking on the box brings up several background suggestions, you can put your own url otherwise.
+Change the background to whatever image is linked in the url box. Default url links to a plain black background
 
 - Remove poll sound alert
 Allows deactivating the new poll sound notification
