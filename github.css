@@ -18,17 +18,16 @@
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png');
     background-position: center;
-    background-repeat: no-repeat;
-	animation: secret 15s infinite alternate;}
+    background-repeat: no-repeat}
 	
- .chat-msg-Moriscythe .timestamp,  .chat-msg-calliopeforest .timestamp {
+.chat-msg-Moriscythe .timestamp,  .chat-msg-calliopeforest .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/moripog.png');
     background-position: bottom;
     background-repeat: no-repeat}
 	
- .chat-msg-MoriIsWhore .timestamp {
+.chat-msg-MoriIsWhore .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/friendtired.png');
@@ -42,7 +41,7 @@
     background-position: center;
     background-repeat: no-repeat}
 	
- .chat-msg-KSeven .timestamp {
+.chat-msg-KSeven .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/smolina.png');
@@ -91,28 +90,26 @@
     background-position: center;
     background-repeat: no-repeat}
 	
-	 .chat-msg-Anonchama .timestamp {
+.chat-msg-Anonchama .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ame.png');
     background-position: center;
     background-repeat: no-repeat}
 	
-	
-	.chat-msg-quicktrickbrickstack .timestamp {
+.chat-msg-quicktrickbrickstack .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/smolame.png');
     background-position: center;
     background-repeat: no-repeat}
 	
-	.chat-msg-slowchamp .timestamp  {
+.chat-msg-slowchamp .timestamp  {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ame2.png');
     background-position: center;
     background-repeat: no-repeat}
-
 	
 .chat-msg-om3tcw .timestamp {
     color:transparent;
@@ -316,6 +313,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/risuchama.png');
     background-position: center;
     background-repeat: no-repeat}
+	
 .chat-msg-senjo .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -342,8 +340,7 @@
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png');
     background-position: center;
-    background-repeat: no-repeat;
-	animation: noellers 15s infinite alternate;}
+    background-repeat: no-repeat}
 
 .chat-msg-architect .timestamp {
     color:transparent;
@@ -400,6 +397,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/monoe.png');
     background-position: center;
     background-repeat: no-repeat}
+	
 .chat-msg-cypherposter .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -461,8 +459,7 @@
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ceres.png');
     background-position: bottom;
-    background-repeat: no-repeat;
-	animation: ceresob 15s infinite alternate;}
+    background-repeat: no-repeat}
 
 .chat-msg-Noroba .timestamp {
     color:transparent;
@@ -524,6 +521,13 @@
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/takotired.jpg');
+    background-position: center;
+    background-repeat: no-repeat}
+	
+.chat-msg-thegoodrrat .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nyanners.png');
     background-position: center;
     background-repeat: no-repeat}
 
@@ -700,6 +704,7 @@ img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
     76%  { transform: scale(0) rotate(540deg); left:250px; bottom:500px;} 
     100% { transform: scale(0)   rotate(720deg); left:275px; bottom:550px; }}
 
+/* Flashing eyes - Legacy */
 
 @keyframes secret {
 0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat; opacity:1;}
