@@ -170,9 +170,7 @@
 .chat-msg-takoyotowar .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/hopiumoverlay.png'), 
-                      url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/towalfie.png'),
-                      url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/bossbaby.png'); 
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/towalfie2.png'); 
     background-position: center;
     background-repeat: no-repeat}
 	
@@ -249,7 +247,7 @@
 .chat-msg-fuckhead .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fbk.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kiarapaintwalfie.png');
     background-position: center;
     background-repeat: no-repeat}
 	
@@ -438,7 +436,7 @@
 .chat-msg-Moshmallow .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/tako2.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/tako5.png');
     background-position: center top;
     background-repeat: no-repeat}
 
