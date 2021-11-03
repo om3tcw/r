@@ -577,7 +577,8 @@
     img.channel-emote[title$=":risuded:"], 
     img.channel-emote[title$=":zainded:"], 
     img.channel-emote[title$=":mumeided:"],
-    img.channel-emote[title$=":flareded:"]
+    img.channel-emote[title$=":flareded:"],
+    img.channel-emote[title$=":morided:"]
     {animation: anyaded 6s alternate infinite;}
     img.channel-emote[title$=":sanaded:"] 
     {animation: sanaded 20s forwards; animation-timing-function: linear; z-index: -4;}
