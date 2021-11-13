@@ -436,7 +436,7 @@
 .chat-msg-Moshmallow .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/tako4.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/takosmush.png');
     background-position: center top;
     background-repeat: no-repeat}
 
@@ -553,6 +553,20 @@
     background-position: center;
     background-repeat: no-repeat}
 
+.chat-msg-Egao .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-Tako225 .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ika2.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
 
@@ -570,7 +584,8 @@
     img.channel-emote[title$=":risuded:"], 
     img.channel-emote[title$=":zainded:"], 
     img.channel-emote[title$=":mumeided:"],
-    img.channel-emote[title$=":flareded:"]
+    img.channel-emote[title$=":flareded:"],
+    img.channel-emote[title$=":morided:"]
     {animation: anyaded 6s alternate infinite;}
     img.channel-emote[title$=":sanaded:"] 
     {animation: sanaded 20s forwards; animation-timing-function: linear; z-index: -4;}
@@ -760,7 +775,7 @@ img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
 img.channel-emote[title$=":sea:"], img.channel-emote[title$=":hydraback:"], img.channel-emote[title$=":space:"] {
     right: 105px; height: 75px; max-width:125px;  z-index: -1; }
 img.channel-emote[title$=":inahammer:"]  {
-    right: 135px;  max-width:125px;  z-index: 1; }
+    right: 100px;  max-width:125px;  z-index: 1; }
 img.channel-emote[title$=":petpet:"]  {
     right: 104px; bottom: 20px; max-width:125px;  z-index: 1; }
 img.channel-emote[title$=":friends:"], img.channel-emote[title$=":gfs:"] {
@@ -783,6 +798,9 @@ img.channel-emote[title$=":badass:"]  {
     bottom:0px; right: 100px; height: 35px;  z-index: 1;} 
 img.channel-emote[title$=":nvg:"]  {
     bottom: 10px; right: 100px;  z-index: 1;} 
+img.channel-emote[title$=":cowboy:"]  {
+    bottom: 35px; right: 130px; max-width: 150px; z-index: 1;} 
+img.channel-emote[title$=":unity3:"]  {max-width: 250px;} 
 
 /* End of Emote Animations */
 
