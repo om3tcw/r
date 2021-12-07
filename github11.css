@@ -809,6 +809,8 @@ img.channel-emote[title$=":cowboy:"]  {
     bottom: 35px; right: 130px; max-width: 150px; z-index: 1;} 
 img.channel-emote[title$=":strawhat:"]  {
     bottom: 35px; right: 130px; max-width: 150px; z-index: 1;} 
+img.channel-emote[title$=":afro:"]  {
+    bottom: 35px; right: 130px; max-width: 150px; z-index: 1;} 
 img.channel-emote[title$=":unity3:"]  {max-width: 250px;} 
 
 /* End of Emote Animations */
