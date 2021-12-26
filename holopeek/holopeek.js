@@ -57,11 +57,17 @@
                 self.text.value = document.getElementById(`holopeek_${self.id}_text`).value;
             }
         }
-    }, {
+	}, {
+        id: 'image_hower',
+        desc: 'Enable image on link hover',
+		func: self => {ImageHoverEnable = !ImageHoverEnable;}
+    }, 
+/* 	{
         id: 'poll_alert',
         desc: 'Add a poll sound alert',
-        func: self => pollAlert = !pollAlert
-    }, {
+		func: self => {votingpoll: null}
+    },  */
+	{
         id: 'reveal_spoilers',
         desc: 'Reveal spoilers',
         css: `.spoiler { color: #ff8; }`
