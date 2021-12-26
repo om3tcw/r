@@ -2,6 +2,7 @@ Holopeek user's guide
 
 Taken from our big brother /hlg/'s Flarepeek, so very big ups to them for making this fantastic cytube script that we (shamefully) stole.
 Original user guide: https://pastebin.com/nTZxm1Hn
+Credit also goes to them for the original code for image preview on hover as well as the button that allows changing the current video to whatever the user wants to watch instead
  
 Holopeek is a customization script for cytube. It allows you to change the visual appearance of the chat room.
 You can open the script settings window by clicking on the bottom right of the page. Clicking a second time will close it.
@@ -11,8 +12,8 @@ Options:
 - Change Background
 Change the background to whatever image is linked in the url box. Default url links to a plain black background
 
-- Remove poll sound alert
-Allows deactivating the new poll sound notification
+- Previw image on link hover
+Activates image preview on hovering over a link
 
 - Reveal spoilers
 Reveals the content of spoilers without having to move the mouse over them
