@@ -59,7 +59,7 @@
         }
 	}, {
         id: 'image_hower',
-        desc: 'Enable image on link hover',
+        desc: 'Image preview on link hover',
 		func: self => {ImageHoverEnable = !ImageHoverEnable;}
     }, 
 /* 	{
