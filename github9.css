@@ -680,7 +680,8 @@
     img.channel-emote[title$=":inaroomba:"],
     img.channel-emote[title$=":kiaroll:"],
     img.channel-emote[title$=":shionchair:"],
-    img.channel-emote[title$=":garsmolba:"]
+    img.channel-emote[title$=":garsmolba:"],
+	img.channel-emote[title$=":korodrone:"]
     {animation: garoomba 15s  infinite;}
 
 img.channel-emote[title$=":anyasmug:"] {max-width: 150px; max-height: 100px}
