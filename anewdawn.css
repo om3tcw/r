@@ -1,0 +1,570 @@
+.chat-msg-AmesLittleTeamate .username  {font-size: 0;}
+.chat-msg-AmesLittleTeamate .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-CEOofBandaids .username  {font-size: 0;}
+.chat-msg-CEOofBandaids .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Moshmallow .username{font-size: 0;}
+.chat-msg-Moshmallow .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Luxes .username{font-size: 0;}
+.chat-msg-Luxes .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Lux .username{font-size: 0;}
+.chat-msg-Lux .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-pig .username{font-size: 0;}
+.chat-msg-pig .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Noroba .username{font-size: 0;}
+.chat-msg-Noroba .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-MaddyCaddy .username{font-size: 0;}
+.chat-msg-MaddyCaddy .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-jafafafy .username{font-size: 0;}
+.chat-msg-jafafafy .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-MrMcEggmanJones .username{font-size: 0;}
+.chat-msg-MrMcEggmanJones .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-metatron .username{font-size: 0;}
+.chat-msg-metatron .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-LonelyTeamate .username{font-size: 0;}
+.chat-msg-LonelyTeamate .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Anonchama .username{font-size: 0;}
+.chat-msg-Anonchama .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-takoyotowar .username{font-size: 0;}
+.chat-msg-takoyotowar .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-GoomberRoomber .username{font-size: 0;}
+.chat-msg-GoomberRoomber .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-SlavBro .username{font-size: 0;}
+.chat-msg-SlavBro .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-senjo .username{font-size: 0;}
+.chat-msg-senjo .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Moruru .username{font-size: 0;}
+.chat-msg-Moruru .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-quicktrickbrickstack .username{font-size: 0;}
+.chat-msg-quicktrickbrickstack .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-deadbeete .username{font-size: 0;}
+.chat-msg-deadbeete .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-MF_ERIE .username{font-size: 0;}
+.chat-msg-MF_ERIE .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Kusa .username{font-size: 0;}
+.chat-msg-Kusa .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Tigre .username{font-size: 0;}
+.chat-msg-Tigre .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-N_ .username{font-size: 0;}
+.chat-msg-N_ .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Deadbeatchama .username{font-size: 0;}
+.chat-msg-Deadbeatchama .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-BirbUp .username{font-size: 0;}
+.chat-msg-BirbUp .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-FloatingGaust .username{font-size: 0;}
+.chat-msg-FloatingGaust .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-XkpBonus .username{font-size: 0;}
+.chat-msg-XkpBonus .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-speec183 .username{font-size: 0;}
+.chat-msg-speec183 .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-erie .username{font-size: 0;}
+.chat-msg-erie .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Tako225 .username{font-size: 0;}
+.chat-msg-Tako225 .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Shifumi .username{font-size: 0;}
+.chat-msg-Shifumi .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-slowchamp .username{font-size: 0;}
+.chat-msg-slowchamp .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Dango .username{font-size: 0;}
+.chat-msg-Dango .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Altearia .username{font-size: 0;}
+.chat-msg-Altearia .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-KSeven .username{font-size: 0;}
+.chat-msg-KSeven .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Inanonymous .username{font-size: 0;}
+.chat-msg-Inanonymous .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-brapsniffer2077 .username{font-size: 0;}
+.chat-msg-brapsniffer2077 .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Chimken .username{font-size: 0;}
+.chat-msg-Chimken .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-fuckhead .username{font-size: 0;}
+.chat-msg-fuckhead .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-etch .username{font-size: 0;}
+.chat-msg-etch .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Locura .username{font-size: 0;}
+.chat-msg-Locura .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Sarp .username{font-size: 0;}
+.chat-msg-Sarp .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Kurosu .username{font-size: 0;}
+.chat-msg-Kurosu .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-notSkitzo .username{font-size: 0;}
+.chat-msg-notSkitzo .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-undah_skor .username{font-size: 0;}
+.chat-msg-undah_skor .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Rratboi .username{font-size: 0;}
+.chat-msg-Rratboi .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Skeleton .username{font-size: 0;}
+.chat-msg-Skeleton .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-notSkitzopp .username{font-size: 0;}
+.chat-msg-notSkitzopp .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-fakeangel .username{font-size: 0;}
+.chat-msg-fakeangel .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Friendo .username{font-size: 0;}
+.chat-msg-Friendo .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Dr_VidyaGeam .username{font-size: 0;}
+.chat-msg-Dr_VidyaGeam .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Egao .username{font-size: 0;}
+.chat-msg-Egao .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Nanora .username{font-size: 0;}
+.chat-msg-Nanora .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-TehBatman .username{font-size: 0;}
+.chat-msg-TehBatman .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-rratticus .username{font-size: 0;}
+.chat-msg-rratticus .username:after {font-size: 14px;content: 'Moshmallow: ';}
+.chat-msg-Fri3nd .username{font-size: 0;}
+.chat-msg-Fri3nd .username:after {font-size: 14px;content: 'Moshmallow: ';}
+
+
+
+/* Start of Oshi Eyes */
+
+/* Start of Oshi Eyes */
+.chat-msg-XkpBonus .timestamp ,
+
+
+	
+.chat-msg-Moshmallow .timestamp ,
+	
+.chat-msg-Moriscythe .timestamp,  .chat-msg-calliopeforest .timestamp ,
+	
+.chat-msg-MoriIsWhore .timestamp ,
+	
+.chat-msg-InaInaIna .timestamp, .chat-msg-brapsniffer2077 .timestamp ,
+	
+.chat-msg-Altearia .timestamp,
+	
+.chat-msg-marble .timestamp ,
+	
+.chat-msg-attenanakusa .timestamp, .chat-msg-puchigire .timestamp, .chat-msg-Tigre .timestamp ,
+	
+.chat-msg-Kusa .timestamp ,
+	
+.chat-msg-naggerfiggot .timestamp ,
+	
+.chat-msg-KSeven .timestamp ,
+	
+.chat-msg-watsonelia .timestamp, .chat-msg-FloatingGaust .timestamp {,
+	
+.chat-msg-LonelyTeamate .timestamp ,
+	
+.chat-msg-Moruru .timestamp ,
+	
+.chat-msg-Dango .timestamp  ,
+	
+.chat-msg-om3tcw .timestamp ,
+	
+.chat-msg-tearshed .timestamp ,
+	
+.chat-msg-notfunnycried .timestamp, .chat-msg-MoguMogun .timestamp ,
+	
+.chat-msg-neneposter .timestamp ,
+	
+.chat-msg-salman .timestamp ,
+	
+.chat-msg-AmesLittleTeamate .timestamp ,
+	
+.chat-msg-winningson .timestamp,
+	
+.chat-msg-artssounds .timestamp ,
+	
+.chat-msg-GoomberRoomber .timestamp ,
+	
+.chat-msg-MF_ERIE .timestamp ,
+	
+.chat-msg-HellBlitzer .timestamp ,
+	
+.chat-msg-bersercker .timestamp ,
+	
+.chat-msg-Xx_cOomEr69_xX .timestamp ,
+	
+.chat-msg-Kuriketto .timestamp ,
+	
+.chat-msg-RRatGod .timestamp ,
+
+.chat-msg-m_ .timestamp, .chat-msg-TehBatman .timestamp  ,
+
+.chat-msg-Deadbeatchama .timestamp ,
+
+.chat-msg-gosling .timestamp ,
+	
+.chat-msg-MaddyCaddy .timestamp ,
+
+.chat-msg-Chimken .timestamp ,
+	
+.chat-msg-metatron .timestamp ,
+	
+.chat-msg-senjo .timestamp  ,
+	
+.chat-msg-DarkOracle363 .timestamp ,
+	
+.chat-msg-tomboysweat .timestamp, .chat-msg-petme .timestamp, .chat-msg-velveeta .timestamp ,
+	
+.chat-msg-slowchamp .timestamp ,
+	
+.chat-msg-Locura .timestamp,
+
+.chat-msg-Noroba .timestamp ,
+	
+.chat-msg-MrMcEggmanJones .timestamp ,
+	
+.chat-msg-cryle .timestamp ,
+	
+.chat-msg-SlavBro .timestamp ,
+	
+.chat-msg-BirbUp .timestamp ,
+	
+.chat-msg-Friendo .timestamp ,
+	
+.chat-msg-jafafafy .timestamp ,
+
+.chat-msg-architect .timestamp ,
+	
+.chat-msg-114514_ .timestamp ,
+	
+.chat-msg-CEOofBandaids .timestamp ,
+
+.chat-msg-undah_skor .timestamp,
+
+.chat-msg-fokinLUL .timestamp ,
+	
+.chat-msg-Breadquanda .timestamp ,
+	
+.chat-msg-SirSwagdaddy .timestamp ,
+	
+.chat-msg-etch .timestamp,
+	
+.chat-msg-cypherposter .timestamp ,
+	
+.chat-msg-Inanonymous .timestamp ,
+
+.chat-msg-Egao .timestamp,
+	
+.chat-msg-MantenHanamaru .timestamp ,
+	
+.chat-msg-mammoth2020 .timestamp,
+	
+.chat-msg-Luxes .timestamp, .chat-msg-Lux .timestamp,
+
+.chat-msg-Kurosu .timestamp ,
+	
+.chat-msg-Erieolae .timestamp ,
+
+.chat-msg-speec183 .timestamp,
+	
+.chat-msg-BirbUp .timestamp ,
+
+.chat-msg-pig .timestamp ,
+	
+.chat-msg-rratticus .timestamp ,
+	
+.chat-msg-notSkitzo .timestamp ,
+
+.chat-msg-Lamy .timestamp ,
+	
+.chat-msg-SpaceEnthusiast .timestamp ,
+
+.chat-msg-speec .timestamp ,
+
+.chat-msg-Skeleton .timestamp ,
+
+.chat-msg-Investimagator .timestamp, .chat-msg-Investamigator .timestamp ,
+
+.chat-msg-Jawsome .timestamp ,
+	
+.chat-msg-thegoodrrat .timestamp ,
+    
+.chat-msg-thegoodrrat .timestamp ,
+
+.chat-msg-takoyotowar .timestamp ,
+
+.chat-msg-Fri3nd .timestamp ,
+.chat-msg-fakeangel .timestamp ,
+
+.chat-msg-quicktrickbrickstack .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/coineyes.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+
+
+.chat-msg-Shifumi .timestamp ,
+
+.chat-msg-nambona890 .timestamp ,
+
+.chat-msg-Nanora .timestamp,
+
+.chat-msg-Ajitae .timestamp ,
+
+.chat-msg-DarnisMarnis .timestamp ,
+
+.chat-msg-nagi .timestamp,
+
+.chat-msg-lumi_nazu .timestamp ,
+
+.chat-msg-Anonchama .timestamp,
+
+/* End of Oshi Eyes */
+/* Start of Emote Animations */
+
+/* ded */
+    img.channel-emote[title$=":anyaded:"], 
+    img.channel-emote[title$=":artiaded:"], 
+    img.channel-emote[title$=":boohoo:"], 
+    img.channel-emote[title$=":dedchama:"], 
+    img.channel-emote[title$=":polkaded:"], 
+    img.channel-emote[title$=":akided:"], 
+    img.channel-emote[title$=":guraded:"], 
+    img.channel-emote[title$=":koopaded:"], 
+    img.channel-emote[title$=":jesded:"], 
+    img.channel-emote[title$=":ninkided:"], 
+    img.channel-emote[title$=":risuded:"], 
+    img.channel-emote[title$=":zainded:"], 
+    img.channel-emote[title$=":mumeided:"],
+    img.channel-emote[title$=":flareded:"],
+    img.channel-emote[title$=":morided:"]
+    {animation: anyaded 6s alternate infinite;}
+    img.channel-emote[title$=":sanaded:"] 
+    {animation: sanaded 20s forwards; animation-timing-function: linear; z-index: -4;}
+/* Glowstick */
+    img.channel-emote[title$=":redglowstick:"],
+    img.channel-emote[title$=":pinkglowstick:"],
+    img.channel-emote[title$=":purpleglowstick:"],
+    img.channel-emote[title$=":greenglowstick:"],
+    img.channel-emote[title$=":blueglowstick:"],
+    img.channel-emote[title$=":yellowglowstick:"] 
+    {animation: penr 0.4s alternate infinite;
+    transform-origin: 50% 80%;
+    animation-name: penr;}
+
+/* bina */
+    img.channel-emote[title$=":bina:"], 
+    img.channel-emote[title$=":bhaa:"],  
+    img.channel-emote[title$=":bame:"],  
+    img.channel-emote[title$=":banya:"],  
+    img.channel-emote[title$=":bcoco:"],  
+    img.channel-emote[title$=":bmori:"],  
+    img.channel-emote[title$=":bpeko:"],  
+    img.channel-emote[title$=":bpolka:"], 
+    img.channel-emote[title$=":bkiara:"], 
+    img.channel-emote[title$=":baqua:"], 
+    img.channel-emote[title$=":bollie:"], 
+    img.channel-emote[title$=":bsui:"], 
+    img.channel-emote[title$=":bbaelz:"],
+    img.channel-emote[title$=":bsana:"],
+    img.channel-emote[title$=":bmumei:"],
+    img.channel-emote[title$=":bkronii:"],
+    img.channel-emote[title$=":bfauna:"],
+    img.channel-emote[title$=":birs:"],
+    img.channel-emote[title$=":bselen:"],
+    img.channel-emote[title$=":bpomu:"]
+    {animation: bina 3s linear infinite;}
+
+/* Garoomba */
+    img.channel-emote[title$=":gardoomba:"],
+    img.channel-emote[title$=":garoomba:"],
+    img.channel-emote[title$=":ameroll:"],
+    img.channel-emote[title$=":nyaroomba:"],
+    img.channel-emote[title$=":inaroomba:"],
+    img.channel-emote[title$=":kiaroll:"],
+    img.channel-emote[title$=":shionchair:"],
+    img.channel-emote[title$=":garsmolba:"],
+	img.channel-emote[title$=":korodrone:"]
+    {animation: garoomba 15s  infinite;}
+
+img.channel-emote[title$=":anyasmug:"] {max-width: 150px; max-height: 100px}
+img.channel-emote[title$=":kiaraamfrog:"], img.channel-emote[title$=":anyafrog:"] {animation: amfrog 1s alternate infinite;}
+img.channel-emote[title$=":kiaraspin:"] { transform: rotate(180deg);}
+img.channel-emote[title$=":Lq9eqHDKJPE:"] {animation: slide 0.9s  infinite;}
+img.channel-emote[title$=":I9rvEDBfyaY:"] {animation: slide 1.8s  infinite;}
+img.channel-emote[title$=":polkaaaaaaaaaaaaaaa:"] {animation: quickzoom 0.2s  infinite;}
+img.channel-emote[title$=":amespace:"] {animation: amespace 20s forwards; animation-timing-function: linear;}
+
+img.channel-emote[title$=":pekofly:"] {
+    animation:  scale-up-center 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation-timing-function: linear;
+    animation-name: pekofly;}
+
+/* Legacy? There's no kiar animation, don't want to delete yet just in case, does the relative position do something? */
+img.channel-emote[title$=":kiarameal:"]  {
+    position: relative;
+    animation: kiar 0.5s linear both;}
+
+img.channel-emote[title$=":fbkdoko:"] {
+    animation: doko 2s alternate both;
+    transform-origin: 50% 0%;}
+
+img.channel-emote[title$=":thisisbait:"], img.channel-emote[title$=":anyahang:"] {
+    animation: penr 4s alternate infinite;
+    transform-origin: 50% 0%;}
+
+img.channel-emote[title$=":wakepup:"], img.channel-emote[title$=":wakepup2:"]  {
+    transform: scaleX(-1);right:50px; bottom:5px; }
+
+img.channel-emote[title$=":kris:"] {
+    bottom:0px; right: 24px; height: 55px;  z-index: 1;
+    animation: kris .5s alternate infinite;
+    transform-origin: 0% 100%;}
+
+img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
+    animation: anyaspace 20s forwards; 
+    animation-timing-function: linear;}
+
+/* Keyframes */
+
+@keyframes doko {
+    0%   { left:00px; top:00px; opacity: 0;}
+    99%   { right:105px; top:00px; opacity: 0;}
+    100% { right:105px; top:00px; opacity: 1.0;}}
+@keyframes penr {
+    0% { transform: rotate(30deg);}
+    100% {transform: rotate(-30deg);}}
+@keyframes pekofly {
+    0% {transform: scale(.5);}
+    5% {transform: rotate(-30deg) scale(.1); }
+    100% {transform: rotate(-360deg) scale(1); }}
+@keyframes anyaded {
+    0%   { left:00px; top:00px;}
+    50%  { left:20px; top:000px;} 
+    100% {left:00px; top:00px; }}
+@keyframes amfrog {
+    0%   { left:00px; bottom:00px;}
+    50%  { left:00px; bottom:300px;} 
+    100% {left:00px; bottom:00px;}}
+@keyframes flip-scale-up-hor {
+    0% {   transform: scale(.75) rotateX(0);  } 
+    100% {  transform: scale(.75) rotateX(180deg);  }}
+@keyframes slide-rotate-hor-top {
+    0% {transform: translateY(0) rotateX(0deg);  }
+    100% {  transform: translateY(-150px) rotateX(-90deg);  }}
+@keyframes bina {
+    0% {transform: rotate(-90deg) scale(.82); }
+    50% {transform: rotate(-90deg) scale(.9); }
+    100% {transform: rotate(-90deg) scale(.82); }}
+@keyframes garoomba {
+    0%   {  left:00px; top:00px;}
+    50%  { left:300px; bottom:000px;} 
+    100% {  left:00px; top:000px; }}
+@keyframes slide {
+    0%   {  left:00px; top:00px;}
+    50%  { left:80px; bottom:000px;} 
+    100% {  left:00px; top:000px; }}
+@keyframes quickzoom {
+    0%   {  left:00px; top:00px;}
+    50%  { left:25px; bottom:000px;} 
+    100% {  left:00px; top:000px; }}
+@keyframes kris {
+    0% { transform: rotate(20deg);}
+    100% {transform: rotate(-20deg);}}
+@keyframes rotation {
+  from { transform: rotate(0deg); } to { transform: rotate(359deg); }}
+
+@keyframes anyaspace {
+    0%   { transform: scale(1);   left:00px;  bottom:00px; }
+    25%  { transform: scale(.66); left:100px; bottom:100px;} 
+    50%  { transform: scale(.33); left:200px; bottom:200px; }
+    75%  { transform: scale(.16); left:250px; bottom:250px;} 
+    100% { transform: scale(0);   left:275px; bottom:275px; }}
+
+@keyframes amespace {
+    0%   { transform: scale(1)   rotate(0deg);   left:00px;  bottom:00px; }
+    25%  { transform: scale(.66) rotate(180deg); left:100px; bottom:100px;} 
+    50%  { transform: scale(.33) rotate(360deg); left:200px; bottom:200px; }
+    75%  { transform: scale(.16) rotate(540deg); left:250px; bottom:250px;} 
+    100% { transform: scale(0)   rotate(720deg); left:275px; bottom:275px; }}
+
+@keyframes sanaded {
+    0%   { transform: scale(1)   rotate(0deg);   left:00px;  bottom:00px; }
+    25%  { transform: scale(2) rotate(180deg); left:100px; bottom:200px;} 
+    50%  { transform: scale(4) rotate(360deg); left:200px; bottom:400px; }
+    75%  { transform: scale(6) rotate(540deg); left:250px; bottom:500px;}
+    76%  { transform: scale(0) rotate(540deg); left:250px; bottom:500px;} 
+    100% { transform: scale(0)   rotate(720deg); left:275px; bottom:550px; }}
+
+/* Flashing eyes - Legacy */
+
+@keyframes secret {
+0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat; opacity:1;}
+85%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat; opacity:1;}
+90%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat; opacity:0;}
+92%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:0;}
+96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
+100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
+}
+
+@keyframes noellers {
+0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat; opacity:1;}
+85%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat; opacity:1;}
+90%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat; opacity:0;}
+92%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat; opacity:0;}
+96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat; opacity:1;}
+100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat; opacity:1;}
+}
+
+@keyframes ceresob {
+0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragi2.png') 0 0 no-repeat; opacity:1;}
+85%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragi2.png') 0 0 no-repeat; opacity:1;}
+90%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragi2.png') 0 0 no-repeat; opacity:0;}
+92%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/faunacry.png') 0 0 no-repeat; opacity:0;}
+96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/faunacry.png') 0 0 no-repeat; opacity:1;}
+100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/faunacry.png') 0 0 no-repeat; opacity:1;}
+}
+
+@keyframes inaselen {
+0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat; opacity:1;}
+43%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat; opacity:1;}
+45%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat; opacity:0;}
+46%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat; opacity:0;}
+48%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat; opacity:1;}
+50%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat; opacity:1;}
+93%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat; opacity:1;}
+95%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat; opacity:0;}
+96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:0;}
+98%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
+100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
+}
+
+/* Displaced emotes */
+
+img.channel-emote[title$=":sea:"], img.channel-emote[title$=":hydraback:"], img.channel-emote[title$=":space:"] {
+    right: 105px; height: 75px; max-width:125px;  z-index: -1; }
+img.channel-emote[title$=":inahammer:"]  {
+    right: 100px;  max-width:125px;  z-index: 1; }
+img.channel-emote[title$=":petpet:"]  {
+    right: 104px; bottom: 20px; max-width:125px;  z-index: 1; }
+img.channel-emote[title$=":friends:"], img.channel-emote[title$=":gfs:"] {
+    max-width:100px; max-height:100px;}
+img.channel-emote[title$=":cute:"], img.channel-emote[title$=":funny:"] {
+    right: 125px; height: 75px;  z-index: 1;}
+img.channel-emote[title$=":valianteffort:"] {
+    right: 125px; height: 60px;  z-index: 1;}
+img.channel-emote[title$=":noose:"] {
+    right: 100px; height: 100px;  z-index: 1;}
+img.channel-emote[title$=":cell:"] {
+    right: 90px; height: 100px; max-width:125px;  z-index: -1; }
+img.channel-emote[title$=":curtains:"] {
+    right: 105px; height: 75px; max-width:125px;  }
+img.channel-emote[title$=":tent:"] {
+    right: 54px; height: 55px;  }
+img.channel-emote[title$=":loading:"] {
+    bottom:20px; right: 65px; height: 35px;  z-index: 1;} 
+img.channel-emote[title$=":badass:"]  {
+    bottom:0px; right: 100px; height: 35px;  z-index: 1;} 
+img.channel-emote[title$=":nvg:"]  {
+    bottom: 10px; right: 100px;  z-index: 1;} 
+img.channel-emote[title$=":cowboy:"]  {
+    bottom: 35px; right: 130px; max-width: 150px; z-index: 1;} 
+img.channel-emote[title$=":strawhat:"]  {
+    bottom: 35px; right: 130px; max-width: 150px; z-index: 1;} 
+img.channel-emote[title$=":afro:"]  {
+    bottom: 35px; right: 130px; max-width: 150px; z-index: 1;} 
+img.channel-emote[title$=":unity3:"]  {max-width: 250px;} 
+img.channel-emote[title$=":inaiya:"]  {max-width: 275px;}
+img.channel-emote[title$=":kiarapunch:"]  {
+    right: 50px;  max-width:125px;  z-index: 1; } 
+
+/* End of Emote Animations */
+
+/* Page Changes */
+
+#pmbar .panel-heading {background-color: #bd6231}
