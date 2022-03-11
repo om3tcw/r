@@ -885,6 +885,13 @@ img.channel-emote[title$=":kiarapunch:"]  {
 
 /* End of Emote Animations */
 
+/* Jones not knowing where to add stupid bullshit*/
+
+.chat-msg-Anonchama .username{font-size: 0;}
+.chat-msg-Anonchama .username:after {font-size: 14px;content: 'Larry: ';}
+
+/* End of Jones not knowing where to add stupid bullshit*/
+
 /* Page Changes */
 
 #pmbar .panel-heading {background-color: #bd6231}
