@@ -887,8 +887,8 @@ img.channel-emote[title$=":kiarapunch:"]  {
 
 /* Jones not knowing where to add stupid bullshit*/
 
-.chat-msg-Anonchama .username{font-size: 0;}
-.chat-msg-Anonchama .username:after {font-size: 14px;content: 'Larry: ';}
+.chat-msg-MrMcEggmanJones .username{font-size: 0;}
+.chat-msg-MrMcEggmanJones .username:after {font-size: 14px;content: 'Jaques: ';}
 
 /* End of Jones not knowing where to add stupid bullshit*/
 
