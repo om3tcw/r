@@ -476,7 +476,7 @@
     background-repeat: no-repeat;
     animation: ceresob 45s infinite alternate;}
 
-.chat-msg-Noroba .timestamp {
+.chat-msg-Noroba .timestamp, .chat-msg-Noromo .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/roboco.png');
