@@ -700,6 +700,7 @@
 /* Garoomba */
     img.channel-emote[title$=":gardoomba:"],
     img.channel-emote[title$=":garoomba:"],
+   img.channel-emote[title$=":flarespin:"],
     img.channel-emote[title$=":ameroll:"],
     img.channel-emote[title$=":nyaroomba:"],
     img.channel-emote[title$=":inaroomba:"],
@@ -912,3 +913,4 @@ img.channel-emote[title$=":kiarapunch:"]  {
 /* Page Changes */
 
 #pmbar .panel-heading {background-color: #bd6231}
+
