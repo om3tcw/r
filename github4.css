@@ -739,6 +739,7 @@
     img.channel-emote[title$=":birs:"],
     img.channel-emote[title$=":bselen:"],
     img.channel-emote[title$=":bpomu:"]
+    img.channel-emote[title$=":bmilky:"]
     {animation: bina 3s linear infinite;}
 
 /* Garoomba */
