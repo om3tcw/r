@@ -617,7 +617,6 @@
     background-position: center;
     background-repeat: no-repeat}
 
-
 .chat-msg-LonelyTeamate .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -625,14 +624,12 @@
     background-position: center;
     background-repeat: no-repeat}
 
-
 .chat-msg-BEEEGcherry .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka2.jpeg');
     background-position: center;
     background-repeat: no-repeat}
-
 
 .chat-msg-lumi_nazu .timestamp {
     color:transparent;
@@ -655,14 +652,12 @@
     background-position: center;
     background-repeat: no-repeat}
 
-
 .chat-msg-fakeangel .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sanasunnies.png');
     background-position: center;
     background-repeat: no-repeat}
-
 
 .chat-msg-bomberchan .timestamp {
     color:transparent;
@@ -689,6 +684,13 @@
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/matsuri2.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-JoeMama .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/marine.png');
     background-position: center;
     background-repeat: no-repeat}
 
