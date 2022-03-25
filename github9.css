@@ -963,15 +963,11 @@ img.channel-emote[title$=":inaiya:"]  {max-width: 275px;}
 img.channel-emote[title$=":kiarapunch:"]  {
     right: 50px;  max-width:125px;  z-index: 1; }
 img.channel-emote[title$=":kikkerikick2:"]  {
-    right: 30px;  z-index: 1; } 
+    right: 40px;  z-index: 1; } 
 
 /* End of Emote Animations */
 
 /* Jones not knowing where to add stupid bullshit*/
-
-.chat-msg-Noroba .username{font-size: 0;}
-.chat-msg-Noroba .username:after {font-size: 14px;content: 'Chadtitty: ';}
-
 /* End of Jones not knowing where to add stupid bullshit*/
 
 /* Page Changes */
