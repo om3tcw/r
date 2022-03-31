@@ -824,6 +824,9 @@ img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
     animation: anyaspace 20s forwards; 
     animation-timing-function: linear;}
 
+img.channel-emote[title$=":teamatepudding:"]
+    {animation: pudding 12s linear infinite;}
+
 /* Keyframes */
 
 @keyframes doko {
@@ -872,6 +875,9 @@ img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
     100% {transform: rotate(-20deg);}}
 @keyframes rotation {
   from { transform: rotate(0deg); } to { transform: rotate(359deg); }}
+@keyframes pudding {
+    0%   {  left:100%; top:00px;}
+    100% {  left:-155px; top:000px; }}
 
 @keyframes anyaspace {
     0%   { transform: scale(1);   left:00px;  bottom:00px; }
