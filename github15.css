@@ -834,6 +834,9 @@ img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
 img.channel-emote[title$=":teamatepudding:"]
     {animation: pudding 12s linear infinite;}
 
+img.channel-emote[title$=":kiaraculo:"]
+    {animation: kiaraculo 4s infinite;}
+
 /* Keyframes */
 
 @keyframes doko {
@@ -885,7 +888,11 @@ img.channel-emote[title$=":teamatepudding:"]
 @keyframes pudding {
     0%   {  left:70%;}
     100% {  left:-70%;}}
-
+@keyframes kiaraculo {
+    0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/kiaradefault.png') 0 0 no-repeat;}
+    50%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/kiaraculo.png') 0 0 no-repeat;}
+    100% {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/kiaradefault.png') 0 0 no-repeat;}}
+	
 @keyframes anyaspace {
     0%   { transform: scale(1);   left:00px;  bottom:00px; }
     25%  { transform: scale(.66); left:100px; bottom:100px;} 
