@@ -834,6 +834,7 @@ img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
 img.channel-emote[title$=":teamatepudding:"]
     {animation: pudding 12s linear infinite;}
 
+
 /* Keyframes */
 
 @keyframes doko {
