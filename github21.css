@@ -1007,6 +1007,8 @@ img.channel-emote[title$=":kiarapunch:"]  {
     right: 50px;  max-width:125px;  z-index: 1; }
 img.channel-emote[title$=":kikkerikick2:"]  {
     right: 40px;  z-index: 1; } 
+img.channel-emote[title$=":faunabeam:"]  {
+    right: 50px;  max-width:125px;  z-index: 1; }
 
 /* End of Emote Animations */
 
