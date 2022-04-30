@@ -736,7 +736,13 @@
     background-position: center;
     background-repeat: no-repeat}
 
-
+.chat-msg-Mitsubachi .timestamp,  .chat-msg-mitsubachi .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/hooman.png');
+    background-position: bottom;
+    background-repeat: no-repeat}
+	
 
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
