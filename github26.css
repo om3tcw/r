@@ -770,6 +770,7 @@
     img.channel-emote[title$=":zainded:"], 
     img.channel-emote[title$=":mumeided:"],
     img.channel-emote[title$=":flareded:"],
+    img.channel-emote[title$=":irysded:"],	
     img.channel-emote[title$=":morided:"]
     {animation: anyaded 6s alternate infinite;}
     img.channel-emote[title$=":sanaded:"] 
