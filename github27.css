@@ -339,7 +339,7 @@
 .chat-msg-Dr_VidyaGeam .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mori2.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mori3.png');
     background-position: center;
     background-repeat: no-repeat}
 	
@@ -748,6 +748,13 @@
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/amewide.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-DoostCola .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/bloop.png');
     background-position: center;
     background-repeat: no-repeat}
 	
