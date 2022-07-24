@@ -824,6 +824,7 @@
     img.channel-emote[title$=":bina:"], 
     img.channel-emote[title$=":bhaa:"],  
     img.channel-emote[title$=":bame:"],  
+    img.channel-emote[title$=":bamesame:"]
     img.channel-emote[title$=":banya:"],  
     img.channel-emote[title$=":bcoco:"],  
     img.channel-emote[title$=":bmori:"],  
@@ -842,6 +843,7 @@
     img.channel-emote[title$=":bselen:"],
     img.channel-emote[title$=":bpomu:"],
     img.channel-emote[title$=":bmilky:"]
+    img.channel-emote[title$=":bgura:"]
     {animation: bina 3s linear infinite;}
 
 /* Garoomba */
