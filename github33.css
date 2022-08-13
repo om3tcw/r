@@ -663,7 +663,7 @@
 .chat-msg-fakeangel .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sanasunnies.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sanabread.png');
     background-position: center;
     background-repeat: no-repeat}
 
@@ -797,6 +797,13 @@
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/roboco2.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-Nautilus .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka3.png');
     background-position: center;
     background-repeat: no-repeat}
 
