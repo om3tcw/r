@@ -1067,7 +1067,7 @@ img.channel-emote[title$=":cell:"] {
 img.channel-emote[title$=":curtains:"] {
     right: 105px; height: 75px; max-width:125px;  }
 img.channel-emote[title$=":newspaper:"] {
-    right: 75px; height: 42px; max-width:100px;  }
+   top:20px; right: 75px; height: 42px; max-width:100px;  }
 img.channel-emote[title$=":tent:"] {
     right: 54px; height: 55px;  }
 img.channel-emote[title$=":loading:"] {
