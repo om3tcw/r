@@ -1064,8 +1064,10 @@ img.channel-emote[title$=":noose:"] {
     right: 100px; height: 100px;  z-index: 1;}
 img.channel-emote[title$=":cell:"] {
     right: 90px; height: 100px; max-width:125px;  z-index: -1; }
-img.channel-emote[title$=":curtains:"], img.channel-emote[title$=":newspaper:"] {
+img.channel-emote[title$=":curtains:"] {
     right: 105px; height: 75px; max-width:125px;  }
+img.channel-emote[title$=":newspaper:"] {
+    right: 75px; height: 42px; max-width:100px;  }
 img.channel-emote[title$=":tent:"] {
     right: 54px; height: 55px;  }
 img.channel-emote[title$=":loading:"] {
