@@ -907,6 +907,8 @@ img.channel-emote[title$=":Lq9eqHDKJPE:"] {animation: slide 0.9s  infinite;}
 img.channel-emote[title$=":I9rvEDBfyaY:"] {animation: slide 1.8s  infinite;}
 img.channel-emote[title$=":polkaaaaaaaaaaaaaaa:"] {animation: quickzoom 0.2s  infinite;}
 img.channel-emote[title$=":amespace:"] {animation: amespace 20s forwards; animation-timing-function: linear;}
+img.channel-emote[title$=":QI96hnhcr2E:"] {max-height:106px; animation: QI96hnhcr2E 1.5s  infinite;}
+img.channel-emote[title$=":QI96hnhcr2E-2:"] {max-height:106px; animation: QI96hnhcr2E-2 1.5s infinite;}
 
 img.channel-emote[title$=":pekofly:"] {
     animation:  scale-up-center 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -1015,6 +1017,20 @@ img.channel-emote[title$=":teamatepudding:"]
     75%  { transform: scale(6) rotate(540deg); left:250px; bottom:500px;}
     76%  { transform: scale(0) rotate(540deg); left:250px; bottom:500px;} 
     100% { transform: scale(0)   rotate(720deg); left:275px; bottom:550px; }}
+
+@keyframes QI96hnhcr2E {
+    0%   { left:00px; top:00px; transform: rotate(0deg);}
+    25%  { left:150px; top:000px;  transform: rotate(-90deg);} 
+    50%  { left:150px; top:-150px; transform: rotate(-180deg); } 
+    75%  { left:00px; top:-150px; transform: rotate(-270deg);} 
+    100% {left:00px; top:00px;  transform: rotate(-360deg);}}
+
+@keyframes QI96hnhcr2E-2 {
+    0%   { left:0px; top:0px; transform: rotate(0deg);}
+    25%  { left:0px; top:-150px;  transform: rotate(90deg);} 
+    50%  { left:150px; top:-150px; transform: rotate(180deg); } 
+    75%  { left:150px; top:0px; transform: rotate(270deg);} 
+    100% { left:0px; top:00px;  transform: rotate(360deg);}}
 
 /* Flashing eyes - Legacy */
 
