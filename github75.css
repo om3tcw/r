@@ -909,7 +909,8 @@ img.channel-emote[title$=":polkaaaaaaaaaaaaaaa:"] {animation: quickzoom 0.2s  in
 img.channel-emote[title$=":amespace:"] {animation: amespace 20s forwards; animation-timing-function: linear;}
 img.channel-emote[title$=":QI96hnhcr2E:"] {max-height:106px; animation: QI96hnhcr2E 1.5s  infinite;}
 img.channel-emote[title$=":QI96hnhcr2E-2:"] {max-height:106px; animation: QI96hnhcr2E-2 1.5s infinite;}
-img.channel-emote[title*=":"] {max-height:106px; animation: rainbow2 4s infinite;}
+img.channel-emote[title*=":"] {		animation: rainbow2 2.5s linear;
+		animation-iteration-count: infinite;}
 img.channel-emote[title*=":"] {max-height:106px; animation: smolkoro 4s infinite;}
 img.channel-emote[title$=":pekofly:"] {
     animation:  scale-up-center 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -1068,8 +1069,8 @@ img.channel-emote[title$=":teamatepudding:"]
 @keyframes smolkoro {
     100%,0%   { left:0px; top:0px; transform: rotate(0deg); transform: skew(20deg, 130deg); color: rgb(255,0,0);}
     25%  { left:200px; top:-150px;  transform: rotate(900deg); transform: skew(230deg, 1940deg); color: rgb(255,255,0);} 
-    50%  { right:550px; top:-150px; transform: rotate(1800deg); transform: skew(21230deg, 13140deg); color: rgb(0,255,255); } 
-    75%  { left:150px; top:200px; transform: rotate(3600deg); transform: skew(-12000deg, 130deg); color: rgb(127,0,255); } 
+    50%  { right:550px; top:-150px; transform: rotate(1800deg); transform: skew(2230deg, 1140deg); color: rgb(0,255,255); } 
+    75%  { left:150px; top:200px; transform: rotate(3600deg); transform: skew(-1000deg, 130deg); color: rgb(127,0,255); } 
 
 
 
