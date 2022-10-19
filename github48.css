@@ -252,6 +252,7 @@
     background-position: center;
     background-repeat: no-repeat}
 
+.chat-msg-fuckhead { font-family: "Comic Sans MS";  }
 .chat-msg-fuckhead .timestamp {
     color:transparent;
     background-size: 50px 15px;
