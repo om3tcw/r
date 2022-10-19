@@ -6,7 +6,8 @@
 .chat-msg-marble { font-family: "webdings";}
 .chat-msg-kei { font-family: "webdings";}
 .chat-msg-fakeangel { font-family: "webdings";}
-.chat-msg-FloatingGaust .timestamp {
+.chat-msg-FloatingGaust .timestamp {font-family: "webdings";}
+.chat-msg-Moshmallow { font-family: "webdings";}
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kaguyaluna.jpg');
