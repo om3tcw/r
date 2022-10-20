@@ -1,11 +1,7 @@
 /* Start of Oshi Eyes */
-@font-face {
-  font-family: myFirstFont;
-  src: url(https://litter.catbox.moe/7jzukm.ttf);
-}
 
-.chat-msg-Anonchama {   font-family: myFirstFont  }
 
+.chat-msg-FloatingGaust .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kaguyaluna.jpg');
