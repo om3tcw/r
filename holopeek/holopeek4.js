@@ -247,7 +247,7 @@ form input#chatline {background-size: auto:}
         id: 'vertical_layout',
         desc: 'Vertical layout',
         css: `.navbar, #videowrap-header {display:none}
-        #mainpage {padding:0;margin:0;height:100% !important}
+        #mainpage {padding:0;height:100% !important}
         #main{flex-direction:column-reverse !important}
         #videowrap, #chatwrap{width:100%;margin:0; padding:0}`
    
