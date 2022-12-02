@@ -247,11 +247,22 @@ form input#chatline {background-size: auto:}
         id: 'vertical_layout',
         desc: 'Vertical layout',
         css: `.navbar, #videowrap-header {display:none}
-        #mainpage {padding:0;margin:0;height:auto !important}
+        #mainpage {padding:0;height:auto !important}
         #main{flex-direction:column-reverse !important}
         #videowrap, #chatwrap{width:100%;margin:0; padding:0}`
    
-    }];
+    }, {
+        id: 'vertical_layout2',
+        desc: 'Vertical layout 2',
+        css: `
+                #chatwrap {position:fixed;width:100%;height:auto;top:60vw;bottom:0;}
+        #videowrap {width: 100vw; height: 56.25vw;max-height: 100vh;max-width: 177.78vh;position:absolute;margin: 0 0 0 auto !important;padding: 0 !important;top:32px;bottom:0;left:0;right:0;}
+        #main { height: 100% !important;}
+		.linewrap {background-color: #0000 !important;box-shadow: none !important;}
+		#videowrap-header  {display:none !important;}
+        `
+    }
+	];
 
     const fplegend = document.createElement('p');
     fplegend.innerHTML = 'Options';
