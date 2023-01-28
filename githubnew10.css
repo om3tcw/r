@@ -837,6 +837,28 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna2.jpg');
     background-position: center;
     background-repeat: no-repeat}
+
+.chat-msg-McFin .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fbk2.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+
+.chat-msg-TheLastSanallite .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sana6.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-zelantrodan .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/suisei2.png');
+    background-position: center;
+    background-repeat: no-repeat}
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
 
