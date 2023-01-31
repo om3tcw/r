@@ -956,7 +956,7 @@ img.channel-emote[title$=":fbkdoko:"] {
     animation: doko 2s alternate both;
     transform-origin: 50% 0%;}
 
-img.channel-emote[title$=":thisisbait:"], img.channel-emote[title$=":anyahang:"] {
+img.channel-emote[title$=":thisisbait:"], img.channel-emote[title$=":anyahang:"], img.channel-emote[title$=":takohang:"] {
     animation: penr 4s alternate infinite;
     transform-origin: 50% 0%;}
 
