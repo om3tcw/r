@@ -1170,7 +1170,7 @@ img.channel-emote[title$=":kikkerikick2:"]  {
 img.channel-emote[title$=":faunabeam:"]  {
     right: 50px;  max-width:125px;  z-index: 1; }
 img.channel-emote[title$=":true:"]  {
-    right: 104px; bottom: 20px; max-width:125px;  z-index: 1; }
+    bottom: 0px; right: 120px; max-width: 150px; z-index: 1;} 
 
 /* End of Emote Animations */
 
