@@ -1169,13 +1169,15 @@ img.channel-emote[title$=":kikkerikick2:"]  {
     right: 40px;  z-index: 1; } 
 img.channel-emote[title$=":faunabeam:"]  {
     right: 50px;  max-width:125px;  z-index: 1; }
+img.channel-emote[title$=":true:"]  {
+    right: 104px; bottom: 20px; max-width:125px;  z-index: 1; }
 
 /* End of Emote Animations */
 
 /* Jones not knowing where to add stupid bullshit*/
 /* Guys I fucking love Reine, she's great */
 /* End of Jones not knowing where to add stupid bullshit*/
-
+/* Man I Love Fauna */
 /* Page Changes */
 
 #pmbar .panel-heading {background-color: #bd6231}
