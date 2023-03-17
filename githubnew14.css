@@ -708,7 +708,7 @@
 .chat-msg-henmera .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/airi.gif');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kanata.png');
     background-position: center;
     background-repeat: no-repeat}
 
@@ -864,6 +864,13 @@
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/botan2.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-Hootsie .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei.png');
     background-position: center;
     background-repeat: no-repeat}
 /* End of Oshi Eyes */
