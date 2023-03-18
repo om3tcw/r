@@ -422,5 +422,5 @@ $('#messagebuffer').off('click').click(e => {
     let t = e.target, p = t.parentElement;
     if(e.button != 0) return;
     if(t.className == 'channel-emote')
-        $('#chatline').val((i, v) => v + e.target.title).focus();
+        $('#chatline').val((i, v) => v + e.target.title + " ").focus();
 })
