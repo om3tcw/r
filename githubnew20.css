@@ -929,6 +929,34 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/irys.png');
     background-position: center;
     background-repeat: no-repeat}
+
+.chat-msg-oldrrat .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nene2.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-Dracorex .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna4.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-z3r0b1t_ .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei3.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-SPM .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna5.png');
+    background-position: center;
+    background-repeat: no-repeat}
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
 
