@@ -894,6 +894,41 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koyori1.png');
     background-position: center;
     background-repeat: no-repeat}
+
+.chat-msg-Ashhh .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/laplus3.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-Enemy .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/marine2.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-Baeblader .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/bae.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-MoomLove .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei2.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-HopeHasDescended .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/irys.png');
+    background-position: center;
+    background-repeat: no-repeat}
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
 
