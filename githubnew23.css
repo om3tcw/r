@@ -992,6 +992,27 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/watamelon.png');
     background-position: center;
     background-repeat: no-repeat}
+
+.chat-msg-bura .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/suisei3.jpg');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-3beat .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mori5.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-ProSqueeb .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/squeeb.png');
+    background-position: center;
+    background-repeat: no-repeat}
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
 
