@@ -863,7 +863,7 @@
 .chat-msg-Pepper .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/botan2.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nepolabo.gif');
     background-position: center;
     background-repeat: no-repeat}
 
@@ -1011,6 +1011,13 @@
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/squeeb.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-Mugi .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina9.png');
     background-position: center;
     background-repeat: no-repeat}
 /* End of Oshi Eyes */
