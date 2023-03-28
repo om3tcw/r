@@ -1317,6 +1317,7 @@ img.channel-emote[title$=":afro:"]  {
     bottom: 35px; right: 130px; max-width: 150px; z-index: 1;} 
 img.channel-emote[title$=":unity3:"]  {max-width: 250px;} 
 img.channel-emote[title$=":inaiya:"]  {max-width: 275px;}
+img.channel-emote[title$=":kaelawide:"]  {max-width: 410px;}
 img.channel-emote[title$=":kiarapunch:"]  {
     right: 50px;  max-width:125px;  z-index: 1; }
 img.channel-emote[title$=":kikkerikick2:"]  {
