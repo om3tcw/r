@@ -670,6 +670,13 @@
     background-position: center;
     background-repeat: no-repeat}
 
+.chat-msg-FakeangelTheSecond .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sana7.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
 .chat-msg-bomberchan .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -1018,6 +1025,13 @@
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina9.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-qwack194 .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei4.png');
     background-position: center;
     background-repeat: no-repeat}
 /* End of Oshi Eyes */
