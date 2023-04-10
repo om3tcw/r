@@ -3,3 +3,4 @@ You can do this using ffmpeg-normalize using the following function in powershel
 ffmpeg-normalize ".\%%~nxx" -nt peak -t -6 -c:a libvorbis -ext ogg -of .\output
 
 ~~~~~ Otherwise add the emote and link below this line and ping me ~~~~~
+Jones fix eelwah pls :)
