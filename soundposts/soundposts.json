@@ -145,5 +145,7 @@
     ":amerotate:": { "soundurl": "https://dl.dropboxusercontent.com/s/wnak46cqku4a8yt/rratate-short.mp3?dl=0"},
     ":rratate:": { "soundurl": "https://dl.dropboxusercontent.com/s/wnak46cqku4a8yt/rratate-short.mp3?dl=0"},
     ":garbage:": { "soundurl": "https://dl.dropboxusercontent.com/s/gftme5q7x7xlius/garbage.ogg?dl=0" },
-    ":irysex:": { "soundurl": "https://dl.dropboxusercontent.com/s/lxolfa0gooi0kvi/irysex.ogg?dl=0" }
+    ":irysex:": { "soundurl": "https://dl.dropboxusercontent.com/s/lxolfa0gooi0kvi/irysex.ogg?dl=0" },
+    ":takobocchi:": { "soundurl": "https://dl.dropboxusercontent.com/s/oujv6knt6pbr29q/takobocchi.ogg?dl=0" },
+    ":matsuriyawn:": { "soundurl": "https://dl.dropboxusercontent.com/s/iw6wkr33wtlj1wm/matsuriyawn.ogg?dl=0" }
 }
