@@ -1371,7 +1371,7 @@ img.channel-emote[title$=":true:"]  {
 .chat-msg-Kusa .username {filter: drop-shadow(1px 1px 1px #d4b0ff);}
 .chat-msg-Deadbeatchama .username {filter: drop-shadow(1px 1px 1px #ffb0e6);}
 .chat-msg-fuckhead .username {filter: drop-shadow(1px 1px 1px #002fff);}
-.chat-msg-jafafafy.username {filter: drop-shadow(1px 1px 1px #6c1485);}
+.chat-msg-jafafafy .username {filter: drop-shadow(1px 1px 1px #6c1485);}
 .chat-msg-Altearia .username {filter: drop-shadow(1px 1px 1px #47ff47);}
 .chat-msg-MrMcEggmanJones .username {filter: drop-shadow(1px 1px 1px #f56d05);}
 .chat-msg-slowchamp .username {filter: drop-shadow(1px 1px 1px #fffa6b);}
