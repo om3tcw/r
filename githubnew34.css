@@ -1358,6 +1358,7 @@ img.channel-emote[title$=":true:"]  {
 
 /* End of Emote Animations */
 
+
 /* Jones not knowing where to add stupid bullshit*/
 /* Guys I fucking love Reine, she's great */
 /* End of Jones not knowing where to add stupid bullshit*/
@@ -1365,3 +1366,22 @@ img.channel-emote[title$=":true:"]  {
 /* Page Changes */
 
 #pmbar .panel-heading {background-color: #bd6231}
+
+/* RARE NAME COLOR NFTS THAT WILL DEFINITELY STAY LONGER THAN A FEW HOURS */
+.chat-msg-Kusa .username {filter: drop-shadow(1px 1px 1px #d4b0ff);}
+.chat-msg-Deadbeatchama .username {filter: drop-shadow(1px 1px 1px #ffb0e6);}
+.chat-msg-fuckhead .username {filter: drop-shadow(1px 1px 1px #002fff);}
+.chat-msg-jafafafy.username {filter: drop-shadow(1px 1px 1px #6c1485);}
+.chat-msg-Altearia .username {filter: drop-shadow(1px 1px 1px #47ff47);}
+.chat-msg-MrMcEggmanJones .username {filter: drop-shadow(1px 1px 1px #f56d05);}
+.chat-msg-slowchamp .username {filter: drop-shadow(1px 1px 1px #fffa6b);}
+.chat-msg-henmera .username {filter: drop-shadow(1px 1px 1px #ff8a7a);}
+.chat-msg-Moruru .username {filter: drop-shadow(1px 1px 1px #c2c5cc);}
+.chat-msg-Tako225 .username {filter: drop-shadow(1px 1px 1px #7100f2);}
+.chat-msg-AmesLittleTeamate .username {filter: drop-shadow(1px 1px 1px #89ebfa);}
+.chat-msg-MofuMofuRisu .username {filter: drop-shadow(1px 1px 1px #c29876);}
+.chat-msg-Anonchama .username {filter: drop-shadow(1px 1px 1px #c40d00);}
+.chat-msg-pig .username {filter: drop-shadow(1px 1px 1px #9b629e);}
+.chat-msg-rraticus .username {filter: drop-shadow(1px 1px 1px #787878);}
+.chat-msg-KSeven .username {filter: drop-shadow(1px 1px 1px #380b3b);}
+.chat-msg-Kei .username {filter: drop-shadow(1px 1px 1px #1a1919);}
