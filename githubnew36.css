@@ -719,6 +719,13 @@
     background-position: center;
     background-repeat: no-repeat}
 
+.chat-msg-henmeraToo .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/matsuri3.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
 .chat-msg-MoLune .timestamp {
     color:transparent;
     background-size: 50px 15px;
