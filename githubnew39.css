@@ -820,7 +820,7 @@
 .chat-msg-Nautilus .timestamp, .chat-msg-nautilus .timestamp  {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka3.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka4.png');
     background-position: center;
     background-repeat: no-repeat}
 
@@ -1053,6 +1053,13 @@
 	color:transparent;
 	background-size: 50px 15px;
 	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/utano.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
+.chat-msg-Investigator .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ame11.png');
 	background-position: center;
 	background-repeat: no-repeat}
 
