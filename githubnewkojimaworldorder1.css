@@ -478,7 +478,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/anya.png');
     background-position: bottom;
     background-repeat: no-repeat;
-    animation: ceresob 45s infinite alternate;}
+    }
 
 .chat-msg-Noroba .timestamp, .chat-msg-Noromo .timestamp {
     color:transparent;
@@ -584,7 +584,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/anya.png');
     background-position: center;
     background-repeat: no-repeat;
-    animation: inaselen 45s infinite alternate;}
+    }
 
 .chat-msg-Tako225 .timestamp {
     color:transparent;
