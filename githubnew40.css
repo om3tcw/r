@@ -1063,6 +1063,27 @@
 	background-position: center;
 	background-repeat: no-repeat}
 
+.chat-msg-squeeeb .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna8.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
+.chat-msg-rouch .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna9.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
+.chat-msg-Yabba .timestamp, .chat-msg-YABBA .timestamp  {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/vesper.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
 
