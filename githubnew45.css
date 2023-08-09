@@ -57,17 +57,12 @@
     background-position: center;
     background-repeat: no-repeat}
 
-.chat-msg-Kusa .timestamp, .chat-msg-Kusa .username {Display:none;}
-.chat-msg-Kusa {
-    font-size: 14px;
-    border: 1px solid #ff0000;
-    line-height: 2;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    color: #ff0000 !important;
-    text-align: center;
-    background-color: rgba(129, 20, 21, 0.1);
-}
+.chat-msg-attenanakusa .timestamp, .chat-msg-puchigire .timestamp, .chat-msg-Kusa .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/anya.png');
+    background-position: center;
+    background-repeat: no-repeat}
 	
 .chat-msg-Tigre .timestamp {
     color:transparent;
