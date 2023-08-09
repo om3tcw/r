@@ -57,12 +57,6 @@
     background-position: center;
     background-repeat: no-repeat}
 	
-.chat-msg-attenanakusa .timestamp, .chat-msg-puchigire .timestamp, .chat-msg-Kusa .timestamp {
-    color:transparent;
-    background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/anya.png');
-    background-position: center;
-    background-repeat: no-repeat}
 	
 .chat-msg-Tigre .timestamp {
     color:transparent;
