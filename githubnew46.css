@@ -1413,6 +1413,8 @@ img.channel-emote[title$=":faunabeam:"]  {
     right: 50px;  max-width:125px;  z-index: 1; }
 img.channel-emote[title$=":true:"]  {
     bottom: 0px; right: 120px; max-width: 150px; z-index: 1;} 
+img.channel-emote[title$=":kiarabongo:"]  {
+    bottom:60px; right: 100px; z-index: 1; opacity:80%;} 
 
 /* End of Emote Animations */
 
