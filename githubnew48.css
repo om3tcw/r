@@ -405,7 +405,7 @@
 .chat-msg-Locura .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/henya.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/henya2.png');
     background-position: center;
     background-repeat: no-repeat}
 	
@@ -1109,6 +1109,20 @@
 	color:transparent;
 	background-size: 50px 15px;
 	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/coni.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
+.chat-msg-GKAnon .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei5.jpg');
+	background-position: center;
+	background-repeat: no-repeat}
+
+.chat-msg-Marvinios .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/baerussiansleepexperiment.png');
 	background-position: center;
 	background-repeat: no-repeat}
 
