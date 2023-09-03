@@ -1206,6 +1206,7 @@ img.channel-emote[title$=":kiaraamfrog:"], img.channel-emote[title$=":anyafrog:"
 img.channel-emote[title$=":kiaraspin:"] { transform: rotate(180deg);}
 img.channel-emote[title$=":Lq9eqHDKJPE:"] {animation: slide 0.9s  infinite;}
 img.channel-emote[title$=":I9rvEDBfyaY:"] {animation: slide 1.8s  infinite;}
+img.channel-emote[title$=":WuvtwRYkOU0:"] {animation: quickzoom 0.1s  infinite;}
 img.channel-emote[title$=":polkaaaaaaaaaaaaaaa:"] {animation: quickzoom 0.2s  infinite;}
 img.channel-emote[title$=":amespace:"] {animation: amespace 20s forwards; animation-timing-function: linear;}
 img.channel-emote[title$=":QI96hnhcr2E:"] {max-height:106px; animation: QI96hnhcr2E 1.5s  infinite;}
@@ -1452,7 +1453,7 @@ img.channel-emote[title$=":kiarabongo:"]  {
 .chat-msg-Kusa .username {filter: drop-shadow(1px 1px 1px #d4b0ff);}
 .chat-msg-Deadbeatchama .username {filter: drop-shadow(1px 1px 1px #ffb0e6);}
 .chat-msg-fuckhead .username {filter: drop-shadow(1px 1px 1px #002fff);}
-.chat-msg-jafafafy .username {filter: drop-shadow(3px 3px 3px #6c1485);}
+.chat-msg-jafafafy .username {filter: drop-shadow(6px 6px 6px #6c1485);}
 .chat-msg-Altearia .username {filter: drop-shadow(1px 1px 1px #47ff47);}
 .chat-msg-MrMcEggmanJones .username {filter: drop-shadow(1px 1px 1px #f56d05);}
 .chat-msg-slowchamp .username {filter: drop-shadow(1px 1px 1px #fffa6b);}
