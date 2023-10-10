@@ -235,5 +235,6 @@
     ":faunawarp:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/yflk9iqky1awz2o0lgjwy/faunawarp.mp3?rlkey=rhzpl77zmpk2ocvwz8hf0saq3&dl=0"},
     ":faunabend:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/a7ywppp5hopubw3491lup/faunabend.mp3?rlkey=h2vhhyscl2nfsbz9vv5qkjhim&dl=0"},
     ":faunamorph:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/seb7tk65dkiojmt80bjcs/faunamorph.mp3?rlkey=aty58a1rz0t2nr3q22ioflezq&dl=0"},
-    ":faunawater:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/x8b9rrrpx049y5ta8fwdv/faunawater.mp3?rlkey=1vdk5ezucr9mif9qekbplvu5c&dl=0"}
+    ":faunawater:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/x8b9rrrpx049y5ta8fwdv/faunawater.mp3?rlkey=1vdk5ezucr9mif9qekbplvu5c&dl=0"},
+	":anyacowboytheygoyeehaw:" : { "soundurl": "https://files.catbox.moe/2rxjot.mp3"},
 }
