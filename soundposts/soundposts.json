@@ -237,5 +237,6 @@
     ":faunamorph:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/seb7tk65dkiojmt80bjcs/faunamorph.mp3?rlkey=aty58a1rz0t2nr3q22ioflezq&dl=0"},
     ":faunawater:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/x8b9rrrpx049y5ta8fwdv/faunawater.mp3?rlkey=1vdk5ezucr9mif9qekbplvu5c&dl=0"},
     ":gargourd:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/rcgi4bixfzl92b9n0cced/gargourd.mp3?rlkey=y9r1brk6drgj4ej5szmcri9qx&dl=0"},
-    ":saplingbarrage:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/aa7h170copsie9f31nak2/saplingbarrage.mp3?rlkey=ie0b1x17fcer66a4pniwucc0a&dl=0"}
+    ":saplingbarrage:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/aa7h170copsie9f31nak2/saplingbarrage.mp3?rlkey=ie0b1x17fcer66a4pniwucc0a&dl=0"},
+    ":zhowaa:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/l2ql2yqb3tew6o3wdgsrs/zhowaa.mp3?rlkey=d0h0a6fm5wdww48hfln8t70eb&dl=0"}
 }
