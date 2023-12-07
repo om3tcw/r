@@ -105,7 +105,8 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/smolame.png');
     background-position: center;
     background-repeat: no-repeat}
-	
+
+.chat-msg-slowchamp { font-family: "Brush Script MT";  }
 .chat-msg-slowchamp .timestamp  {
     color:transparent;
     background-size: 50px 15px;
