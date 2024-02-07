@@ -1249,7 +1249,7 @@
     {animation: garoomba 15s  infinite;}
 
 img.channel-emote[title$=":poppygrab:"]  { right: 40px;  z-index: 3; }
-img.channel-emote[title$=":guyrysgrope:"]  { right: 50px;  z-index: 3; }  
+img.channel-emote[title$=":guyrysgrope:"]  { right: 45px;  z-index: 3; }  
 img.channel-emote[title$=":anyasmug:"] {max-width: 150px; max-height: 100px}
 img.channel-emote[title$=":kiaraamfrog:"], img.channel-emote[title$=":anyafrog:"] {animation: amfrog 1s alternate infinite;}
 img.channel-emote[title$=":kiaraspin:"] { transform: rotate(180deg);}
