@@ -453,7 +453,7 @@
 .chat-msg-Moshmallow .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/skibidi.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/rushiaeyes.png');
     background-position: center top;
     background-repeat: no-repeat}
 
@@ -1512,7 +1512,7 @@ img.channel-emote[title$=":kiarabongo:"]  {
 .chat-msg-Tako225 .username {filter: drop-shadow(1px 1px 1px #7100f2);}
 .chat-msg-AmesLittleTeamate .username {filter: drop-shadow(1px 1px 1px #89ebfa);}
 .chat-msg-MofuMofuRisu .username {filter: drop-shadow(1px 1px 1px #c29876);}
-.chat-msg-Anonchama .username {filter: drop-shadow(1px 1px 1px #c40d00);}
+.chat-msg-Anonchama .username {filter: drop-shadow(1px 3px 1px #c40d00);}
 .chat-msg-pig .username {filter: drop-shadow(1px 1px 1px #9b629e);}
 .chat-msg-rraticus .username {filter: drop-shadow(1px 1px 1px #787878);}
 .chat-msg-KSeven .username {filter: drop-shadow(1px 1px 1px #380b3b);}
