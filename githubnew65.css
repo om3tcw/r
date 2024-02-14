@@ -797,6 +797,8 @@
     background-position: center;
     background-repeat: no-repeat}
 
+.chat-msg-rratbastard { font-family: rrat; }
+@font-face {  font-family: rrat; src: url(https://files.catbox.moe/rce90m.ttf); }
 .chat-msg-rratbastard .timestamp {
     color:transparent;
     background-size: 50px 15px;
