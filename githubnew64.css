@@ -97,8 +97,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/amemo.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-Anonchama { font-family: achama; }
-@font-face {  font-family: achama; src: url(https://files.catbox.moe/o0qidm.ttf); }	
+	
 .chat-msg-Anonchama .timestamp, .chat-msg-Achama .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -487,6 +486,8 @@
     background-repeat: no-repeat;
     animation: ceresob 45s infinite alternate;}
 
+.chat-msg-Noroba, .chat-msg-Noromo { font-family: Noroba; }
+@font-face {  font-family: Noroba; src: url(https://files.catbox.moe/bqnorq.ttf); }
 .chat-msg-Noroba .timestamp, .chat-msg-Noromo .timestamp {
     color:transparent;
     background-size: 50px 15px;
