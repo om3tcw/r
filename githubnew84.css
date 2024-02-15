@@ -20,8 +20,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/CIA.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-Luxes {font-family: lplafhhhp; font-size: 10px; }
-@font-face {  font-family: lplafhhhp; src: url(https://files.catbox.moe/p3i28d.ttf); }		
+
 .chat-msg-Luxes .timestamp, .chat-msg-Mobilux .timestamp  {
     color:transparent;
     background-size: 50px 15px;
@@ -64,7 +63,7 @@
     background-position: center;
     background-repeat: no-repeat}
 
-.chat-msg-Kusa {font-family: plap; font-size: 10px; } @font-face {  font-family: plap; src: url(https://files.catbox.moe/5tvxrw.otf); }
+
 .chat-msg-attenanakusa .timestamp, .chat-msg-puchigire .timestamp, .chat-msg-Kusa .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -85,8 +84,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ayame.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-Altearia {font-family: plafhshhp; font-size: 10px; }
-@font-face {  font-family: plafhshhp; src: url(https://files.catbox.moe/ijuzxk.ttf); }		
+	
 .chat-msg-Altearia .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -100,8 +98,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/amemo.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-Anonchama {font-family: plafhhhp; font-size: 10px; }
-@font-face {  font-family: plafhhhp; src: url(https://files.catbox.moe/o0qidm.ttf); }	
+
 .chat-msg-Anonchama .timestamp, .chat-msg-Achama .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -235,8 +232,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kiaravolia.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-m_ {font-family: plafttp; font-size: 10px; }
-@font-face {  font-family: plafttp; src: url(https://files.catbox.moe/kawdr4.TTF); }
+
 .chat-msg-m_ .timestamp, .chat-msg-N_ .timestamp  {
     color:transparent;
     background-size: 50px 15px;
@@ -342,8 +338,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/elira.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-Deadbeatchama {font-family: plafssp; font-size: 10px; }
-@font-face {  font-family: plafssp; src: url(https://files.catbox.moe/1lljjf.ttf); }
+
 .chat-msg-Deadbeatchama .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -484,8 +479,6 @@
     background-position: center;
     background-repeat: no-repeat}
 
-.chat-msg-TehBatman {font-family: test1; } 
-@font-face {  font-family: test1; src: url(https://files.catbox.moe/rce90m.ttf); }
 .chat-msg-TehBatman .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -579,8 +572,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/roomba.gif');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-Moruru {font-family: plafsp; font-size: 10px; }
-@font-face {  font-family: plafsp; src: url(https://files.catbox.moe/6f8eru.ttf); }
+
 .chat-msg-Moruru .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -594,8 +586,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mori4.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-Egao {font-family: plafmmp; font-size: 10px; }
-@font-face {  font-family: plafmmp; src: url(https://files.catbox.moe/4e3icj.TTF); }
+
 .chat-msg-Egao .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -645,10 +636,7 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/laplus2.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-LonelyTeamate {font-family: pladp; font-size: 10px; }
-@font-face {  font-family: pladp; src: url(https://litter.catbox.moe/no4pqm.ttf); }
-.chat-msg-Graduated {font-family: pladfp; font-size: 10px; }
-@font-face {  font-family: pladfp; src: url(https://files.catbox.moe/muqvyr.ttf); }
+
 .chat-msg-LonelyTeamate .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -1167,8 +1155,7 @@
 	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/shiori3.png');
 	background-position: center;
 	background-repeat: no-repeat}
-.chat-msg-migoSMUG {font-family: plafp; font-size: 10px; }
-@font-face {  font-family: plafp; src: url(https://files.catbox.moe/51ht0l.otf); }
+
 .chat-msg-migoSMUG .timestamp {	
 	color:transparent;
 	background-size: 50px 15px;
