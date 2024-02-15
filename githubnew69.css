@@ -63,6 +63,7 @@
     background-position: center;
     background-repeat: no-repeat}
 
+.chat-msg-Kusa {font-family: plap; font-size: 10px; } @font-face {  font-family: plap; src: url(https://files.catbox.moe/5tvxrw.otf); }
 .chat-msg-attenanakusa .timestamp, .chat-msg-puchigire .timestamp, .chat-msg-Kusa .timestamp {
     color:transparent;
     background-size: 50px 15px;
