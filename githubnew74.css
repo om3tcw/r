@@ -640,6 +640,8 @@
     background-repeat: no-repeat}
 .chat-msg-LonelyTeamate {font-family: pladp; font-size: 10px; }
 @font-face {  font-family: pladp; src: url(https://litter.catbox.moe/no4pqm.ttf); }
+.chat-msg-Graduated {font-family: pladfp; font-size: 10px; }
+@font-face {  font-family: pladfp; src: url(https://files.catbox.moe/muqvyr.ttf); }
 .chat-msg-LonelyTeamate .timestamp {
     color:transparent;
     background-size: 50px 15px;
