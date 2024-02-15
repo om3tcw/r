@@ -478,8 +478,9 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/enna3.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-TehBatman {font-family: 2plap; font-size: 10px; } @font-face {  font-family: 2plap; src: url(https://files.catbox.moe/rce90m.ttf); }
-	
+
+.chat-msg-TehBatman {font-family: test1; } 
+@font-face {  font-family: test1; src: url(https://files.catbox.moe/rce90m.ttf); }
 .chat-msg-TehBatman .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -637,7 +638,8 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/laplus2.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-LonelyTeamate {font-family: 1plap; font-size: 10px; } @font-face {  font-family: 1plap; src: url(https://files.catbox.moe/mff9nx.ttf); }
+.chat-msg-LonelyTeamate {font-family: test2; } 
+@font-face {  font-family: test2; src: url(https://files.catbox.moe/mff9nx.ttf); }
 .chat-msg-LonelyTeamate .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -1156,7 +1158,8 @@
 	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/shiori3.png');
 	background-position: center;
 	background-repeat: no-repeat}
-.chat-msg-migoSMUG {font-family: 3plap; font-size: 10px; } @font-face {  font-family: 3plap; src: url(https://files.catbox.moe/ndq8ol.ttf); }
+.chat-msg-migoSMUG {font-family: test3;} 
+@font-face {  font-family: test3; src: url(https://files.catbox.moe/ndq8ol.ttf); }
 .chat-msg-migoSMUG .timestamp {	
 	color:transparent;
 	background-size: 50px 15px;
