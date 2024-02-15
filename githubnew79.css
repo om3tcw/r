@@ -232,7 +232,8 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kiaravolia.png');
     background-position: center;
     background-repeat: no-repeat}
-
+.chat-msg-m_ {font-family: plafttp; font-size: 10px; }
+@font-face {  font-family: plafttp; src: url(https://files.catbox.moe/kawdr4.TTF); }
 .chat-msg-m_ .timestamp, .chat-msg-N_ .timestamp  {
     color:transparent;
     background-size: 50px 15px;
@@ -590,7 +591,8 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mori4.png');
     background-position: center;
     background-repeat: no-repeat}
-
+.chat-msg-Egao {font-family: plafmmp; font-size: 10px; }
+@font-face {  font-family: plafmmp; src: url(https://files.catbox.moe/4e3icj.TTF); }
 .chat-msg-Egao .timestamp {
     color:transparent;
     background-size: 50px 15px;
