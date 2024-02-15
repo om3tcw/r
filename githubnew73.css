@@ -638,8 +638,8 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/laplus2.png');
     background-position: center;
     background-repeat: no-repeat}
-.chat-msg-LonelyTeamate {font-family: tests; } 
-@font-face {  font-family: tests; src: url(https://files.catbox.moe/mff9nx.ttf); }
+.chat-msg-LonelyTeamate {font-family: pladp; font-size: 10px; }
+@font-face {  font-family: pladp; src: url(https://litter.catbox.moe/no4pqm.ttf); }
 .chat-msg-LonelyTeamate .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -1158,8 +1158,8 @@
 	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/shiori3.png');
 	background-position: center;
 	background-repeat: no-repeat}
-.chat-msg-migoSMUG {font-family: testn;} 
-@font-face {  font-family: testn; src: url(https://files.catbox.moe/ndq8ol.ttf); }
+.chat-msg-migoSMUG {font-family: plafp; font-size: 10px; }
+@font-face {  font-family: plafp; src: url(https://files.catbox.moe/ndq8ol.ttf); }
 .chat-msg-migoSMUG .timestamp {	
 	color:transparent;
 	background-size: 50px 15px;
