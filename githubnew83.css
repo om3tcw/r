@@ -20,7 +20,8 @@
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/CIA.png');
     background-position: center;
     background-repeat: no-repeat}
-	
+.chat-msg-Luxes {font-family: lplafhhhp; font-size: 10px; }
+@font-face {  font-family: lplafhhhp; src: url(https://files.catbox.moe/p3i28d.ttf); }		
 .chat-msg-Luxes .timestamp, .chat-msg-Mobilux .timestamp  {
     color:transparent;
     background-size: 50px 15px;
