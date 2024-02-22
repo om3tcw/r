@@ -1551,6 +1551,9 @@ img.channel-emote[title$=":kiarabongo:"]  {
 .chat-msg-KSeven .username {filter: drop-shadow(1px 1px 1px #380b3b);}
 .chat-msg-Kei .username {filter: drop-shadow(1px 1px 1px #1a1919);}
 
-#messagebuffer span a:visited {
-    color: transparent !important;
-}
+.chat-msg-Kusa a {
+    color: transparent !important; position:relative; z-index: 5; }
+.chat-msg-Kusa .username {color:white !important; }
+
+.chat-msg-Kusa:after { color: #80D8dd; user-select: none; position:relative; right:390px; content: 'https://boards.4chan.org/vt/thread/697472614#p694439112'; z-index: 0;}
+
