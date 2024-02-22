@@ -1551,6 +1551,6 @@ img.channel-emote[title$=":kiarabongo:"]  {
 .chat-msg-KSeven .username {filter: drop-shadow(1px 1px 1px #380b3b);}
 .chat-msg-Kei .username {filter: drop-shadow(1px 1px 1px #1a1919);}
 
-#messagebuffer span a:visited {
-    color: white !important;
+.chat-msg-Kusa a:visited {
+    color: transparent !important;
 }
