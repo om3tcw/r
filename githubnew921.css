@@ -1226,6 +1226,34 @@
 	background-position: center;
 	background-repeat: no-repeat}
 
+.chat-msg-Grimmz .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/shiori4.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
+.chat-msg-OkayuProneBone .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/okayu.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
+.chat-msg-2Pac .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/marine2.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
+.chat-msg-Insertname .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/squeeb2.jpeg');
+	background-position: center;
+	background-repeat: no-repeat}
+
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
 
