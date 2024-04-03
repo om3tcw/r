@@ -484,8 +484,7 @@
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei6.png');
     background-position: bottom;
-    background-repeat: no-repeat;
-    animation: ceresob 45s infinite alternate;}
+    background-repeat: no-repeat}
 
 .chat-msg-Noroba, .chat-msg-Noromo { font-family: Noroba; }
 @font-face {  font-family: Noroba; src: url(https://files.catbox.moe/jnh2x7.ttf); }
@@ -1504,14 +1503,6 @@ img.channel-emote[title$=":teamatepudding:"]
 100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat; opacity:1;}
 }
 
-@keyframes ceresob {
-0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragi2.png') 0 0 no-repeat; opacity:1;}
-85%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragi2.png') 0 0 no-repeat; opacity:1;}
-90%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koragi2.png') 0 0 no-repeat; opacity:0;}
-92%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/faunacry.png') 0 0 no-repeat; opacity:0;}
-96%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/faunacry.png') 0 0 no-repeat; opacity:1;}
-100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/faunacry.png') 0 0 no-repeat; opacity:1;}
-}
 
 @keyframes inaselen {
 0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat; opacity:1;}
