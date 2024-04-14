@@ -1568,7 +1568,7 @@ img.channel-emote[title$=":true:"]  {
 img.channel-emote[title$=":kiarabongo:"]  {
     bottom:60px; right: 100px; z-index: 1; opacity:80%;} 
 img.channel-emote[title$=":claralick:"]  {
-    right: 50px;  max-width:125px;  z-index: 1; }
+    right: 60px;  max-width:200px;  z-index: 1; }
 
 /* End of Emote Animations */
 
