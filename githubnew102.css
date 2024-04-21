@@ -1569,6 +1569,8 @@ img.channel-emote[title$=":kiarabongo:"]  {
     bottom:60px; right: 100px; z-index: 1; opacity:80%;} 
 img.channel-emote[title$=":claralick:"]  {
     right: 60px;  max-width:200px;  z-index: 1; }
+img.channel-emote[title$=":mumeipointing:"]  {
+    right:55px;  max-width:200px;  z-index: 1; }   /* might add 'top:5px;' later to do a bottom offset */
 
 /* End of Emote Animations */
 
