@@ -1260,6 +1260,27 @@
 	background-position: center;
 	background-repeat: no-repeat}
 
+.chat-msg-IoriMinase765 .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/lia.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
+.chat-msg-Puppet .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii3.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
+.chat-msg-Tanuki .timestamp {	
+	color:transparent;
+	background-size: 50px 15px;
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kanade.png');
+	background-position: center;
+	background-repeat: no-repeat}
+
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
 
