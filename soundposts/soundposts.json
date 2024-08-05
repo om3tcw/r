@@ -205,6 +205,7 @@
     ":coniokcums:": { "soundurl": "https://files.catbox.moe/8afo7z.ogg"},
     ":watalarm:": { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/emotes/watalarm.ogg"},
 	":morisneak:":{ "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/emotes/sneaking_chorus_3.ogg"},
+	":hlggalarm:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emote/sounds/emotes/hlggalarm.ogg"},
 	"blamenoroba":{ "soundurl": "https://files.catbox.moe/35kv80.ogg"},
     ":inacawfee:": { "soundurl": "https://files.catbox.moe/tnq9sy.ogg"},
     ":MUMSA:": { "soundurl": "https://files.catbox.moe/0zqhh3.ogg"},
@@ -275,6 +276,6 @@
      ":flarelaff:" : { "soundurl": "https://files.catbox.moe/q92eva.ogg"},
      ":mumeipoint:" : { "soundurl": "https://files.catbox.moe/ryfgny.ogg"},
      ":bootybooty:" : { "soundurl": "https://files.catbox.moe/942quo.ogg"},
-	":hlggalarm:" : { "soundurl": "https://github.com/om3tcw/r/blob/emotes/sounds/emotes/hlggalarm.ogg"},
+	
 	
 }
