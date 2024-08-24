@@ -1591,7 +1591,7 @@ img.channel-emote[title$=":kiarabongo:"]  {
 img.channel-emote[title$=":claralick:"]  {
     right: 60px;  max-width:200px;  z-index: 1; }
 img.channel-emote[title$=":korotablet:"] {
-   top:60px; right: 100px; height: 300px; max-width:320px;  }
+   top:40px; right: 100px; max-height:300px; max-width:320px;  }
 img.channel-emote[title$=":mumeipointing:"]  {
     right:55px;  max-width:200px;  z-index: 1; }   /* might add 'top:5px;' later to do a bottom offset */
 
