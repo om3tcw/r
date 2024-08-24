@@ -1,3 +1,80 @@
+[class^="chat-msg-A"],
+[class^="chat-msg-C"],
+[class^="chat-msg-E"],
+[class^="chat-msg-G"],
+[class^="chat-msg-I"],
+[class^="chat-msg-K"],
+[class^="chat-msg-M"],
+[class^="chat-msg-O"],
+[class^="chat-msg-Q"],
+[class^="chat-msg-S"],
+[class^="chat-msg-U"],
+[class^="chat-msg-W"],
+[class^="chat-msg-Y"] {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+    text-align: right;
+    margin-right: 50px;
+    position: relative; 
+}
+
+[class^="chat-msg-A"] .timestamp,
+[class^="chat-msg-C"] .timestamp,
+[class^="chat-msg-E"] .timestamp,
+[class^="chat-msg-G"] .timestamp,
+[class^="chat-msg-I"] .timestamp,
+[class^="chat-msg-K"] .timestamp,
+[class^="chat-msg-M"] .timestamp,
+[class^="chat-msg-O"] .timestamp,
+[class^="chat-msg-Q"] .timestamp,
+[class^="chat-msg-S"] .timestamp,
+[class^="chat-msg-U"] .timestamp,
+[class^="chat-msg-W"] .timestamp,
+[class^="chat-msg-Y"] .timestamp {
+    position: absolute;
+    bottom: 0;
+    right: -60px; 
+}
+[class^="chat-msg-a"],
+[class^="chat-msg-c"],
+[class^="chat-msg-e"],
+[class^="chat-msg-g"],
+[class^="chat-msg-i"],
+[class^="chat-msg-k"],
+[class^="chat-msg-m"],
+[class^="chat-msg-o"],
+[class^="chat-msg-q"],
+[class^="chat-msg-s"],
+[class^="chat-msg-u"],
+[class^="chat-msg-w"],
+[class^="chat-msg-y"] {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+    text-align: right;
+    margin-right: 50px;
+    position: relative; 
+}
+
+[class^="chat-msg-a"] .timestamp,
+[class^="chat-msg-c"] .timestamp,
+[class^="chat-msg-e"] .timestamp,
+[class^="chat-msg-g"] .timestamp,
+[class^="chat-msg-i"] .timestamp,
+[class^="chat-msg-k"] .timestamp,
+[class^="chat-msg-m"] .timestamp,
+[class^="chat-msg-o"] .timestamp,
+[class^="chat-msg-q"] .timestamp,
+[class^="chat-msg-s"] .timestamp,
+[class^="chat-msg-u"] .timestamp,
+[class^="chat-msg-w"] .timestamp,
+[class^="chat-msg-y"] .timestamp {
+    position: absolute;
+    bottom: 0;
+    right: -60px; 
+}
+
 /* Start of Oshi Eyes */
 [class^="chat-msg-"] .timestamp {
     color: transparent;
