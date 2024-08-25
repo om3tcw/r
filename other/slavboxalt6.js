@@ -601,17 +601,16 @@ soundpostButton.style.backgroundImage = soundpostState
 soundpostButton.style.backgroundSize = "contain";
 
 let challengeActive = false;
-let clickedDuringChallenge = false; 
+let clickedDuringChallenge = false;
 
 soundpostButton.addEventListener("click", () => {
-    if (challengeActive) {
-        return;
-    }
+    if (challengeActive) return;
 
     if (soundpostState) {
-
         challengeActive = true;
         clickedDuringChallenge = false;
+        soundpostButton.style.backgroundImage = "";
+        void soundpostButton.offsetWidth;
         soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/76fd9e.gif')";
         const initialSound = new Audio('https://litter.catbox.moe/1vb4m3.mp3');
         initialSound.play();
@@ -621,18 +620,15 @@ soundpostButton.addEventListener("click", () => {
             const clickWindowStart = 1150;
             const clickWindowEnd = clickWindowStart + 150;
 
-
             const clickHandler = () => {
-                clickedDuringChallenge = true; 
+                clickedDuringChallenge = true;
                 if (clickWindowOpen) {
-
                     const successSound = new Audio('https://files.catbox.moe/6m22er.mp3');
                     successSound.play();
                     soundpostState = false;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/medicated.png')";
                     setCookie("soundpostState", soundpostState);
                 } else {
-
                     const failureSound = new Audio('https://files.catbox.moe/evn87m.ogg');
                     failureSound.play();
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
@@ -649,11 +645,10 @@ soundpostButton.addEventListener("click", () => {
                 setTimeout(() => {
                     clickWindowOpen = false;
                 }, 150);
-            }, 1150);
+            }, clickWindowStart);
 
             setTimeout(() => {
                 if (!clickedDuringChallenge) {
-
                     const failureSound = new Audio('https://files.catbox.moe/evn87m.ogg');
                     failureSound.play();
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
