@@ -610,10 +610,12 @@ soundpostButton.addEventListener("click", () => {
         challengeActive = true;
         clickedDuringChallenge = false;
 
-        // Reset GIF by temporarily setting a placeholder
-        soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')"; 
+        // Temporarily set backgroundImage to a blank URL
+        soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
+        
+        // Force reload GIF by appending a timestamp to URL
         setTimeout(() => {
-            soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/q4f528.gif')";
+            soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/q4f528.gif?" + new Date().getTime() + "')";
         }, 0);
 
         const initialSound = new Audio('https://files.catbox.moe/1uy7a8.mp3');
@@ -635,9 +637,9 @@ soundpostButton.addEventListener("click", () => {
                 } else {
                     const failureSound = new Audio('https://files.catbox.moe/eagevn.ogg');
                     failureSound.play();
-                    soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')"; 
+                    soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
                     setTimeout(() => {
-                        soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
+                        soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif?" + new Date().getTime() + "')";
                     }, 0);
                 }
 
@@ -657,9 +659,9 @@ soundpostButton.addEventListener("click", () => {
                 if (!clickedDuringChallenge) {
                     const failureSound = new Audio('https://files.catbox.moe/evn87m.ogg');
                     failureSound.play();
-                    soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')"; 
+                    soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
                     setTimeout(() => {
-                        soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
+                        soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif?" + new Date().getTime() + "')";
                     }, 0);
                 }
                 soundpostButton.removeEventListener("click", clickHandler);
