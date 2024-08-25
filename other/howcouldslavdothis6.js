@@ -610,7 +610,7 @@ soundpostButton.addEventListener("click", () => {
         challengeActive = true;
         clickedDuringChallenge = false;
         
-        soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/76fd9e.gif')";
+        soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/q4f528.gif')";
         const initialSound = new Audio('https://files.catbox.moe/1uy7a8.mp3');
         initialSound.play();
 
