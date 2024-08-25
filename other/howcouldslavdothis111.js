@@ -615,7 +615,7 @@ soundpostButton.addEventListener("click", () => {
         
         // Force reload GIF by appending a timestamp to URL
         setTimeout(() => {
-            soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/q4f528.gif?" + new Date().getTime() + "')";
+            soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/imwbqn.gif?" + new Date().getTime() + "')";
         }, 0);
 
         const initialSound = new Audio('https://files.catbox.moe/1uy7a8.mp3');
