@@ -612,7 +612,7 @@ soundpostButton.addEventListener("click", () => {
         soundpostButton.style.backgroundImage = "";
         void soundpostButton.offsetWidth;
         soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/76fd9e.gif')";
-        const initialSound = new Audio('https://litter.catbox.moe/1vb4m3.mp3');
+        const initialSound = new Audio('https://files.catbox.moe/1uy7a8.mp3');
         initialSound.play();
 
         setTimeout(() => {
@@ -655,6 +655,12 @@ soundpostButton.addEventListener("click", () => {
                 }
                 challengeActive = false;
                 soundpostButton.removeEventListener("click", clickHandler);
+
+ 
+                setTimeout(() => {
+                    challengeActive = false; 
+                }, 150);
+
             }, 1300);
 
         }, 0);
@@ -669,7 +675,6 @@ soundpostButton.addEventListener("click", () => {
 
 const chatInputRow = document.getElementById("chatinputrow");
 chatInputRow.appendChild(soundpostButton);
-
 function nicomessage(myplayer, mycontainer, mymsg) {
     mycontainer.appendChild(mymsg);
 
