@@ -602,15 +602,15 @@ soundpostButton.style.backgroundSize = "contain";
 
 soundpostButton.addEventListener("click", () => {
     if (soundpostState) {
-        soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/yfk3c8.gif')";
+        soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/76fd9e.gif')";
         const initialSound = new Audio('https://litter.catbox.moe/1vb4m3.mp3');
         initialSound.play();
 
         setTimeout(() => {
       
             let clickWindowOpen = false;
-            const clickWindowStart = 1500;
-            const clickWindowEnd = clickWindowStart + 25;
+            const clickWindowStart = 1150
+            const clickWindowEnd = clickWindowStart + 150;
 
      
             setTimeout(() => {
@@ -618,8 +618,8 @@ soundpostButton.addEventListener("click", () => {
 
                 setTimeout(() => {
                     clickWindowOpen = false;
-                }, 25);
-            }, 1500);
+                }, 150);
+            }, 1150);
 
 
             const clickHandler = () => {
@@ -650,7 +650,7 @@ soundpostButton.addEventListener("click", () => {
                 }
             }, clickWindowEnd);
 
-        }, 2000);
+        }, 1300);
     } else {
         // Toggle the state normally
         soundpostState = !soundpostState;
