@@ -612,7 +612,7 @@ soundpostButton.addEventListener("click", () => {
         soundpostButton.style.backgroundImage = "";
         void soundpostButton.offsetWidth;
         soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/76fd9e.gif')";
-        const initialSound = new Audio('https://litter.catbox.moe/1vb4m3.mp3');
+        const initialSound = new Audio('https://files.catbox.moe/1uy7a8.mp3');
         initialSound.play();
 
         setTimeout(() => {
@@ -629,8 +629,10 @@ soundpostButton.addEventListener("click", () => {
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/medicated.png')";
                     setCookie("soundpostState", soundpostState);
                 } else {
-                    const failureSound = new Audio('https://files.catbox.moe/evn87m.ogg');
+                    const failureSound = new Audio('https://files.catbox.moe/eagevn.ogg');
                     failureSound.play();
+                    soundpostButton.style.backgroundImage = "";
+                    void soundpostButton.offsetWidth;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
                 }
 
@@ -650,14 +652,14 @@ soundpostButton.addEventListener("click", () => {
                 if (!clickedDuringChallenge) {
                     const failureSound = new Audio('https://files.catbox.moe/evn87m.ogg');
                     failureSound.play();
+                    soundpostButton.style.backgroundImage = "";
+                    void soundpostButton.offsetWidth;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
                 }
                 soundpostButton.removeEventListener("click", clickHandler);
 
-                // Disable the button during the 150ms cooldown period
                 soundpostButton.disabled = true;
 
-                // Re-enable the button after the 150ms cooldown period
                 setTimeout(() => {
                     challengeActive = false; 
                     soundpostButton.disabled = false;
