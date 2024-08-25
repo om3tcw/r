@@ -610,44 +610,49 @@ soundpostButton.addEventListener("click", () => {
         initialSound.play();
 
         setTimeout(() => {
-
             let clickWindowOpen = false;
             const clickWindowStart = 1150;
             const clickWindowEnd = clickWindowStart + 150;
 
-            setTimeout(() => {
-                clickWindowOpen = true;
-
-                setTimeout(() => {
-                    clickWindowOpen = false;
-                }, 150);
-            }, 1150);
-
+            // Set up the failure scenario for the entire 1300ms period
             const clickHandler = () => {
                 if (clickWindowOpen) {
+                    // Success case: within the 150ms window
                     const successSound = new Audio('https://files.catbox.moe/6m22er.mp3');
                     successSound.play();
                     soundpostState = false;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/medicated.png')";
                     setCookie("soundpostState", soundpostState);
                 } else {
+                    // Failure case: clicked outside the 150ms window
                     const failureSound = new Audio('https://files.catbox.moe/evn87m.ogg');
                     failureSound.play();
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
                 }
 
+                // Clean up: remove the event listener and re-enable the button
                 soundpostButton.removeEventListener("click", clickHandler);
+                soundpostButton.disabled = false;
             };
 
+            // Attach the event listener for the entire 1300ms period
             soundpostButton.addEventListener("click", clickHandler);
 
+            // Open the 150ms success window at 1150ms
+            setTimeout(() => {
+                clickWindowOpen = true;
+                setTimeout(() => {
+                    clickWindowOpen = false;
+                }, 150);
+            }, 1150);
+
+            // Re-enable the button after the 1300ms period
             setTimeout(() => {
                 if (!clickWindowOpen) {
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
                 }
-                // Re-enable the button after the process is complete
                 soundpostButton.disabled = false;
-            }, clickWindowEnd);
+            }, 1300);
 
         }, 1300);
     } else {
