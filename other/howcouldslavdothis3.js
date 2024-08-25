@@ -610,9 +610,6 @@ soundpostButton.addEventListener("click", () => {
         challengeActive = true;
         clickedDuringChallenge = false;
         
-        soundpostButton.style.backgroundImage = "";
-        soundpostButton.offsetHeight;  
-
         soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/76fd9e.gif')";
         const initialSound = new Audio('https://files.catbox.moe/1uy7a8.mp3');
         initialSound.play();
@@ -633,9 +630,8 @@ soundpostButton.addEventListener("click", () => {
                 } else {
                     const failureSound = new Audio('https://files.catbox.moe/eagevn.ogg');
                     failureSound.play();
-
                     soundpostButton.style.backgroundImage = "";
-                    soundpostButton.offsetHeight; 
+                    void soundpostButton.offsetWidth;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
                 }
 
@@ -655,9 +651,8 @@ soundpostButton.addEventListener("click", () => {
                 if (!clickedDuringChallenge) {
                     const failureSound = new Audio('https://files.catbox.moe/evn87m.ogg');
                     failureSound.play();
-                    
                     soundpostButton.style.backgroundImage = "";
-                    soundpostButton.offsetHeight;  
+                    void soundpostButton.offsetWidth;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
                 }
                 soundpostButton.removeEventListener("click", clickHandler);
