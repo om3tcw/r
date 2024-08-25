@@ -593,7 +593,7 @@ function getCookie(name) {
 }
   
 var soundpostState = getCookie("soundpostState") === "true" ? true : false;
-  
+
 const soundpostButton = document.createElement("button");
 soundpostButton.style.backgroundImage = soundpostState
     ? "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')"
@@ -602,17 +602,19 @@ soundpostButton.style.backgroundSize = "contain";
 
 soundpostButton.addEventListener("click", () => {
     if (soundpostState) {
+        // Disable the button to prevent further clicks
+        soundpostButton.disabled = true;
+
         soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/76fd9e.gif')";
         const initialSound = new Audio('https://litter.catbox.moe/1vb4m3.mp3');
         initialSound.play();
 
         setTimeout(() => {
-      
+
             let clickWindowOpen = false;
-            const clickWindowStart = 1150
+            const clickWindowStart = 1150;
             const clickWindowEnd = clickWindowStart + 150;
 
-     
             setTimeout(() => {
                 clickWindowOpen = true;
 
@@ -621,17 +623,14 @@ soundpostButton.addEventListener("click", () => {
                 }, 150);
             }, 1150);
 
-
             const clickHandler = () => {
                 if (clickWindowOpen) {
-       
                     const successSound = new Audio('https://files.catbox.moe/6m22er.mp3');
                     successSound.play();
                     soundpostState = false;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/medicated.png')";
                     setCookie("soundpostState", soundpostState);
                 } else {
-
                     const failureSound = new Audio('https://files.catbox.moe/evn87m.ogg');
                     failureSound.play();
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
@@ -640,14 +639,14 @@ soundpostButton.addEventListener("click", () => {
                 soundpostButton.removeEventListener("click", clickHandler);
             };
 
-
             soundpostButton.addEventListener("click", clickHandler);
-
 
             setTimeout(() => {
                 if (!clickWindowOpen) {
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif')";
                 }
+                // Re-enable the button after the process is complete
+                soundpostButton.disabled = false;
             }, clickWindowEnd);
 
         }, 1300);
