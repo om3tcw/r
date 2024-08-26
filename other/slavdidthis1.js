@@ -615,10 +615,10 @@ soundpostButton.addEventListener("click", () => {
         
 
         setTimeout(() => {
-            soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/8glelj.gif?" + new Date().getTime() + "')";
+            soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/other/skiull.gif?" + new Date().getTime() + "')";
         }, 0);
 
-        const initialSound = new Audio('https://files.catbox.moe/1uy7a8.mp3');
+        const initialSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/skillcheck.mp3');
         initialSound.play();
 
         setTimeout(() => {
@@ -629,13 +629,13 @@ soundpostButton.addEventListener("click", () => {
             const clickHandler = () => {
                 clickedDuringChallenge = true;
                 if (clickWindowOpen) {
-                    const successSound = new Audio('https://files.catbox.moe/6m22er.mp3');
+                    const successSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/success.mp3');
                     successSound.play();
                     soundpostState = false;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/medicated.png')";
                     setCookie("soundpostState", soundpostState);
                 } else {
-                    const failureSound = new Audio('https://files.catbox.moe/aai2v0.ogg');
+                    const failureSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/fail.ogg');
                     failureSound.play();
                     soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
                     setTimeout(() => {
@@ -657,7 +657,7 @@ soundpostButton.addEventListener("click", () => {
 
             setTimeout(() => {
                 if (!clickedDuringChallenge) {
-                    const failureSound = new Audio('https://files.catbox.moe/aai2v0.ogg');
+                    const failureSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/fail.ogg');
                     failureSound.play();
                     soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
                     setTimeout(() => {
