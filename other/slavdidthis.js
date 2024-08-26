@@ -657,7 +657,7 @@ soundpostButton.addEventListener("click", () => {
 
             setTimeout(() => {
                 if (!clickedDuringChallenge) {
-                    const failureSound = new Audio('https://files.catbox.moe/evn87m.ogg');
+                    const failureSound = new Audio('https://files.catbox.moe/aai2v0.ogg');
                     failureSound.play();
                     soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
                     setTimeout(() => {
