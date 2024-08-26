@@ -615,7 +615,7 @@ setTimeout(() => {
     soundpostButton.style.backgroundColor = "transparent";
 }, 0);
 
-        const initialSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/skillcheck.ogg');
+        const initialSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/skillcheck.mp3');
         initialSound.play();
 
         setTimeout(() => {
@@ -625,7 +625,7 @@ setTimeout(() => {
             const clickHandler = () => {
                 clickedDuringChallenge = true;
                 if (clickWindowOpen) {
-                    const successSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/success.ogg');
+                    const successSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/success.mp3');
                     successSound.play();
                     soundpostState = false;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/medicated.png')";
