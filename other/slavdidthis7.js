@@ -89,15 +89,7 @@ $("#emotelistbtn").click(function(){
 	$(this).css("background-image","url("+drawRandomEmote()+")");
 }).html("")
 
-$(".nav.navbar-nav").append('<button class="btn btn-sm btn-default" id="videotoggylogg" href="javascript:void(0)">A/O</a></button>'); 
-$("#videotoggylogg").click(function(){
-if($("#videowrap:visible").length){$("#videowrap").hide();$("#chatwrap").removeClass("col-lg-5");$("#chatwrap").removeClass("col-md-5");$("#chatwrap").addClass("col-lg-12");$("#chatwrap").addClass("col-md-12");}
-    else{$("#videowrap").show();$("#chatwrap").removeClass("col-lg-12");$("#chatwrap").removeClass("col-md-12");$("#chatwrap").addClass("col-lg-5");$("#chatwrap").addClass("col-md-5");}});
 
-$(".nav.navbar-nav").append('<button class="btn btn-sm btn-default" id="togglemotd" href="javascript:void(0)">MOTD</a></button>'); 
-$("#togglemotd").click(function(){
-if($("#motdwrap:visible").length){$("#motdwrap").hide()}
-    else{$("#motdwrap").show(); $("#motd").show()}});
 
     // --- holo Button ---
 
