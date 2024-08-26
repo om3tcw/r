@@ -611,7 +611,7 @@ soundpostButton.addEventListener("click", () => {
         clickedDuringChallenge = false;
 
 
-        soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
+       
         
 
         setTimeout(() => {
@@ -625,7 +625,6 @@ soundpostButton.addEventListener("click", () => {
             let clickWindowOpen = false;
             const clickWindowStart = 1150;
             const clickWindowEnd = clickWindowStart + 150;
-
             const clickHandler = () => {
                 clickedDuringChallenge = true;
                 if (clickWindowOpen) {
@@ -637,7 +636,6 @@ soundpostButton.addEventListener("click", () => {
                 } else {
                     const failureSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/fail.ogg');
                     failureSound.play();
-                    soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
                     setTimeout(() => {
                         soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif?" + new Date().getTime() + "')";
                     }, 0);
@@ -645,21 +643,17 @@ soundpostButton.addEventListener("click", () => {
 
                 soundpostButton.removeEventListener("click", clickHandler);
             };
-
             soundpostButton.addEventListener("click", clickHandler);
-
             setTimeout(() => {
                 clickWindowOpen = true;
                 setTimeout(() => {
                     clickWindowOpen = false;
                 }, 150);
             }, clickWindowStart);
-
             setTimeout(() => {
                 if (!clickedDuringChallenge) {
                     const failureSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/fail.ogg');
                     failureSound.play();
-                    soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
                     setTimeout(() => {
                         soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif?" + new Date().getTime() + "')";
                     }, 0);
@@ -672,9 +666,7 @@ soundpostButton.addEventListener("click", () => {
                     challengeActive = false; 
                     soundpostButton.disabled = false;
                 }, 150);
-
             }, 1300);
-
         }, 0);
     } else {
         soundpostState = !soundpostState;
