@@ -610,12 +610,12 @@ soundpostButton.addEventListener("click", () => {
         challengeActive = true;
         clickedDuringChallenge = false;
 
-        // Temporarily set backgroundImage to a blank URL
+
         soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
         
-        // Force reload GIF by appending a timestamp to URL
+
         setTimeout(() => {
-            soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/imwbqn.gif?" + new Date().getTime() + "')";
+            soundpostButton.style.backgroundImage = "url('https://files.catbox.moe/8glelj.gif?" + new Date().getTime() + "')";
         }, 0);
 
         const initialSound = new Audio('https://files.catbox.moe/1uy7a8.mp3');
@@ -635,7 +635,7 @@ soundpostButton.addEventListener("click", () => {
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/medicated.png')";
                     setCookie("soundpostState", soundpostState);
                 } else {
-                    const failureSound = new Audio('https://files.catbox.moe/eagevn.ogg');
+                    const failureSound = new Audio('https://files.catbox.moe/aai2v0.ogg');
                     failureSound.play();
                     soundpostButton.style.backgroundImage = "url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAAAAA')";
                     setTimeout(() => {
