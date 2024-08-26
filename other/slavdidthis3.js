@@ -614,9 +614,10 @@ soundpostButton.addEventListener("click", () => {
        
         
 
-        setTimeout(() => {
-            soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/other/skiull.gif?" + new Date().getTime() + "')";
-        }, 0);
+setTimeout(() => {
+    soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/other/skiull.gif?" + new Date().getTime() + "')";
+    soundpostButton.style.backgroundColor = "transparent";
+}, 0);
 
         const initialSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/skillcheck.mp3');
         initialSound.play();
