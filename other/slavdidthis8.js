@@ -10,9 +10,32 @@
 	var previousMessage = "";
 
 $('.navbar-brand').attr('href','https://files.catbox.moe/om3tcw.webm');
+	
+$("#togglemotd").html("X").click(function(){
+    $("#motdwrap").hide();
+});
 
-$("#togglemotd").html("X").click(function(){$("#motdwrap").hide()});
+$(".nav.navbar-nav").append('<li><a id="videotoggylogg" href="javascript:void(0)">A/O</a></li>'); 
+$("#videotoggylogg").click(function(){
+    if($("#videowrap:visible").length) {
+        $("#videowrap").hide();
+        $("#chatwrap").removeClass("col-lg-5 col-md-5").addClass("col-lg-12 col-md-12");
+    } else {
+        $("#videowrap").show();
+        $("#chatwrap").removeClass("col-lg-12 col-md-12").addClass("col-lg-5 col-md-5");
+    }
+});
 
+$(".nav.navbar-nav").append('<li><a id="togglemotd" href="javascript:void(0)">MOTD</a></li>'); 
+$("#togglemotd").click(function(){
+    if($("#motdwrap:visible").length) {
+        $("#motdwrap").hide();
+    } else {
+        $("#motdwrap").show();
+        $("#motd").show();
+    }
+});
+	
 $("#main").addClass("flex").children().first().children().first().after('<div id="chatdisplayrow" class="row"></div>').next().append($("#userlist,#messagebuffer").removeAttr("style")).after('<div id="chatinputrow" class="row"></div>').next().append($("#emotebtndiv,#chatwrap>form"))
 
 //mikoboat
