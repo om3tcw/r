@@ -608,28 +608,24 @@ soundpostButton.addEventListener("click", () => {
 
     if (soundpostState) {
         challengeActive = true;
-        clickedDuringChallenge = false;
-
-
-       
-        
+        clickedDuringChallenge = false;  
 
 setTimeout(() => {
     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/other/skiull.gif?" + new Date().getTime() + "')";
     soundpostButton.style.backgroundColor = "transparent";
 }, 0);
 
-        const initialSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/skillcheck.mp3');
+        const initialSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/skillcheck.ogg');
         initialSound.play();
 
         setTimeout(() => {
             let clickWindowOpen = false;
-            const clickWindowStart = 1150;
-            const clickWindowEnd = clickWindowStart + 150;
+            const clickWindowStart = 1100;
+            const clickWindowEnd = clickWindowStart + 200;
             const clickHandler = () => {
                 clickedDuringChallenge = true;
                 if (clickWindowOpen) {
-                    const successSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/success.mp3');
+                    const successSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/success.ogg');
                     successSound.play();
                     soundpostState = false;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/medicated.png')";
@@ -649,7 +645,7 @@ setTimeout(() => {
                 clickWindowOpen = true;
                 setTimeout(() => {
                     clickWindowOpen = false;
-                }, 150);
+                }, 200);
             }, clickWindowStart);
             setTimeout(() => {
                 if (!clickedDuringChallenge) {
@@ -660,9 +656,7 @@ setTimeout(() => {
                     }, 0);
                 }
                 soundpostButton.removeEventListener("click", clickHandler);
-
                 soundpostButton.disabled = true;
-
                 setTimeout(() => {
                     challengeActive = false; 
                     soundpostButton.disabled = false;
