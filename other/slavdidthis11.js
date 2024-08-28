@@ -540,13 +540,22 @@ $('#messagebuffer').off('click').click(e => {
 
 // --- Slav's Enhancements ---
 var soundposts;
+
 fetch('https://raw.githubusercontent.com/om3tcw/r/emotes/soundposts/soundposts.json')
 .then(response => response.json())
-	@@ -555,26 +564,30 @@ function runescape(message) {
+.then(data => {
+  soundposts = data;
+  console.log(soundposts);
+})
+.catch(error => {
+  console.error(error);
+});
+
+function runescape(message) {
     const text = message.innerHTML.replace('/runescape', '');
     let html = '';
     let mynumber = 0;
-
+  
     const parts = text.split(/(<[^>]*>)|\b(\w+)\b/g);
   
     parts.forEach((part) => {
