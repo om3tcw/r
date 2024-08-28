@@ -540,54 +540,32 @@ $('#messagebuffer').off('click').click(e => {
 
 // --- Slav's Enhancements ---
 var soundposts;
-function getCurrentSecond() {
-    const now = new Date();
-    return now.getSeconds(); 
-}
-
-function isWithinSecondRange() {
-    const currentSecond = getCurrentSecond();
-    return currentSecond === 27 || currentSecond === 57;
-}
-
 fetch('https://raw.githubusercontent.com/om3tcw/r/emotes/soundposts/soundposts.json')
 .then(response => response.json())
-.then(data => {
-  soundposts = data;
-  console.log(soundposts);
-})
-.catch(error => {
-  console.error(error);
-});
-
-function runescape(message) {
+	@@ -555,26 +564,30 @@ function runescape(message) {
     const text = message.innerHTML.replace('/runescape', '');
     let html = '';
     let mynumber = 0;
-    const parts = text.split(/(<[^>]*>)|\b(\w+)\b/g);
 
+    const parts = text.split(/(<[^>]*>)|\b(\w+)\b/g);
+  
     parts.forEach((part) => {
-        if (part) {
-            if (part.startsWith("<")) {
-                const mydelay = mynumber * -50;
-                html += `<span style="display: inline-block; position: relative; z-index: -1; animation: wave .66s linear infinite ${mydelay}ms">${part}</span>`;
-                mynumber++;
-            } else {
-                const characters = part.split('');
-                characters.forEach((char) => {
-                    const mydelay = mynumber * -50;
-                    html += `<span style="display: inline-block; font-weight: bold; animation: wave .66s linear infinite ${mydelay}ms, glow 3s linear infinite">${char}</span>`;
-                    mynumber++;
-                });
-                if (part.includes(":gigiNOW:")) {
-                    if (isWithinSecondRange()) {
-                        const NOWAudio = new Audio(soundposts[":gigiNOW:"].soundurl);
-                        NOWAudio.play();
-                    }
-                }
-            }
+      if (part) {
+        if (part.startsWith("<")) {
+          const mydelay = mynumber * -50;
+          html += `<span style="display: inline-block; position: relative; z-index: -1; animation: wave .66s linear infinite ${mydelay}ms">${part}</span>`;
+          mynumber++;
+        } else {
+          const characters = part.split('');
+          characters.forEach((char) => {
+            const mydelay = mynumber * -50;
+            html += `<span style="display: inline-block; font-weight: bold; animation: wave .66s linear infinite ${mydelay}ms, glow 3s linear infinite">${char}</span>`;
+            mynumber++;
+          });
         }
+      }
     });
+
     message.innerHTML = html;
 }
 
