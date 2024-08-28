@@ -486,9 +486,9 @@
     background-position: bottom;
     background-repeat: no-repeat}
 
-.chat-msg-Noroban, .chat-msg-Noromo { font-family: Noroba; }
+.chat-msg-Noroba, .chat-msg-Noromo { font-family: Noroba; }
 @font-face {  font-family: Noroba; src: url(https://files.catbox.moe/jnh2x7.ttf); }
-.chat-msg-Noroban .timestamp, .chat-msg-Noromo .timestamp {
+.chat-msg-Noroba .timestamp, .chat-msg-Noromo .timestamp {
     color:transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/roboco.png');
