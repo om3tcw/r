@@ -75,7 +75,7 @@ function toggleChat() {
     if (!$('a[onclick*="toggleChat"]').length) {
         $('a[onclick*="chatOnly"]').parent().after($("<li>").append($("<a>").attr("href", "javascript:void(0)").attr("onclick", "javascript:toggleChat()").text("Remove Chat")))
     }({
-        host: "https://pink.horse/resources/css/",
+        host: "",
         initialize: function() {
             if (CLIENT.cinemaMode) {
                 return
