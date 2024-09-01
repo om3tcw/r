@@ -1425,9 +1425,13 @@ img.channel-emote[title$=":anyaspace:"], img.channel-emote[title$=":jespace:"] {
 img.channel-emote[title$=":teamatepudding:"]
     {animation: pudding 12s linear infinite;}
 
+img.channel-emote[title$=":rockcandy:"] {animation: bibo 0.4s  infinite;}
 
 /* Keyframes */
-
+@keyframes bibo {
+    0%   {  left:00px; bottom:00px;}
+    50%  { left:00px; bottom:025px;  transform: scale(1.2); } 
+    100% {  left:00px; bottom:000px; transform: scale(1); }}
 @keyframes doko {
     0%   { left:00px; top:00px; opacity: 0;}
     99%   { right:105px; top:00px; opacity: 0;}
