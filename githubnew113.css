@@ -1557,7 +1557,8 @@ img.channel-emote[title$=":rockcandy:"] {animation: bibo 0.4s  infinite;}
 }
 
 /* Displaced emotes */
-
+img.channel-emote[title$=":shioriautismseedsowing:"]  {
+    right: 60px;   z-index: 1; }
 img.channel-emote[title$=":sea:"], img.channel-emote[title$=":hydraback:"], img.channel-emote[title$=":space:"] {
     right: 105px; height: 75px; max-width:125px;  z-index: -1; }
 img.channel-emote[title$=":inahammer:"]  {
