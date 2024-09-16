@@ -288,5 +288,5 @@
     ":guracoom:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/bz4yrzkjjbx6ue9ik7t13/guracoom.mp3?rlkey=v1mcu79scve8deymnqv01o4xl&st=c0t5zvuw&dl=0"},
     ":anyalock:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/g60s67cuvxibenhludh6p/anyalock.mp3?rlkey=5jlm7hbsjxc2bry4a0vfixw3i&st=3wy0moiw&dl=0"},
     ":fuhrer:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/d3yno2lk5ubz9vmmebr41/fuhrer.mp3?rlkey=wy0h74zarna3qe4sk32bnbwvg&st=c3it6no5&dl=0"},
-    ":moomlove:" : { "soundurl": "https://github.com/om3tcw/r/blob/emotes/sounds/emotes/moomlove.ogg"}
+    ":moomlove:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/emotes/moomlove.ogg"}
 }
