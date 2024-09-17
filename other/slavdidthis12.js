@@ -40,7 +40,7 @@ $("#main").addClass("flex").children().first().children().first().after('<div id
 
 //mikoboat
     const mikoDing = document.createElement("audio");
-    mikoDing.setAttribute('src','https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/om3tcw.mp3');
+    mikoDing.setAttribute('src','https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/om3tcw.mp3');
     mikoDing.loop = true;
     mikoDing.volume = 0.1;
     document.getElementsByClassName("navbar-brand")[0].onmouseenter = () => mikoDing.play();
@@ -65,7 +65,6 @@ var randomEmotePool= [
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyatect.png"
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyasteak.png"
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyanoodle.png"
-	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyastroopwafel.png"
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyagogurt.png"
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyawrappedburger.png"
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyapolitan.png"
@@ -79,7 +78,6 @@ var randomEmotePool= [
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyamage.png"
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyapirouette.png"
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyafry.png"
-	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyafoiegraswithcaviar.png"
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyadonut.png"
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyamelonsoda.png"
 	,"https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/anyaknife.png"
@@ -630,7 +628,7 @@ setTimeout(() => {
     soundpostButton.style.backgroundColor = "transparent";
 }, 0);
 
-        const initialSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/skillcheck.mp3');
+        const initialSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/skillcheck.ogg');
         initialSound.play();
 
         setTimeout(() => {
@@ -640,13 +638,13 @@ setTimeout(() => {
             const clickHandler = () => {
                 clickedDuringChallenge = true;
                 if (clickWindowOpen) {
-                    const successSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/success.mp3');
+                    const successSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/success.ogg');
                     successSound.play();
                     soundpostState = false;
                     soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/medicated.png')";
                     setCookie("soundpostState", soundpostState);
                 } else {
-                    const failureSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/fail.ogg');
+                    const failureSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/fail.ogg');
                     failureSound.play();
                     setTimeout(() => {
                         soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif?" + new Date().getTime() + "')";
@@ -664,7 +662,7 @@ setTimeout(() => {
             }, clickWindowStart);
             setTimeout(() => {
                 if (!clickedDuringChallenge) {
-                    const failureSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/fail.ogg');
+                    const failureSound = new Audio('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/fail.ogg');
                     failureSound.play();
                     setTimeout(() => {
                         soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/schizo.gif?" + new Date().getTime() + "')";
@@ -811,7 +809,7 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
 			
 			if (mymessage.innerHTML.startsWith('boo'))
 			{
-				var myaudio = new Audio("https://www.dl.dropboxusercontent.com/s/q5gcc34vb4g8ldyl9i3sj/boo.ogg?rlkey=kf608v08840vbm9ici0o9g404&dl=0");
+				var myaudio = new Audio("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/boo.ogg");
 					myaudio.volume = 0.1;
 					myaudio.play();
 			}
