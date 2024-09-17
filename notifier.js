@@ -71,10 +71,10 @@ if (!window[CHANNEL.name]) {
         };
         this.choices = Object.assign({}, {
             squee: "",
-            votingpoll: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/ogeyrrat.mp3",
-            uhoh: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/sharkmail.ogg",
-            fairywand: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/morinayeah.ogg", //https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/bell.ogg
-            bell: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/fairywand.ogg"
+            votingpoll: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/ogeyrrat.ogg",
+            uhoh: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/sharkmail.ogg",
+            fairywand: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/morinayeah.ogg", //https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/bell.ogg
+            bell: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/fairywand.ogg"
         }, window[CHANNEL.name].audioLibrary ? window[CHANNEL.name].audioLibrary.squees : undefined);
         this.handler = {
             Squee: function(data) {
