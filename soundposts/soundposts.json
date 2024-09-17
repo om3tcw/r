@@ -204,11 +204,11 @@
     ":korobreakdance:": { "soundurl": "https://files.catbox.moe/hwcehk.ogg"},
     ":koropet:": { "soundurl": "https://files.catbox.moe/0qr10d.ogg"},
     ":coniokcums:": { "soundurl": "https://files.catbox.moe/8afo7z.ogg"},
-    ":watalarm:": { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/emotes/watalarm.ogg"},
-	":morisneak:":{ "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/emotes/sneaking_chorus_3.ogg"},
-	":hlggalarm:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/emotes/hlggalarm.ogg"},
-	":skip:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/emotes/skippa.ogg"},
-	":rockcandy:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/rockcandy.ogg"},
+    ":watalarm:": { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/watalarm.ogg"},
+	":morisneak:":{ "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/sneaking_chorus_3.ogg"},
+	":hlggalarm:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/hlggalarm.ogg"},
+	":skip:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/skippa.ogg"},
+	":rockcandy:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/rockcandy.ogg"},
     ":inacawfee:": { "soundurl": "https://files.catbox.moe/tnq9sy.ogg"},
     ":MUMSA:": { "soundurl": "https://files.catbox.moe/0zqhh3.ogg"},
     ":USA:": { "soundurl": "https://files.catbox.moe/0w5p4z.ogg"},
@@ -270,7 +270,7 @@
     ":shiinadoesntwanttohearaboutyourdick:" : { "soundurl": "https://files.catbox.moe/w4ulnv.ogg"},
     ":amerikorone:" : { "soundurl": "https://files.catbox.moe/vges2s.ogg"},
     ":g:" : { "soundurl": "https://files.catbox.moe/382zul.ogg"},
-    ":gigiNOW:" : { "soundurl": " https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/gigiNOW.ogg"},
+    ":gigiNOW:" : { "soundurl": " https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/gigiNOW.ogg"},
     "MrMcEggmanJones" : { "soundurl": "https://files.catbox.moe/1iww2z.ogg"},
     ":guramonke2:" : { "soundurl": "https://files.catbox.moe/r78qff.ogg"},
     ":jellynods:" : { "soundurl": "https://files.catbox.moe/519d6w.ogg"},
@@ -285,5 +285,5 @@
     ":guracoom:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/bz4yrzkjjbx6ue9ik7t13/guracoom.mp3?rlkey=v1mcu79scve8deymnqv01o4xl&st=c0t5zvuw&dl=0"},
     ":anyalock:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/g60s67cuvxibenhludh6p/anyalock.mp3?rlkey=5jlm7hbsjxc2bry4a0vfixw3i&st=3wy0moiw&dl=0"},
     ":fuhrer:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/d3yno2lk5ubz9vmmebr41/fuhrer.mp3?rlkey=wy0h74zarna3qe4sk32bnbwvg&st=c3it6no5&dl=0"},
-    ":moomlove:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/emotes/moomlove.ogg"}
+    ":moomlove:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/moomlove.ogg"}
 }
