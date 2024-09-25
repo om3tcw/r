@@ -1,10 +1,3 @@
-/*!
- **|  CyTube PM Enhancements
- **|  Copyright Xaekai 2014 - 2016
- **|  Version 2016.10.03.0630
- **|
- **@preserve
- */
 "use strict";
 (function(CyTube_BetterPM) {
     return CyTube_BetterPM(window, document, window.jQuery)
