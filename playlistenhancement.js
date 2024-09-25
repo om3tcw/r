@@ -1,11 +1,3 @@
-/*!
- **|   Cytube Playlist Enhancements
- **|   Copyright Xaekai 2014 - 2016
- **|   Version 2018.01.21.2200
- **|
- **@optional whispers
- **@preserve
- */
 "use strict";
 
 function playlist(active) {
@@ -166,12 +158,6 @@ function playlist(active) {
                     break;
                 case "dm":
                     url = "https://www.dailymotion.com/thumbnail/video/__id".replace(/__id/, id);
-                    break;
-                case "gd":
-                    url = "https://thumbs.pink.horse/drive/__id".replace(/__id/, id);
-                    break;
-                case "gp":
-                    url = "https://thumbs.pink.horse/picasa/__id".replace(/__id/, id);
                     break;
                 default:
                     target.addClass("thumbed");
