@@ -1,14 +1,3 @@
-/*!
- **|   CyTube Audio Notifications System
- **|   Copyright 2013-2018 Xaekai
- **|   Version 2018.01.18.1400
- **|
- **@requires playlist
- **@optional settings
- **@optional audiolib
- **@optional whispers
- **@preserve
- */
 "use strict";
 if (!window[CHANNEL.name]) {
     window[CHANNEL.name] = {}
@@ -73,7 +62,7 @@ if (!window[CHANNEL.name]) {
             squee: "",
             votingpoll: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/ogeyrrat.ogg",
             uhoh: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/sharkmail.ogg",
-            fairywand: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/morinayeah.ogg", //https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/sounds/bell.ogg
+            fairywand: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/morinayeah.ogg", 
             bell: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/fairywand.ogg"
         }, window[CHANNEL.name].audioLibrary ? window[CHANNEL.name].audioLibrary.squees : undefined);
         this.handler = {
