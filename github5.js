@@ -1,11 +1,5 @@
-if(!this[CHANNEL.name]){this[CHANNEL.name]={}}
- 
+if(!this[CHANNEL.name]){this[CHANNEL.name]={}} 
 if(!this[CHANNEL.name].favicon){this[CHANNEL.name].favicon=$("<link/>").prop("id","favicon").attr("rel","shortcut icon").attr("type","image/png").attr("sizes","64x64").attr("href","https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/ogey.png").appendTo("head")}
-/*!
-**|   Xaekai's Sequenced Module Loader
-**|
-**@preserve 
-*/
 ({options:{
 playlist:{
 collapse: false,
@@ -113,12 +107,8 @@ $('<li role="presentation"><a role="tab" data-toggle="tab" aria-expanded="false"
         var baseCalendarUrl = 'https://teamup.com/ksua2ar4zft49pdn7c?view=m&showLogo=0&showSearch=0&showProfileAndInfo=0&showSidepanel=1&disableSidepanel=0&showTitle=0&showViewSelector=1&showMenu=0&weekStartDay=mo&showAgendaHeader=1&showAgendaDetails=0&showYearViewHeader=1';
  
         $('<div role="tabpanel" class="tab-pane" id="calendarTab2"><iframe width="100%" height="600" frameborder="0" scrolling="no"></iframe></div>').appendTo(tabContent);
-        $('<li role="presentation"><a role="tab" data-toggle="tab" aria-expanded="false" href="#calendarTab2">Teamup OM3TCW</a></li>').appendTo(tabList);
-        var baseCalendarUrl2 = 'https://teamup.com/ks61mxw6fedx3qbke4?view=m&showHeader=0&showProfileAndInfo=0&showSidepanel=1&disableSidepanel=0&showTitle=1&showViewSelector=1&showMenu=0&weekStartDay=mo&showAgendaHeader=1&showAgendaDetails=0&showYearViewHeader=1';
- 
-        $('<div role="tabpanel" class="tab-pane" id="calendarTab3"><iframe width="100%" height="900" frameborder="0" scrolling="no"></iframe></div>').appendTo(tabContent);
-        $('<li role="presentation"><a role="tab" data-toggle="tab" aria-expanded="false" href="#calendarTab3">Oshi Eyes</a></li>').appendTo(tabList);
-        var baseCalendarUrl3 = 'https://docs.google.com/forms/d/1oqO8DIIyxuKVPvhXSAmxNCy5zCkS8XQAhEKi8a9BK1g/viewform?';
+        $('<li role="presentation"><a role="tab" data-toggle="tab" aria-expanded="false" href="#calendarTab2">Oshi Eyes</a></li>').appendTo(tabList);
+        var baseCalendarUrl2 = 'https://docs.google.com/forms/d/1oqO8DIIyxuKVPvhXSAmxNCy5zCkS8XQAhEKi8a9BK1g/viewform?';
  
         var calendars = getOrDefault(CHANNEL.name + '_CALENDARS', null);
         if(!Array.isArray(calendars)) setOpt(CHANNEL.name + '_CALENDARS', calendars = [{ src:'d426h89oqa3krrq8cj00kbasgo%40group.calendar.google.com', color:'2952A3' } ]); //set the default calendar if not already
@@ -127,7 +117,6 @@ $('<li role="presentation"><a role="tab" data-toggle="tab" aria-expanded="false"
  
         $('#calendarTab iframe').attr('src', baseCalendarUrl+'&');
         $('#calendarTab2 iframe').attr('src', baseCalendarUrl2+'&');
-        $('#calendarTab3 iframe').attr('src', baseCalendarUrl3+'&');
         $('#leftpane').remove();
     }
  
