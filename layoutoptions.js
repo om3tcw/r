@@ -1,10 +1,3 @@
-/*!
- **|   Extended Layout Options
- **|   Copyright Xaekai 2014 - 2016
- **|   Version 2016.10.04.0100
- **|
- **@preserve
- */
 "use strict";
 
 function removeUntilNext() {
