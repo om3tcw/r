@@ -2054,7 +2054,7 @@ background-color:rgba(0,0,0,0.5);border:none;margin-bottom:0px;}
 background-color:rgba(0,0,0,0.5);
 box-shadow: 0 0 10px -3px black ;
 width:100%;}
-#rightpane {margin-top:0px !important;padding-bottom: 10px;border-radius:0 0 5px 5px;}
+#rightpane {margin-top:0px !important;border-radius:0 0 5px 5px;}
 .qe_blame{margin-left:10px;margin-right:5px; float:right;}
 .qe_title {margin-left:4px;}
 @media (max-width: 992px) {#main,#chatwrap,#videowrap{width:100%;margin-left:0;}
