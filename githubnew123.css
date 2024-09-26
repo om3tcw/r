@@ -1795,10 +1795,10 @@ padding-left:0px!important;
 padding-right:0px!important;
 }
 
+.collapse.in {
+    padding-right: 10px !important;
+}
 
-
-.col-md-12, .col-lg-12 {
-padding-right:0px!important;}
 #playlistrow{position:relative}
 .videolist{
     font-weight: 700;
