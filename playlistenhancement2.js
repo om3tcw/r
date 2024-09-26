@@ -113,7 +113,7 @@ function playlist(active) {
             } else {
                 CLIENT.thumbnailer = this
             }
-            $("<style>").prop("id", "thumbnailer").text(".playlist-thumbnail { max-height: 180px; max-width: 240px; border-radius: 4px; }").appendTo("head");
+            $("<style>").prop("id", "thumbnailer").text(".playlist-thumbnail { max-height: 120px; max-width: 240px; border-radius: 4px; z-index: 3; }").appendTo("head");
             $("#queue").on("mouseleave", (() => {
                 this.trimOrphans()
             }));
