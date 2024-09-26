@@ -781,6 +781,25 @@ $('#messagebuffer').off('click').click(e => {
         $('#chatline').val((i, v) => v + e.target.title + " ").focus();
 })
 
+
+$('<button class="btn btn-sm btn-default pointer" id="resize-video-smaller-btn" title="Make the video smaller"><span class="glyphicon glyphicon-minus"></span></button>').insertBefore('#mediarefresh');
+$('<button class="btn btn-sm btn-default pointer" id="resize-video-larger-btn" title="Make the video larger"><span class="glyphicon glyphicon-plus"></span></button>').insertAfter('#resize-video-smaller-btn');
+$("#resize-video-larger-btn").on('click', function () {
+    try {
+        CyTube.ui.changeVideoWidth(1);  // Increase video size
+    } catch (error) {
+        console.error(error);
+    }
+});
+$("#resize-video-smaller-btn").on('click', function () {
+    try {
+        CyTube.ui.changeVideoWidth(-1);  
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+
 // --- Slav's Enhancements ---
 var soundposts;
 
