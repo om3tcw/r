@@ -260,6 +260,38 @@ $("#togglemotd").html("X").click(function(){
     $("#motdwrap").hide();
 });
 
+$(".nav.navbar-nav").append(`
+    <li>
+        <a id="resize-video-smaller-btn" href="javascript:void(0)" title="Make the video smaller">
+            <span class="glyphicon glyphicon-minus"></span>
+        </a>
+    </li>
+    <li>
+        <a id="resize-video-larger-btn" href="javascript:void(0)" title="Make the video larger">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </li>
+`);
+
+// Click Event for Larger Button
+$("#resize-video-larger-btn").on('click', function () {
+    try {
+        CyTube.ui.changeVideoWidth(1);  // Increase video size
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+// Click Event for Smaller Button
+$("#resize-video-smaller-btn").on('click', function () {
+    try {
+        CyTube.ui.changeVideoWidth(-1);  // Decrease video size
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+// Existing Code for Toggles
 $(".nav.navbar-nav").append('<li><a id="videotoggylogg" href="javascript:void(0)">A/O</a></li>'); 
 $("#videotoggylogg").click(function(){
     if($("#videowrap:visible").length) {
@@ -780,24 +812,6 @@ $('#messagebuffer').off('click').click(e => {
     if(t.className == 'channel-emote')
         $('#chatline').val((i, v) => v + e.target.title + " ").focus();
 })
-
-
-$('<button class="btn btn-sm btn-default pointer" id="resize-video-smaller-btn" title="Make the video smaller"><span class="glyphicon glyphicon-minus"></span></button>').insertBefore('#mediarefresh');
-$('<button class="btn btn-sm btn-default pointer" id="resize-video-larger-btn" title="Make the video larger"><span class="glyphicon glyphicon-plus"></span></button>').insertAfter('#resize-video-smaller-btn');
-$("#resize-video-larger-btn").on('click', function () {
-    try {
-        CyTube.ui.changeVideoWidth(1);  // Increase video size
-    } catch (error) {
-        console.error(error);
-    }
-});
-$("#resize-video-smaller-btn").on('click', function () {
-    try {
-        CyTube.ui.changeVideoWidth(-1);  
-    } catch (error) {
-        console.error(error);
-    }
-});
 
 
 // --- Slav's Enhancements ---
