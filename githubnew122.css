@@ -1880,7 +1880,7 @@ body {
 	display:block;
 	position:absolute;
 	width:100%;
-	z-index:5;
+	z-index:11;
 	opacity:1;}
 #motdrow .well {background-color: #88217a;}
 
