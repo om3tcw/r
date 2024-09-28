@@ -1825,7 +1825,7 @@ padding-right:0px!important;
 #videowrap {
     height: 100%;
     margin-bottom: 0;
-    z-index: 5;
+    z-index: 1;
     flex-grow: 1;
     flex-shrink: 0;
     overflow-y: auto !important; 
@@ -1834,7 +1834,7 @@ padding-right:0px!important;
 #videowrap:hover .popover-content {
     overflow: visible; 
     position: absolute; 
-    z-index: 10; 
+    z-index: 17; 
         bottom: 100%; 
     left: 100%; 
 }
@@ -2178,8 +2178,6 @@ background-color: transparent;
   display:block;
 }
 
-
-#videowrap-header,.profile-box hr{display:none}
 #messagebuffer>div>span>div{background-color:#0000}
 #queue,#queue + div,.queue_entry,#pollwrap>div{box-shadow: none !important;border-radius: 0;}
 .queue_entry:hover:not(.queue_active),.userlist_item:hover{background-color: #84f8 !important;}
