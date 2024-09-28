@@ -1708,6 +1708,8 @@ img.channel-emote[title$=":kaelabonk:"]  {
 .chat-msg-jafafafy .username:after {font-size: 14px;content: 'jaflavortown: ';}
 .chat-msg-Moshmallow .username  {font-size: 0;}
 .chat-msg-Moshmallow .username:after {font-size: 14px;content: 'MoshDaBibooEnjoyer: ';}
+.chat-msg-LonelyTeamate .username  {font-size: 0;}
+.chat-msg-LonelyTeamate .username:after {font-size: 14px;content: 'SmellyTeamate: ';}
 .chat-msg-Egao .username  {font-size: 0;}
 .chat-msg-Egao .username:after {font-size: 14px;content: 'La Flauta: ';}
 .chat-msg-m_ .username  {font-size: 0;}
