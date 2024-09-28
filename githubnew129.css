@@ -1901,7 +1901,7 @@ body {
 	border-radius:0px;
 	box-shadow:0 0 5px 3px rgba(0,0,0,0.3);
 	padding:5px;
-	padding-bottom:3px;
+	padding-bottom:1px;
 	font-size:16px;
 	color:white;
 	flex-shrink:0;
