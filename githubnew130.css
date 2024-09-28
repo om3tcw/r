@@ -1734,6 +1734,7 @@ img.channel-emote[title$=":kaelabonk:"]  {
 ::-webkit-scrollbar-track {background: #1e2023;}
 ::-webkit-scrollbar-thumb {background: #3b3b3b;}
 ::-webkit-scrollbar-thumb:hover {background: #555;}
+@-moz-document url-prefix() { * {scrollbar-width: thin; scrollbar-color: #3b3b3b #1e2023;  }}
 button {box-shadow: 0 0 0 00px #FF5F15; }
 .btn {text-shadow:none}
 #main{
