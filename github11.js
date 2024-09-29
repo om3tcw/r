@@ -454,11 +454,53 @@ $("#emotelistbtn").click(function(){
         desc: 'Add a poll sound alert',
 		func: self => {votingpoll: null}
     },  */
-	{
-        id: 'reveal_spoilers',
-        desc: 'Reveal spoilers',
-        css: `.spoiler { color: #ff8; }`
-    }, {
+{
+    id: 'Potato',
+    desc: 'smartfridge owners',
+    func: self => {
+        const checkboxElem = document.getElementById(`holopeek_${self.id}`);
+        if (checkboxElem) {
+            const customCSS = `
+            .queue_active.queue_temp {
+                background: none;
+            }
+            .navbar-brand:hover > img {
+                background: none;
+            }
+            .navbar-brand > img:hover {
+                background: none;
+            }
+            .navbar-brand > img {
+                background: none;
+            }
+            form input#chatline {
+                background: none;
+            }
+            #emotelistbtn {
+                background: none;
+            }
+            #emotebtndiv + form {
+                animation: none;
+                background-image: none;
+            }`;
+
+            if (document.getElementById(`${self.id}_style`)) {
+                document.getElementById(`${self.id}_style`).remove();
+            }
+            if (checkboxElem.checked) {
+                const style = document.createElement('style');
+                style.id = `${self.id}_style`;
+                style.innerHTML = customCSS;
+                document.head.appendChild(style);
+            }
+        }
+    }
+},
+{
+    id: 'reveal_spoilers',
+    desc: 'Reveal spoilers',
+    css: `.spoiler { color: #ff8; }`
+}, {
         id: 'chat_video_ratio',
         desc: '>chat:video ratio',
         func: self => {
