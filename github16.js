@@ -660,7 +660,7 @@ form input#chatline {background-size: auto:}
             #emotebtndiv + form {
                 animation: none;
                 background-image: none;
-            }`;`,
+            }`,
             inputEvent: self => {
                 document.getElementById(`holopeek_${self.id}`).checked = false;
                 self.textarea.value = document.getElementById(`holopeek_${self.id}_textarea`).value;
