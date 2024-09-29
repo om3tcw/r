@@ -176,7 +176,7 @@ function playlist(active) {
             placement: function() {
                 return !USEROPTS.layout.match(/synchtube/) ? "left" : "right";
             },
-            trigger: "manual", 
+            trigger: "hover", 
             content: '<img src="__url" class="__class">'.replace(/__class/, this.klass).replace(/__url/, url)
         });
         $('#queue').on('mouseenter', '.queue_entry', function() {
