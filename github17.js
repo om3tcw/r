@@ -640,27 +640,27 @@ form input#chatline {background-size: auto:}
         },
         textarea: {
             value: ` .queue_active.queue_temp {
-                background: none;
-            }
-            .navbar-brand:hover > img {
-                background: none;
-            }
-            .navbar-brand > img:hover {
-                background: none;
-            }
-            .navbar-brand > img {
-                background: none;
-            }
-            form input#chatline {
-                background: none;
-            }
-            #emotelistbtn {
-                background: none;
-            }
-            #emotebtndiv + form {
-                animation: none;
-                background-image: none;
-            }`,
+    background: none !important;
+}
+.navbar-brand:hover > img {
+    background: none !important;
+}
+.navbar-brand > img:hover {
+    background: none !important;
+}
+.navbar-brand > img {
+    background: none !important;
+}
+form input#chatline {
+    background: none !important;
+}
+#emotelistbtn {
+    background: none !important;
+}
+#emotebtndiv + form {
+    animation: none !important;
+    background-image: none !important;
+}`,
             inputEvent: self => {
                 document.getElementById(`holopeek_${self.id}`).checked = false;
                 self.textarea.value = document.getElementById(`holopeek_${self.id}_textarea`).value;
