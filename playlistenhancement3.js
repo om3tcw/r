@@ -46,138 +46,149 @@ function playlist(active) {
         markAlert: true,
         timeEstimates: false,
         volumeControl: false
-    }, window[CHANNEL.name].modulesOptions ? window[CHANNEL.name].modulesOptions.playlist : undefined);
-    ({
-        start: function() {
-            if (!options.syncCheck) {
-                return
-            }
-            if (CLIENT.psync) {
-                return
-            } else {
-                CLIENT.psync = this
-            }
-            socket.on("setPlaylistMeta", (data => {
-                this.syncCheck(data)
-            }));
-            socket.on("queue", (data => {
-                this.resetTimer(data)
-            }))
-        },
-        syncCheck: function(data) {
-            if (CHANNEL.perms.seeplaylist > CLIENT.rank) {
-                return
-            }
-            if (Math.abs(this.sinceLast - Date.now()) < this.cooldown) {
-                return
-            }
-            var playlistCount = $("ul#queue li.queue_entry").length;
-            if (Math.abs(playlistCount - data.count) > 1) {
-                this.setTimer()
-            }
-        },
-        setTimer: function() {
-            if (this.state.activeTimer) {
-                this.sinceLast = Date.now();
-                clearTimeout(this.state.tock)
-            } else {
-                this.state.activeTimer = true
-            }
-            this.state.tock = setTimeout(this.syncFix.bind(this), this.delay)
-        },
-        resetTimer: function(data) {
-            if (this.state.activeTimer) {
-                this.setTimer()
-            }
-        },
-        syncFix: function() {
-            this.state.activeTimer = false;
-            socket.emit("requestPlaylist");
-            this.sinceLast = Date.now()
-        },
-        state: {
-            active: false,
-            tock: 0
-        },
-        sinceLast: Date.now(),
-        cooldown: 120 * 1e3,
-        delay: 5 * 1e3
-    }).start();
-    ({
-        start: function() {
-            if (!options.thumbnails) {
-                return
-            }
-            if (CLIENT.thumbnailer) {
-                return
-            } else {
-                CLIENT.thumbnailer = this
-            }
-            $("<style>").prop("id", "thumbnailer").text(".playlist-thumbnail { max-height: 120px; max-width: 240px; border-radius: 4px; z-index: 3; }").appendTo("head");
-            $("#queue").on("mouseleave", (() => {
-                this.trimOrphans()
-            }));
-            socket.on("delete", (() => {
-                this.trimOrphans()
-            }));
-            socket.on("queue", (() => {
-                this.playlistScan()
-            }));
-            socket.on("playlist", (() => {
-                this.playlistScan()
-            }));
-            this.playlistScan()
-        },
-        playlistScan: function() {
-            if (CHANNEL.perms.seeplaylist > CLIENT.rank) {
-                return
-            }
-            var self = this;
-            $("#queue > .queue_entry:not(.thumbed)").each(function() {
-                self.getThumbnail($(this))
-            })
-        },
-        trimOrphans: function() {
-            $("#queue .popover").remove()
-        },
-        getThumbnail: function(target) {
-            var type = target.data().media.type;
-            var id = target.data().media.id;
-            var url;
-            switch (type) {
-                case "vi":
-                    url = "https://vimeo.com/api/v2/video/__id.json".replace(/__id/, id);
-                    $.getJSON(url, (data => {
-                        var url = data[0].thumbnail_medium;
-                        this.applyThumbnail(target, url)
-                    }));
-                    target.addClass("thumbed");
-                    return;
-                case "yt":
-                    url = "https://img.youtube.com/vi/__id/0.jpg".replace(/__id/, id);
-                    break;
-                case "dm":
-                    url = "https://www.dailymotion.com/thumbnail/video/__id".replace(/__id/, id);
-                    break;
-                default:
-                    target.addClass("thumbed");
-                    return
-            }
-            this.applyThumbnail(target, url);
-            target.addClass("thumbed")
-        },
-        applyThumbnail: function(target, url) {
-            target.popover({
-                html: true,
-                placement: function() {
-                    return !USEROPTS.layout.match(/synchtube/) ? "left" : "right"
-                },
-                trigger: "hover",
-                content: '<img src="__url" class="__class">'.replace(/__class/, this.klass).replace(/__url/, url)
-            })
-        },
-        klass: "playlist-thumbnail"
-    }).start();
+    }, window[CHANNEL.name].modulesOptions ? window[CHANNEL.name].modulesOptions.playlist : undefined;
+({
+    start: function() {
+        if (!options.syncCheck) {
+            return;
+        }
+        if (CLIENT.psync) {
+            return;
+        } else {
+            CLIENT.psync = this;
+        }
+        socket.on("setPlaylistMeta", (data => {
+            this.syncCheck(data);
+        }));
+        socket.on("queue", (data => {
+            this.resetTimer(data);
+        }));
+    },
+    syncCheck: function(data) {
+        if (CHANNEL.perms.seeplaylist > CLIENT.rank) {
+            return;
+        }
+        if (Math.abs(this.sinceLast - Date.now()) < this.cooldown) {
+            return;
+        }
+        var playlistCount = $("ul#queue li.queue_entry").length;
+        if (Math.abs(playlistCount - data.count) > 1) {
+            this.setTimer();
+        }
+    },
+    setTimer: function() {
+        if (this.state.activeTimer) {
+            this.sinceLast = Date.now();
+            clearTimeout(this.state.tock);
+        } else {
+            this.state.activeTimer = true;
+        }
+        this.state.tock = setTimeout(this.syncFix.bind(this), this.delay);
+    },
+    resetTimer: function(data) {
+        if (this.state.activeTimer) {
+            this.setTimer();
+        }
+    },
+    syncFix: function() {
+        this.state.activeTimer = false;
+        socket.emit("requestPlaylist");
+        this.sinceLast = Date.now();
+    },
+    state: {
+        active: false,
+        tock: 0
+    },
+    sinceLast: Date.now(),
+    cooldown: 120 * 1e3,
+    delay: 5 * 1e3
+}).start();
+
+({
+    start: function() {
+        if (!options.thumbnails) {
+            return;
+        }
+        if (CLIENT.thumbnailer) {
+            return;
+        } else {
+            CLIENT.thumbnailer = this;
+        }
+        $("<style>").prop("id", "thumbnailer")
+            .text(".playlist-thumbnail { max-height: 120px; max-width: 240px; border-radius: 4px; z-index: 3; }")
+            .appendTo("head");
+        $("#queue").on("mouseleave", () => {
+            this.trimOrphans();
+        });
+        socket.on("delete", () => {
+            this.trimOrphans();
+        });
+        socket.on("queue", () => {
+            this.playlistScan();
+        });
+        socket.on("playlist", () => {
+            this.playlistScan();
+        });
+        this.playlistScan();
+    },
+    playlistScan: function() {
+        if (CHANNEL.perms.seeplaylist > CLIENT.rank) {
+            return;
+        }
+        var self = this;
+        $("#queue > .queue_entry:not(.thumbed)").each(function() {
+            self.getThumbnail($(this));
+        });
+    },
+    trimOrphans: function() {
+        $("#queue .popover").remove();
+    },
+    getThumbnail: function(target) {
+        var type = target.data().media.type;
+        var id = target.data().media.id;
+        var url;
+
+        switch (type) {
+            case "vi":
+                url = "https://vimeo.com/api/v2/video/__id.json".replace(/__id/, id);
+                $.getJSON(url, (data => {
+                    var url = data[0].thumbnail_medium;
+                    this.applyThumbnail(target, url);
+                }));
+                target.addClass("thumbed");
+                return;
+            case "yt":
+                url = "https://img.youtube.com/vi/__id/0.jpg".replace(/__id/, id);
+                break;
+            case "dm":
+                url = "https://www.dailymotion.com/thumbnail/video/__id".replace(/__id/, id);
+                break;
+            default:
+                target.addClass("thumbed");
+                return;
+        }
+        this.applyThumbnail(target, url);
+        target.addClass("thumbed");
+    },
+    applyThumbnail: function(target, url) {
+        target.popover({
+            html: true,
+            placement: function() {
+                return !USEROPTS.layout.match(/synchtube/) ? "left" : "right";
+            },
+            trigger: "manual", 
+            content: '<img src="__url" class="__class">'.replace(/__class/, this.klass).replace(/__url/, url)
+        });
+        $('#queue').on('mouseenter', '.queue_entry', function() {
+            $(this).popover('show');  
+        });
+
+        $('#queue').on('mouseleave', '.queue_entry', function() {
+            $(this).popover('hide');  
+        });
+    },
+    klass: "playlist-thumbnail"
+}).start();
     void(() => {
         if (!options.inlineBlame) {
             return
