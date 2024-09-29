@@ -658,6 +658,7 @@ body {background:black !important;}
 color: white !important;} `,
              inputEvent: self => {
             document.getElementById(`holopeek_${self.id}`).checked = false;
+            self.textarea.value = document.getElementById(`holopeek_${self.id}_textarea`).value;
             }
         },
     }, {
