@@ -724,7 +724,28 @@ form input#chatline {background-size: auto:}
         }
         checkboxElem.onclick = () => optFunc();
         div.append(checkboxElem);
+	    
+const fpOptContainer = document.getElementById('fpOptContainer');
+options.forEach(opt => {
+    const div = document.createElement('div');
+    fpOptContainer.append(div);
 
+    const optId = `holopeek_${opt.id}`;
+    const checkboxElem = document.createElement('input');
+    checkboxElem.id = optId;
+    checkboxElem.type = 'checkbox';
+
+    checkboxElem.onclick = () => {
+        if (opt.func) opt.func(opt);
+    };
+
+    div.append(checkboxElem);
+
+    const label = document.createElement('label');
+    label.htmlFor = optId;
+    label.innerHTML = opt.desc;
+    div.append(label);
+});
         // Load cookie option
         const parts = `; ${document.cookie}`.split(`; ${opt.id}=`);
         const cookie = (parts.length === 2) ? parts.pop().split(';').shift() : null;
