@@ -631,6 +631,42 @@ form input#chatline {background-size: auto:}
             }
         },
     }, {
+        id: 'Potato',
+        desc: 'SmartFridgeOwner',
+        func: self => {
+            const checkboxElem = document.getElementById(`holopeek_${self.id}`);
+            const textAreaElem = document.getElementById(`holopeek_${self.id}_textarea`);
+            if (checkboxElem && textAreaElem) self.css = checkboxElem.checked ? (textAreaElem.value || '') : null;
+        },
+        textarea: {
+            value: ` .queue_active.queue_temp {
+                background: none;
+            }
+            .navbar-brand:hover > img {
+                background: none;
+            }
+            .navbar-brand > img:hover {
+                background: none;
+            }
+            .navbar-brand > img {
+                background: none;
+            }
+            form input#chatline {
+                background: none;
+            }
+            #emotelistbtn {
+                background: none;
+            }
+            #emotebtndiv + form {
+                animation: none;
+                background-image: none;
+            }`;`,
+            inputEvent: self => {
+                document.getElementById(`holopeek_${self.id}`).checked = false;
+                self.textarea.value = document.getElementById(`holopeek_${self.id}_textarea`).value;
+            }
+        },
+    }, {
         id: 'vertical_layout',
         desc: 'Vertical layout',
         css: `.navbar, #videowrap-header {display:none}
