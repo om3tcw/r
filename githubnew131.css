@@ -1835,8 +1835,8 @@ padding-right:0px!important;
 #videowrap:hover .popover-content {
     overflow: visible; 
     position: absolute; 
-    z-index: 17; 
-        bottom: 100%; 
+    z-index: 6; 
+    bottom: 300%; 
     left: 100%; 
 }
 
