@@ -19,7 +19,7 @@ various:{notepad:true,emoteToggle:false}},
  
 modules:{
 settings:{active:1,rank:-1,url:"https://cdn.jsdelivr.net/gh/om3tcw/r/customsettingsmodal.js",done:true},
-playlist:{active:1,rank:-1,url:"https://cdn.jsdelivr.net/gh/om3tcw/r/playlistenhancement6.js",done:true},
+playlist:{active:1,rank:-1,url:"https://cdn.jsdelivr.net/gh/om3tcw/r/playlistenhancement2.js",done:true},
 privmsg:{active:1,rank:1,url:"https://cdn.jsdelivr.net/gh/om3tcw/r/pmenhancement.js",done:true},  
 notifier:{active:1,rank:-1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/notifier.js",done: true},
 layout:{active:1,rank:-1,url:"https://cdn.jsdelivr.net/gh/om3tcw/r/layoutoptions.js",done:true},
