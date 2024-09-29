@@ -46,7 +46,7 @@ function playlist(active) {
         markAlert: true,
         timeEstimates: false,
         volumeControl: false
-    }, window[CHANNEL.name].modulesOptions ? window[CHANNEL.name].modulesOptions.playlist : undefined;
+    }, window[CHANNEL.name].modulesOptions ? window[CHANNEL.name].modulesOptions.playlist : undefined);
 ({
     start: function() {
         if (!options.syncCheck) {
@@ -103,7 +103,6 @@ function playlist(active) {
     cooldown: 120 * 1e3,
     delay: 5 * 1e3
 }).start();
-
 ({
     start: function() {
         if (!options.thumbnails) {
@@ -114,21 +113,22 @@ function playlist(active) {
         } else {
             CLIENT.thumbnailer = this;
         }
-        $("<style>").prop("id", "thumbnailer")
+        $("<style>")
+            .prop("id", "thumbnailer")
             .text(".playlist-thumbnail { max-height: 120px; max-width: 240px; border-radius: 4px; z-index: 3; }")
             .appendTo("head");
-        $("#queue").on("mouseleave", () => {
+        $("#queue").on("mouseleave", (() => {
             this.trimOrphans();
-        });
-        socket.on("delete", () => {
+        }));
+        socket.on("delete", (() => {
             this.trimOrphans();
-        });
-        socket.on("queue", () => {
+        }));
+        socket.on("queue", (() => {
             this.playlistScan();
-        });
-        socket.on("playlist", () => {
+        }));
+        socket.on("playlist", (() => {
             this.playlistScan();
-        });
+        }));
         this.playlistScan();
     },
     playlistScan: function() {
@@ -147,7 +147,6 @@ function playlist(active) {
         var type = target.data().media.type;
         var id = target.data().media.id;
         var url;
-
         switch (type) {
             case "vi":
                 url = "https://vimeo.com/api/v2/video/__id.json".replace(/__id/, id);
@@ -176,15 +175,16 @@ function playlist(active) {
             placement: function() {
                 return !USEROPTS.layout.match(/synchtube/) ? "left" : "right";
             },
-            trigger: "hover", 
+            trigger: "manual", 
             content: '<img src="__url" class="__class">'.replace(/__class/, this.klass).replace(/__url/, url)
         });
-        $('#queue').on('mouseenter', '.queue_entry', function() {
-            $(this).popover('show');  
+
+        target.on('mouseenter', function() {
+            $(this).popover('show');
         });
 
-        $('#queue').on('mouseleave', '.queue_entry', function() {
-            $(this).popover('hide');  
+        target.on('mouseleave', function() {
+            $(this).popover('hide');
         });
     },
     klass: "playlist-thumbnail"
