@@ -492,7 +492,7 @@ $("#emotelistbtn").click(function(){
             self.css = checkboxElem.checked ? `
                 #userlist { background-color: ${bgColor} !important; }
                 .linewrap { background-color: ${bgColor}; }
-                ` : null;
+                #messagebuffer { background-color: ${bgColor} !important; }   ` : null;
         }
     },
     range: {
