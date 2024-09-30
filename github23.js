@@ -491,8 +491,8 @@ $("#emotelistbtn").click(function(){
             const bgColor = `rgba(0, 0, 0, ${alpha})`; 
             self.css = checkboxElem.checked ? `
                 #userlist { background-color: ${bgColor} !important; }
-                 }
-                #messagebuffer { background-color: ${bgColor} !important; }` : null;
+                .linewrap { background-color: ${bgColor}; }
+                ` : null;
         }
     },
     range: {
