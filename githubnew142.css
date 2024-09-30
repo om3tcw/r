@@ -2227,6 +2227,6 @@ form input#chatline {background-size: auto:}
 #pollwrap {min-height:0px}
 #pin-dropdown>.dropdown-menu {max-height: calc(100vh - 32px) !important}
 #messagebuffer {padding: 0px}
-#userlist {   box-shadow: none;  background: rgba(0, 0, 0, 0.5); }
+#userlist {   box-shadow: none;  background-color: rgba(0, 0, 0, 0.5); }
 #messagebuffer div {    background-color: rgba(0, 0, 0, 0.5); }
 
