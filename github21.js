@@ -487,11 +487,12 @@ $("#emotelistbtn").click(function(){
         const checkboxElem = document.getElementById(`holopeek_${self.id}`);
         const rangeElem = document.getElementById(`holopeek_${self.id}_range`);
         if (checkboxElem && rangeElem) {
-            const alpha = 1 - rangeElem.value;
+            const alpha = 1 - rangeElem.value; 
             const bgColor = `rgba(0, 0, 0, ${alpha})`; 
             self.css = checkboxElem.checked ? `
                 #userlist { background-color: ${bgColor} !important; }
-                .linewrap { background-color: ${bgColor}; }` : null;
+                .linewrap { background-color: ${bgColor}; }
+                #messagebuffer { background-color: ${bgColor} !important; }` : null;
         }
     },
     range: {
