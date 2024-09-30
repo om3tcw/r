@@ -481,28 +481,30 @@ $("#emotelistbtn").click(function(){
             }
         }
     }, {
-        id: 'chat_transparency',
-        desc: 'Chat Transparency',
-        func: self => {
-            const checkboxElem = document.getElementById(`holopeek_${self.id}`);
-            const rangeElem = document.getElementById(`holopeek_${self.id}_range`);
-            if (checkboxElem && rangeElem) {
-                self.css = checkboxElem.checked ? `
-                #userlist { background-color: rgba(0, 0, 0, ${(1 - rangeElem.value)}) !important; }
-                .linewrap { background-color: rgba(0,0,0,${(1 - rangeElem.value)}) }` : null;
-            }
-        },
-        range: {
-            value: .5,
-            min: 0,
-            max: 1,
-            step: .05,
-            inputEvent: self => {
-                document.getElementById(`holopeek_${self.id}`).checked = false;
-                self.range.value = document.getElementById(`holopeek_${self.id}_range`).value;
-            }
+    id: 'chat_transparency',
+    desc: 'Chat Transparency',
+    func: self => {
+        const checkboxElem = document.getElementById(`holopeek_${self.id}`);
+        const rangeElem = document.getElementById(`holopeek_${self.id}_range`);
+        if (checkboxElem && rangeElem) {
+            const alpha = 1 - rangeElem.value;
+            const bgColor = `rgba(0, 0, 0, ${alpha})`; 
+            self.css = checkboxElem.checked ? `
+                #userlist { background-color: ${bgColor} !important; }
+                .linewrap { background-color: ${bgColor}; }` : null;
         }
-    }, {
+    },
+    range: {
+        value: .5,
+        min: 0,
+        max: 1,
+        step: .05,
+        inputEvent: self => {
+            document.getElementById(`holopeek_${self.id}`).checked = false;
+            self.range.value = document.getElementById(`holopeek_${self.id}_range`).value;
+        }
+    }
+}, {
         id: 'chat_video_only',
         desc: 'Chat & video only, no bullshit',
         setupFunc: self => {
