@@ -2228,4 +2228,5 @@ form input#chatline {background-size: auto:}
 #messagebuffer {padding: 0px}
 #userlist {   box-shadow: none;  background-color: rgba(0, 0, 0, 0.5); }
 .linewrap {    background-color: rgba(0, 0, 0, 0.5); }
-
+#messagebuffer {
+     background-color: rgba(0, 0, 0, 0.5)!important; }
