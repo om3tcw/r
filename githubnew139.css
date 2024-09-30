@@ -2214,13 +2214,11 @@ form input#chatline {background-size: auto:}
 #messagebuffer{background: none;}
 #messagebuffer .username {margin-top:0;}
 #main {height: 100% !important;}
-#messagebuffer div{background-color: #0005;}
 #messagebuffer div.nick-hover {background-color: #0066 !important;box-shadow: none !important;}
 #messagebuffer div.nick-highlight {background-color: #963C6A !important;box-shadow: none !important;}
 #messagebuffer div.nick-highlight.nick-hover {background-color: #f8f8 !important;}
 #messagebuffer div.nick-highlight .username {color: #ff00dc;}
 #messagebuffer {box-shadow: none;}
-#userlist {box-shadow: none;background: #0005;}
 #main.flex>#chatwrap {box-shadow: none;}
 .embed-responsive {box-shadow: none;margin: 0;background-color: #000;}
 #pollwrap>div {margin: 0;}
@@ -2229,5 +2227,6 @@ form input#chatline {background-size: auto:}
 #pollwrap {min-height:0px}
 #pin-dropdown>.dropdown-menu {max-height: calc(100vh - 32px) !important}
 #messagebuffer {padding: 0px}
-
+#userlist {   box-shadow: none;  background: rgba(0, 0, 0, 0.03125); }
+#messagebuffer div {    background-color: rgba(0, 0, 0, 0.03125); }
 
