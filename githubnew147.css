@@ -1864,9 +1864,9 @@ footer {display: none;}
 /*background css*/
 body {
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
-    background:  linear-gradient(rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0.7) ), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/myth.jpg);
+    background:  linear-gradient(rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0.7) ), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/amebg.jpg);
     overflow: visible;
-    background-position-x: -600px;
+    background-position-x: 00px;
     background-size: cover;
     background-repeat: repeat;
     background-attachment: fixed;}
