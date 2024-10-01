@@ -1867,7 +1867,7 @@ body {
     background:  linear-gradient(rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0.7) ), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/amebg.jpg);
     overflow: visible;
     background-position-x: 00px;
-    background-size: cover;
+    background-size: contain;
     background-repeat: repeat;
     background-attachment: fixed;}
 
