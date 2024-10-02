@@ -386,7 +386,109 @@ $("#emotelistbtn").click(function(){
 	$(this).css("background-image","url("+drawRandomEmote()+")");
 }).html("")
   
+ // --- Game Filter ---
+// Filter style 1
+    const filter1css = `.filter1css {display:none !important}`;
+    const filter1style = document.createElement('style');
+    if (filter1style.styleSheet) filter1style.styleSheet.cssText = filter1css;
+    else filter1style.appendChild(document.createTextNode(filter1css));
+    document.getElementsByTagName('head')[0].appendChild(filter1style);
+    filter1style.disabled = true;
+// Filter style 2
+    const filter2css = `.filter2css {display:none !important}`;
+    const filter2style = document.createElement('style');
+    if (filter2style.styleSheet) filter2style.styleSheet.cssText = filter2css;
+    else filter2style.appendChild(document.createTextNode(filter2css));
+    document.getElementsByTagName('head')[0].appendChild(filter2style);
+    filter2style.disabled = true;
+// Filter style 3
+    const filter3css = `.filter3css {display:none !important}`;
+    const filter3style = document.createElement('style');
+    if (filter3style.styleSheet) filter3style.styleSheet.cssText = filter3css;
+    else filter3style.appendChild(document.createTextNode(filter3css));
+    document.getElementsByTagName('head')[0].appendChild(filter3style);
+    filter3style.disabled = true;
+// Filter style 4
+    const filter4css = `.filter4css {display:none !important}`;
+    const filter4style = document.createElement('style');
+    if (filter4style.styleSheet) filter4style.styleSheet.cssText = filter4css;
+    else filter4style.appendChild(document.createTextNode(filter4css));
+    document.getElementsByTagName('head')[0].appendChild(filter4style);
+    filter4style.disabled = true;
 
+    /**
+     * @typedef {Object} Filter
+     * @prop {string} color
+     * @prop {string} style
+     * @prop {string[]} prefixes
+     * @prop {string[]} postfixes
+     * @prop {HTMLStyleElement} hiddenEle
+     */
+
+    /**
+     * @type {Object.<number, Filter>}
+     */
+    const filters = {
+        1: {
+            color: '',
+            style: 'none',
+            prefixes: ["/def", "/1"],
+            postfixes: ["--filter1", "-f1"],
+            hiddenEle: filter1style
+        },
+        2: {
+            color: '#f44',
+            style: 'inset 0 0 0 2px #f44',
+            prefixes: ["/game", "/2"],
+            postfixes: ["--filter2", "-f2"],
+            hiddenEle: filter2style
+        },
+        3: {
+            color: '#8f8',
+            style: 'inset 0 0 0 2px #8f8',
+            prefixes: ["/blog", "/3"],
+            postfixes: ["--filter3", "-f3"],
+            hiddenEle: filter3style
+        },
+        4: {
+            color: '#fff',
+            style: 'inset 0 0 0 2px #fff',
+            prefixes: ["/en", "/4"],
+            postfixes: ["--filter4", "-f4"],
+            hiddenEle: filter4style
+        }
+    }
+	
+//socket.io stuff
+	
+	        let filtered = Object.keys(filters).some(fkey => {
+            const filter = filters[fkey];
+            return filter.prefixes.some(prefix => {
+                if (msg.startsWith(prefix)) {
+                    messElem.classList.add(`filter${fkey}css`);
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        if (!filtered) {
+            // Check -filters if a front one was not set
+            filtered = Object.keys(filters).some(fkey => {
+                const filter = filters[fkey];
+                return filter.postfixes.some(postfix => {
+                    if (msg.endsWith(postfix)) {
+                        messElem.classList.add(`filter${fkey}css`);
+                        return true;
+                    }
+                    return false;
+                });
+            });
+        }
+
+        // No explicit filters, set filter1
+        if (!filtered) 
+            messElem.classList.add('filter1css');
 			
     // --- holo Button ---
 
@@ -444,53 +546,7 @@ $("#emotelistbtn").click(function(){
                 self.text.value = document.getElementById(`holopeek_${self.id}_text`).value;
             }
         }
-	}, //checkbox
-    {
-        id: 'filter_1',
-        desc: 'Hide the default chat',
-        func: self => {
-            filter1style.disabled = !filter1style.disabled;
-            document.getElementById("messagebuffer").scrollTop = document.getElementById("messagebuffer").scrollHeight;
-        }
-    },
-    {
-        id: 'filter_2',
-        desc: 'Hide the game chat',
-        func: self => {
-            filter2style.disabled = !filter2style.disabled;
-            document.getElementById("messagebuffer").scrollTop = document.getElementById("messagebuffer").scrollHeight;
-        }
-    },
-    {
-        id: 'filter_3',
-        desc: 'Hide the blog chat',
-        func: self => {
-            filter3style.disabled = !filter3style.disabled;
-            document.getElementById("messagebuffer").scrollTop = document.getElementById("messagebuffer").scrollHeight;
-        }
-    },
-    {
-        id: 'filter_4',
-        desc: 'Hide the >EN chat',
-        func: self => {
-            filter4style.disabled = !filter4style.disabled;
-            document.getElementById("messagebuffer").scrollTop = document.getElementById("messagebuffer").scrollHeight;
-        }
-    },	 {
-        id: 'image_hower',
-        desc: 'Enable image on link hover',
-		func: self => {ImageHoverEnable = !ImageHoverEnable;}
-    }, 
-/* 	{
-        id: 'poll_alert',
-        desc: 'Add a poll sound alert',
-		func: self => {votingpoll: null}
-    },  */
-{
-    id: 'reveal_spoilers',
-    desc: 'Reveal spoilers',
-    css: `.spoiler { color: #ff8; }`
-}, {
+	}, {
         id: 'chat_video_ratio',
         desc: '>chat:video ratio',
         func: self => {
