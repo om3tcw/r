@@ -2201,11 +2201,10 @@ a.navbar-brand{background-size: auto 45px;}
 .profile-box p {margin: 4px 0 8px 0;}
 .profile-image {border: none;margin: 0 8px 4px 0;}
 .linewrap {z-index: 10;}
-#emotelistbtn {outline: none;padding:0 16px;background-size: contain;background-position: center;}
+#emotelistbtn {outline: none;padding:0 16px;background-size: cover;background-position: center;}
 #chatinputrow button {border: none;border-radius: 0;width:32px;height:32px;background-color:#0000}
 #chatinputrow,#chatinputrow form {height:32px}
 form input#chatline {padding: 0 0 0 5px;height:32px}
-#emotelistbtn {outline: none;padding:0 16px;background-size: contain;background-position: center;}
 #chatinputrow button {border: none;border-radius: 0;width:32px;height:32px;background-color:#0000}
 #chatinputrow,#chatinputrow form {height:32px}
 form input#chatline {padding: 0 0 0 5px;height:32px}
