@@ -547,6 +547,20 @@ $("#emotelistbtn").click(function(){
             }
         }
 	}, {
+        id: 'image_hower',
+        desc: 'Enable image on link hover',
+		func: self => {ImageHoverEnable = !ImageHoverEnable;}
+    }, 
+/* 	{
+        id: 'poll_alert',
+        desc: 'Add a poll sound alert',
+		func: self => {votingpoll: null}
+    },  */
+{
+    id: 'reveal_spoilers',
+    desc: 'Reveal spoilers',
+    css: `.spoiler { color: #ff8; }`
+}, {
         id: 'chat_video_ratio',
         desc: '>chat:video ratio',
         func: self => {
@@ -933,9 +947,6 @@ $('#messagebuffer').off('click').click(e => {
     if(t.className == 'channel-emote')
         $('#chatline').val((i, v) => v + e.target.title + " ").focus();
 })
-
-
-
 
 
 // --- Slav's Enhancements ---
