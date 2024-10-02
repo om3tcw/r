@@ -922,7 +922,7 @@ const soundpostButton = document.createElement("button");
 	soundpostButton.style.backgroundImage = soundpostState
       ? "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/schizo.gif')"
       : "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/medicated.png')";
-	soundpostButton.style.backgroundSize = "contain";
+	soundpostButton.style.backgroundSize = "cover";
   
 	soundpostButton.addEventListener("click", () => {
 		soundpostState = !soundpostState;
