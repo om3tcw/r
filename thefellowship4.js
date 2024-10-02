@@ -934,68 +934,7 @@ $('#messagebuffer').off('click').click(e => {
         $('#chatline').val((i, v) => v + e.target.title + " ").focus();
 })
 
-// Filter select
-    const filterSelect = document.createElement("select");
-    filterSelect.id = 'filterSelect';
-    const filter1option = document.createElement("option");
-    const filter2option = document.createElement("option");
-    const filter3option = document.createElement("option");
-    const filter4option = document.createElement("option");
 
-    filter1option.value = "1";
-    filter1option.text = "Default";
-    filter1option.selected = "selected";
-    filter2option.value = "2";
-    filter2option.text = "Games";
-    filter3option.value = "3";
-    filter3option.text = "Blog";
-    filter4option.value = "4";
-    filter4option.text = ">EN";
-
-    filterSelect.add(filter1option, null);
-    filterSelect.add(filter2option, null);
-    filterSelect.add(filter3option, null);
-    filterSelect.add(filter4option, null);
-    filterSelect.onchange = e => {
-        filterValue = parseInt(document.getElementById("filterSelect").value);
-        document.getElementById("chatline").style.boxShadow = filters[filterValue].style;
-    }
-    document.getElementById("chatheader").appendChild(filterSelect);
-
-    Array.from(document.getElementById("messagebuffer").children).forEach(e => {
-        // Messages are fresh, last child should be a span with the actual text
-        const msg = e.lastElementChild;
-        if (!msg) return;  
-        }
-
-        let filtered = false;
-        Object.keys(filters).forEach(fkey => {
-            const filter = filters[fkey];
-            filter.prefixes.forEach(prefix => {
-                if (msg.innerText.startsWith(prefix)) {
-                    if (!filtered) {
-                        e.classList.add(`filter${fkey}css`);
-                        filtered = true;
-                    }
-                    msg.innerHTML = msg.innerHTML.replace(prefix, "");
-                }
-            });
-
-            filter.postfixes.forEach(postfix => {
-                if (msg.innerText.endsWith(postfix)) {
-                    if (!filtered) {
-                        e.classList.add(`filter${fkey}css`);
-                        filtered = true;
-                    }
-                    const re = new RegExp(`${postfix}$`)
-                    msg.innerHTML = msg.innerHTML.replace(re, "");
-                }
-            });
-        });
-
-        if (!filtered)
-            e.classList.add('filter1css');
-    });
 
 
 
