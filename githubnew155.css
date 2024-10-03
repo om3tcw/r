@@ -1753,7 +1753,7 @@ flex-wrap:nowrap;}
 /*chat and pm css*/
 
 .modal-open .modal::-webkit-scrollbar {
-  display: none;} 
+  width:0px;} 
 .modal-open .modal {
   -ms-overflow-style: none; 
   scrollbar-width: none;}
