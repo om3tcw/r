@@ -1752,11 +1752,6 @@ flex-wrap:nowrap;}
 
 /*chat and pm css*/
 
-.modal-open .modal::-webkit-scrollbar {
-  width:0px;} 
-.modal-open .modal {
-  -ms-overflow-style: none; 
-  scrollbar-width: none;}
 .timestamp {font-size: 8pt !important; padding: 3px !important;}
 #userlist, #messagebuffer {border-color: #1e2023;}  
 /*https://raw.githubusercontent.com/om3tcw/r/emotes/other/roll.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/climb.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/boat.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/snow.gif alternatives */
