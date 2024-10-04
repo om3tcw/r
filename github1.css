@@ -2202,7 +2202,7 @@ a.navbar-brand{background-size: auto 45px;}
 .profile-box {min-height: 0;background-color: #000c;border: none;padding: 8px 8px 0px 8px;}
 .profile-box p {margin: 4px 0 8px 0;}
 .profile-image {border: none;margin: 0 8px 4px 0;}
-.linewrap {z-index:-5; position: relative;}
+.linewrap {z-index:0; position: relative;}
 #emotelistbtn {outline: none;padding:0 16px;background-size: cover;background-position: center;}
 #chatinputrow button {border: none;border-radius: 0;width:32px;height:32px;background-color:#0000}
 #chatinputrow,#chatinputrow form {height:32px}
