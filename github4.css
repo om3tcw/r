@@ -1872,7 +1872,18 @@ body {
     background-size: contain;
     background-repeat: repeat;
     background-attachment: fixed;}
-
+body::before {
+    content: "";
+    position: absolute;
+    top: 40vh;
+    left: 10vw; /* Adjusting with viewport width */
+    width: 10%;
+    height: 15%;
+    background: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/1000yearprison.gif') center center / cover no-repeat;
+    opacity: 1; 
+    z-index: 1;
+    pointer-events: none;
+}
 #rightpane, #leftpane {margin-top:5px !important; margin-bottom:5px !important}
 #leftpane .well {margin-bottom:5px}
 #wrap {padding:0; !important}
