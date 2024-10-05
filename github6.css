@@ -1879,7 +1879,7 @@ body::before {
     left: 10vw; /* Adjusting with viewport width */
     width: 10%;
     height: 15%;
-    background: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/10000yearprison.gif') center center / cover no-repeat;
+    background: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/100000yearprison.gif') center center / cover no-repeat;
     opacity: 1; 
     z-index: 1;
     pointer-events: none;
