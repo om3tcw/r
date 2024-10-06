@@ -1036,30 +1036,36 @@ let homuhomuAudio = null;
 let homuhomuPlayTime = 0;
 let homuhomuActivationCount = 0;
 let homuhomuIsPlaying = false;
+
 function playHomuhomu() {
     if (!homuhomuAudio) {
         homuhomuAudio = new Audio(soundposts[":homuhomu:"].soundurl);
         homuhomuAudio.volume = 0.1; 
     }
+    
     if (homuhomuActivationCount === 0) {
         homuhomuPlayTime = 7; 
     } else {
         homuhomuPlayTime += 5; 
     }
+
     homuhomuActivationCount++;
-    homuhomuPlayTime = Math.min(homuhomuPlayTime, homuhomuAudio.duration);
+    const remainingTime = homuhomuAudio.duration - homuhomuAudio.currentTime;
+    const playDuration = Math.min(homuhomuPlayTime, remainingTime);
+
     if (!homuhomuIsPlaying) {
         homuhomuIsPlaying = true;
         homuhomuAudio.play();
         setTimeout(() => {
             homuhomuAudio.pause();
             homuhomuIsPlaying = false;
+
             if (homuhomuAudio.currentTime >= homuhomuAudio.duration) {
                 homuhomuAudio.currentTime = 0; 
-                homuhomuActivationCount = 0; 
-                homuhomuPlayTime = 0;
+                homuhomuActivationCount = 0;   
+                homuhomuPlayTime = 0;          
             }
-        }, homuhomuPlayTime * 1000);
+        }, playDuration * 1000);
     }
 }
 
