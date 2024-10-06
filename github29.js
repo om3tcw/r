@@ -1036,7 +1036,7 @@ let homuhomuAudio = null;
 let homuhomuPlayTime = 0;
 let homuhomuActivationCount = 0;
 let homuhomuIsPlaying = false;
-
+let homuhomuTimeout = null; 
 function playHomuhomu() {
     if (!homuhomuAudio) {
         homuhomuAudio = new Audio(soundposts[":homuhomu:"].soundurl);
@@ -1050,18 +1050,23 @@ function playHomuhomu() {
     }
 
     homuhomuActivationCount++;
+
     const remainingTime = homuhomuAudio.duration - homuhomuAudio.currentTime;
     const playDuration = Math.min(homuhomuPlayTime, remainingTime);
 
     if (!homuhomuIsPlaying) {
         homuhomuIsPlaying = true;
         homuhomuAudio.play();
-        setTimeout(() => {
+        if (homuhomuTimeout) {
+            clearTimeout(homuhomuTimeout);
+        }
+
+        homuhomuTimeout = setTimeout(() => {
             homuhomuAudio.pause();
             homuhomuIsPlaying = false;
 
             if (homuhomuAudio.currentTime >= homuhomuAudio.duration) {
-                homuhomuAudio.currentTime = 0; 
+                homuhomuAudio.currentTime = 0;  
                 homuhomuActivationCount = 0;   
                 homuhomuPlayTime = 0;          
             }
