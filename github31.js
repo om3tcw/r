@@ -1033,7 +1033,9 @@ $('.embed-responsive').prepend($('<div/>', {
 
 
 let homuhomuAudio = null;
+let homuhomuTotalPlayTime = 0;
 let homuhomuIsPlaying = false;
+let homuhomuTimeout = null;
 
 function playHomuhomu() {
     if (!homuhomuAudio) {
@@ -1041,23 +1043,28 @@ function playHomuhomu() {
         homuhomuAudio.volume = 0.1; 
     }
 
-    const homuhomuPlayTime = 6;  
-
-    const remainingTime = homuhomuAudio.duration - homuhomuAudio.currentTime;
-    const playDuration = Math.min(homuhomuPlayTime, remainingTime);
+    const additionalPlayTime = 6;  
 
     if (!homuhomuIsPlaying) {
         homuhomuIsPlaying = true;
+        homuhomuTotalPlayTime = additionalPlayTime;  
         homuhomuAudio.play();
-        setTimeout(() => {
-            homuhomuAudio.pause();
-            homuhomuIsPlaying = false;
+    } else {
 
-            if (homuhomuAudio.currentTime >= homuhomuAudio.duration) {
-                homuhomuAudio.currentTime = 0;  
-            }
-        }, playDuration * 1000);
+        homuhomuTotalPlayTime += additionalPlayTime;
     }
+    if (homuhomuTimeout) {
+        clearTimeout(homuhomuTimeout);
+    }
+    const remainingTime = homuhomuAudio.duration - homuhomuAudio.currentTime;
+    const playDuration = Math.min(homuhomuTotalPlayTime, remainingTime);
+
+    homuhomuTimeout = setTimeout(() => {
+        homuhomuAudio.pause();
+        homuhomuIsPlaying = false;
+        homuhomuAudio.currentTime = 0;  
+        homuhomuTotalPlayTime = 0;    
+    }, playDuration * 1000);
 }
 
 socket.on("chatMsg", ({ username, msg, meta, time }) => {
