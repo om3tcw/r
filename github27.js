@@ -1031,36 +1031,64 @@ $('.embed-responsive').prepend($('<div/>', {
         'class': 'videochatContainer'
     }));
 
-socket.on("chatMsg", ({ username, msg, meta, time }) => {
-	if( username.toLowerCase() !== '[server]' &&
-		username.toLowerCase() !== '[voteskip]') {
-			
-		const mymessage = messageBuffer.lastElementChild.lastElementChild;
-		formatMessage(mymessage);
-		
-//		if (!meta['addClass'])
-//                meta['addClass'] = '';
-//		nicoprocess(mymessage, meta.addClass);
 
-		if(soundpostState){
-			const emotes = mymessage.querySelectorAll('.channel-emote[title]');
-			emotes.forEach((emote) => {
-				const soundpost = soundposts[emote.title];
-				if (soundpost !== undefined && !playedSoundposts.includes(soundpost.soundurl)) {
-					var myaudio = new Audio(soundpost.soundurl);
-					myaudio.volume = 0.1;
-					myaudio.play();
-					playedSoundposts.push(soundpost.soundurl);
-				}
-			});
-			
-			if (mymessage.innerHTML.startsWith('boo'))
-			{
-				var myaudio = new Audio("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/boo.ogg");
-					myaudio.volume = 0.1;
-					myaudio.play();
-			}
-		}
-		playedSoundposts = [];
-	}
+let homuhomuAudio = null;
+let homuhomuPlayTime = 0;
+let homuhomuActivationCount = 0;
+let homuhomuIsPlaying = false;
+function playHomuhomu() {
+    if (!homuhomuAudio) {
+        homuhomuAudio = new Audio(soundposts[":homuhomu:"].soundurl);
+        homuhomuAudio.volume = 0.1; 
+    }
+    if (homuhomuActivationCount === 0) {
+        homuhomuPlayTime = 7; 
+    } else {
+        homuhomuPlayTime += 5; 
+    }
+    homuhomuActivationCount++;
+    homuhomuPlayTime = Math.min(homuhomuPlayTime, homuhomuAudio.duration);
+    if (!homuhomuIsPlaying) {
+        homuhomuIsPlaying = true;
+        homuhomuAudio.play();
+        setTimeout(() => {
+            homuhomuAudio.pause();
+            homuhomuIsPlaying = false;
+            if (homuhomuAudio.currentTime >= homuhomuAudio.duration) {
+                homuhomuAudio.currentTime = 0; 
+                homuhomuActivationCount = 0; 
+                homuhomuPlayTime = 0;
+            }
+        }, homuhomuPlayTime * 1000);
+    }
+}
+
+socket.on("chatMsg", ({ username, msg, meta, time }) => {
+    if (username.toLowerCase() !== '[server]' &&
+        username.toLowerCase() !== '[voteskip]') {
+        
+        const mymessage = messageBuffer.lastElementChild.lastElementChild;
+        formatMessage(mymessage);
+//		if (!meta['addClass']) //                meta['addClass'] = ''; //		nicoprocess(mymessage, meta.addClass);
+        if (soundpostState) {
+            const emotes = mymessage.querySelectorAll('.channel-emote[title]');
+            emotes.forEach((emote) => {
+                const soundpost = soundposts[emote.title];
+                if (emote.title === ":homuhomu:") {
+                    playHomuhomu();
+                } else if (soundpost !== undefined && !playedSoundposts.includes(soundpost.soundurl)) {
+                    var myaudio = new Audio(soundpost.soundurl);
+                    myaudio.volume = 0.1;
+                    myaudio.play();
+                    playedSoundposts.push(soundpost.soundurl);
+                }
+            });
+            if (mymessage.innerHTML.startsWith('boo')) {
+                var myaudio = new Audio("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/boo.ogg");
+                myaudio.volume = 0.1;
+                myaudio.play();
+            }
+        }
+        playedSoundposts = [];
+    }
 });
