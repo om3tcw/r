@@ -1033,23 +1033,15 @@ $('.embed-responsive').prepend($('<div/>', {
 
 
 let homuhomuAudio = null;
-let homuhomuPlayTime = 0;
-let homuhomuActivationCount = 0;
 let homuhomuIsPlaying = false;
-let homuhomuTimeout = null; 
+
 function playHomuhomu() {
     if (!homuhomuAudio) {
         homuhomuAudio = new Audio(soundposts[":homuhomu:"].soundurl);
         homuhomuAudio.volume = 0.1; 
     }
-    
-    if (homuhomuActivationCount === 0) {
-        homuhomuPlayTime = 7; 
-    } else {
-        homuhomuPlayTime += 5; 
-    }
 
-    homuhomuActivationCount++;
+    const homuhomuPlayTime = 6;  
 
     const remainingTime = homuhomuAudio.duration - homuhomuAudio.currentTime;
     const playDuration = Math.min(homuhomuPlayTime, remainingTime);
@@ -1057,18 +1049,12 @@ function playHomuhomu() {
     if (!homuhomuIsPlaying) {
         homuhomuIsPlaying = true;
         homuhomuAudio.play();
-        if (homuhomuTimeout) {
-            clearTimeout(homuhomuTimeout);
-        }
-
-        homuhomuTimeout = setTimeout(() => {
+        setTimeout(() => {
             homuhomuAudio.pause();
             homuhomuIsPlaying = false;
 
             if (homuhomuAudio.currentTime >= homuhomuAudio.duration) {
                 homuhomuAudio.currentTime = 0;  
-                homuhomuActivationCount = 0;   
-                homuhomuPlayTime = 0;          
             }
         }, playDuration * 1000);
     }
