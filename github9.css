@@ -1725,7 +1725,8 @@ img.channel-emote[title$=":kaelabonk:"]  {
 .chat-msg-ShioValt .username:after {font-size: 14px;content: 'Cumgoblin: ';}
 .chat-msg-Noroba, .chat-msg-Noromo { font-family: Noroba; }
 @font-face {  font-family: Noroba; src: url(https://files.catbox.moe/jnh2x7.ttf); }
-
+.chat-msg-Kusa .username  {font-size: 0;}
+.chat-msg-Kusa .username:after {font-size: 14px;content: '永恆之沙的雨皇: ';}
 
 
 /*general css*/
@@ -1866,24 +1867,13 @@ footer {display: none;}
 /*background css*/
 body {
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
-    background:  linear-gradient(rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0.7) ), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/amebg2.jpg);
+    background:  linear-gradient(rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0.7) ), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/amebg.jpg);
     overflow: visible;
     background-position-x: 00px;
     background-size: contain;
     background-repeat: repeat;
     background-attachment: fixed;}
-body::before {
-    content: "";
-    position: absolute;
-    top: 40vh;
-    left: 10vw; /* Adjusting with viewport width */
-    width: 10%;
-    height: 15%;
-    background: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/1yearprison.gif') center center / cover no-repeat;
-    opacity: 1; 
-    z-index: 1;
-    pointer-events: none;
-}
+
 #rightpane, #leftpane {margin-top:5px !important; margin-bottom:5px !important}
 #leftpane .well {margin-bottom:5px}
 #wrap {padding:0; !important}
