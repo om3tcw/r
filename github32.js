@@ -1040,30 +1040,36 @@ let homuhomuTimeout = null;
 function playHomuhomu() {
     if (!homuhomuAudio) {
         homuhomuAudio = new Audio(soundposts[":homuhomu:"].soundurl);
-        homuhomuAudio.volume = 0.1; 
-    }
+        homuhomuAudio.volume = 0.1;
 
-    const additionalPlayTime = 6;  
+        homuhomuAudio.addEventListener('canplaythrough', () => {
+            startPlayingHomuhomu(6);
+        }, { once: true });
+    } else {
+        startPlayingHomuhomu(6);
+    }
+}
+
+function startPlayingHomuhomu(additionalPlayTime) {
+    homuhomuTotalPlayTime += additionalPlayTime;
 
     if (!homuhomuIsPlaying) {
         homuhomuIsPlaying = true;
-        homuhomuTotalPlayTime = additionalPlayTime;  
         homuhomuAudio.play();
-    } else {
-
-        homuhomuTotalPlayTime += additionalPlayTime;
     }
+
     if (homuhomuTimeout) {
         clearTimeout(homuhomuTimeout);
     }
+
     const remainingTime = homuhomuAudio.duration - homuhomuAudio.currentTime;
     const playDuration = Math.min(homuhomuTotalPlayTime, remainingTime);
 
     homuhomuTimeout = setTimeout(() => {
         homuhomuAudio.pause();
         homuhomuIsPlaying = false;
-        homuhomuAudio.currentTime = 0;  
-        homuhomuTotalPlayTime = 0;    
+        homuhomuAudio.currentTime = 0;
+        homuhomuTotalPlayTime = 0;
     }, playDuration * 1000);
 }
 
