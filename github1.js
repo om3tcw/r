@@ -391,7 +391,7 @@ $("#emotelistbtn").click(function(){
     // --- holo Button ---
 
 
-    const button = document.createElement('button');
+     const button = document.createElement('button');
     button.id = 'holopeek';
     button.classList = 'holoAnim';
     button.onclick = () => {
@@ -445,6 +445,13 @@ $("#emotelistbtn").click(function(){
             }
         }
 	}, {
+    id: 'WatchalongOfftopic',
+    desc: 'Offtopic Mode',
+    func: self => {
+         const checkboxElem = document.getElementById('holopeek_WatchalongOfftopic');
+        const username = document.getElementById('welcome').innerText.replace('Welcome, ', '');
+        prependMessagesWithMJ(username, checkboxElem.checked); }
+    }, {
         id: 'image_hower',
         desc: 'Enable image on link hover',
 		func: self => {ImageHoverEnable = !ImageHoverEnable;}
@@ -630,40 +637,29 @@ form input#chatline {background-size: auto:}
 #messagebuffer {padding: 0px}`,
             inputEvent: self => {
                 document.getElementById(`holopeek_${self.id}`).checked = false;
-                self.textarea.value = document.getElementById(`holopeek_${self.id}_textarea`).value;
-            }
-        },
+                self.textarea.value = document.getElementById(`holopeek_${self.id}_textarea`).value; }
+         },
     }, {
         id: 'Potato',
         desc: 'SmartFridgeOwner',
         func: self => {
             const checkboxElem = document.getElementById(`holopeek_${self.id}`);
-            const textAreaElem = document.getElementById(`holopeek_${self.id}_textarea`);
-            if (checkboxElem && textAreaElem) self.css = checkboxElem.checked ? (textAreaElem.value || '') : null;
-        },
-        textarea: {
-            value: ` .videolist
-{background:none!important;}
-a.navbar-brand
-{background:none !important;}
-form input#chatline
-{background:none;}
-#emotelistbtn
-{background:none;}
-#emotebtndiv + form
-{animation:none;
-background-image:none;}
-#chatinputrow button
-{animation:none !important;
-background:none !important;}
-body {background:black !important;}
-.timestamp {background-image: none !important;
-color: white !important;} `,
-             inputEvent: self => {
-            document.getElementById(`holopeek_${self.id}`).checked = false;
-            self.textarea.value = document.getElementById(`holopeek_${self.id}_textarea`).value;
+            if (checkboxElem) {
+                // Apply CSS based on the checkbox state
+                if (checkboxElem.checked) {
+                    self.css = `
+                        .videolist { background: none !important; }
+                        a.navbar-brand { background: none !important; }
+                        form input#chatline { background: none; }
+                        #emotelistbtn { background: none; }
+                        #emotebtndiv + form { animation: none; background-image: none; }
+                        #chatinputrow button { animation: none !important; background: none !important; }
+                        body { background: black !important; }
+                        .timestamp { background-image: none !important; color: white !important; }
+                    `;
+                } 
             }
-        },
+        }
     }, {
         id: 'vertical_layout',
         desc: 'Vertical layout',
@@ -682,15 +678,8 @@ color: white !important;} `,
 		.linewrap {background-color: #0000 !important;box-shadow: none !important;}
 		#videowrap-header  {display:none !important;}
         `
-    }, {
-    id: 'WatchalongOfftopic',
-    desc: 'Offtopic Mode',
-    func: self => {
-         const checkboxElem = document.getElementById('holopeek_WatchalongOfftopic');
-        const username = document.getElementById('welcome').innerText.replace('Welcome, ', '');
-        prependMessagesWithMJ(username, checkboxElem.checked);
-    }
 }];
+
 
 // --- Game Mode Prepend ----
 function prependMessagesWithMJ(username, checked) {
