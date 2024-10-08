@@ -1723,9 +1723,6 @@ img.channel-emote[title$=":kaelabonk:"]  {
 .chat-msg-ShioValt .username:after {font-size: 14px;content: 'Cumgoblin: ';}
 .chat-msg-Noroba, .chat-msg-Noromo { font-family: Noroba; }
 @font-face {  font-family: Noroba; src: url(https://files.catbox.moe/jnh2x7.ttf); }
-.chat-msg-Kusa .username  {font-size: 0;}
-.chat-msg-Kusa .username:after {font-size: 14px;content: '永恆之沙的雨皇: ';}
-
 
 /*general css*/
 ::-webkit-scrollbar {width: 6px; height: 6px;}
