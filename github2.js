@@ -682,7 +682,7 @@ form input#chatline {background-size: auto:}
 
 
 // --- Game Mode Prepend ----
-function prependMessagesWithMJ(username, checked) {
+function prependMessagesWithMJ(username, checked) { 
     const chatInput = document.getElementById('chatline');
     chatInput.addEventListener('input', () => {
         if (checked) {
@@ -693,9 +693,11 @@ function prependMessagesWithMJ(username, checked) {
             chatInput.value = chatInput.value.replace(/^MJ: /, ''); 
         }
     });
+
     chatInput.addEventListener('focus', () => {
-        if (checked && !chatInput.value.startsWith('MJ: ')) {
-            chatInput.value = 'MJ: ' + chatInput.value; 
+        if (checked) {  if (!chatInput.value.startsWith('MJ: ')) {
+                chatInput.value = 'MJ: ' + chatInput.value; 
+            }
         }
     });
 }
