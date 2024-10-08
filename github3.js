@@ -684,7 +684,8 @@ form input#chatline {background-size: auto:}
 // --- Game Mode Prepend ----
 function prependMessagesWithMJ(username, checked) { 
     const chatInput = document.getElementById('chatline');
-    chatInput.addEventListener('input', () => {
+    
+    const updateChatInput = () => {
         if (checked) {
             if (chatInput.value && !chatInput.value.startsWith('MJ: ')) {
                 chatInput.value = 'MJ: ' + chatInput.value; 
@@ -692,14 +693,10 @@ function prependMessagesWithMJ(username, checked) {
         } else {
             chatInput.value = chatInput.value.replace(/^MJ: /, ''); 
         }
-    });
+    };
 
-    chatInput.addEventListener('focus', () => {
-        if (checked) {  if (!chatInput.value.startsWith('MJ: ')) {
-                chatInput.value = 'MJ: ' + chatInput.value; 
-            }
-        }
-    });
+    chatInput.addEventListener('input', updateChatInput);
+    chatInput.addEventListener('focus', updateChatInput);
 }
 
 function hideMJMessagesOnLoad() {
