@@ -427,7 +427,7 @@ $("#emotelistbtn").click(function(){
     bubble.append(userGuide);
 
     // --- Checkbox Options ---
-
+    let hiddenMJMessages = [];
 
     const options = [{
         id: 'background',
@@ -448,10 +448,20 @@ $("#emotelistbtn").click(function(){
     id: 'WatchalongOfftopic',
     desc: 'Offtopic Mode',
     func: self => {
-         const checkboxElem = document.getElementById('holopeek_WatchalongOfftopic');
+        const checkboxElem = document.getElementById('holopeek_WatchalongOfftopic');
         const username = document.getElementById('welcome').innerText.replace('Welcome, ', '');
-        prependMessagesWithMJ(username, checkboxElem.checked); }
-    }, {
+        prependMessagesWithMJ(username, checkboxElem.checked);
+        toggleHiddenMJMessages();
+    }
+}, {
+    id: 'WatchalongOfftopic2',
+    desc: 'Offtopic Lurk',
+    func: self => {
+        const checkboxElem = document.getElementById('holopeek_WatchalongOfftopic2');
+        const username = document.getElementById('welcome').innerText.replace('Welcome, ', '');
+        toggleHiddenMJMessages();
+    }
+}, {
         id: 'image_hower',
         desc: 'Enable image on link hover',
 		func: self => {ImageHoverEnable = !ImageHoverEnable;}
@@ -645,7 +655,6 @@ form input#chatline {background-size: auto:}
         func: self => {
             const checkboxElem = document.getElementById(`holopeek_${self.id}`);
             if (checkboxElem) {
-                // Apply CSS based on the checkbox state
                 if (checkboxElem.checked) {
                     self.css = `
                         .videolist { background: none !important; }
@@ -681,12 +690,16 @@ form input#chatline {background-size: auto:}
 }];
 
 
+
 // --- Game Mode Prepend ----
 function prependMessagesWithMJ(username, checked) { 
     const chatInput = document.getElementById('chatline');
     
     const updateChatInput = () => {
-        if (checked) {
+        const offTopicEnabled = document.getElementById('holopeek_WatchalongOfftopic').checked || 
+                                document.getElementById('holopeek_WatchalongOfftopic2').checked;
+
+        if (offTopicEnabled) {
             if (chatInput.value && !chatInput.value.startsWith('MJ: ')) {
                 chatInput.value = 'MJ: ' + chatInput.value; 
             }
@@ -699,6 +712,27 @@ function prependMessagesWithMJ(username, checked) {
     chatInput.addEventListener('focus', updateChatInput);
 }
 
+function toggleHiddenMJMessages() {
+    const offTopicEnabled = document.getElementById('holopeek_WatchalongOfftopic').checked || 
+                            document.getElementById('holopeek_WatchalongOfftopic2').checked;
+
+    if (offTopicEnabled) {
+        hiddenMJMessages.forEach(message => {
+            message.style.display = 'block';
+        });
+        hiddenMJMessages = [];
+    } else {
+        const chatMessages = document.querySelectorAll('[class^="chat-msg-"]');
+        chatMessages.forEach(message => {
+            if (message.innerText.startsWith('MJ:')) {
+                message.style.display = 'none';
+                if (!hiddenMJMessages.includes(message)) {
+                    hiddenMJMessages.push(message);
+                }
+            }
+        });
+    }
+}
 function hideMJMessagesOnLoad() {
     const chatMessages = document.querySelectorAll('[class^="chat-msg-"]');
 
@@ -707,6 +741,7 @@ function hideMJMessagesOnLoad() {
         spans.forEach(span => {
             if (span.innerHTML.includes('MJ:')) {
                 parentElement.style.display = 'none'; 
+                hiddenMJMessages.push(parentElement); 
             }
         });
     });
@@ -1105,7 +1140,7 @@ function startPlayingHomuhomu(additionalPlayTime) {
     }, playDuration * 1000);
 }
 
-socket.on("chatMsg", ({ username, msg, meta, time }) => {
+socket.on("chatMsg", ({ username, msg, meta, time }) => { 
     if (username.toLowerCase() !== '[server]' && username.toLowerCase() !== '[voteskip]') {
         const mymessage = messageBuffer.lastElementChild.lastElementChild; 
         formatMessage(mymessage); 
@@ -1113,12 +1148,14 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
         const userChatClass = `chat-msg-${username}`; 
         const parentElement = mymessage.closest(`.${userChatClass}`); 
         const isMJMessage = mymessage.innerHTML.startsWith('MJ:');
-        const offTopicEnabled = document.getElementById('holopeek_WatchalongOfftopic').checked;
+        const offTopicEnabled = document.getElementById('holopeek_WatchalongOfftopic').checked || 
+                                document.getElementById('holopeek_WatchalongOfftopic2').checked;
 
         if (isMJMessage) {
             if (!offTopicEnabled) {
                 if (parentElement) {
                     parentElement.style.display = 'none'; 
+                    hiddenMJMessages.push(parentElement); 
                 }
             } else {             
                 if (parentElement) {
@@ -1140,6 +1177,8 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                 }
             }
         }
+
+        // Sound post handling
         if (soundpostState) {
             const emotes = mymessage.querySelectorAll('.channel-emote[title]');
             emotes.forEach((emote) => {
