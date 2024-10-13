@@ -1193,15 +1193,21 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                 }
             }
         }
-if (offTopicEnabled) {
-    Object.keys(emoteMap).forEach(emote => {
-        const escapedEmote = emote.replace(/[-\/\\^$.*+?()[\]{}|]/g, '\\$&'); 
-        if (mymessage.innerHTML.includes(emote)) {
-            mymessage.innerHTML = mymessage.innerHTML.replace(new RegExp(escapedEmote, 'g'), 
-                `<img class="channel-emote" title="${emote}" src="${emoteMap[emote]}">`);
-        }
-    });
-}
+
+        Object.keys(emoteMap).forEach(emote => {
+            const escapedEmote = emote.replace(/[-\/\\^$.*+?()[\]{}|]/g, '\\$&'); 
+            if (offTopicEnabled) {
+                if (mymessage.innerHTML.includes(emote)) {
+                    mymessage.innerHTML = mymessage.innerHTML.replace(new RegExp(escapedEmote, 'g'), 
+                        `<img class="channel-emote" title="${emote}" src="${emoteMap[emote]}">`);
+                }
+            } else {
+                if (mymessage.innerHTML.includes(emote)) {
+                    mymessage.innerHTML = mymessage.innerHTML.replace(new RegExp(escapedEmote, 'g'), '');
+                }
+            }
+        });
+
         if (soundpostState) {
             const emotes = mymessage.querySelectorAll('.channel-emote[title]');
             emotes.forEach((emote) => {
