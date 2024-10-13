@@ -1194,10 +1194,10 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                     initializeSoundpost(emoteTitle, soundpost.soundurl, preload);
 
                     if (preload && soundpostPlaybackState[emoteTitle].isPreloaded) {
-                        playSoundpost(emoteTitle, 5); 
+                        playSoundpost(emoteTitle, 3); 
                     } else if (preload) {
                         soundpostPlaybackState[emoteTitle].audio.addEventListener('canplaythrough', () => {
-                            playSoundpost(emoteTitle, 5);
+                            playSoundpost(emoteTitle, 3);
                         }, { once: true });
                     } else if (!playedSoundposts.includes(soundpost.soundurl)) {
                         const myaudio = new Audio(soundpost.soundurl);
