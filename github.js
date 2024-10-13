@@ -753,6 +753,8 @@ if (document.readyState === "loading") {
     hideMJMessagesOnLoad();
 }
 
+
+
     const fplegend = document.createElement('p');
     fplegend.innerHTML = 'Options';
     fplegend.style.textAlign = 'center';
@@ -1146,7 +1148,16 @@ function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
     }, playDuration * 1000);
 }
 
-socket.on("chatMsg", ({ username, msg, meta, time }) => { 
+const emoteMap = {
+    ":nyaggernap:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggernap.jpg",
+    ":yakuless:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/yakuless.gif",
+    ":nightynightnyagger:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nightynightnyagger.png",
+    ":chinpo:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/chinpo.png",
+    ":sharingiscaring:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/sharingiscaring.png",
+    ":pardner:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/pardner.png"
+};
+
+socket.on("chatMsg", ({ username, msg, meta, time }) => {
     if (username.toLowerCase() !== '[server]' && username.toLowerCase() !== '[voteskip]') {
         const mymessage = messageBuffer.lastElementChild.lastElementChild; 
         formatMessage(mymessage); 
@@ -1173,7 +1184,6 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                 }
                 mymessage.innerHTML = mymessage.innerHTML.replace(/^MJ: /, ''); 
             }
-            return; 
         } else {
             if (parentElement) {
                 parentElement.style.display = 'block';
@@ -1183,6 +1193,15 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                 }
             }
         }
+if (offTopicEnabled) {
+    Object.keys(emoteMap).forEach(emote => {
+        const escapedEmote = emote.replace(/[-\/\\^$.*+?()[\]{}|]/g, '\\$&'); 
+        if (mymessage.innerHTML.includes(emote)) {
+            mymessage.innerHTML = mymessage.innerHTML.replace(new RegExp(escapedEmote, 'g'), 
+                `<img class="channel-emote" title="${emote}" src="${emoteMap[emote]}">`);
+        }
+    });
+}
         if (soundpostState) {
             const emotes = mymessage.querySelectorAll('.channel-emote[title]');
             emotes.forEach((emote) => {
@@ -1207,12 +1226,13 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                     }
                 }
             });
+
             if (mymessage.innerHTML.startsWith('boo')) {
                 const myaudio = new Audio("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/boo.ogg");
                 myaudio.volume = defaultVolume;
                 myaudio.play();
             }
         }
-        playedSoundposts = []; 
+        playedSoundposts = [];
     }
 });
