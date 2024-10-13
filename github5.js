@@ -1099,44 +1099,43 @@ $('.embed-responsive').prepend($('<div/>', {
     }));
 
 
-let homuhomuAudio = null;
-let homuhomuTotalPlayTime = 0;
-let homuhomuIsPlaying = false;
-let homuhomuTimeout = null;
+let soundpostPlaybackState = {};
+const defaultVolume = 0.1;
+const defaultAdditionalPlayTime = 3;
 
-function playHomuhomu() {
-    if (!homuhomuAudio) {
-        homuhomuAudio = new Audio(soundposts[":homuhomu:"].soundurl);
-        homuhomuAudio.volume = 0.1;
-
-        homuhomuAudio.addEventListener('canplaythrough', () => {
-            startPlayingHomuhomu(6);
-        }, { once: true });
-    } else {
-        startPlayingHomuhomu(6);
+function initializeSoundpost(emote, soundurl) {
+    if (!soundpostPlaybackState[emote]) {
+        soundpostPlaybackState[emote] = {
+            audio: new Audio(soundurl),
+            totalPlayTime: 0,
+            isPlaying: false,
+            timeout: null
+        };
+        soundpostPlaybackState[emote].audio.volume = defaultVolume;
     }
 }
 
-function startPlayingHomuhomu(additionalPlayTime) {
-    homuhomuTotalPlayTime += additionalPlayTime;
+function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
+    const soundpost = soundpostPlaybackState[emote];
+    soundpost.totalPlayTime += additionalPlayTime;
 
-    if (!homuhomuIsPlaying) {
-        homuhomuIsPlaying = true;
-        homuhomuAudio.play();
+    if (!soundpost.isPlaying) {
+        soundpost.isPlaying = true;
+        soundpost.audio.play();
     }
 
-    if (homuhomuTimeout) {
-        clearTimeout(homuhomuTimeout);
+    if (soundpost.timeout) {
+        clearTimeout(soundpost.timeout);
     }
 
-    const remainingTime = homuhomuAudio.duration - homuhomuAudio.currentTime;
-    const playDuration = Math.min(homuhomuTotalPlayTime, remainingTime);
+    const remainingTime = soundpost.audio.duration - soundpost.audio.currentTime;
+    const playDuration = Math.min(soundpost.totalPlayTime, remainingTime);
 
-    homuhomuTimeout = setTimeout(() => {
-        homuhomuAudio.pause();
-        homuhomuIsPlaying = false;
-        homuhomuAudio.currentTime = 0;
-        homuhomuTotalPlayTime = 0;
+    soundpost.timeout = setTimeout(() => {
+        soundpost.audio.pause();
+        soundpost.isPlaying = false;
+        soundpost.audio.currentTime = 0;
+        soundpost.totalPlayTime = 0;
     }, playDuration * 1000);
 }
 
@@ -1178,23 +1177,26 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
             }
         }
 
-        // Sound post handling
         if (soundpostState) {
             const emotes = mymessage.querySelectorAll('.channel-emote[title]');
             emotes.forEach((emote) => {
-                const soundpost = soundposts[emote.title];
-                if (emote.title === ":homuhomu:") {
-                    playHomuhomu();
-                } else if (soundpost !== undefined && !playedSoundposts.includes(soundpost.soundurl)) {
-                    const myaudio = new Audio(soundpost.soundurl);
-                    myaudio.volume = 0.1;
-                    myaudio.play();
-                    playedSoundposts.push(soundpost.soundurl);
+                const emoteTitle = emote.title;
+                const soundpost = soundposts[emoteTitle];
+                if (soundpost !== undefined) {
+                    initializeSoundpost(emoteTitle, soundpost.soundurl);
+                    if (emoteTitle === ":homuhomu:" || emoteTitle === ":rratate:") {
+                        playSoundpost(emoteTitle, 5);  
+                    } else if (!playedSoundposts.includes(soundpost.soundurl)) {
+                        const myaudio = new Audio(soundpost.soundurl);
+                        myaudio.volume = defaultVolume;
+                        myaudio.play();
+                        playedSoundposts.push(soundpost.soundurl);
+                    }
                 }
             });
             if (mymessage.innerHTML.startsWith('boo')) {
                 const myaudio = new Audio("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/boo.ogg");
-                myaudio.volume = 0.1;
+                myaudio.volume = defaultVolume;
                 myaudio.play();
             }
         }
