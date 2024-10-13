@@ -1103,15 +1103,22 @@ let soundpostPlaybackState = {};
 const defaultVolume = 0.1;
 const defaultAdditionalPlayTime = 3;
 
-function initializeSoundpost(emote, soundurl) {
+function initializeSoundpost(emote, soundurl, preload = false) {
     if (!soundpostPlaybackState[emote]) {
         soundpostPlaybackState[emote] = {
             audio: new Audio(soundurl),
             totalPlayTime: 0,
             isPlaying: false,
-            timeout: null
+            timeout: null,
+            isPreloaded: false
         };
+
         soundpostPlaybackState[emote].audio.volume = defaultVolume;
+        if (preload) {
+            soundpostPlaybackState[emote].audio.addEventListener('canplaythrough', () => {
+                soundpostPlaybackState[emote].isPreloaded = true;
+            }, { once: true });
+        }
     }
 }
 
@@ -1119,7 +1126,7 @@ function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
     const soundpost = soundpostPlaybackState[emote];
     soundpost.totalPlayTime += additionalPlayTime;
 
-    if (!soundpost.isPlaying) {
+    if (!soundpost.isPlaying && soundpost.isPreloaded) {
         soundpost.isPlaying = true;
         soundpost.audio.play();
     }
@@ -1176,16 +1183,22 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                 }
             }
         }
-
         if (soundpostState) {
             const emotes = mymessage.querySelectorAll('.channel-emote[title]');
             emotes.forEach((emote) => {
                 const emoteTitle = emote.title;
                 const soundpost = soundposts[emoteTitle];
+
                 if (soundpost !== undefined) {
-                    initializeSoundpost(emoteTitle, soundpost.soundurl);
-                    if (emoteTitle === ":homuhomu:" || emoteTitle === ":rratate:") {
-                        playSoundpost(emoteTitle, 5);  
+                    const preload = (emoteTitle === ":homuhomu:" || emoteTitle === ":rratate:");
+                    initializeSoundpost(emoteTitle, soundpost.soundurl, preload);
+
+                    if (preload && soundpostPlaybackState[emoteTitle].isPreloaded) {
+                        playSoundpost(emoteTitle, 5); 
+                    } else if (preload) {
+                        soundpostPlaybackState[emoteTitle].audio.addEventListener('canplaythrough', () => {
+                            playSoundpost(emoteTitle, 5);
+                        }, { once: true });
                     } else if (!playedSoundposts.includes(soundpost.soundurl)) {
                         const myaudio = new Audio(soundpost.soundurl);
                         myaudio.volume = defaultVolume;
