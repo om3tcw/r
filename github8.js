@@ -1197,7 +1197,7 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                         playSoundpost(emoteTitle, 3); 
                     } else if (preload) {
                         soundpostPlaybackState[emoteTitle].audio.addEventListener('canplaythrough', () => {
-                            playSoundpost(emoteTitle, 3);
+                            playSoundpost(emoteTitle, 5);
                         }, { once: true });
                     } else if (!playedSoundposts.includes(soundpost.soundurl)) {
                         const myaudio = new Audio(soundpost.soundurl);
