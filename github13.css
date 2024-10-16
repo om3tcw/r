@@ -1878,7 +1878,7 @@ body {
 	display:block;
 	position:absolute;
 	width:100%;
-	z-index:11;
+	z-index:9999;
 	opacity:1;}
 #motdrow .well {background-color: #88217a;}
 
