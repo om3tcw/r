@@ -1791,7 +1791,7 @@ flex-wrap:nowrap;}
 overflow-x: hidden !important;}  
 /*https://raw.githubusercontent.com/om3tcw/r/emotes/other/roll.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/climb.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/boat.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/snow.gif alternatives */
 #chatline {  
-background-image: url(), url(https://raw.githubusercontent.com/om3tcw/r/emotes/other/roll.gif) , url(); 
+background-image: url(), url(https://raw.githubusercontent.com/om3tcw/r/emotes/other/climb.gif) , url(); 
 background-repeat: repeat, no-repeat;
 background-position: center;
 cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/anya.cur'), auto;}
