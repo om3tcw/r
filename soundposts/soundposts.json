@@ -321,5 +321,6 @@
 	":risubonjour:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/risubonjour.ogg"},
 	":shiowhore:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/shiowhore.ogg"},
 	":gremscape:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/gremscape.ogg"},
-	":grem360:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/grem360.ogg"}
+	":grem360:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/grem360.ogg"},
+	":vivizoom:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/vivizoom.ogg"}
 }
