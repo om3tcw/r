@@ -2158,7 +2158,7 @@ let holidayFriendState = getCookie("holidayFriendState") === "true";
 })();
 
 socket.on("chatMsg", ({ username, msg, meta, time }) => {
-    if (!['[server]', '[voteskip]', '<Kusa>'].includes(username.toLowerCase())) {
+    if (!['[server]', '[voteskip]', 'Kusa'].includes(username.toLowerCase())) {
         const mymessage = messageBuffer.lastElementChild.lastElementChild;
 
         if (mymessage.innerHTML.startsWith('/yay') && soundpostState) {
