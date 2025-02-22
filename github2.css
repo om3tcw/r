@@ -287,7 +287,7 @@
 .chat-msg-MrMcEggmanJones .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/pochihearteyes.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/baeeyes.png');
     background-position: center;
     background-repeat: no-repeat}
 	
@@ -1317,6 +1317,13 @@
 	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/iofieyes.png');
 	background-position: center;
 	background-repeat: no-repeat}
+
+.chat-msg-numbahtreis .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koboeyes.jpg');
+    background-position: center;
+    background-repeat: no-repeat}
 /* End of Oshi Eyes */
 /* Start of Emote Animations */
 
@@ -1716,7 +1723,7 @@ img.channel-emote[title$=":kaelabonk:"]  {
 .chat-msg-Kusa .username {filter: drop-shadow(1px 1px 1px #d4b0ff);}
 .chat-msg-Deadbeatchama .username {filter: drop-shadow(2px 2px 2px #ffb0e6);}
 .chat-msg-fuckhead .username {filter: drop-shadow(2px 3px 2px #002fff);}
-.chat-msg-jafafafy .username {filter: drop-shadow(7px 7px 7px #6c1485);}
+.chat-msg-jafafafy .username {filter: drop-shadow(8px 7px 7px #6c1485);}
 .chat-msg-Altearia .username {filter: drop-shadow(2px 2px 2px #47ff47);}
 .chat-msg-MrMcEggmanJones .username {filter: drop-shadow(1px 1px 1px #f56d05);}
 .chat-msg-slowchamp .username {filter: drop-shadow(1px 1px 1px #fffa6b);}
