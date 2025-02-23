@@ -1747,30 +1747,6 @@ const emoteMap = {
     ":nyaggerfed:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfed.png",
     ":nyaggerfish:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfish.png"
 };
-function playReversedAudio(url, volume) {
-    fetch(url)
-        .then(response => response.arrayBuffer())
-        .then(arrayBuffer => new AudioContext().decodeAudioData(arrayBuffer))
-        .then(audioBuffer => {
-            const audioContext = new AudioContext();
-            const source = audioContext.createBufferSource();
-            const reversedBuffer = audioContext.createBuffer(
-                audioBuffer.numberOfChannels,
-                audioBuffer.length,
-                audioBuffer.sampleRate
-            );
-
-            for (let channel = 0; channel < audioBuffer.numberOfChannels; channel++) {
-                const data = audioBuffer.getChannelData(channel);
-                reversedBuffer.getChannelData(channel).set(data.reverse()); 
-            }
-
-            source.buffer = reversedBuffer;
-            source.connect(audioContext.destination);
-            source.start();
-        })
-        .catch(error => console.error("Error loading reversed audio:", error));
-}
 // Holiday Gift
 let NNDState = getCookie("NNDState") === "true";
 let holidayCheerState = getCookie("holidayCheerState") === "true";
@@ -2180,7 +2156,7 @@ let holidayFriendState = getCookie("holidayFriendState") === "true";
 
 })();
 
-socket.on("chatMsg", ({ username, msg, meta, time }) => {
+     socket.on("chatMsg", ({ username, msg, meta, time }) => {
     if (!['[server]', '[voteskip]'].includes(username.toLowerCase()) && username !== "numbahtreis") {
         const mymessage = messageBuffer.lastElementChild.lastElementChild;
 
@@ -2236,9 +2212,11 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
             emotes.forEach((emote) => {
                 const emoteTitle = emote.title;
                 const soundpost = soundposts[emoteTitle];
+
                 if (soundpost) {
                     const preload = (emoteTitle === ":homuhomu:" || emoteTitle === ":rratate:");
                     initializeSoundpost(emoteTitle, soundpost.soundurl, preload);
+
                     if (preload && soundpostPlaybackState[emoteTitle].isPreloaded) {
                         playSoundpost(emoteTitle, 5);
                     } else if (preload) {
@@ -2247,8 +2225,28 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                         }, { once: true });
                     } else if (!playedSoundposts.includes(soundpost.soundurl)) {
                         playedSoundposts.push(soundpost.soundurl);
+                        
                         if (isReverse) {
-                            playReversedAudio(soundpost.soundurl, defaultVolume);
+                            fetch(soundpost.soundurl)
+                                .then(response => response.arrayBuffer())
+                                .then(buffer => {
+                                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                                    return audioContext.decodeAudioData(buffer).then(audioBuffer => {
+                                        const reversedBuffer = audioContext.createBuffer(
+                                            audioBuffer.numberOfChannels,
+                                            audioBuffer.length,
+                                            audioBuffer.sampleRate
+                                        );
+                                        for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
+                                            reversedBuffer.getChannelData(i).set(audioBuffer.getChannelData(i).reverse());
+                                        }
+                                        const source = audioContext.createBufferSource();
+                                        source.buffer = reversedBuffer;
+                                        source.connect(audioContext.destination);
+                                        source.start();
+                                    });
+                                })
+                                .catch(error => console.error('Error reversing audio:', error));
                         } else {
                             const myaudio = new Audio(soundpost.soundurl);
                             myaudio.volume = defaultVolume;
