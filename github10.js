@@ -2228,26 +2228,36 @@ let holidayFriendState = getCookie("holidayFriendState") === "true";
                         playedSoundposts.push(soundpost.soundurl);
 
                         if (isReverse) {
-                            fetch(soundpost.soundurl)
-                                .then(response => response.arrayBuffer())
-                                .then(buffer => audioContext.decodeAudioData(buffer))
-                                .then(audioBuffer => {
-                                    const reversedBuffer = audioContext.createBuffer(
-                                        audioBuffer.numberOfChannels,
-                                        audioBuffer.length,
-                                        audioBuffer.sampleRate
-                                    );
-                                    for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
-                                        reversedBuffer.getChannelData(i).set([...audioBuffer.getChannelData(i)].reverse());
-                                    }
-                                    
-                                    const source = audioContext.createBufferSource();
-                                    source.buffer = reversedBuffer;
-                                    source.connect(audioContext.destination);
-                                    audioContext.resume().then(() => source.start());
-                                })
-                                .catch(error => console.error('Error reversing audio:', error));
-                        } else {
+    const reverseAudio = async (url) => {
+        try {
+            const response = await fetch(url);
+            const arrayBuffer = await response.arrayBuffer();
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+            const reversedBuffer = audioContext.createBuffer(
+                audioBuffer.numberOfChannels,
+                audioBuffer.length,
+                audioBuffer.sampleRate
+            );
+
+            for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
+                reversedBuffer.getChannelData(i).set([...audioBuffer.getChannelData(i)].reverse());
+            }
+
+            const source = audioContext.createBufferSource();
+            source.buffer = reversedBuffer;
+            source.connect(audioContext.destination);
+            await audioContext.resume(); // Ensure context is running
+            source.start();
+        } catch (error) {
+            console.error('Error reversing audio:', error);
+        }
+    };
+
+    reverseAudio(soundpost.soundurl);
+}
+                         else {
                             const myaudio = new Audio(soundpost.soundurl);
                             myaudio.volume = defaultVolume;
                             myaudio.play();
