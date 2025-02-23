@@ -2236,11 +2236,9 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
             emotes.forEach((emote) => {
                 const emoteTitle = emote.title;
                 const soundpost = soundposts[emoteTitle];
-
                 if (soundpost) {
                     const preload = (emoteTitle === ":homuhomu:" || emoteTitle === ":rratate:");
                     initializeSoundpost(emoteTitle, soundpost.soundurl, preload);
-
                     if (preload && soundpostPlaybackState[emoteTitle].isPreloaded) {
                         playSoundpost(emoteTitle, 5);
                     } else if (preload) {
@@ -2248,11 +2246,14 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                             playSoundpost(emoteTitle, 3);
                         }, { once: true });
                     } else if (!playedSoundposts.includes(soundpost.soundurl)) {
-                        const myaudio = new Audio(soundpost.soundurl);
-                        myaudio.volume = defaultVolume;
-                        if (isReverse) {playReversedAudio(soundpost.soundurl, defaultVolume);}
-                        else { myaudio.play(); }
                         playedSoundposts.push(soundpost.soundurl);
+                        if (isReverse) {
+                            playReversedAudio(soundpost.soundurl, defaultVolume);
+                        } else {
+                            const myaudio = new Audio(soundpost.soundurl);
+                            myaudio.volume = defaultVolume;
+                            myaudio.play();
+                        }
                     }
                 }
             });
