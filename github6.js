@@ -1747,7 +1747,30 @@ const emoteMap = {
     ":nyaggerfed:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfed.png",
     ":nyaggerfish:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfish.png"
 };
+function playReversedAudio(url, volume) {
+    fetch(url)
+        .then(response => response.arrayBuffer())
+        .then(arrayBuffer => new AudioContext().decodeAudioData(arrayBuffer))
+        .then(audioBuffer => {
+            const audioContext = new AudioContext();
+            const source = audioContext.createBufferSource();
+            const reversedBuffer = audioContext.createBuffer(
+                audioBuffer.numberOfChannels,
+                audioBuffer.length,
+                audioBuffer.sampleRate
+            );
 
+            for (let channel = 0; channel < audioBuffer.numberOfChannels; channel++) {
+                const data = audioBuffer.getChannelData(channel);
+                reversedBuffer.getChannelData(channel).set(data.reverse()); 
+            }
+
+            source.buffer = reversedBuffer;
+            source.connect(audioContext.destination);
+            source.start();
+        })
+        .catch(error => console.error("Error loading reversed audio:", error));
+}
 // Holiday Gift
 let NNDState = getCookie("NNDState") === "true";
 let holidayCheerState = getCookie("holidayCheerState") === "true";
@@ -2227,10 +2250,8 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                     } else if (!playedSoundposts.includes(soundpost.soundurl)) {
                         const myaudio = new Audio(soundpost.soundurl);
                         myaudio.volume = defaultVolume;
-                         if (isReverse) {
-                            myaudio.playbackRate = -1;
-                        }
-                        myaudio.play();
+                        if (isReverse) {playReversedAudio(soundpost.soundurl, defaultVolume);}
+                        else { myaudio.play(); }
                         playedSoundposts.push(soundpost.soundurl);
                     }
                 }
