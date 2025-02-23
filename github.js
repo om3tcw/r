@@ -2156,7 +2156,7 @@ let holidayFriendState = getCookie("holidayFriendState") === "true";
 
 })();
 
-     socket.on("chatMsg", ({ username, msg, meta, time }) => {
+socket.on("chatMsg", ({ username, msg, meta, time }) => {
     if (!['[server]', '[voteskip]'].includes(username.toLowerCase()) && username !== "numbahtreis") {
         const mymessage = messageBuffer.lastElementChild.lastElementChild;
 
@@ -2177,7 +2177,6 @@ let holidayFriendState = getCookie("holidayFriendState") === "true";
         const userChatClass = `chat-msg-${username}`;
         const parentElement = mymessage.closest(`.${userChatClass}`);
         const isMJMessage = mymessage.innerHTML.startsWith('MJ:');
-        const isReverse = mymessage.innerHTML.includes('[r]');
         const offTopicEnabled = document.getElementById('holopeek_WatchalongOfftopic').checked ||
             document.getElementById('holopeek_WatchalongOfftopic2').checked;
 
@@ -2208,7 +2207,6 @@ let holidayFriendState = getCookie("holidayFriendState") === "true";
         });
 
         if (soundpostState) {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
             const emotes = mymessage.querySelectorAll('.channel-emote[title]');
             emotes.forEach((emote) => {
                 const emoteTitle = emote.title;
@@ -2225,43 +2223,10 @@ let holidayFriendState = getCookie("holidayFriendState") === "true";
                             playSoundpost(emoteTitle, 3);
                         }, { once: true });
                     } else if (!playedSoundposts.includes(soundpost.soundurl)) {
+                        const myaudio = new Audio(soundpost.soundurl);
+                        myaudio.volume = defaultVolume;
+                        myaudio.play();
                         playedSoundposts.push(soundpost.soundurl);
-
-                        if (isReverse) {
-    const reverseAudio = async (url) => {
-        try {
-            const response = await fetch(url);
-            const arrayBuffer = await response.arrayBuffer();
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-
-            const reversedBuffer = audioContext.createBuffer(
-                audioBuffer.numberOfChannels,
-                audioBuffer.length,
-                audioBuffer.sampleRate
-            );
-
-            for (let i = 0; i < audioBuffer.numberOfChannels; i++) {
-                reversedBuffer.getChannelData(i).set([...audioBuffer.getChannelData(i)].reverse());
-            }
-
-            const source = audioContext.createBufferSource();
-            source.buffer = reversedBuffer;
-            source.connect(audioContext.destination);
-            await audioContext.resume(); // Ensure context is running
-            source.start();
-        } catch (error) {
-            console.error('Error reversing audio:', error);
-        }
-    };
-
-    reverseAudio(soundpost.soundurl);
-}
-                         else {
-                            const myaudio = new Audio(soundpost.soundurl);
-                            myaudio.volume = defaultVolume;
-                            myaudio.play();
-                        }
                     }
                 }
             });
