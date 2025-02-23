@@ -2178,6 +2178,7 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
         const userChatClass = `chat-msg-${username}`;
         const parentElement = mymessage.closest(`.${userChatClass}`);
         const isMJMessage = mymessage.innerHTML.startsWith('MJ:');
+        const isReverse = mymessage.innerHTML.includes('[r]');
         const offTopicEnabled = document.getElementById('holopeek_WatchalongOfftopic').checked ||
             document.getElementById('holopeek_WatchalongOfftopic2').checked;
 
@@ -2226,6 +2227,9 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                     } else if (!playedSoundposts.includes(soundpost.soundurl)) {
                         const myaudio = new Audio(soundpost.soundurl);
                         myaudio.volume = defaultVolume;
+                         if (isReverse) {
+                            myaudio.playbackRate = -1;
+                        }
                         myaudio.play();
                         playedSoundposts.push(soundpost.soundurl);
                     }
