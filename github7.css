@@ -1847,7 +1847,7 @@ padding-right:0px!important;
     max-height: 500px;                          
     overflow-y: auto;
     background-image:url(https://raw.githubusercontent.com/om3tcw/r/emotes/other/holotalk.jpg);
-    background-size:auto 150%;
+    background-size:auto 100%;
     background-repeat:no-repeat;
     background-position:center}
     p#currenttitle{overflow-x:hidden}div#plmeta{ display: none;}
@@ -1908,7 +1908,7 @@ body {
     background:  linear-gradient(rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0.7) ), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/FXPOOuFXgAEW06k.jpg);
     overflow: visible;
     background-position-x: 00px;
-    background-size: contain;
+    background-size:auto 150%;
     background-repeat: repeat;
     background-attachment: fixed;}
 
