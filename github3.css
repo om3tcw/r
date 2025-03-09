@@ -1836,7 +1836,7 @@ overflow-x: hidden !important;}
 background-image: url(), url(https://raw.githubusercontent.com/om3tcw/r/emotes/other/climb.gif) , url(); 
 background-repeat: repeat, no-repeat;
 background-position: center;
-cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/anya.cur'), auto;}
+cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/Dragon%20Scimitar.cur'), auto;}
 .userlist_item {cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/polka.cur'), auto;}
 .channel-emote {max-width: 300px;max-height: 100px; position: relative;}
 .userlist_owner {color: #7c009e!important;font-weight: bold!important;}
@@ -1939,8 +1939,8 @@ footer {display: none;}
 
 /*background css*/
 body {
-    cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
-    background:  linear-gradient(rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0.7) ), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/FXPOOuFXgAEW06k.jpg);
+    cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/Dragon%20Scimitar.cur'), auto;
+    background:  linear-gradient(rgba(0, 0, 0, 0.7),  rgba(0, 0, 0, 0.7) ), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/ringwell.jpg);
     overflow: visible;
     background-position-x: 00px;
     background-size:auto 150%;
