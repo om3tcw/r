@@ -1,5 +1,26 @@
 /* Start of Oshi Eyes */
 
+.chat-msg-Tipsy .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/sana8.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-T_K_O .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/idk.gif');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-przybyci .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/ceci.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
 .chat-msg-Crackerjack .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -1188,7 +1209,7 @@
 .chat-msg-migoSMUG .timestamp {	
 	color:transparent;
 	background-size: 50px 15px;
-	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mocococo.png');
+	background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/migo.png');
 	background-position: center;
 	background-repeat: no-repeat}
 
