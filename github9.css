@@ -1,5 +1,39 @@
 /* Start of Oshi Eyes */
 
+.chat-msg-Keibu .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/haachama.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-Cunny .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/ina11.png');
+    background-position: center;
+    background-repeat: no-repeat}
+.chat-msg-jimmyboy .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/lap4.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-RADEON360 .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/irys5.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-god_kun .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/shiori5.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
 .chat-msg-Tipsy .timestamp {
     color:transparent;
     background-size: 50px 15px;
