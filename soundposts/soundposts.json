@@ -333,6 +333,7 @@
 	":mocoblast:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mocoblast.ogg"},
         ":bigfoot:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/suburbanbigfoot.ogg"},
 	":mocopyramid:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mocopyramid.ogg"},
-	":suiready:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/suiready.ogg"}
+	":suiready:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/suiready.ogg"},
+	":sufo:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/sufo.ogg"}
 
 }
