@@ -1678,11 +1678,6 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
 
         formatMessage(mymessage);
 
-        if (NNDState) {
-            if (!meta['addClass'])
-                meta['addClass'] = '';
-            nicoprocess(mymessage, meta.addClass);
-        }
 
         const userChatClass = `chat-msg-${username}`;
         const parentElement = mymessage.closest(`.${userChatClass}`);
