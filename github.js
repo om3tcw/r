@@ -1667,7 +1667,7 @@ const emoteMap = {
 };
 
 socket.on("chatMsg", ({ username, msg, meta, time }) => {
-    if (!['[server]', '[voteskip]'].includes(username.toLowerCase()) && username !== "numbahtreis") {
+    if (!['[server]', '[voteskip]'].includes(username.toLowerCase()) && username !== "numbertrees") {
         const mymessage = messageBuffer.lastElementChild.lastElementChild;
 
         if (mymessage.innerHTML.startsWith('/yay') && soundpostState) {
