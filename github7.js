@@ -1831,7 +1831,7 @@ if (document.getElementById('welcome')?.textContent.includes('rratbastard')) {
   const style = document.createElement('style');
   style.innerHTML = `
     .chat-msg-Kusa .username { font-size: 0; }
-    .chat-msg-Kusa .username:after { font-size: 14px; content: 'Hold'em Champ Kusa: '; }
+    .chat-msg-Kusa .username:after { font-size: 14px; content: 'Hold em Champ Kusa: '; }
   `;
   document.head.appendChild(style);
 }
