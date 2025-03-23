@@ -44,7 +44,7 @@
 .chat-msg-god_kun .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/shiori5.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/haachama.jpg');
     background-position: center;
     background-repeat: no-repeat}
 
@@ -737,9 +737,10 @@
 .chat-msg-LonelyTeamate .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/coni2.jpg');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/conimen.gif');
     background-position: center;
-    background-repeat: no-repeat}
+    background-repeat: no-repeat;
+animation: conime 45s infinite alternate;}
 
 .chat-msg-BEEEGcherry .timestamp {
     color:transparent;
@@ -1702,7 +1703,7 @@ img.channel-emote[title$=":gigispeed:"] {
 
 
 @keyframes inaselen {
-0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat; opacity:1;}
+0%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/coni3.png') 0 0 no-repeat; opacity:1;}
 43%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat; opacity:1;}
 45%   {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat; opacity:0;}
 46%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat; opacity:0;}
@@ -1714,6 +1715,7 @@ img.channel-emote[title$=":gigispeed:"] {
 98%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
 100%  {background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat; opacity:1;}
 }
+
 
 /* Displaced emotes */
 img.channel-emote[title$=":true:"]  {
