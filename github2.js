@@ -1783,6 +1783,15 @@ if (document.getElementById('welcome')?.textContent.includes('rratticus')) {
   document.head.appendChild(style);
 }
 
+if (document.getElementById('welcome')?.textContent.includes('MrMcEggmanJones')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-MaddyCaddy .username { font-size: 0; }
+    .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'MaddisoN Cattison: '; }
+  `;
+  document.head.appendChild(style);
+}
+
 if (document.getElementById('welcome')?.textContent.includes('Kusa')) {
   const style = document.createElement('style');
   style.innerHTML = `
