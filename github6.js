@@ -1800,6 +1800,15 @@ if (document.getElementById('welcome')?.textContent.includes('Noroba')) {
   document.head.appendChild(style);
 }
 
+if (document.getElementById('welcome')?.textContent.includes('Moruru')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-MaddyCaddy .username { font-size: 0; }
+    .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'Maddison CAttison: '; }
+  `;
+  document.head.appendChild(style);
+}
+
 if (document.getElementById('welcome')?.textContent.includes('Kusa')) {
   const style = document.createElement('style');
   style.innerHTML = `
@@ -1814,6 +1823,15 @@ if (!document.getElementById('welcome')) {
   style.innerHTML = `
     .chat-msg-MaddyCaddy .username { font-size: 0; }
     .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'Maddison cattison: '; }
+  `;
+  document.head.appendChild(style);
+}
+
+if (document.getElementById('welcome')?.textContent.includes('rratbastard')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-Kusa .username { font-size: 0; }
+    .chat-msg-Kusa .username:after { font-size: 14px; content: 'Hold'em Champ Kusa: '; }
   `;
   document.head.appendChild(style);
 }
