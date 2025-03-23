@@ -1746,4 +1746,74 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
     }
 });
 
+if (document.getElementById('welcome')?.textContent.includes('Rratboi')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-MaddyCaddy .username { font-size: 0; }
+    .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'MadDison Cattison: '; }
+  `;
+  document.head.appendChild(style);
+}
 
+if (document.getElementById('welcome')?.textContent.includes('MaddyCaddy')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-MaddyCaddy .username { font-size: 0; }
+    .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'Maddison CattisoN: '; }
+  `;
+  document.head.appendChild(style);
+}
+
+if (document.getElementById('welcome')?.textContent.includes('LonelyTeamate')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-MaddyCaddy .username { font-size: 0; }
+    .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'MaDdison Cattison: '; }
+  `;
+  document.head.appendChild(style);
+}
+
+if (document.getElementById('welcome')?.textContent.includes('rratticus')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-MaddyCaddy .username { font-size: 0; }
+    .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'Maddison CaTTison: '; }
+  `;
+  document.head.appendChild(style);
+}
+
+if (document.getElementById('welcome')?.textContent.includes('MrMcEggmanJones')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-MaddyCaddy .username { font-size: 0; }
+    .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'MaddisoN Cattison: '; }
+  `;
+  document.head.appendChild(style);
+}
+
+if (document.getElementById('welcome')?.textContent.includes('Noroba')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-MaddyCaddy .username { font-size: 0; }
+    .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'MaddisoN CattisoN: '; }
+  `;
+  document.head.appendChild(style);
+}
+
+if (document.getElementById('welcome')?.textContent.includes('Kusa')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-MaddyCaddy .username { font-size: 0; }
+    .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'Maddy: '; }
+  `;
+  document.head.appendChild(style);
+}
+
+if (!document.getElementById('welcome')) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .chat-msg-MaddyCaddy .username { font-size: 0; }
+    .chat-msg-MaddyCaddy .username:after { font-size: 14px; font-family: Malk; content: 'Maddison cattison: '; }
+  `;
+  document.head.appendChild(style);
+}
