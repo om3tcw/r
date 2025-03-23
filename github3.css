@@ -739,8 +739,7 @@
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/conimen.gif');
     background-position: center;
-    background-repeat: no-repeat;
-animation: conime 45s infinite alternate;}
+    background-repeat: no-repeat;}
 
 .chat-msg-BEEEGcherry .timestamp {
     color:transparent;
