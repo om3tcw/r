@@ -1839,8 +1839,10 @@ img.channel-emote[title$=":kaelabonk:"]  {
 .chat-msg-fuckhead .username:after {font-size: 14px;content: 'fu ckh ead: ';}
 .chat-msg-Inanon .username  {font-size: 0;}
 .chat-msg-Inanon .username:after {font-size: 14px;content: 'DEInan: ';}
-.chat-msg-MaddyCaddy .username  {font-size: 0;}
-.chat-msg-MaddyCaddy .username:after {font-size: 14px;font-family: Malk; content: 'Maddison Cattison: ';}
+.chat-msg-Inanon .username  {font-size: 0;}
+.chat-msg-Inanon .username:after {font-size: 14px;content: 'DEInan: ';}
+.chat-msg-jafafafy .username  {font-size: 0;}
+.chat-msg-jafafafy .username:after {font-size: 14px;content: 'JohnAffy: ';}
 @font-face {font-family: Malk; src: url(https://files.catbox.moe/346thw.otf); }
 .chat-msg-ShioValt .username  {font-size: 0;}
 .chat-msg-ShioValt .username:after {font-size: 14px;content: 'Cumgoblin: ';}
