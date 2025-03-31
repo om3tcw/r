@@ -1803,6 +1803,8 @@ img.channel-emote[title$=":pleasecometohoshimachisuiseis1stsololivestellarintoth
     bottom:px; right: 104px; height: 56px;  z-index: 1;} 
 img.channel-emote[title$=":faunaslap:"]  {
     right: 25px;  z-index: -1;} 
+img.channel-emote[title$=":gremhug:"]  {
+    bottom: 0px; right: 120px; max-width: 150px; z-index: 1;} 
 img.channel-emote[title$=":kaelabonk:"]  {
     left: 40px;  z-index: -1; max-height: 212px; bottom: 70px; margin:-112px;} 
 
