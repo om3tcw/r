@@ -344,5 +344,6 @@
 	":jill:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/jill.ogg"},
 	"jafafafy" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/jaffy%20audio.ogg"},
 	":mintstoppregnancy:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mintstoppregnancy.ogg"},
-	":forbiddenlove:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/forbiddenlove.ogg"}
+	":forbiddenlove:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/forbiddenlove.ogg"},
+	":rratflip:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/rratflip.ogg"}
 }
