@@ -96,7 +96,7 @@ $(document).ready(function () {
     $('#chatwrap').attr('placeholder', watermark);
 
     $('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://holodex.net/home'>HoloDex</a></li>");
-    $('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://aggie.io/k9z9w_8z47'>om3tcw Aggie</a></li>");
+    $('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://www.youtube.com/watch?v=JA50uvxvop8'>₿ Mined: 0.13</a></li>");
 });
 
 // Tabs
