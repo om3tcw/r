@@ -1,4 +1,19 @@
 /* Start of Oshi Eyes */
+
+.chat-msg-mediumsizedpotato .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/koyori2.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
+.chat-msg-kplsamo .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/essie.jpg');
+    background-position: center;
+    background-repeat: no-repeat}
+
 .chat-msg-NikkaGaming .timestamp {
     color:transparent;
     background-size: 50px 15px;
