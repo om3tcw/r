@@ -1,5 +1,12 @@
 /* Start of Oshi Eyes */
 
+.chat-msg-vloow .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/gooba.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
 .chat-msg-DangoPhone .timestamp {
     color:transparent;
     background-size: 50px 15px;
