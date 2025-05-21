@@ -1594,6 +1594,7 @@
     img.channel-emote[title$=":kiaroll:"],
     img.channel-emote[title$=":shionchair:"],
     img.channel-emote[title$=":garsmolba:"],
+    img.channel-emote[title$=":botancart:"],
     img.channel-emote[title$=":spina:"],
 	img.channel-emote[title$=":korodrone:"]
     {animation: garoomba 15s  infinite;}
