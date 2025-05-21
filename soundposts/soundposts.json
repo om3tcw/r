@@ -354,5 +354,6 @@
 	":mumeislaughter:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mumeislaughter.ogg"},
 	":notreadin:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/notreadin.ogg"},
 	":chihayadoot:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/chihayadoot.ogg"},
-	":gigiglitch:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/gigiglitch.ogg"}
+	":gigiglitch:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/gigiglitch.ogg"},
+	":laughingbote:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/laughingbote.ogg"}
 }
