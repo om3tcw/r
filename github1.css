@@ -2491,10 +2491,4 @@ form input#chatline {background-size: auto:}
     transform: scale(-1, 1);
 
 }
- img.channel-emote[title$=":botancart:"]
-    {animation: garoomba2 3s  infinite;}
 
-@keyframes garoomba2 {
-    0%   {  transform: skew(28880deg,10deg);}
-    50%  { transform: skew(5434deg,6677deg);} 
-    100% {  transform: skew(20deg,4444deg);}
