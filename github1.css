@@ -1940,6 +1940,8 @@ img.channel-emote[title$=":kaelabonk:"]  {
 .chat-msg-Kei .username {filter: drop-shadow(1px 1px 1px #1a1919);}
 
 /* username edits*/
+.chat-msg-NinoValt .username  {font-size: 0;}
+.chat-msg-Ninovalt .username:after {font-size: 14px;content: 'NinaValt ;) : ';}
 .chat-msg-marble .username  {font-size: 0;}
 .chat-msg-marble .username:after {font-size: 14px;content: 'gremarble: ';}
 .chat-msg-etch .username  {font-size: 0;}
