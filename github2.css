@@ -1941,7 +1941,7 @@ img.channel-emote[title$=":kaelabonk:"]  {
 
 /* username edits*/
 .chat-msg-NinoValt .username  {font-size: 0;}
-.chat-msg-Ninovalt .username:after {font-size: 14px;content: 'NinaValt ;) : ';}
+.chat-msg-NinoValt .username:after {font-size: 14px;content: 'NinaValt ;) : ';}
 .chat-msg-marble .username  {font-size: 0;}
 .chat-msg-marble .username:after {font-size: 14px;content: 'gremarble: ';}
 .chat-msg-etch .username  {font-size: 0;}
