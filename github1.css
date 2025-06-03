@@ -1947,6 +1947,8 @@ img.channel-emote[title$=":kaelabonk:"]  {
 .chat-msg-marble .username:after {font-size: 14px;content: 'gremarble: ';}
 .chat-msg-etch .username  {font-size: 0;}
 .chat-msg-etch .username:after {font-size: 14px;content: 'itsbritneybetch: ';}
+.chat-msg-m_ .username  {font-size: 0;}
+.chat-msg-m_ .username:after {font-size: 14px;content: '米_: ';}
 .chat-msg-Mc .username  {font-size: 0;}
 .chat-msg-Mc .username:after {font-size: 14px;content: 'McFin: ';}
 .chat-msg-CEOofBandaids .username  {font-size: 0;}
