@@ -96,8 +96,7 @@ $(document).ready(function () {
     $('#chatwrap').attr('placeholder', watermark);
 
     $('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://holodex.net/home'>HoloDex</a></li>");
-    $('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://www.youtube.com/watch?v=JA50uvxvop8'>₿: 6.11</a></li>");
-     $('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://chatgpt.com/'>EMERGENCY MOSH FUND</a></li>");
+    $('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://www.youtube.com/watch?v=JA50uvxvop8'>₿ Mined: 10.81</a></li>");
 });
 
 // Tabs
