@@ -2494,7 +2494,7 @@ form input#chatline {background-size: auto:}
     -o-transform: scale(-1, 1);
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
-
+}
 img.channel-emote[title$=":doroboard:"] {
   animation: trickSequence 4s ease-in-out infinite;
   offset-path: path("M 0 64 A 64 -64 0 1 1 -64 0 A 64 64 0 1 1 64 0");
