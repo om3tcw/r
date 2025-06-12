@@ -2495,5 +2495,45 @@ form input#chatline {background-size: auto:}
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
 
+img.channel-emote[title$=":doroboard:"] {
+  animation: trickSequence 4s ease-in-out infinite;
+  offset-path: path("M 0 64 A 64 -64 0 1 1 -64 0 A 64 64 0 1 1 64 0");
+  offset-rotate: auto;
+  offset-anchor: center;
+  display: inline-block;
+  position: relative;
+}
+
+@keyframes trickSequence {
+  0% {
+    offset-distance: 0%;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    offset-distance: 0%;
+    transform: translateX(-50px) rotateZ(30deg);
+  }
+  20% {
+    offset-distance: 0%;
+    transform: translateX(0) rotateZ(0deg);
+  }
+  30% {
+    offset-distance: 0%;
+    transform: translateY(-40px) rotateX(180deg);
+  }
+  40% {
+    offset-distance: 0%;
+    transform: translateY(0px) rotateX(360deg);
+  }
+  50% {
+    offset-distance: 100%;
+    offset-path: path("M 0 64 A 64 64 0 1 0 0.01 64");
+  }
+  100% {
+    offset-path: path("M 480 0 A -64 64 0 1 1 0.01 64");
+    offset-distance: 0%;
+  }
+}
+
 }
 
