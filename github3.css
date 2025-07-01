@@ -1,5 +1,21 @@
 /* Start of Oshi Eyes */
 
+.chat-msg-zawasen .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/sameko.jpg');
+    background-position: center;
+    background-repeat: no-repeat}
+
+
+.chat-msg-splapling .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/pekomama.jpg');
+    background-position: center;
+    background-repeat: no-repeat}
+
+
 .chat-msg-Bimmygarasu .timestamp {
     color:transparent;
     background-size: 50px 15px;
@@ -850,7 +866,7 @@
 .chat-msg-LonelyTeamate .timestamp {
     color:transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/conimen.gif');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/retardedcat.png');
     background-position: center;
     background-repeat: no-repeat;}
 
