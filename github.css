@@ -51,6 +51,13 @@
     background-position: center;
     background-repeat: no-repeat}
 
+.chat-msg-shumblon .timestamp {
+    color:transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/baenya.png');
+    background-position: center;
+    background-repeat: no-repeat}
+
 .chat-msg-iTako .timestamp {
     color:transparent;
     background-size: 50px 15px;
