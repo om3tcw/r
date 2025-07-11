@@ -2525,11 +2525,23 @@ form input#chatline {background-size: auto:}
     transform: scale(-1, 1);
 }
 
+*::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 20px solid transparent; 
+  border-left-color: blue; 
+  transform: rotate(45deg); 
+  transform-origin: top right;
+  animation: blink-red-inset 0.5s linear infinite;
+}
+
 * {
   box-shadow: 0 0 0 5px red inset; 
-  border-radius: 50%; 
+  border-radius: 5%; 
   box-sizing: border-box; 
-  animation: blink-red-inset 0.75s linear infinite;
+  animation: blink-red-inset 0.7s linear infinite;
 }
 
 @keyframes blink-red-inset {
