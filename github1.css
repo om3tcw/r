@@ -2525,4 +2525,6 @@ form input#chatline {background-size: auto:}
     transform: scale(-1, 1);
 }
 
-
+* {
+  border-radius: 15px;
+}
