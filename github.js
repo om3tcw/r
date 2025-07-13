@@ -1475,16 +1475,16 @@ let soundpostState = getCookie("soundpostState") === "true";
 
 const soundpostButton = document.createElement("button");
 soundpostButton.style.backgroundImage = soundpostState
-    ? "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/medicated.png')"
-    : "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/schizo.gif')";
+    ? "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/schizo.gif')"
+    : "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/medicated.png')";
 soundpostButton.style.backgroundSize = "cover";
 
 soundpostButton.addEventListener("click", () => {
     soundpostState = !soundpostState;
     setCookie("soundpostState", soundpostState);
     soundpostButton.style.backgroundImage = soundpostState
-        ? "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/medicated.png')"
-        : "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/schizo.gif')";
+        ? "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/schizo.gif')"
+        : "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/medicated.png')";
 });
 const chatInputRow = document.getElementById("chatinputrow");
 chatInputRow.appendChild(soundpostButton);
