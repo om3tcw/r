@@ -1988,10 +1988,10 @@ img.channel-emote[title$=":kaelabonk:"]  {
 .chat-msg-Inanonymous .username:after {font-size: 14px;content: 'xIx_lmaolinyloose_xIx Jr. Sr.: ';}
 .chat-msg-fuckhead .username  {font-size: 0;}
 .chat-msg-fuckhead .username:after {font-size: 14px;content: 'fu ckh ead: ';}
+.chat-msg-shumblon .username  {font-size: 0;}
+.chat-msg-shumblon .username:after {font-size: 14px;content: 'DEInan: ';}
 .chat-msg-Inanon .username  {font-size: 0;}
-.chat-msg-Inanon .username:after {font-size: 14px;content: 'DEInan: ';}
-.chat-msg-Inanon .username  {font-size: 0;}
-.chat-msg-Inanon .username:after {font-size: 14px;content: 'DEInan: ';}
+.chat-msg-Inanon .username:after {font-size: 14px;content: 'sh**blon: ';}
 .chat-msg-jafafafy .username  {font-size: 0;}
 .chat-msg-jafafafy .username:after {font-size: 14px;content: 'Jaferal: ';}
 @font-face {font-family: Malk; src: url(https://files.catbox.moe/346thw.otf); }
