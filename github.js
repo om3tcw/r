@@ -1707,6 +1707,31 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
                 }
             });
 
+        if (soundpostState) {
+            const emotes = mymessage.querySelectorAll('.channel-emote[title]');
+            emotes.forEach((emote) => {
+                const emoteTitle = emote.title;
+                const soundpost = soundposts[emoteTitle];
+
+                if (soundpost) {
+                    const preload = (emoteTitle === ":homuhomu:" || emoteTitle === "bakushin");
+                    initializeSoundpost(emoteTitle, soundpost.soundurl, preload);
+
+                    if (preload && soundpostPlaybackState[emoteTitle].isPreloaded) {
+                        playSoundpost(emoteTitle, 5);
+                    } else if (preload) {
+                        soundpostPlaybackState[emoteTitle].audio.addEventListener('canplaythrough', () => {
+                            playSoundpost(emoteTitle, 3);
+                        }, { once: true });
+                    } else if (!playedSoundposts.includes(soundpost.soundurl)) {
+                        const myaudio = new Audio(soundpost.soundurl);
+                        myaudio.volume = defaultVolume;
+                        myaudio.play();
+                        playedSoundposts.push(soundpost.soundurl);
+                    }
+                }
+            });
+            
             if (mymessage.innerHTML.startsWith('boo') && soundpostState) {
                 const myaudio = new Audio("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/boo.ogg");
                 myaudio.volume = defaultVolume;
