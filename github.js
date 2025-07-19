@@ -961,39 +961,42 @@ $("#messagebuffer a").parent().parent().each(function () {
     }
 
 
-    function toggleHiddenMJMessages() {
-        const offTopicEnabled = document.getElementById('holopeek_WatchalongOfftopic').checked ||
-            document.getElementById('holopeek_WatchalongOfftopic2').checked;
+function toggleHiddenMJMessages() {
+    hiddenMJMessages = hiddenMJMessages.filter(message => document.body.contains(message));
 
+    const offTopicEnabled = document.getElementById('holopeek_WatchalongOfftopic').checked ||
+        document.getElementById('holopeek_WatchalongOfftopic2').checked;
 
-        if (offTopicEnabled) {
-            hiddenMJMessages.forEach(message => {
-                message.style.display = 'block';
-            });
-            hiddenMJMessages = [];
-        } else {
-            document.querySelectorAll('[class^="chat-msg-"]').forEach(message => {
-                if (message.innerText.startsWith('MJ:')) {
-                    message.style.display = 'none';
-                    if (!hiddenMJMessages.includes(message)) {
-                        hiddenMJMessages.push(message);
-                    }
+    if (offTopicEnabled) {
+        hiddenMJMessages.forEach(message => {
+            message.style.display = 'block';
+        });
+        hiddenMJMessages = [];
+    } else {
+        document.querySelectorAll('[class^="chat-msg-"]').forEach(message => {
+            if (message.innerText.startsWith('MJ:')) {
+                message.style.display = 'none';
+                if (!hiddenMJMessages.includes(message)) {
+                    hiddenMJMessages.push(message);
                 }
-            });
-        }
-    }
-
-
-    function hideMJMessagesOnLoad() {
-        document.querySelectorAll('[class^="chat-msg-"]').forEach(parentElement => {
-            parentElement.querySelectorAll('span').forEach(span => {
-                if (span.innerHTML.includes('MJ:')) {
-                    parentElement.style.display = 'none';
-                    hiddenMJMessages.push(parentElement);
-                }
-            });
+            }
         });
     }
+}
+
+function hideMJMessagesOnLoad() {
+    hiddenMJMessages = hiddenMJMessages.filter(parentElement => document.body.contains(parentElement));
+    document.querySelectorAll('[class^="chat-msg-"]').forEach(parentElement => {
+        parentElement.querySelectorAll('span').forEach(span => {
+            if (span.innerHTML.includes('MJ:')) {
+                parentElement.style.display = 'none';
+                if (!hiddenMJMessages.includes(parentElement)) {
+                    hiddenMJMessages.push(parentElement);
+                }
+            }
+        });
+    });
+}
 
 
     if (document.readyState === 'loading') {
@@ -1637,6 +1640,21 @@ const emoteMap = {
     ":nyaggerfish:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfish.png"
 };
 
+function cleanupSoundpostPlaybackState() {
+    const limit = 40; 
+    const keys = Object.keys(soundpostPlaybackState);
+    if (keys.length > limit) {
+        const toDelete = keys.slice(0, keys.length - limit);
+        toDelete.forEach(key => {
+            if (soundpostPlaybackState[key].audio) {
+                soundpostPlaybackState[key].audio.pause();
+                soundpostPlaybackState[key].audio.src = "";
+            }
+            delete soundpostPlaybackState[key];
+        });
+    }
+}
+
 socket.on("chatMsg", ({ username, msg, meta, time }) => {
     if (!['[server]', '[voteskip]'].includes(username.toLowerCase()) && username !== "numbertrees") {
         const mymessage = messageBuffer.lastElementChild.lastElementChild;
@@ -1717,15 +1735,5 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
         }
         playedSoundposts = [];
     }
+cleanupSoundpostPlaybackState();
 });
-
-
-
-if (document.getElementById('welcome')?.textContent.includes('rratbastard')) {
-  const style = document.createElement('style');
-  style.innerHTML = `
-    .chat-msg-Kusa .username { font-size: 0; }
-    .chat-msg-Kusa .username:after { font-size: 14px; content: 'God of ARAMS Kusa: '; }
-  `;
-  document.head.appendChild(style);
-}
