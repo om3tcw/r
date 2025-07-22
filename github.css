@@ -2004,8 +2004,7 @@ img.channel-emote[title$=":kaelabonk:"]  {
 @font-face {  font-family: Rans; src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/uabsans.ttf); }
 .chat-msg-Cunny { font-family: Cheeky; }
 @font-face {  font-family: Cheeky; src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/cheeky.ttf); }
-.chat-msg-GKAnon { font-family: Cheeky44; }
-@font-face {  font-family: Cheeky44; src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/palestine.ttf); }
+
 /*general css*/
 ::-webkit-scrollbar {width: 6px; height: 6px;}
 ::-webkit-scrollbar-corner {background: rgba(0,0,0,0);}
