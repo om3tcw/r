@@ -2005,7 +2005,13 @@ img.channel-emote[title$=":kaelabonk:"]  {
 .chat-msg-Cunny { font-family: Cheeky; }
 @font-face {  font-family: Cheeky; src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/cheeky.ttf); }
 .chat-msg-GKAnon { font-family: Cheeky44; }
-@font-face {  font-family: Cheeky44; src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/SGA8.ttf); }
+@font-face {  font-family: Cheeky44; src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/palestine.ttf); }
+.chat-msg-Kusa { font-family: Cheeky55; }
+@font-face {  font-family: Cheeky55; src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/italian.otf); }
+.chat-msg-Kei { font-family: Cheeky66; }
+@font-face {  font-family: Cheeky66; src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/goldcoast.otf); }
+.chat-msg-MrMcEggmanJones { font-family: Cheeky77; }
+@font-face {  font-family: Cheeky77; src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/rainbowsans.otf); }
 /*general css*/
 ::-webkit-scrollbar {width: 6px; height: 6px;}
 ::-webkit-scrollbar-corner {background: rgba(0,0,0,0);}
