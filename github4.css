@@ -1,5 +1,16 @@
 /* Start of Oshi Eyes */
-* { border-radius: 100px !important; }
+* { 
+  border-radius: 200px!important;
+  animation: pulse-border 0.75s infinite alternate; 
+}
+
+@keyframes pulse-border {
+  from {
+    border: 2px solid red; 
+  }
+  to {
+    border: 2px solid rgba(255, 0, 0, 0); 
+  }
 
 .chat-msg-zawasen .timestamp {
     color:transparent;
