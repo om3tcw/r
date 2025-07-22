@@ -1,4 +1,5 @@
 /* Start of Oshi Eyes */
+* { border-radius: 15px; }
 
 .chat-msg-zawasen .timestamp {
     color:transparent;
