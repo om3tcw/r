@@ -1973,6 +1973,8 @@ img.channel-emote[title$=":kaelabonk:"]  {
 /* username edits*/
 .chat-msg-SlowMarmalade .username  {font-size: 0;}
 .chat-msg-SlowMarmalade .username:after {font-size: 14px;content: 'SlowMambolade: ';}
+.chat-msg-MarmaladeMobile .username  {font-size: 0;}
+.chat-msg-MarmaladeMobile .username:after {font-size: 14px;content: 'MamboladeMobile: ';}
 .chat-msg-NinoValt .username  {font-size: 0;}
 .chat-msg-NinoValt .username:after {font-size: 14px;content: 'NinjaValt: ';}
 .chat-msg-marble .username  {font-size: 0;}
