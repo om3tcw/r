@@ -96,7 +96,7 @@ $(document).ready(function () {
     $('#chatwrap').attr('placeholder', watermark);
 
     $('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://holodex.net/home'>HoloDex</a></li>");
-    $('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://www.youtube.com/watch?v=JA50uvxvop8'>₿ Debt: -53.11</a></li>");
+    $('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://docs.google.com/forms/d/e/1FAIpQLScmTUBfSR1bgRjQskGCMhnNpV_wZTIyQ17oMAZA1FoD5LY7LA/viewform?usp=sharing&ouid=112222705232140937762'>🇬🇧 UK Age Verification Form</a></li>");
 });
 
 // Tabs
