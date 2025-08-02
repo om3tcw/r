@@ -35,7 +35,7 @@ const xaeModule = {
         playlist: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r/playlistenhancement2.js", done: true },
         privmsg: { active: 1, rank: 1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r/pmenhancement.js", done: true },
         notifier: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/notifier.js", done: true },
-        layout: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/immergrok/r/layoutoptions.js", done: true },
+        layout: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/immergrok/r@marblechanges/layoutoptions.js", done: true },
         userlist: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/userlist.js", done: true },
         html2canvas: { active: 1, rank: -1, url: "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js", done: true }
     },
