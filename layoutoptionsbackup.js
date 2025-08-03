@@ -62,13 +62,27 @@ function toggleChat() {
     return CyTube_Layout(window, document, window.jQuery, String)
 })
 (function(window, document, $, String, undefined) {
-    $('nav.navbar a[href="#"][onclick]').attr("href", "javascript:void(0)");
+    $('nav.navbar a[href="#"][onclick]')
+    .attr("href", "javascript:void(0)");
+    
     if (!$('a[onclick*="removeUntilNext"]').length) {
-        $('a[onclick*="removeVideo"]').parent().parent().append($("<li>").append($("<a>").attr("href", "javascript:void(0)").attr("onclick", "javascript:removeUntilNext()").text("Remove Video Until Next")))
+        $('a[onclick*="removeVideo"]')
+        .parent()
+        .parent()
+        .append($("<li>")
+        .append($("<a>")
+        .attr("href", "javascript:void(0)")
+        .attr("onclick", "javascript:removeUntilNext()")
+        .text("Remove Video Until Next")))
     }
     if (!$('a[onclick*="toggleChat"]').length) {
-        $('a[onclick*="chatOnly"]').parent().after($("<li>").append($("<a>").attr("href", "javascript:void(0)").attr("onclick", "javascript:toggleChat()").text("Remove Chat")))
-    }({
+        $('a[onclick*="chatOnly"]')
+        .parent().after($("<li>")
+        .append($("<a>")
+        .attr("href", "javascript:void(0)")
+        .attr("onclick", "javascript:toggleChat()")
+        .text("Remove Chat")))
+    } ({
         host: "",
         initialize: function() {
             if (CLIENT.cinemaMode) {
@@ -79,7 +93,14 @@ function toggleChat() {
             this.loadStyle()
         },
         createButtons: function() {
-            $('a[onclick*="removeVideo"]').parent().parent().append($("<li>").append($("<a>").attr("href", "javascript:void(0)").attr("onclick", 'javascript:$("#cinematoggle").click()').text("Cinema Mode")));
+            $('a[onclick*="removeVideo"]')
+            .parent()
+            .parent()
+            .append($("<li>")
+            .append($("<a>")
+            .attr("href", "javascript:void(0)")
+            .attr("onclick", 'javascript:$("#cinematoggle").click()')
+            .text("Cinema Mode")));
             $('<div id="cinematoggle"><span class="glyphicon glyphicon-new-window "></span></div>').appendTo("body").click(function() {
                 if (!$("body").hasClass("cinemachat")) {
                     if ($("#userlist").is(":visible")) {
