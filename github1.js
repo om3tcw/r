@@ -1656,7 +1656,7 @@ function cleanupSoundpostPlaybackState() {
 socket.on("chatMsg", ({ username, msg, meta, time }) => {
    if (
   !['[server]', '[voteskip]'].includes(username.toLowerCase()) &&
-  username !== "ouch" &&
+  username !== "numbertrees" &&
   username !== "MOCOCO_SEX" ) {
         const mymessage = messageBuffer.lastElementChild.lastElementChild;
 
