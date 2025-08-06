@@ -1654,7 +1654,10 @@ function cleanupSoundpostPlaybackState() {
 }
 
 socket.on("chatMsg", ({ username, msg, meta, time }) => {
-    if (!['[server]', '[voteskip]'].includes(username.toLowerCase()) && username !== "numbertrees") {
+   if (
+  !['[server]', '[voteskip]'].includes(username.toLowerCase()) &&
+  username !== "ouch" &&
+  username !== "MOCOCO_SEX" ) {
         const mymessage = messageBuffer.lastElementChild.lastElementChild;
 
         if (mymessage.innerHTML.startsWith('/yay') && soundpostState) {
