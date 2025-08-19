@@ -1,4 +1,4 @@
-
+/* Start of Oshi Eyes */
 
 
 .chat-msg-zawasen .timestamp {
@@ -338,11 +338,18 @@
 .chat-msg-marble .timestamp {
     color: transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/immerred.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/gremarble.jpg');
     background-position: center;
     background-repeat: no-repeat
 }
 
+.chat-msg-immerred .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/immerred.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
 
 .chat-msg-attenanakusa .timestamp,
 .chat-msg-puchigire .timestamp,
@@ -577,7 +584,7 @@
 }
 
 .chat-msg-fuckhead {
-    font-family: "Comic Sans MS";
+    font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
 }
 
 .chat-msg-fuckhead .timestamp {
@@ -924,13 +931,13 @@
     background-repeat: no-repeat
 }
 
-.chat-msg-thegoodrrat .timestamp {
-    color: transparent;
-    background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nyanners.png');
-    background-position: center;
-    background-repeat: no-repeat
-}
+
+
+
+
+
+
+
 
 .chat-msg-GoomberRoomber .timestamp {
     color: transparent;
@@ -2828,12 +2835,12 @@ img.channel-emote[title$=":faunabeam:"] {
     z-index: 1;
 }
 
-img.channel-emote[title$=":true:"] {
-    bottom: 0px;
-    right: 120px;
-    max-width: 150px;
-    z-index: 1;
-}
+
+
+
+
+
+
 
 img.channel-emote[title$=":kiarabongo:"] {
     bottom: 60px;
@@ -2861,11 +2868,11 @@ img.channel-emote[title$=":mumeipointing:"] {
     z-index: 1;
 }
 
-img.channel-emote[title$=":nvg:"] {
-    bottom: 10px;
-    right: 100px;
-    z-index: 1;
-}
+
+
+
+
+
 
 img.channel-emote[title$=":kaelaquota:"] {
     right: 4px;
@@ -2920,10 +2927,12 @@ img.channel-emote[title$=":kaelabonk:"] {
 
 .chat-msg-fuckhead .username {
     filter: drop-shadow(2px 3px 2px #002fff);
+    font-size: 0;
 }
 
 .chat-msg-jafafafy .username {
     filter: drop-shadow(8px 7px 7px #6c1485);
+    font-size: 0;
 }
 
 .chat-msg-Altearia .username {
@@ -3012,7 +3021,7 @@ img.channel-emote[title$=":kaelabonk:"] {
 
 .chat-msg-marble .username:after {
     font-size: 14px;
-    content: 'Кихотble: ';
+    content: 'justmarble: ';
 }
 
 .chat-msg-cucumbersama .username {
@@ -3069,9 +3078,9 @@ img.channel-emote[title$=":kaelabonk:"] {
     content: 'xIx_lmaolinyloose_xIx Jr. Sr.: ';
 }
 
-.chat-msg-fuckhead .username {
-    font-size: 0;
-}
+
+
+
 
 .chat-msg-fuckhead .username:after {
     font-size: 14px;
@@ -3096,9 +3105,9 @@ img.channel-emote[title$=":kaelabonk:"] {
     content: 'sh**blon: ';
 }
 
-.chat-msg-jafafafy .username {
-    font-size: 0;
-}
+
+
+
 
 .chat-msg-jafafafy .username:after {
     font-size: 14px;
@@ -3121,7 +3130,7 @@ img.channel-emote[title$=":kaelabonk:"] {
 
 .chat-msg-Noroba,
 .chat-msg-Noromo {
-    font-family: Noroba;
+    font-family: Noroba, system-ui;
 }
 
 @font-face {
@@ -3130,7 +3139,7 @@ img.channel-emote[title$=":kaelabonk:"] {
 }
 
 .chat-msg-nautilus {
-    font-family: Rans;
+    font-family: Rans, ui-monospace;
 }
 
 @font-face {
@@ -3139,7 +3148,7 @@ img.channel-emote[title$=":kaelabonk:"] {
 }
 
 .chat-msg-Cunny {
-    font-family: Cheeky;
+    font-family: Cheeky, ui-rounded;
 }
 
 @font-face {
@@ -3188,11 +3197,11 @@ button {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap !important;
-    ;
+    height: 100% !important;
 }
 
 #mainpage {
-    padding-top: 51px;
+    padding-top: 32px;
 }
 
 html,
@@ -3217,16 +3226,18 @@ body.fluid>#wrap,
 
 .modal {
     padding-right: 0px !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .modal::-webkit-scrollbar {
     width: 0px;
 }
 
-.modal {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
+
+
+
+
 
 .timestamp {
     font-size: 8pt !important;
@@ -3247,9 +3258,9 @@ body.fluid>#wrap,
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/anya.cur'), auto;
 }
 
-.userlist_item {
-    cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/polka.cur'), auto;
-}
+
+
+
 
 .channel-emote {
     max-width: 300px;
@@ -3330,13 +3341,24 @@ userlist-darkoracle363 .userlist-Kusa,
 }
 
 #pmbar .panel-heading {
-    background-color: #bd6231
+    background-color: #3e444ccc;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: white;
+    font-weight: bolder;
+    border: 0px transparent !important;
+    display: block;
+    box-sizing: initial;
 }
 
 /*playlist polls video css*/
 
 #pollwrap>div {
     margin: 0;
+    box-sizing: content-box !important;
+    border: none;
+    background-color: rgba(20, 20, 20, 1);
 }
 
 .queue_active.queue_temp {
@@ -3346,12 +3368,15 @@ userlist-darkoracle363 .userlist-Kusa,
 #rightcontrols,
 #rightpane {
     box-shadow: none;
-    background: #0008;
+    background: #0005;
     border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
 }
 
 #pollwrap {
-    min-height: 0px
+    min-height: 0px;
+    padding: 0px !important;
 }
 
 #pin-dropdown>.dropdown-menu {
@@ -3359,7 +3384,9 @@ userlist-darkoracle363 .userlist-Kusa,
 }
 
 #messagebuffer {
-    padding: 0px
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    box-shadow: none;
 }
 
 .poll-notify {
@@ -3412,7 +3439,9 @@ div#plmeta {
 
 .qe_blame {
     float: right;
-    font-family: Monospace
+    font-family: Monospace;
+    margin-left: 10px;
+    margin-right: 5px;
 }
 
 .queue_temp {
@@ -3425,18 +3454,8 @@ div#plmeta {
     padding: 2px 4px;
     border: 0px solid !important;
     outline: 1px solid black;
-}
+    opacity: .9
 
-.queue_entry {
-    opacity: .900
-}
-
-p#currenttitle {
-    overflow-x: hidden
-}
-
-div#plmeta {
-    display: none;
 }
 
 #playlistrow .checkbox {
@@ -3479,7 +3498,7 @@ a.navbar-brand {
     background-repeat: no-repeat;
     width: 90px;
     background-position: center;
-    background-size: auto 50px;
+    background-size: auto 45px;
     font-size: 0;
 }
 
@@ -3494,7 +3513,6 @@ a.navbar-brand {
 footer {
     display: none;
 }
-
 
 /*background css*/
 body {
@@ -3526,12 +3544,6 @@ body {
     display: none;
 }
 
-#motd {
-    background-color: #88217a;
-    font-weight: bold;
-    color: white;
-}
-
 #motdrow {
     display: block;
     position: absolute;
@@ -3559,14 +3571,14 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: none
 }
 
 #chatheader {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: #000a;
     border: 0px;
     border-radius: 0px;
-    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
     padding: 5px;
     padding-bottom: 1px;
     font-size: 16px;
@@ -3624,22 +3636,27 @@ textarea.form-control {
 }
 
 #chatinputrow button {
-    height: 38px;
+    height: 32px;
+    width: 32px;
     font-style: bolder;
     color: white;
     padding: 0 18px;
+    border: none;
+    border-radius: 0;
+    background-color: #0000
 }
 
 #userlist {
     width: 100px;
     padding-top: 3px;
     padding-left: 3px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.5);
     border: 0px;
-    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: none
 }
 
 .userlist_item {
+    cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/Faunapoint.ani'), auto;
     height: 14px;
     padding-left: 3px;
     word-break: break-all;
@@ -3664,8 +3681,13 @@ textarea.form-control {
     font-size: 14px;
     color: white;
     display: block;
-    padding-left: 10px;
+    padding-left: 3px;
     padding-bottom: 1px;
+}
+
+#messagebuffer > div:nth-child(2n):not(.nick-highlight) {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
 }
 
 #messagebuffer>div:hover>.timestamp,
@@ -3681,17 +3703,15 @@ textarea.form-control {
 #emotelistbtn {
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/angey.png');
     background-repeat: no-repeat;
-    background-size: 75%;
+
     background-position-x: center;
-    background-position-y: 60%;
-}
+    background-position-y: 60%;    
+    outline: none;
+    padding: 0 16px;
+    background-size: cover;
+    background-position: center;
 
-#chatwrap {
-    flex-grow: 0;
-    flex-shrink: 0;
-    margin-bottom: 0px;
 }
-
 
 #videowrap-header {
     width: 100% !important;
@@ -3736,15 +3756,6 @@ textarea.form-control {
     border: 1px solid red !important;
 }
 
-#pollwrap {
-    padding: 0px !important;
-}
-
-#pollwrap>div {
-    box-sizing: content-box !important;
-    border: none;
-    background-color: rgba(20, 20, 20, 1);
-}
 
 #pollwrap h3 {
     margin-top: -10px !important;
@@ -3755,7 +3766,7 @@ textarea.form-control {
 #pollwrap .label {
     float: left !important;
     padding: 5px 5px !important;
-    font-size: 16px;
+    font-size: 12px;
     margin-right: 10px;
     background-color: dark;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3)
@@ -3797,22 +3808,10 @@ textarea.form-control {
     margin-bottom: 0px;
 }
 
-#rightcontrols,
-#rightpane {
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 10px -3px black;
-    width: 100%;
-}
 
 #rightpane {
     margin-top: 0px !important;
     border-radius: 0 0 5px 5px;
-}
-
-.qe_blame {
-    margin-left: 10px;
-    margin-right: 5px;
-    float: right;
 }
 
 .qe_title {
@@ -3837,7 +3836,7 @@ textarea.form-control {
         margin: 0;
         margin-top: 15px;
         overflow-y: auto;
-        overflow: auto;
+        overflow-x: auto;
         max-height: min-content;
         height: min-content;
         min-height: min-content;
@@ -3856,11 +3855,11 @@ textarea.form-control {
     background-color: #520075
 }
 
-#pollwrap .label {
-    float: left !important;
-    font-size: 12px;
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
-}
+
+
+
+
+
 
 .well.active button.close {
     position: relative;
@@ -3877,6 +3876,7 @@ textarea.form-control {
     background-image: none;
     line-height: 30px;
     padding: 10px 15px;
+    margin: 2px;
 }
 
 
@@ -3900,17 +3900,17 @@ textarea.form-control {
     padding-top: 0px;
 }
 
-#pmbar .panel-heading {
-    background-color: #3e444ccc;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    color: white;
-    font-weight: bolder;
-    border: 0px transparent !important;
-    display: block;
-    box-sizing: initial;
-}
+
+
+
+
+
+
+
+
+
+
+
 
 #pmbar.panel-heading button {
     color: white !important;
@@ -3934,20 +3934,12 @@ textarea.form-control {
         margin: 0;
         margin-top: 15px;
         overflow-y: auto;
-        overflow: auto;
+        overflow-x: auto;
         max-height: min-content;
         height: min-content;
         min-height: min-content;
         padding: 0;
     }
-}
-
-
-
-
-#messagebuffer [class|="chat-msg"],
-.pm-buffer {
-    padding-left: 3px;
 }
 
 #motdwrap {
@@ -3995,13 +3987,6 @@ textarea.form-control {
     background-color: #84f8 !important;
 }
 
-.navbar {
-    min-height: 32px;
-}
-
-a.navbar-brand {
-    background-size: auto 45px;
-}
 
 .navbar-brand {
     height: 32px;
@@ -4037,9 +4022,9 @@ a.navbar-brand {
     text-shadow: #0ff 0 0 4px
 }
 
-.navbar-collapse .btn-sm {
-    margin: 2px;
-}
+
+
+
 
 #MainTabContainer>ul>li.active>a,
 #MainTabContainer>ul>li:hover>a {
@@ -4049,14 +4034,14 @@ a.navbar-brand {
     cursor: pointer !important;
 }
 
-#chatheader {
-    box-shadow: none;
-    background-color: #000a;
-}
 
-#mainpage {
-    padding-top: 32px
-}
+
+
+
+
+
+
+
 
 .navbar {
     border: none;
@@ -4088,21 +4073,8 @@ a.navbar-brand {
 .linewrap {
     z-index: 0;
     position: relative;
-}
+    background-color: rgba(0, 0, 0, 0.5);
 
-#emotelistbtn {
-    outline: none;
-    padding: 0 16px;
-    background-size: cover;
-    background-position: center;
-}
-
-#chatinputrow button {
-    border: none;
-    border-radius: 0;
-    width: 32px;
-    height: 32px;
-    background-color: #0000
 }
 
 #chatinputrow,
@@ -4110,28 +4082,6 @@ a.navbar-brand {
     height: 32px
 }
 
-form input#chatline {
-    padding: 0 0 0 5px;
-    height: 32px
-}
-
-#chatinputrow button {
-    border: none;
-    border-radius: 0;
-    width: 32px;
-    height: 32px;
-    background-color: #0000
-}
-
-#chatinputrow,
-#chatinputrow form {
-    height: 32px
-}
-
-form input#chatline {
-    padding: 0 0 0 5px;
-    height: 32px
-}
 
 #emotebtndiv+form {
     background-color: #000a;
@@ -4144,10 +4094,6 @@ form input#chatline {
 
 #messagebuffer .username {
     margin-top: 0;
-}
-
-#main {
-    height: 100% !important;
 }
 
 #messagebuffer div.nick-hover {
@@ -4168,60 +4114,6 @@ form input#chatline {
     color: #ff00dc;
 }
 
-#messagebuffer {
-    box-shadow: none;
-}
-
-#main.flex>#chatwrap {
-    box-shadow: none;
-}
-
-.embed-responsive {
-    box-shadow: none;
-    margin: 0;
-    background-color: #000;
-}
-
-#pollwrap>div {
-    margin: 0;
-}
-
-.queue_active.queue_temp {
-    border-radius: 0;
-}
-
-#rightcontrols,
-#rightpane {
-    box-shadow: none;
-    background: #0005;
-    border-radius: 0;
-}
-
-#pollwrap {
-    min-height: 0px
-}
-
-#pin-dropdown>.dropdown-menu {
-    max-height: calc(100vh - 32px) !important
-}
-
-#messagebuffer {
-    padding: 0px
-}
-
-#userlist {
-    box-shadow: none;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.linewrap {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-#messagebuffer {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
 /* marble reverse emote commit */
 
 .reverse {
@@ -4232,4 +4124,3 @@ form input#chatline {
     -o-transform: scale(-1, 1);
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
-}
