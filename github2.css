@@ -1,6 +1,5 @@
 /* Start of Oshi Eyes */
 
-
 .chat-msg-zawasen .timestamp {
     color: transparent;
     background-size: 50px 15px;
@@ -9,7 +8,6 @@
     background-repeat: no-repeat
 }
 
-
 .chat-msg-splapling .timestamp {
     color: transparent;
     background-size: 50px 15px;
@@ -17,7 +15,6 @@
     background-position: center;
     background-repeat: no-repeat
 }
-
 
 .chat-msg-Bimmygarasu .timestamp {
     color: transparent;
@@ -138,7 +135,6 @@
     background-position: center;
     background-repeat: no-repeat
 }
-
 
 .chat-msg-Roneryman .timestamp {
     color: transparent;
@@ -346,7 +342,7 @@
 .chat-msg-immerred .timestamp {
     color: transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/immerred.jpg');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/immerred.png');
     background-position: center;
     background-repeat: no-repeat
 }
@@ -418,7 +414,6 @@
     background-position: center;
     background-repeat: no-repeat
 }
-
 
 .chat-msg-om3tcw .timestamp {
     color: transparent;
@@ -847,7 +842,6 @@
     background-repeat: no-repeat
 }
 
-
 .chat-msg-Noroba .timestamp,
 .chat-msg-Noromo .timestamp {
     color: transparent;
@@ -930,14 +924,6 @@
     background-position: center;
     background-repeat: no-repeat
 }
-
-
-
-
-
-
-
-
 
 .chat-msg-GoomberRoomber .timestamp {
     color: transparent;
@@ -1287,7 +1273,6 @@
     background-position: center;
     background-repeat: no-repeat
 }
-
 
 .chat-msg-TheLastSanallite .timestamp {
     color: transparent;
@@ -2580,7 +2565,6 @@ img.channel-emote[title$=":gigispeed:"] {
     }
 }
 
-
 @keyframes inaselen {
     0% {
         background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat;
@@ -2637,7 +2621,6 @@ img.channel-emote[title$=":gigispeed:"] {
         opacity: 1;
     }
 }
-
 
 /* Displaced emotes */
 img.channel-emote[title$=":true:"] {
@@ -2835,13 +2818,6 @@ img.channel-emote[title$=":faunabeam:"] {
     z-index: 1;
 }
 
-
-
-
-
-
-
-
 img.channel-emote[title$=":kiarabongo:"] {
     bottom: 60px;
     right: 100px;
@@ -2867,12 +2843,6 @@ img.channel-emote[title$=":mumeipointing:"] {
     max-width: 200px;
     z-index: 1;
 }
-
-
-
-
-
-
 
 img.channel-emote[title$=":kaelaquota:"] {
     right: 4px;
@@ -2908,7 +2878,6 @@ img.channel-emote[title$=":kaelabonk:"] {
 
 /* might add 'top:5px;' later to do a bottom offset */
 /* End of Emote Animations */
-
 
 /* Jones not knowing where to add stupid bullshit*/
 /* Guys I fucking love Reine, she's great */
@@ -3078,10 +3047,6 @@ img.channel-emote[title$=":kaelabonk:"] {
     content: 'xIx_lmaolinyloose_xIx Jr. Sr.: ';
 }
 
-
-
-
-
 .chat-msg-fuckhead .username:after {
     font-size: 14px;
     content: 'fu ckh ead: ';
@@ -3104,10 +3069,6 @@ img.channel-emote[title$=":kaelabonk:"] {
     font-size: 14px;
     content: 'sh**blon: ';
 }
-
-
-
-
 
 .chat-msg-jafafafy .username:after {
     font-size: 14px;
@@ -3218,7 +3179,6 @@ body.fluid>#wrap,
     flex-wrap: nowrap;
 }
 
-
 /*chat and pm css*/
 .fluid.modal-open {
     padding-right: 0px !important;
@@ -3233,11 +3193,6 @@ body.fluid>#wrap,
 .modal::-webkit-scrollbar {
     width: 0px;
 }
-
-
-
-
-
 
 .timestamp {
     font-size: 8pt !important;
@@ -3257,10 +3212,6 @@ body.fluid>#wrap,
     background-position: center;
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/anya.cur'), auto;
 }
-
-
-
-
 
 .channel-emote {
     max-width: 300px;
@@ -3353,7 +3304,6 @@ userlist-darkoracle363 .userlist-Kusa,
 }
 
 /*playlist polls video css*/
-
 #pollwrap>div {
     margin: 0;
     box-sizing: content-box !important;
@@ -3455,7 +3405,6 @@ div#plmeta {
     border: 0px solid !important;
     outline: 1px solid black;
     opacity: .9
-
 }
 
 #playlistrow .checkbox {
@@ -3489,7 +3438,6 @@ div#plmeta {
     bottom: 300%;
     left: 100%;
 }
-
 
 
 /*header css*/
@@ -3685,10 +3633,12 @@ textarea.form-control {
     padding-bottom: 1px;
 }
 
+/* This was originally implemented, then broken, then reimplemented, now commented.
 #messagebuffer > div:nth-child(2n):not(.nick-highlight) {
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
 }
+*/
 
 #messagebuffer>div:hover>.timestamp,
 .pm-buffer>div:hover>.timestamp {
@@ -3703,14 +3653,12 @@ textarea.form-control {
 #emotelistbtn {
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/angey.png');
     background-repeat: no-repeat;
-
     background-position-x: center;
     background-position-y: 60%;    
     outline: none;
     padding: 0 16px;
     background-size: cover;
     background-position: center;
-
 }
 
 #videowrap-header {
@@ -3755,7 +3703,6 @@ textarea.form-control {
 .bordered {
     border: 1px solid red !important;
 }
-
 
 #pollwrap h3 {
     margin-top: -10px !important;
@@ -3808,7 +3755,6 @@ textarea.form-control {
     margin-bottom: 0px;
 }
 
-
 #rightpane {
     margin-top: 0px !important;
     border-radius: 0 0 5px 5px;
@@ -3855,12 +3801,6 @@ textarea.form-control {
     background-color: #520075
 }
 
-
-
-
-
-
-
 .well.active button.close {
     position: relative;
     left: 15px;
@@ -3878,8 +3818,6 @@ textarea.form-control {
     padding: 10px 15px;
     margin: 2px;
 }
-
-
 
 #pmbar {
     display: flex;
@@ -3899,18 +3837,6 @@ textarea.form-control {
     padding: 5px;
     padding-top: 0px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 #pmbar.panel-heading button {
     color: white !important;
@@ -3959,6 +3885,7 @@ textarea.form-control {
 #motd {
     padding-left: 100px;
     background-color: transparent;
+    font-weight: bold;
 }
 
 .imageHoverPreview {
@@ -3986,7 +3913,6 @@ textarea.form-control {
 .userlist_item:hover {
     background-color: #84f8 !important;
 }
-
 
 .navbar-brand {
     height: 32px;
@@ -4022,10 +3948,6 @@ textarea.form-control {
     text-shadow: #0ff 0 0 4px
 }
 
-
-
-
-
 #MainTabContainer>ul>li.active>a,
 #MainTabContainer>ul>li:hover>a {
     color: #fff;
@@ -4033,15 +3955,6 @@ textarea.form-control {
     text-shadow: #0ff 0 0 4px;
     cursor: pointer !important;
 }
-
-
-
-
-
-
-
-
-
 
 .navbar {
     border: none;
@@ -4074,7 +3987,6 @@ textarea.form-control {
     z-index: 0;
     position: relative;
     background-color: rgba(0, 0, 0, 0.5);
-
 }
 
 #chatinputrow,
@@ -4082,13 +3994,14 @@ textarea.form-control {
     height: 32px
 }
 
-
 #emotebtndiv+form {
     background-color: #000a;
     image-rendering: pixelated;
 }
 
 form input#chatline {
+    padding: 0 0 0 5px;
+    height: 32px;
     background-size: auto;
 }
 
@@ -4115,12 +4028,11 @@ form input#chatline {
 }
 
 /* marble reverse emote commit */
-
 .reverse {
-
     display: inline-block;
     -moz-transform: scale(-1, 1);
     -webkit-transform: scale(-1, 1);
     -o-transform: scale(-1, 1);
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
+}
