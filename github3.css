@@ -3960,6 +3960,7 @@ textarea.form-control {
     border: none;
     box-shadow: none !important;
     background-color: #000a !important
+    min-height: 32px;
 }
 
 .profile-box {
