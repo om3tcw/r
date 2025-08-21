@@ -1657,7 +1657,7 @@ socket.on("chatMsg", ({ username, msg, meta, time }) => {
    if (
   !['[server]', '[voteskip]'].includes(username.toLowerCase()) &&
   username !== "numbertrees" &&
-  username !== "MOCOCO_SEX" ) {
+  username !== "zuwowo_sex" ) {
         const mymessage = messageBuffer.lastElementChild.lastElementChild;
 
         if (mymessage.innerHTML.startsWith('/yay') && soundpostState) {
