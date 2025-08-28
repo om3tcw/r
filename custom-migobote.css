@@ -1,0 +1,4047 @@
+/* Start of Oshi Eyes */
+
+.chat-msg-zawasen .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/sameko.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-splapling .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/pekomama.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Bimmygarasu .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/suisei4.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Taderdachi .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/inachuuni.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-vloow .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/gooba.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-DangoPhone .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/sadbee.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-shumblin .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/idk.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-shumblon .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/baenya.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-iTako .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/itako.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Takoyomi .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/takoyomi.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-MOCOCO_SEX .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/mococogigi.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-mediumsizedpotato .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/koyori2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-kplsamo .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/essie.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-NikkaGaming .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/gigi.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-AngelFlash .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/pochikorone.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-SlowMarmalade .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/kanata.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-basevich .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/vivi2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-DreamingDancing .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/gigi2.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Roneryman .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/kiwawa.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-TataraKogasa .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/riona.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-DezNots .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/irys6.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Vivi_Sexy_Goddess .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/vivi.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-keibu .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/haachama.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Cunny .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/ina11.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-jimmyboy .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/lap4.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-RADEON360 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/irys5.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-god_kun .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/haachama.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Tipsy .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/sana8.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-T_K_O .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/idk.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-przybyci .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/ceci.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Crackerjack .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/polka8.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Inanon .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina10.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-decayingdeadbeat .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mori6.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-mevvy .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/watirys.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-ouch .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/raora.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-FloatingGaust .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kaguyaluna.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-BravoNolanBravo .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/CIA.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Luxes .timestamp,
+.chat-msg-Mobilux .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/sexagain.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Moriscythe .timestamp,
+.chat-msg-calliopeforest .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/moripog.png');
+    background-position: bottom;
+    background-repeat: no-repeat
+}
+
+.chat-msg-MoriIsWhore .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/friendtired.png');
+    background-position: top;
+    background-repeat: no-repeat
+}
+
+.chat-msg-InaInaIna .timestamp,
+.chat-msg-Inanonymous .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina1.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-KSeven .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/smolina.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-marble .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/gremarble.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-immerred .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/immerred.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-attenanakusa .timestamp,
+.chat-msg-puchigire .timestamp,
+.chat-msg-Kusa .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/anya.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Tigre .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/gurababy.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-naggerfiggot .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ayame.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Altearia .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/coco.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-watsonelia .timestamp,
+.chat-msg-XkpBonus .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/amemo.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Anonchama .timestamp,
+.chat-msg-Achama .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ame.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-quicktrickbrickstack .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/smolame.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-slowchamp .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ame7.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-om3tcw .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/om3tcw.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-tearshed .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/numbers.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-notfunnycried .timestamp,
+.chat-msg-MoguMogun .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/okayu.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-neneposter .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nene.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-salman .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/salman.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-CEOofBandaids .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-winningson .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/roberu.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-forsen .timestamp {
+    color: transparent;
+    background-size: 50px 14px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/guraogey.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-artssounds .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/smolchama.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-takoyotowar .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/towalfie2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-deadbeete .timestamp,
+.chat-msg-bibibeat .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/bibi.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-HellBlitzer .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/delta2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-bersercker .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/bersercker.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Xx_cOomEr69_xX .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/matsurilewd.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Kuriketto .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kiara.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-RRatGod .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kiaravolia.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-m_ .timestamp,
+.chat-msg-N_ .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kiara2.png');
+    background-position: top;
+    background-repeat: no-repeat
+}
+
+.chat-msg-BirbUp .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/akira.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-gosling .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/gosling.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-jafafafy .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/dontblinkattheend.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-fuckhead {
+    font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+}
+
+.chat-msg-fuckhead .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fbk.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-MrMcEggmanJones .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/baeeyes.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-SlavBro .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/botan.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-DarkOracle363 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/gorilla.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-tomboysweat .timestamp,
+.chat-msg-petme .timestamp,
+.chat-msg-velveeta .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nobuhime.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Dango .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nose.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-etch .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/saba2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-pig .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/anya2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-metatron .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/tako.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-cryle .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/risuchama.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-senjo .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/elira.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Deadbeatchama .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mori.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Dr_VidyaGeam .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mori3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-MaddyCaddy .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/menace.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-architect .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/architect.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-114514_ .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/meguru.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-AmesLittleTeamate .timestamp,
+.chat-msg-SuiseisLittleComet .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/suisei.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-notSkitzo .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/smolkiara.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-fokinLUL .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kirame.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Breadquanda .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/shien.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-SirSwagdaddy .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/beatani.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Locura .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/henya2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-cypherposter .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ame3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-brapsniffer2077 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/reine2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Nanora .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/luna.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-MantenHanamaru .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/hanamaru.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-mammoth2020 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/erotic.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Moshmallow .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/bigoo%20eyes.png');
+    background-position: center top;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Sarp .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/lulu.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Erieolae .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-erie .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/enna3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-TehBatman .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei6.png');
+    background-position: bottom;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Noroba .timestamp,
+.chat-msg-Noromo .timestamp {
+    color: transparent;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/roboco.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-rratticus .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/rrat.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-undah_skor .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/chippo.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Lamy .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/lamy.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-SpaceEnthusiast .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sana2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-speec .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/lawnmower.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Rratboi .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/naname.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Investimagator .timestamp,
+.chat-msg-Investamigator .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ame5.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Jawsome .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/takotired.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-thegoodrrat .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nyanners.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-GoomberRoomber .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/roomba.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Moruru .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/moruru.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Kei .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mori4.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Egao .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: inaselen 45s infinite alternate;
+}
+
+.chat-msg-Tako225 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/tacodachieyes.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-nambona890 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sana3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Shifumi .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina5.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Ajitae .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/laplus.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-DarnisMarnis .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ame6.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-nagi .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/laplus2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-LonelyTeamate .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/retardedcat.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.chat-msg-BEEEGcherry .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka2.jpeg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-lumi_nazu .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/isekaijoucho2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-FaunasLittleSapling .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-takoamer .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ame9.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-fakeangel .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sanabread.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-FakeangelTheSecond .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sana7.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-bomberchan .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii2.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Kikkeriki .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kiara3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-ShadyDrugDealer .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/Ina7.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-shrimprat .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/matsuri2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-JoeMama .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/marine.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-henmera .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/henmera.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-henmeraToo .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/henmera.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-MoLune .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/molune.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-rratodachi .timestamp,
+.chat-msg-koromage .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/listener.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-ajbolt .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/risu.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Lacheon .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noel2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Nakiri-gumi .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ayame2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Mitsubachi .timestamp,
+.chat-msg-mitsubachi .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/hooman.png');
+    background-position: bottom;
+    background-repeat: no-repeat
+}
+
+.chat-msg-DeadBox .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/amewide.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-DoostCola .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/bloop.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-BestDood .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/prinny.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-rratbastard .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/pippa2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Gaaah .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sana5.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-brap .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/juna.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Namoro .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/roboco2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Nautilus .timestamp,
+.chat-msg-nautilus .timestamp {
+    color: transparent;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka4.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Braperina .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/gurameme.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Juice .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/catto.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Teamate_Fanboi .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/catto.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-CaptSausage .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna2.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Mc .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fbk2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-TheLastSanallite .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/sana6.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-zelantrodan .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/suisei2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Pepper .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nepolabo2.gif');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Hootsie .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-NinoValt .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/doroeyes.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-ShiokkoKFP .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/shion1.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-joshukun .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/koyori1.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Ashhh .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/laplus3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Enemy .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/marine2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Baeblader .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/bae.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-MoomLove .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-HopeHasDescended .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/irys.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-oldrrat .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nene2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Dracorex .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna4.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-z3r0b1t_ .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-SPM .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna5.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-MethodicBox816 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna6.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-arc .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/irys2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-CAC .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/gura.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Winter .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna7.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Sipp .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/watamelon.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-bura .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/suisei3.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-3beat .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mori5.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-ProSqueeb .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/squeeb.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Mugi .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina9.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-qwack194 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei4.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-IRySisCUTE .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/irys3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-MofuMofuRisu .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/utano.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Investigator .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ame11.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-squeeeb .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna8.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-rouch .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fauna9.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Yabba .timestamp,
+.chat-msg-YABBA .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/vesper.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-BerryAndBerryAccs .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumeismile.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-BarracudaBro .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/nerissa.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Cucklefuckle .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/coni.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-GKAnon .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/mumei5.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Marvinios .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/baerussiansleepexperiment.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-daggerstuffs .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/anya3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Grimm .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/shiori2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Finnel .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/bijou.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Baegel .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/shiori3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-migoSMUG .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/migo.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-BibooTax .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/biboo.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-notilus .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polkaela2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Taba .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/bae3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-TheDragonbro .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/irys4.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-maidu .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka5.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-bipee .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/elrond.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-notaschizo .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/gura2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-mariawitch .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/neurosamaevil.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Cipher .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/lamy2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Grimmz .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/shiori4.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-OkayuProneBone .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/okayu.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-2Pac .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/marine2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Insertname .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/squeeb2.jpeg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-subfloor69 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ankimo.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-IoriMinase765 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/lia.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Puppet .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii3.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Tanuki .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/saba.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Malambis .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/lulu.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-TowaSamaBaby .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/redgooba.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-sqrlMofu .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/iofieyes.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-numbahtreis .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/clocksucker.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-cucumbersama .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/azki.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+/* End of Oshi Eyes */
+/* Start of Emote Animations */
+
+/* ded */
+img.channel-emote[title$=":anyaded:"],
+img.channel-emote[title$=":artiaded:"],
+img.channel-emote[title$=":boohoo:"],
+img.channel-emote[title$=":dedchama:"],
+img.channel-emote[title$=":polkaded:"],
+img.channel-emote[title$=":akided:"],
+img.channel-emote[title$=":guraded:"],
+img.channel-emote[title$=":koopaded:"],
+img.channel-emote[title$=":jesded:"],
+img.channel-emote[title$=":ninkided:"],
+img.channel-emote[title$=":risuded:"],
+img.channel-emote[title$=":zainded:"],
+img.channel-emote[title$=":mumeided:"],
+img.channel-emote[title$=":flareded:"],
+img.channel-emote[title$=":irysded:"],
+img.channel-emote[title$=":morided:"] {
+    animation: anyaded 6s alternate infinite;
+}
+
+img.channel-emote[title$=":sanaded:"],
+img.channel-emote[title$=":frogaloni:"] {
+    animation: sanaded 20s forwards;
+    animation-timing-function: linear;
+    z-index: -4;
+}
+
+/* live */
+img.channel-emote[title$=":sanalive:"] {
+    animation: sanalive 20s forwards;
+    animation-timing-function: linear;
+    z-index: -4;
+}
+
+/* Glowstick */
+img.channel-emote[title$=":redglowstick:"],
+img.channel-emote[title$=":pinkglowstick:"],
+img.channel-emote[title$=":purpleglowstick:"],
+img.channel-emote[title$=":greenglowstick:"],
+img.channel-emote[title$=":blueglowstick:"],
+img.channel-emote[title$=":yellowglowstick:"] {
+    animation: penr 0.4s alternate infinite;
+    transform-origin: 50% 80%;
+    animation-name: penr;
+}
+
+/* bina */
+img.channel-emote[title$=":bina:"],
+img.channel-emote[title$=":bhaa:"],
+img.channel-emote[title$=":bame:"],
+img.channel-emote[title$=":bamesame:"] img.channel-emote[title$=":banya:"],
+img.channel-emote[title$=":bcoco:"],
+img.channel-emote[title$=":bmori:"],
+img.channel-emote[title$=":bpeko:"],
+img.channel-emote[title$=":bpolka:"],
+img.channel-emote[title$=":bkiara:"],
+img.channel-emote[title$=":baqua:"],
+img.channel-emote[title$=":bollie:"],
+img.channel-emote[title$=":bsui:"],
+img.channel-emote[title$=":bbaelz:"],
+img.channel-emote[title$=":bsana:"],
+img.channel-emote[title$=":bmumei:"],
+img.channel-emote[title$=":bkronii:"],
+img.channel-emote[title$=":bfauna:"],
+img.channel-emote[title$=":birs:"],
+img.channel-emote[title$=":bselen:"],
+img.channel-emote[title$=":bpomu:"],
+img.channel-emote[title$=":bmilky:"] img.channel-emote[title$=":bgura:"] {
+    animation: bina 3s linear infinite;
+}
+
+/* Garoomba */
+img.channel-emote[title$=":gardoomba:"],
+img.channel-emote[title$=":garoomba:"],
+img.channel-emote[title$=":flarespin:"],
+img.channel-emote[title$=":ameroll:"],
+img.channel-emote[title$=":nyaroomba:"],
+img.channel-emote[title$=":inaroomba:"],
+img.channel-emote[title$=":kiaroll:"],
+img.channel-emote[title$=":shionchair:"],
+img.channel-emote[title$=":garsmolba:"],
+img.channel-emote[title$=":botancart:"],
+img.channel-emote[title$=":spina:"],
+img.channel-emote[title$=":korodrone:"] {
+    animation: garoomba 15s infinite;
+}
+
+img.channel-emote[title$=":poppygrab:"] {
+    right: 40px;
+    z-index: 3;
+}
+
+img.channel-emote[title$=":guyrysgrope:"] {
+    right: 45px;
+    z-index: 3;
+}
+
+img.channel-emote[title$=":anyasmug:"] {
+    max-width: 150px;
+    max-height: 100px
+}
+
+img.channel-emote[title$=":kiaraamfrog:"],
+img.channel-emote[title$=":anyafrog:"] {
+    animation: amfrog 1s alternate infinite;
+}
+
+img.channel-emote[title$=":kiaraspin:"] {
+    transform: rotate(180deg);
+}
+
+img.channel-emote[title$=":Lq9eqHDKJPE:"] {
+    animation: slide 0.9s infinite;
+}
+
+img.channel-emote[title$=":I9rvEDBfyaY:"] {
+    animation: slide 1.8s infinite;
+}
+
+img.channel-emote[title$=":WuvtwRYkOU0:"] {
+    animation: quickzoom 0.1s infinite;
+}
+
+img.channel-emote[title$=":polkaaaaaaaaaaaaaaa:"] {
+    animation: quickzoom 0.2s infinite;
+}
+
+img.channel-emote[title$=":amespace:"] {
+    animation: amespace 20s forwards;
+    animation-timing-function: linear;
+}
+
+img.channel-emote[title$=":QI96hnhcr2E:"] {
+    max-height: 106px;
+    animation: QI96hnhcr2E 1.5s infinite;
+}
+
+img.channel-emote[title$=":QI96hnhcr2E-2:"] {
+    max-height: 106px;
+    animation: QI96hnhcr2E-2 1.5s infinite;
+}
+
+img.channel-emote[title$=":saplingbrain:"] {
+    max-height: 120px;
+}
+
+img.channel-emote[title$=":bijouthink:"] {
+    right: 34px;
+}
+
+img.channel-emote[title$=":mocorage:"] {
+    max-height: 150px;
+}
+
+img.channel-emote[title$=":pekofly:"] {
+    animation: scale-up-center 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation-timing-function: linear;
+    animation-name: pekofly;
+}
+
+/* Legacy? There's no kiar animation, don't want to delete yet just in case, does the relative position do something? */
+img.channel-emote[title$=":kiarameal:"] {
+    position: relative;
+    animation: kiar 0.5s linear both;
+}
+
+img.channel-emote[title$=":fbkdoko:"] {
+    animation: doko 2s alternate both;
+    transform-origin: 50% 0%;
+}
+
+img.channel-emote[title$=":takohang:"] {
+    animation: takohang 5s infinite;
+    animation-name: takohang;
+    transition-timing-function: cubic-bezier(0.1, .4, .6, .9);
+    transform-origin: 50% 0%;
+}
+
+img.channel-emote[title$=":thisisbait:"],
+img.channel-emote[title$=":anyahang:"] {
+    animation: penr 4s alternate infinite;
+    transform-origin: 50% 0%;
+}
+
+img.channel-emote[title$=":wakepup:"],
+img.channel-emote[title$=":wakepup2:"] {
+    transform: scaleX(-1);
+    right: 50px;
+    bottom: 5px;
+}
+
+img.channel-emote[title$=":kris:"] {
+    bottom: 0px;
+    right: 24px;
+    height: 55px;
+    z-index: 1;
+    animation: kris .5s alternate infinite;
+    transform-origin: 0% 100%;
+}
+
+img.channel-emote[title$=":anyaspace:"],
+img.channel-emote[title$=":jespace:"] {
+    animation: anyaspace 20s forwards;
+    animation-timing-function: linear;
+}
+
+img.channel-emote[title$=":teamatepudding:"] {
+    animation: pudding 12s linear infinite;
+}
+
+img.channel-emote[title$=":rockcandy:"] {
+    animation: bibo 0.4s infinite;
+}
+
+img.channel-emote[title$=":gigispeed:"] {
+    animation: slide-right 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1s both;
+    animation-timing-function: linear;
+    animation-name: gigispeed;
+}
+
+/* Keyframes */
+@keyframes sanalive {
+    0% {
+        transform: scale(6) rotate(720deg);
+        left: 275px;
+        bottom: 550px;
+    }
+
+    24% {
+        transform: scale(5) rotate(540deg);
+        left: 250px;
+        bottom: 500px;
+    }
+
+    25% {
+        transform: scale(5) rotate(540deg);
+        left: 250px;
+        bottom: 500px;
+    }
+
+    50% {
+        transform: scale(4) rotate(360deg);
+        left: 200px;
+        bottom: 400px;
+    }
+
+    75% {
+        transform: scale(2) rotate(180deg);
+        left: 100px;
+        bottom: 200px;
+    }
+
+    100% {
+        transform: scale(1) rotate(000deg);
+        left: 000px;
+        bottom: 000px;
+    }
+}
+
+@keyframes bibo {
+    0% {
+        left: 00px;
+        bottom: 00px;
+    }
+
+    50% {
+        left: 00px;
+        bottom: 025px;
+        transform: scale(1.2);
+    }
+
+    100% {
+        left: 00px;
+        bottom: 000px;
+        transform: scale(1);
+    }
+}
+
+@keyframes doko {
+    0% {
+        left: 00px;
+        top: 00px;
+        opacity: 0;
+    }
+
+    99% {
+        right: 105px;
+        top: 00px;
+        opacity: 0;
+    }
+
+    100% {
+        right: 105px;
+        top: 00px;
+        opacity: 1.0;
+    }
+}
+
+@keyframes takohang {
+
+    0%,
+    100% {
+        transform: rotate(3deg)
+    }
+
+    50% {
+        transform: rotate(-7deg)
+    }
+}
+
+@keyframes penr {
+    0% {
+        transform: rotate(30deg);
+    }
+
+    100% {
+        transform: rotate(-30deg);
+    }
+}
+
+@keyframes pekofly {
+    0% {
+        transform: scale(.5);
+    }
+
+    5% {
+        transform: rotate(-30deg) scale(.1);
+    }
+
+    100% {
+        transform: rotate(-360deg) scale(1);
+    }
+}
+
+@keyframes anyaded {
+    0% {
+        left: 00px;
+        top: 00px;
+    }
+
+    50% {
+        left: 20px;
+        top: 000px;
+    }
+
+    100% {
+        left: 00px;
+        top: 00px;
+    }
+}
+
+@keyframes amfrog {
+    0% {
+        left: 00px;
+        bottom: 00px;
+    }
+
+    50% {
+        left: 00px;
+        bottom: 300px;
+    }
+
+    100% {
+        left: 00px;
+        bottom: 00px;
+    }
+}
+
+@keyframes flip-scale-up-hor {
+    0% {
+        transform: scale(.75) rotateX(0);
+    }
+
+    100% {
+        transform: scale(.75) rotateX(180deg);
+    }
+}
+
+@keyframes slide-rotate-hor-top {
+    0% {
+        transform: translateY(0) rotateX(0deg);
+    }
+
+    100% {
+        transform: translateY(-150px) rotateX(-90deg);
+    }
+}
+
+@keyframes bina {
+    0% {
+        transform: rotate(-90deg) scale(.82);
+    }
+
+    50% {
+        transform: rotate(-90deg) scale(.9);
+    }
+
+    100% {
+        transform: rotate(-90deg) scale(.82);
+    }
+}
+
+@keyframes garoomba {
+    0% {
+        left: 00px;
+        top: 00px;
+    }
+
+    50% {
+        left: 300px;
+        bottom: 000px;
+    }
+
+    100% {
+        left: 00px;
+        top: 000px;
+    }
+}
+
+@keyframes slide {
+    0% {
+        left: 00px;
+        top: 00px;
+    }
+
+    50% {
+        left: 80px;
+        bottom: 000px;
+    }
+
+    100% {
+        left: 00px;
+        top: 000px;
+    }
+}
+
+@keyframes quickzoom {
+    0% {
+        left: 00px;
+        top: 00px;
+    }
+
+    50% {
+        left: 25px;
+        bottom: 000px;
+    }
+
+    100% {
+        left: 00px;
+        top: 000px;
+    }
+}
+
+@keyframes kris {
+    0% {
+        transform: rotate(20deg);
+    }
+
+    100% {
+        transform: rotate(-20deg);
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes pudding {
+    0% {
+        left: 70%;
+    }
+
+    100% {
+        left: -70%;
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(5px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    75% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes glow {
+    0% {
+        color: #FF0000;
+    }
+
+    33% {
+        color: #00B000;
+    }
+
+    66% {
+        color: #0000FF;
+    }
+
+    100% {
+        color: #FF0000;
+    }
+}
+
+@keyframes anyaspace {
+    0% {
+        transform: scale(1);
+        left: 00px;
+        bottom: 00px;
+    }
+
+    25% {
+        transform: scale(.66);
+        left: 100px;
+        bottom: 100px;
+    }
+
+    50% {
+        transform: scale(.33);
+        left: 200px;
+        bottom: 200px;
+    }
+
+    75% {
+        transform: scale(.16);
+        left: 250px;
+        bottom: 250px;
+    }
+
+    100% {
+        transform: scale(0);
+        left: 275px;
+        bottom: 275px;
+    }
+}
+
+@keyframes amespace {
+    0% {
+        transform: scale(1) rotate(0deg);
+        left: 00px;
+        bottom: 00px;
+    }
+
+    25% {
+        transform: scale(.66) rotate(180deg);
+        left: 100px;
+        bottom: 100px;
+    }
+
+    50% {
+        transform: scale(.33) rotate(360deg);
+        left: 200px;
+        bottom: 200px;
+    }
+
+    75% {
+        transform: scale(.16) rotate(540deg);
+        left: 250px;
+        bottom: 250px;
+    }
+
+    100% {
+        transform: scale(0) rotate(720deg);
+        left: 275px;
+        bottom: 275px;
+    }
+}
+
+@keyframes sanaded {
+    0% {
+        transform: scale(1) rotate(0deg);
+        left: 00px;
+        bottom: 00px;
+    }
+
+    25% {
+        transform: scale(2) rotate(180deg);
+        left: 100px;
+        bottom: 200px;
+    }
+
+    50% {
+        transform: scale(4) rotate(360deg);
+        left: 200px;
+        bottom: 400px;
+    }
+
+    75% {
+        transform: scale(6) rotate(540deg);
+        left: 250px;
+        bottom: 500px;
+    }
+
+    76% {
+        transform: scale(0) rotate(540deg);
+        left: 250px;
+        bottom: 500px;
+    }
+
+    100% {
+        transform: scale(0) rotate(720deg);
+        left: 275px;
+        bottom: 550px;
+    }
+}
+
+@keyframes QI96hnhcr2E {
+    0% {
+        left: 00px;
+        top: 00px;
+        transform: rotate(0deg);
+    }
+
+    25% {
+        left: 150px;
+        top: 000px;
+        transform: rotate(-90deg);
+    }
+
+    50% {
+        left: 150px;
+        top: -150px;
+        transform: rotate(-180deg);
+    }
+
+    75% {
+        left: 00px;
+        top: -150px;
+        transform: rotate(-270deg);
+    }
+
+    100% {
+        left: 00px;
+        top: 00px;
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes QI96hnhcr2E-2 {
+    0% {
+        left: 0px;
+        top: 0px;
+        transform: rotate(0deg);
+    }
+
+    25% {
+        left: 0px;
+        top: -150px;
+        transform: rotate(90deg);
+    }
+
+    50% {
+        left: 150px;
+        top: -150px;
+        transform: rotate(180deg);
+    }
+
+    75% {
+        left: 150px;
+        top: 0px;
+        transform: rotate(270deg);
+    }
+
+    100% {
+        left: 0px;
+        top: 00px;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes gigispeed {
+    0% {
+        transform: scale(1);
+        left: 00px;
+        top: 00px;
+    }
+
+    50% {
+        transform: scale(.5);
+        left: 300px;
+        bottom: 000px;
+    }
+
+    100% {
+        transform: scale(0);
+        left: 600px;
+        top: 000px;
+    }
+}
+
+/* Flashing eyes - Legacy */
+
+@keyframes secret {
+    0% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    85% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    90% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/polka.png') 0 0 no-repeat;
+        opacity: 0;
+    }
+
+    92% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat;
+        opacity: 0;
+    }
+
+    96% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    100% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+}
+
+@keyframes noellers {
+    0% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    85% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    90% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/kronii.png') 0 0 no-repeat;
+        opacity: 0;
+    }
+
+    92% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat;
+        opacity: 0;
+    }
+
+    96% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    100% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/noelcry.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+}
+
+@keyframes inaselen {
+    0% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    43% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    45% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ina4.png') 0 0 no-repeat;
+        opacity: 0;
+    }
+
+    46% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat;
+        opacity: 0;
+    }
+
+    48% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    50% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    93% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    95% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/selen.png') 0 0 no-repeat;
+        opacity: 0;
+    }
+
+    96% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat;
+        opacity: 0;
+    }
+
+    98% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+
+    100% {
+        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat;
+        opacity: 1;
+    }
+}
+
+/* Displaced emotes */
+img.channel-emote[title$=":true:"] {
+    bottom: 0px;
+    right: 120px;
+    max-width: 150px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":lovefauna:"] {
+    bottom: 31px;
+    right: 110px;
+    max-width: 150px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":sleeptalking:"] {
+    bottom: 0px;
+    right: 80px;
+    max-width: 150px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":fuwamocopoint:"] {
+    bottom: 0px;
+    right: 120px;
+    max-width: 150px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":luiwiggle:"] {
+    height: 130px;
+    max-height: 130px;
+}
+
+img.channel-emote[title$=":luijig:"] {
+    height: 130px;
+    max-height: 130px;
+}
+
+img.channel-emote[title$=":magnichad:"] {
+    height: 130px;
+    max-height: 130px;
+}
+
+img.channel-emote[title$=":kaelalien:"] {
+    height: 250px;
+    max-height: 250px;
+}
+
+img.channel-emote[title$=":shioriautismseedsowing:"] {
+    right: 75px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":sea:"],
+img.channel-emote[title$=":hydraback:"],
+img.channel-emote[title$=":space:"] {
+    right: 105px;
+    height: 75px;
+    max-width: 125px;
+    z-index: -1;
+}
+
+img.channel-emote[title$=":inahammer:"] {
+    right: 100px;
+    max-width: 125px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":petpet:"] {
+    right: 104px;
+    bottom: 20px;
+    max-width: 125px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":friends:"],
+img.channel-emote[title$=":gfs:"] {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+img.channel-emote[title$=":cute:"],
+img.channel-emote[title$=":funny:"] {
+    right: 125px;
+    height: 75px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":valianteffort:"] {
+    right: 125px;
+    height: 60px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":noose:"] {
+    right: 100px;
+    height: 100px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":cell:"] {
+    right: 90px;
+    height: 100px;
+    max-width: 125px;
+    z-index: -1;
+}
+
+img.channel-emote[title$=":curtains:"] {
+    right: 105px;
+    height: 75px;
+    max-width: 125px;
+}
+
+img.channel-emote[title$=":newspaper:"] {
+    top: 20px;
+    right: 75px;
+    height: 42px;
+    max-width: 100px;
+}
+
+img.channel-emote[title$=":tent:"] {
+    right: 54px;
+    height: 55px;
+}
+
+img.channel-emote[title$=":loading:"] {
+    bottom: 20px;
+    right: 65px;
+    height: 35px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":badass:"] {
+    bottom: 0px;
+    right: 100px;
+    height: 35px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":nvg:"] {
+    bottom: 10px;
+    right: 100px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":cowboy:"] {
+    bottom: 35px;
+    right: 130px;
+    max-width: 150px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":strawhat:"] {
+    bottom: 35px;
+    right: 130px;
+    max-width: 150px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":afro:"] {
+    bottom: 35px;
+    right: 130px;
+    max-width: 150px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":unity3:"] {
+    max-width: 250px;
+}
+
+img.channel-emote[title$=":inaiya:"] {
+    max-width: 275px;
+}
+
+img.channel-emote[title$=":kaelawide:"] {
+    max-width: 410px;
+}
+
+img.channel-emote[title$=":kiarapunch:"] {
+    right: 50px;
+    max-width: 125px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":kikkerikick2:"] {
+    right: 40px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":faunabeam:"] {
+    right: 50px;
+    max-width: 125px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":kiarabongo:"] {
+    bottom: 60px;
+    right: 100px;
+    z-index: 1;
+    opacity: 80%;
+}
+
+img.channel-emote[title$=":claralick:"] {
+    right: 60px;
+    max-width: 200px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":korotablet:"] {
+    top: 40px;
+    right: 100px;
+    max-height: 300px;
+    max-width: 320px;
+}
+
+img.channel-emote[title$=":mumeipointing:"] {
+    right: 55px;
+    max-width: 200px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":kaelaquota:"] {
+    right: 4px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":pleasecometohoshimachisuiseis1stsololivestellarintothegalaxysupportedbybushiroadticketsavailablenow:"] {
+    bottom: px;
+    right: 104px;
+    height: 56px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":faunaslap:"] {
+    right: 25px;
+    z-index: -1;
+}
+
+img.channel-emote[title$=":gremhug:"] {
+    bottom: 0px;
+    right: 120px;
+    max-width: 150px;
+    z-index: 1;
+}
+
+img.channel-emote[title$=":kaelabonk:"] {
+    left: 40px;
+    z-index: -1;
+    max-height: 212px;
+    bottom: 70px;
+    margin: -112px;
+}
+
+/* might add 'top:5px;' later to do a bottom offset */
+/* End of Emote Animations */
+
+/* Jones not knowing where to add stupid bullshit*/
+/* Guys I fucking love Reine, she's great */
+/* End of Jones not knowing where to add stupid bullshit*/
+/* Man I Love Faunamogus */
+/* Page Changes */
+
+/* RARE NAME COLOR NFTS THAT WILL DEFINITELY STAY LONGER THAN A FEW HOURS */
+.chat-msg-Kusa .username {
+    filter: drop-shadow(1px 1px 1px #d4b0ff);
+}
+
+.chat-msg-Deadbeatchama .username {
+    filter: drop-shadow(2px 2px 2px #ffb0e6);
+}
+
+.chat-msg-fuckhead .username {
+    filter: drop-shadow(2px 3px 2px #002fff);
+    font-size: 0;
+}
+
+.chat-msg-jafafafy .username {
+    filter: drop-shadow(8px 7px 7px #6c1485);
+    font-size: 0;
+}
+
+.chat-msg-Altearia .username {
+    filter: drop-shadow(2px 2px 2px #47ff47);
+}
+
+.chat-msg-MrMcEggmanJones .username {
+    filter: drop-shadow(1px 1px 1px #f56d05);
+}
+
+.chat-msg-slowchamp .username {
+    filter: drop-shadow(1px 1px 1px #fffa6b);
+}
+
+.chat-msg-henmera .username {
+    filter: drop-shadow(1px 1px 1px #ff8a7a);
+}
+
+.chat-msg-Moruru .username {
+    filter: drop-shadow(1px 1px 1px #c2c5cc);
+}
+
+.chat-msg-Tako225 .username {
+    filter: drop-shadow(2px 2px 2px #7100f2);
+}
+
+.chat-msg-AmesLittleTeamate .username {
+    filter: drop-shadow(1px 1px 1px #89ebfa);
+}
+
+.chat-msg-MofuMofuRisu .username {
+    filter: drop-shadow(1px 1px 1px #c29876);
+}
+
+.chat-msg-Anonchama .username {
+    filter: drop-shadow(2px 4px 2px #c40d00);
+}
+
+.chat-msg-pig .username {
+    filter: drop-shadow(1px 1px 1px #9b629e);
+}
+
+.chat-msg-rraticus .username {
+    filter: drop-shadow(1px 1px 1px #787878);
+}
+
+.chat-msg-KSeven .username {
+    filter: drop-shadow(1px 1px 1px #380b3b);
+}
+
+.chat-msg-Kei .username {
+    filter: drop-shadow(1px 1px 1px #1a1919);
+}
+
+/* username edits*/
+.chat-msg-SlowMarmalade .username {
+    font-size: 0;
+}
+
+.chat-msg-SlowMarmalade .username:after {
+    font-size: 14px;
+    content: 'SlowMambolade: ';
+}
+
+.chat-msg-MarmaladeMobile .username {
+    font-size: 0;
+}
+
+.chat-msg-MarmaladeMobile .username:after {
+    font-size: 14px;
+    content: 'MamboladeMobile: ';
+}
+
+.chat-msg-NinoValt .username {
+    font-size: 0;
+}
+
+.chat-msg-NinoValt .username:after {
+    font-size: 14px;
+    content: 'NinjaValt: ';
+}
+
+.chat-msg-marble .username {
+    font-size: 0;
+}
+
+.chat-msg-marble .username:after {
+    font-size: 14px;
+    content: 'justmarble: ';
+}
+
+.chat-msg-cucumbersama .username {
+    font-size: 0;
+}
+
+.chat-msg-cucumbersama .username:after {
+    font-size: 14px;
+    content: 'victorsama: ';
+}
+
+.chat-msg-m_ .username {
+    font-size: 0;
+}
+
+.chat-msg-m_ .username:after {
+    font-size: 14px;
+    content: '米_: ';
+}
+
+.chat-msg-Mc .username {
+    font-size: 0;
+}
+
+.chat-msg-Mc .username:after {
+    font-size: 14px;
+    content: 'McFin: ';
+}
+
+.chat-msg-CEOofBandaids .username {
+    font-size: 0;
+}
+
+.chat-msg-CEOofBandaids .username:after {
+    font-size: 14px;
+    content: 'CEOofNightmares: ';
+}
+
+.chat-msg-metatron .username {
+    font-size: 0;
+}
+
+.chat-msg-metatron .username:after {
+    font-size: 14px;
+    content: 'meatron: ';
+}
+
+.chat-msg-Inanonymous .username {
+    font-size: 0;
+}
+
+.chat-msg-Inanonymous .username:after {
+    font-size: 14px;
+    content: 'xIx_lmaolinyloose_xIx Jr. Sr.: ';
+}
+
+.chat-msg-fuckhead .username:after {
+    font-size: 14px;
+    content: 'fu ckh ead: ';
+}
+
+.chat-msg-Inanon .username {
+    font-size: 0;
+}
+
+.chat-msg-Inanon .username:after {
+    font-size: 14px;
+    content: 'DEInan: ';
+}
+
+.chat-msg-shumblon .username {
+    font-size: 0;
+}
+
+.chat-msg-shumblon .username:after {
+    font-size: 14px;
+    content: 'sh**blon: ';
+}
+
+.chat-msg-jafafafy .username:after {
+    font-size: 14px;
+    content: 'Jaferal: ';
+}
+
+@font-face {
+    font-family: Malk;
+    src: url(https://files.catbox.moe/346thw.otf);
+}
+
+.chat-msg-ShioValt .username {
+    font-size: 0;
+}
+
+.chat-msg-ShioValt .username:after {
+    font-size: 14px;
+    content: 'Cumgoblin: ';
+}
+
+.chat-msg-Noroba,
+.chat-msg-Noromo {
+    font-family: Noroba, system-ui;
+}
+
+@font-face {
+    font-family: Noroba;
+    src: url(https://files.catbox.moe/jnh2x7.ttf);
+}
+
+.chat-msg-nautilus {
+    font-family: Rans, ui-monospace;
+}
+
+@font-face {
+    font-family: Rans;
+    src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/uabsans.ttf);
+}
+
+.chat-msg-Cunny {
+    font-family: Cheeky, ui-rounded;
+}
+
+@font-face {
+    font-family: Cheeky;
+    src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/cheeky.ttf);
+}
+
+/*general css*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-track {
+    background: #1e2023;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3b3b3b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@-moz-document url-prefix() {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #3b3b3b #1e2023;
+    }
+}
+
+button {
+    box-shadow: 0 0 0 00px #FF5F15;
+}
+
+.btn {
+    text-shadow: none
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap !important;
+    height: 100% !important;
+}
+
+#mainpage {
+    padding-top: 32px;
+}
+
+html,
+html>body.fluid,
+body.fluid>#wrap,
+#wrap>#mainpage,
+#mainpage>[class|="container"] {
+    height: 100%;
+}
+
+[class|="container"]>#main {
+    height: 99.9%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+/*chat and pm css*/
+.fluid.modal-open {
+    padding-right: 0px !important;
+}
+
+.modal {
+    padding-right: 0px !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.modal::-webkit-scrollbar {
+    width: 0px;
+}
+
+.timestamp {
+    font-size: 8pt !important;
+    padding: 3px !important;
+}
+
+#userlist,
+#messagebuffer {
+    border-color: #1e2023;
+    overflow-x: hidden !important;
+}
+
+/*https://raw.githubusercontent.com/om3tcw/r/emotes/other/roll.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/climb.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/boat.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/snow.gif alternatives */
+#chatline {
+    background-image: url(), url(https://raw.githubusercontent.com/om3tcw/r/emotes/other/boat.gif), url();
+    background-repeat: repeat, no-repeat;
+    background-position: center;
+    cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/anya.cur'), auto;
+}
+
+.channel-emote {
+    max-width: 300px;
+    max-height: 100px;
+    position: relative;
+}
+
+.userlist_owner {
+    color: #7c009e !important;
+    font-weight: bold !important;
+}
+
+.userlist_admin {
+    color: #7c009e !important;
+    font-weight: bold !important;
+}
+
+.userlist_op {
+    color: #ff8800 !important;
+}
+
+.userlist-deadbeete,
+.userlist-CEOofBandaids,
+.userlist-Deadbeatchama,
+userlist-darkoracle363 .userlist-Kusa,
+.userlist-Luxes {
+    color: #7c009e !important;
+    font-weight: bold !important;
+}
+
+.userlist-takoyotowar,
+.userlist-SlavBro,
+.userlist-Altearia,
+.userlist-AmesLittleTeamate,
+.userlist-Anonchama {
+    color: #2c8c11 !important;
+    font-weight: bold !important;
+}
+
+.userlist-artssounds {
+    color: #ff0000 !important;
+}
+
+.userlist-cryle:before {
+    font-size: 12px !important;
+    color: #dbaf37 !important;
+    font-weight: bold !important;
+    content: 'c' !important;
+}
+
+.userlist-cryle {
+    font-size: 0px !important;
+}
+
+.userlist-cryle:after {
+    font-size: 12px !important;
+    color: #cc3d33 !important;
+    font-weight: bold !important;
+    content: 'ryle' !important;
+}
+
+.spoiler {
+    color: #1e1e1e;
+    background-color: #1e1e1e;
+}
+
+.spoiler:hover {
+    color: #ff00dc;
+}
+
+.panel-primary {
+    border-color: #ff00dc;
+    border-width: 2px;
+}
+
+#messagebuffer span a:visited {
+    color: #668199 !important;
+}
+
+#pmbar .panel-heading {
+    background-color: #3e444ccc;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: white;
+    font-weight: bolder;
+    border: 0px transparent !important;
+    display: block;
+    box-sizing: initial;
+}
+
+/*playlist polls video css*/
+#pollwrap>div {
+    margin: 0;
+    box-sizing: content-box !important;
+    border: none;
+    background-color: rgba(20, 20, 20, 1);
+}
+
+.queue_active.queue_temp {
+    border-radius: 0;
+}
+
+#rightcontrols,
+#rightpane {
+    box-shadow: none;
+    background: #0005;
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+#pollwrap {
+    min-height: 0px;
+    padding: 0px !important;
+}
+
+#pin-dropdown>.dropdown-menu {
+    max-height: calc(100vh - 32px) !important
+}
+
+#messagebuffer {
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    box-shadow: none;
+}
+
+.poll-notify {
+    color: #ff00dc;
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.col-md-3,
+col-lg-3,
+.col-md-4,
+col-lg-4,
+.col-md-5,
+col-lg-5,
+.col-md-6,
+col-lg-6,
+.col-md-7,
+col-lg-7,
+.col-md-8,
+col-lg-8,
+.col-md-9,
+col-lg-9 {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+#playlistrow {
+    position: relative
+}
+
+.videolist {
+    font-weight: 700;
+    list-style: none outside none;
+    margin-left: 0;
+    max-height: 500px;
+    overflow-y: auto;
+    background-image: url(https://raw.githubusercontent.com/om3tcw/r/emotes/other/holotalk.jpg);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center
+}
+
+p#currenttitle {
+    overflow-x: hidden
+}
+
+div#plmeta {
+    display: none;
+}
+
+.qe_blame {
+    float: right;
+    font-family: Monospace;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.queue_temp {
+    background-image: none
+}
+
+.queue_entry {
+    border-width: 1px 0 1px 0;
+    border-color: black;
+    padding: 2px 4px;
+    border: 0px solid !important;
+    outline: 1px solid black;
+    opacity: .9
+}
+
+#playlistrow .checkbox {
+    position: relative;
+    display: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+@media screen and (min-width: 768px) {
+    .modal-dialog {
+        max-width: 950px !important;
+        margin-top: 10px
+    }
+}
+
+#videowrap {
+    height: 100%;
+    margin-bottom: 0;
+    z-index: 1;
+    flex-grow: 1;
+    flex-shrink: 0;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+#videowrap:hover .popover-content {
+    overflow: visible;
+    position: absolute;
+    z-index: 6;
+    bottom: 300%;
+    left: 100%;
+}
+
+
+/*header css*/
+a.navbar-brand {
+    background-image: url("https://raw.githubusercontent.com/om3tcw/r/emotes/other/om3tcw.gif");
+    background-repeat: no-repeat;
+    width: 90px;
+    background-position: center;
+    background-size: auto 45px;
+    font-size: 0;
+}
+
+.navbar-inverse {
+    background-color: rgba(20, 20, 20, 1);
+}
+
+.navbar-nav {
+    font-size: 12px;
+}
+
+footer {
+    display: none;
+}
+
+/*background css*/
+body {
+    cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/inasmile.png);
+    overflow: visible;
+    background-position-x: -500px;
+    background-size: auto 100%;
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+#rightpane,
+#leftpane {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important
+}
+
+#leftpane .well {
+    margin-bottom: 5px
+}
+
+#wrap {
+    padding: 0 !important;
+}
+
+#controlsrow,
+#resizewrap {
+    display: none;
+}
+
+#motdrow {
+    display: block;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+    opacity: 1;
+}
+
+#motdrow .well {
+    background-color: #88217a;
+}
+
+#chatwrap {
+    border: 0px;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    height: 100%;
+    z-index: 2;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#main.flex>#chatwrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    box-shadow: none
+}
+
+#chatheader {
+    background-color: #000a;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+    padding: 5px;
+    padding-bottom: 1px;
+    font-size: 16px;
+    color: white;
+    flex-shrink: 0;
+    flex-groW: 0;
+    width: 100%;
+    height: min-content;
+}
+
+#chatwrap>#chatdisplayrow,
+#chatwrap>#chatinputrow {
+    width: 100%;
+    margin-left: 0;
+}
+
+#chatdisplayrow {
+
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#chatdisplayrow #userlist,
+#chatdisplayrow #messagebuffer {
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+}
+
+#chatdisplayrow>* {
+    height: 80%;
+}
+
+#chatinputrow {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#chatinputrow>form {
+    flex-grow: 1;
+}
+
+input.form-control[type=text],
+input.form-control[type=password],
+input.form-control[type=email],
+textarea.form-control {
+    background-color: rgba(20, 20, 20, 1) !important;
+    color: #c8c8c8;
+}
+
+.form-control {
+    height: 32px;
+}
+
+#chatinputrow button {
+    height: 32px;
+    width: 32px;
+    font-style: bolder;
+    color: white;
+    padding: 0 18px;
+    border: none;
+    border-radius: 0;
+    background-color: #0000
+}
+
+#userlist {
+    width: 100px;
+    padding-top: 3px;
+    padding-left: 3px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0px;
+    box-shadow: none
+}
+
+.userlist_item {
+    cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/Faunapoint.ani'), auto;
+    height: 14px;
+    padding-left: 3px;
+    word-break: break-all;
+    white-space: nowrap;
+}
+
+.userlist_item:last-child {
+    margin-right: 30px;
+}
+
+.userlist_item:hover {
+    background-color: rgba(100, 220, 0, 0.3);
+}
+
+.linewrap,
+.linewrap code {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#messagebuffer [class|="chat-msg"],
+.pm-buffer {
+    font-size: 14px;
+    color: white;
+    display: block;
+    padding-left: 3px;
+    padding-bottom: 1px;
+}
+
+/* This was originally implemented, then broken, then reimplemented, now commented.
+#messagebuffer > div:nth-child(2n):not(.nick-highlight) {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+}
+*/
+
+#messagebuffer>div:hover>.timestamp,
+.pm-buffer>div:hover>.timestamp {
+    opacity: 1;
+}
+
+#messagebuffer [class|="chat-msg"] a,
+.pm-buffer a {
+    color: #80D8dd;
+}
+
+#emotelistbtn {
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/angey.png');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 60%;    
+    outline: none;
+    padding: 0 16px;
+    background-size: cover;
+    background-position: center;
+}
+
+#videowrap-header {
+    width: 100% !important;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 0px;
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 6px;
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+    margin-top: 0px;
+    margin-left: 0px !important;
+    border-bottom: 1px solid darkgray;
+    margin-bottom: -1px;
+    color: white;
+    font-size: 16px;
+}
+
+#videowrap-header>[id^="resize"] {
+    margin-top: 2px;
+}
+
+.embed-responsive {
+    box-shadow: none;
+    margin: 0;
+    background-color: #000;
+}
+
+.embed-responsive #media-container {
+    margin: 0px;
+}
+
+.embed-responsive-smooth:after {
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    content: " ";
+}
+
+.bordered {
+    border: 1px solid red !important;
+}
+
+#pollwrap h3 {
+    margin-top: -10px !important;
+    color: #018729;
+    text-shadow: 1px 2px 2px rgba(255, 255, 255, 0.1);
+}
+
+#pollwrap .label {
+    float: left !important;
+    padding: 5px 5px !important;
+    font-size: 12px;
+    margin-right: 10px;
+    background-color: dark;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3)
+}
+
+#pollwrap [class="option"] {
+    font-size: 15px;
+}
+
+#pollwrap [class="option"] button {
+    opacity: 1;
+    box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.3);
+    font-style: bolder;
+    font-size: 15px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    text-align: center;
+    vertical-align: center;
+}
+
+#pollwrap .close {
+    color: white;
+    font-size: 30px;
+    opacity: 0.5;
+}
+
+.nav.nav-tabs {
+    border-bottom: 0px;
+}
+
+#MainTabContainer {
+    margin-bottom: -1px;
+}
+
+#MainTabContainer>ul>li.active>a {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    margin-bottom: 0px;
+}
+
+#rightpane {
+    margin-top: 0px !important;
+    border-radius: 0 0 5px 5px;
+}
+
+.qe_title {
+    margin-left: 4px;
+}
+
+@media (max-width: 992px) {
+
+    #main,
+    #chatwrap,
+    #videowrap {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    #videowrap {
+        margin: 0;
+        margin-top: 15px;
+        overflow-y: auto;
+        overflow-x: auto;
+        max-height: min-content;
+        height: min-content;
+        min-height: min-content;
+        padding: 0;
+    }
+}
+
+.well.active {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.well.active .btn-danger {
+    right: -25px;
+    top: 50px;
+    border-color: transparent;
+    background-color: #520075
+}
+
+.well.active button.close {
+    position: relative;
+    left: 15px;
+    bottom: 20px;
+}
+
+.navbar-collapse .btn-sm {
+    font-size: 12px;
+    background-color: transparent;
+    color: #ccc;
+    border-right: 1px solid rgba(0, 0, 0, .2);
+    border-left: 1px solid rgba(255, 255, 255, .1);
+    background-image: none;
+    line-height: 30px;
+    padding: 10px 15px;
+    margin: 2px;
+}
+
+#pmbar {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.pm-panel {
+    background-color: #2e3338cc;
+    border-radius: 3px 3px 0px 0px !important;
+    overflow: hidden;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.3);
+    box-sizing: initial;
+    border: 0px;
+}
+
+.pm-buffer {
+    padding: 5px;
+    padding-top: 0px;
+}
+
+#pmbar.panel-heading button {
+    color: white !important;
+}
+
+@media (max-width: 992px) {
+
+    #main,
+    #chatwrap,
+    #videowrap {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    #videowrap {
+        margin: 0;
+        margin-top: 15px;
+        overflow-y: auto;
+        overflow-x: auto;
+        max-height: min-content;
+        height: min-content;
+        min-height: min-content;
+        padding: 0;
+    }
+}
+
+#motdwrap {
+    background-image: url(https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/garchomp.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    font-size: 12px;
+    padding: 0px 0px !important;
+    min-height: 12px !important;
+}
+
+#motdwrap .close {
+    font-size: 16px;
+    position: center;
+}
+
+#motd {
+    padding-left: 100px;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.imageHoverPreview {
+    max-height: 200px;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    clear: both;
+    display: block;
+}
+
+#messagebuffer>div>span>div {
+    background-color: #0000
+}
+
+#queue,
+#queue+div,
+.queue_entry,
+#pollwrap>div {
+    box-shadow: none !important;
+    border-radius: 0;
+}
+
+.queue_entry:hover:not(.queue_active),
+.userlist_item:hover {
+    background-color: #84f8 !important;
+}
+
+.navbar-brand {
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-tabs {
+    background: #0008;
+}
+
+.nav>li,
+.nav>li:focus {
+    margin-bottom: 0;
+    background: none !important;
+}
+
+.nav>li>a,
+#nav-collapsible>form {
+    color: #ccc;
+    margin: 0;
+    border: none !important;
+    padding: 6px 10px !important;
+    border-radius: 0;
+}
+
+.nav>li>a:hover,
+.nav>li.activ,
+.nav>li.open>a.dropdown-toggle {
+    background: none !important;
+    text-shadow: #0ff 0 0 4px
+}
+
+#MainTabContainer>ul>li.active>a,
+#MainTabContainer>ul>li:hover>a {
+    color: #fff;
+    background: none;
+    text-shadow: #0ff 0 0 4px;
+    cursor: pointer !important;
+}
+
+.navbar {
+    border: none;
+    box-shadow: none !important;
+    background-color: #000a !important;
+    min-height: 32px;
+}
+
+.profile-box {
+    min-height: 0;
+    background-color: #000c;
+    border: none;
+    padding: 8px 8px 0px 8px;
+}
+
+.profile-box p {
+    margin: 4px 0 8px 0;
+}
+
+.profile-box.linewrap {
+    z-index: 10;
+    position: absolute !important;
+}
+
+.profile-image {
+    border: none;
+    margin: 0 8px 4px 0;
+}
+
+.linewrap {
+    z-index: 0;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#chatinputrow,
+#chatinputrow form {
+    height: 32px
+}
+
+#emotebtndiv+form {
+    background-color: #000a;
+    image-rendering: pixelated;
+}
+
+form input#chatline {
+    padding: 0 0 0 5px;
+    height: 32px;
+    background-size: auto;
+}
+
+#messagebuffer .username {
+    margin-top: 0;
+}
+
+#messagebuffer div.nick-hover {
+    background-color: #0066 !important;
+    box-shadow: none !important;
+}
+
+#messagebuffer div.nick-highlight {
+    background-color: #963C6A !important;
+    box-shadow: none !important;
+}
+
+#messagebuffer div.nick-highlight.nick-hover {
+    background-color: #f8f8 !important;
+}
+
+#messagebuffer div.nick-highlight .username {
+    color: #ff00dc;
+}
+
+/* marble reverse emote commit */
+.reverse {
+    display: inline-block;
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
