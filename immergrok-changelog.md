@@ -2,14 +2,21 @@
 
 ## [UPCOMING, FUTURE, NOT HERE YET]
 
+### Working on
+
 - Emote overhaul
   - Meta tags and Soundposts inside the emotes themselves.
   - A method to filter and search by meta tags and soundpost status
   - A way to add meta tags and soundposts directly from the bote
   - alt emotes that show up on rotation
+- Image on link hover that isn't obtrusive (impossible)
+- Holopeek v2
+
+### Not even started
+
 - bees?!
 - Better ctrl+a
-- more cleanup
+- ctrl + e
 - re-adding NND mode before christmasTM
   - not legally binding
     - specially if I land this job i'm in wait for
@@ -18,7 +25,7 @@
 
 ### Temporary
 
-- [#_] Due to the change in the chat message intercept code, "boo" now only triggers with "/boo", this will be reverted sometime soon. Maybe
+- [#_] Due to the change in the chat message intercept code, "boo" now only triggers with "/boo", this will be reverted sometime soon, unless people like it.
 
 ### WIP Wiki with Module information
 
@@ -26,11 +33,15 @@
 
 ### Crackerjack's CDN
 
-FILL THIS PARAGRAPH WHEN WE SETUP A CDN WITH CI/CD!
+With the help of Crackerjack we've setup two domains, one for development and one for live that will have a backup of our github. This is still in its infancy and testing phase so if it breaks we can just revert back.
+
+#### CI/CD Pipeline
+
+Whenever you update the github repo, the CDN backup will receive the updated file within the minute.
 
 ### Complete refactors and modularization
 
-- No more github417.js, it is now main.js, hopefully will never have a number again. (Name subject to change)
+- No more github417.js, it is now main.js, hopefully will never have a number again.
 - Standardized most of the plain JavaScript to JQuery. Now we pester tomboysweat to update to JQuery 3
 
 #### Complete Holopeek rewrite
@@ -41,12 +52,13 @@ I put my grubby hands all over holopeek. Adding any functionality or touching an
 - NEW: Clicking outside of holopeek will close it. Technology!!!
 - NEW: The range sliders will now update their style live, instead of when you refresh the checkbox.
 - NEW: Reset button now comes with an alert so you don't reset on accident.
+- It now works with localStorage instead of cookies.
 - [#_] Polka leaves if you leave the cursor, it's minor so I'm not going to fix it right now.
 
 #### Offtopic mode rewrite
 
 - Changed the name from "Offtopic mode" to "Mahjong Mode", subject to change.
-- It... works now, kinda, mostly, go test it out.
+- It works now.
 
 #### Module load logic
 
@@ -75,10 +87,6 @@ await window.waitForFunc("addToHoloPeek")
 
 This Should All Work TM.
 
-#### (WIP!) Image on link hover
-
-9nee wanted to fix it and a bunch of people asked for it, so I obliged, it's WIP but maybe I end up pushing this build without finishing it.
-
 ### Cookies removed in favor of localStorage
 
 Why were we even using cookies? Who was Kusa selling our information to?
@@ -95,13 +103,12 @@ Why were we even using cookies? Who was Kusa selling our information to?
 
 - Clicking an emote in chat will now write that emote where your cursor last was, instead of at the end of the textbox.
 - Ctrl+R and Ctrl+S have better, more consistent code logic when wrapping text (You can select a piece of text, then press Ctrl+R/S, that was undocumented to my knowledge)
-- TODO: Ctrl+E?
 
 ### I *haven't* touched
 
 Most of the original XaeModules-modules are intact, completely. Even I'm scared of them for now. So: BetterPms, BetterPlaylist, customSettingsModal, customUserlist, ~~moreLayoutOptions~~ and ~~soundNotifications~~.
 
-I'll fix them if they break, but they're each a whole dev cycle on their own to fix and keep up to standard..
+I'll fix them if they break, but they're really, really scary.
 
 ---
 
