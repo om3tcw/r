@@ -1,0 +1,21 @@
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout project
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+
+    - name: Get files difference
+      run: | 
+        git diff --name-status HEAD~1 > FILES_CHANGED.txt
+
+    - name: Upload differential upgrade
+        uses: Rasea-M/CFR2-BARB@latest
+    env: 
+        cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        cloudflare-r2-access-key-id: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+        cloudflare-r2-secret-access-key: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+        cloudflare-r2-bucket-name: ${{ secrets.CLOUDFLARE_R2_BUCKET_NAME }}
