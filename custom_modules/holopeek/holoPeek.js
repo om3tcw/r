@@ -10,7 +10,7 @@ let $holoPeekImage;
 let holoPeekItems = [];
 const $holoPeekItemsContainer = $('<div>').attr('id', 'holoPeekItemsContainer');
 let holoPeekSizePx = 60;
-let holoPeekImgUrl = 'https://mikobotecdn.win/emotes/squeeb.png';
+let holoPeekImgUrl = 'https://mikobotecdn.win/emotes/baepeek.png';
 
 function setupOnClickForHoloPeek($holoPeekButton, $holoPeekBubble) {
     $holoPeekButton.on('click.holoPeek', (event) => {
