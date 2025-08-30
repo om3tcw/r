@@ -365,5 +365,7 @@
 	":redalert:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/teams.ogg"},
 	"bakushin" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/bakushin.ogg"},
 	"matikanefukukitaru" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/matikanefukukitaru.ogg"},
-	":mambo:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mambo.ogg"}
+	":mambo:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mambo.ogg"},
+	":otomostare:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/otomostare.ogg"}
 }
+
