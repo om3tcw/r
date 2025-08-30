@@ -22,7 +22,7 @@ function chatVideoOnly(self) {
     self.lunaButton.css({
         'width': '46px',
         'height': '100px',
-        'background': `url('https://raw.githubusercontent.com/${CURRENT_BRANCH}/r/emotes/custom_modules/holopeek/lunapeek.png')`,
+        'background': `url('${CURRENT_CDN}/custom_modules/holopeek/lunapeek.png')`,
         'position': 'absolute',
         'right': '0',
         'top': '0',
@@ -122,8 +122,8 @@ function changeHoloPeekImage(self) {
     $('#holopeek_img').css("background-image", `url(${imageUrl})`);
 }
 
-let blackBg = `https://raw.githubusercontent.com/${CURRENT_BRANCH}/r/emotes/custom_modules/holopeek/black.png`
-let polkaPeek = `https://raw.githubusercontent.com/${CURRENT_BRANCH}/r/custom_modules/holopeek/polkapeek.png`
+let blackBg = makeLiveCDNLink("emotes/custom_modules/holopeek/black.png");
+let polkaPeek = makeLiveCDNLink("custom_modules/holopeek/polkapeek.png");
 
 export const holoPeekObjects = [
     {

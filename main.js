@@ -10,19 +10,14 @@ if (![CHANNEL.name].favicon) {
         .attr("rel", "shortcut icon")
         .attr("type", "image/png")
         .attr("sizes", "64x64")
-        .attr("href", "https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/ogey.png")
+        .attr("href", "https://mikobotecdn.win/emotes/ogey.png")
         .appendTo("head");
 }
 
 const LOCAL_CDN_URL = "https://immergrok.mikobotecdn.win/immergrok-cytube-fork";
-
-//For live jsdelivr usage
-const JSDELIVR_CDN_URL = "https://cdn.jsdelivr.net/gh/om3tcw/r@"
-const CURRENT_COMMIT = ""
-const CURRENT_BRANCH = "immergrok" //Change to om3tcw when live
-
-//CHANGE TO JSDELIVR_CDN_URL WHEN LIVE
-const CURRENT_CDN = LOCAL_CDN_URL;
+const ONLINE_CDN = "https://mikobotecdn.win"
+//CHANGE WHEN DEVELOPING/LIVE
+const CURRENT_CDN = ONLINE_CDN;
 
 const MODULES_FOLDER = "custom_modules/";
 const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`
@@ -47,11 +42,11 @@ const ModulePaths = [
 ]
 
 //candidate to move to util.js
+//Obsolete?
 function makeLiveCDNLink(fileName) {
     return  CURRENT_CDN +
-            CURRENT_COMMIT +
             "/" +
-            fileName + 
+            fileName +
             "?ver=1"
 }
 
