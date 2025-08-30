@@ -116,9 +116,14 @@ function chatVideoOnly(self) {
 });
 }
 
-
+function changeHoloPeekImage(self) { 
+    let imageUrl = self.inputElement.val();
+    window.setupAnimationForHoloPeekImg(imageUrl);
+    $('#holopeek_img').css("background-image", `url(${imageUrl})`);
+}
 
 let blackBg = `https://raw.githubusercontent.com/${CURRENT_BRANCH}/r/emotes/custom_modules/holopeek/black.png`
+let polkaPeek = `https://raw.githubusercontent.com/${CURRENT_BRANCH}/r/custom_modules/holopeek/polkapeek.png`
 
 export const holoPeekObjects = [
     {
@@ -127,6 +132,13 @@ export const holoPeekObjects = [
         optionFunc: (self) => self.cssData = `body { background-image: url(${self.inputElement.val()}); }`, 
         type: "text", 
         defaultValue: blackBg
+    },
+    {
+        optionName: "changeHoloPeekImage", 
+        optionDescription: "Change HoloPeek Image", 
+        optionFunc: changeHoloPeekImage,
+        type: "text", 
+        defaultValue: polkaPeek
     },
     {
         optionName: "imageHover",

@@ -1,19 +1,8 @@
 let SOUNDPOSTS = {};
-let SOUNDPOST_STATE = "false";
 let SOUNDPOST_PLAYBACK_STATE = {};
 let PLAYED_SOUNDPOSTS = [];
 const defaultVolume = 0.1;
 const defaultAdditionalPlayTime = 3;
-
-(async function loadSoundposts() {
-    const response = await fetch(
-        "https://raw.githubusercontent.com/om3tcw/r/emotes/soundposts/soundposts.json"
-    );
-    return await response.json();
-})().then((data) => {
-    SOUNDPOSTS = data;
-    SOUNDPOST_STATE = localStorage.getItem("SOUNDPOST_STATE");
-});
 
 function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
     const soundpost = SOUNDPOST_PLAYBACK_STATE[emote];
@@ -38,7 +27,7 @@ function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
 }
 
 function injectSoundpost($message) {
-    if (SOUNDPOST_STATE) {
+    if (window.SOUNDPOST_STATE) {
         const $emotes = $message.find(".channel-emote[title]");
         $emotes.each((_, element) => {
             const $emote = $(element);
@@ -112,26 +101,47 @@ function initializeSoundpost(emote, soundurl, preload = false) {
     }
 }
 
-const soundpostButton = document.createElement("button");
-soundpostButton.style.backgroundImage = SOUNDPOST_STATE
-    ? "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/schizo.gif')"
-    : "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/medicated.png')";
-soundpostButton.style.backgroundSize = "cover";
+async function loadSoundposts() {
+    const response = await fetch(
+        "https://raw.githubusercontent.com/om3tcw/r/emotes/soundposts/soundposts.json"
+    );
+    return await response.json();
+};
 
-$(soundpostButton).on("click", () => {
-    SOUNDPOST_STATE = !SOUNDPOST_STATE;
-    localStorage.setItem("SOUNDPOST_STATE", SOUNDPOST_STATE);
-    soundpostButton.style.backgroundImage = SOUNDPOST_STATE
-        ? "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/schizo.gif')"
-        : "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/medicated.png')";
-});
+function toggleSoundpostButtonImage(soundpostButton) {
+    if (window.SOUNDPOST_STATE) {
+        soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/schizo.gif')";
+    } else {
+        soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/medicated.png')";
+    }
+}
 
 (async () => {
     await window.waitForFunc("chatMsgSocketTapFunctions")
     window.chatMsgSocketTapFunctions.push(injectSoundpost);
     
+
+    const soundpostButton = document.createElement("button");
+    soundpostButton.style.backgroundSize = "cover";
+
     //hacky
     await window.waitForFunc("DOMrebuiltPromise");
     await window.DOMrebuiltPromise;
     $(chatinputrow).append(soundpostButton);
-})();
+
+    $(soundpostButton).on("click.schizo", () => {
+        window.SOUNDPOST_STATE = !window.SOUNDPOST_STATE;
+        localStorage.setItem("SOUNDPOST_STATE", window.SOUNDPOST_STATE);
+        toggleSoundpostButtonImage(soundpostButton)
+    });
+
+    await loadSoundposts().then((data) => {
+        SOUNDPOSTS = data;
+        let bufferFetch = localStorage.getItem("SOUNDPOST_STATE");
+        if (bufferFetch !== null) {
+            window.SOUNDPOST_STATE = JSON.parse(bufferFetch);
+        }        
+    }) 
+    
+    toggleSoundpostButtonImage(soundpostButton);
+})()

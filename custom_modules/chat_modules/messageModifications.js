@@ -1,3 +1,4 @@
+const defaultVolume = 0.1;
 
 function surroundTextSelection($textField, leftSurroundString, rightSurroundString) {
     let textFieldDOM = $textField[0]
@@ -155,7 +156,7 @@ function formatCommandMessage($messageElement) {
 }
 
 function playNeneYaySound() {
-    if (SOUNDPOST_STATE) {
+    if (window.SOUNDPOST_STATE) {
         let myaudio = new Audio("https://www.dl.dropboxusercontent.com/s/z0n3hnw8ky79rwhdokfso/nenesmile.ogg?rlkey=bezzj2pn6c9rj0pqco5kbf7bk&st=ythhncur&dl=0");
         myaudio.volume = defaultVolume;
         myaudio.play();
@@ -163,7 +164,7 @@ function playNeneYaySound() {
 }
 
 function playBooSound() {
-    if (SOUNDPOST_STATE) {
+    if (window.SOUNDPOST_STATE) {
         let myaudio = new Audio("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/boo.ogg");
         myaudio.volume = defaultVolume;
         myaudio.play();

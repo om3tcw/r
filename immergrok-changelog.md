@@ -21,7 +21,7 @@
   - not legally binding
     - specially if I land this job i'm in wait for
 
-## 0.1.0 [XXAug2025 - "Laying out the groundwork"] (WIP)
+## 0.1.0 [30Aug2025 - "Laying out the groundwork"] (WIP)
 
 ### Temporary
 
@@ -48,12 +48,13 @@ Whenever you update the github repo, the CDN backup will receive the updated fil
 
 I put my grubby hands all over holopeek. Adding any functionality or touching any line of code made it crumble into dust, so I rewrote it almost in its entirety. Some important changes as follow:
 
-- (Reverted) changed the name internally to holopeek, fuck you luxes.
+- (Reverted) changed the name internally to holopeek, fuck you Luxes.
 - NEW: Clicking outside of holopeek will close it. Technology!!!
+- NEW: Ability to change the image, this is a quick temporary addition that will be changed in the future.
 - NEW: The range sliders will now update their style live, instead of when you refresh the checkbox.
 - NEW: Reset button now comes with an alert so you don't reset on accident.
 - It now works with localStorage instead of cookies.
-- [#_] Polka leaves if you leave the cursor, it's minor so I'm not going to fix it right now.
+- [#_] The image leaves if you leave the cursor, it's minor so I'm not going to fix it right now.
 
 #### Offtopic mode rewrite
 
@@ -93,7 +94,9 @@ Why were we even using cookies? Who was Kusa selling our information to?
 
 ### Miscellaneous
 
+- `soundNotifications.js` had to be hacked together at the last minute to fix some idiocy. That file is the worst coded piece of shit I've seen in my life, if it breaks I'll fix it, expect it to.
 - WIP Standardized CSS Injection Format
+- Rewrote most of `moreLayoutOptions.js`, it might even be readable now.
 - There's a new file called emotetest.js that has the new format for the next big change, I just wanted to get these things out of my way for now.
 - Removed the line that made ctrl+a not work, this was intentionally put there by someone, I'm blaming Luxes
 - Renamed github1.css to custom-migobote.css and cleaned it up of a bunch of filth

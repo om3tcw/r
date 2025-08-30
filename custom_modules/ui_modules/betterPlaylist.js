@@ -1,11 +1,9 @@
-"use strict";
-
-function playlist(active) {
-    var queue = [];
-    var selector = `#queue > .queue_entry${active?".queue_active":""}`;
+export function playlist(active) {
+    let queue = [];
+    let selector = `#queue > .queue_entry${active?".queue_active":""}`;
     $(selector).each(function() {
-        var data = $(this).data();
-        var addedby;
+        let data = $(this).data();
+        let addedby;
         if ($(this).attr("data-original-title")) {
             addedby = $(this).attr("data-original-title").match(/: ([-\w\u00c0-\u00ff]{1,20})$/)[1]
         } else {
@@ -66,7 +64,7 @@ function playlist(active) {
             if (Math.abs(this.sinceLast - Date.now()) < this.cooldown) {
                 return
             }
-            var playlistCount = $("ul#queue li.queue_entry").length;
+            let playlistCount = $("ul#queue li.queue_entry").length;
             if (Math.abs(playlistCount - data.count) > 1) {
                 this.setTimer()
             }
@@ -127,7 +125,7 @@ function playlist(active) {
             if (CHANNEL.perms.seeplaylist > CLIENT.rank) {
                 return
             }
-            var self = this;
+            let self = this;
             $("#queue > .queue_entry:not(.thumbed)").each(function() {
                 self.getThumbnail($(this))
             })
@@ -136,14 +134,14 @@ function playlist(active) {
             $("#queue .popover").remove()
         },
         getThumbnail: function(target) {
-            var type = target.data().media.type;
-            var id = target.data().media.id;
-            var url;
+            let type = target.data().media.type;
+            let id = target.data().media.id;
+            let url;
             switch (type) {
                 case "vi":
                     url = "https://vimeo.com/api/v2/video/__id.json".replace(/__id/, id);
                     $.getJSON(url, (data => {
-                        var url = data[0].thumbnail_medium;
+                        let url = data[0].thumbnail_medium;
                         this.applyThumbnail(target, url)
                     }));
                     target.addClass("thumbed");
@@ -178,8 +176,8 @@ function playlist(active) {
             return
         }
         window.makeQueueEntry = function(item, addbtns) {
-            var video = item.media;
-            var li = $("<li/>");
+            let video = item.media;
+            let li = $("<li/>");
             li.addClass("queue_entry");
             li.addClass("pluid-" + item.uid);
             li.data("uid", item.uid);
@@ -189,12 +187,12 @@ function playlist(active) {
             if (video.thumb) {
                 $("<img/>").attr("src", video.thumb.url).css("float", "left").css("clear", "both").appendTo(li)
             }
-            var title = $("<a/>").addClass("qe_title").appendTo(li).text(video.title).attr("href", formatURL(video)).attr("target", "_blank");
-            var time = $("<span/>").addClass("qe_time").appendTo(li);
+            let title = $("<a/>").addClass("qe_title").appendTo(li).text(video.title).attr("href", formatURL(video)).attr("target", "_blank");
+            let time = $("<span/>").addClass("qe_time").appendTo(li);
             time.text(video.duration);
-            var blame = $("<span/>").addClass("qe_blame").appendTo(li);
+            let blame = $("<span/>").addClass("qe_blame").appendTo(li);
             blame.text(item.queueby + " | ");
-            var clear = $("<div/>").addClass("qe_clear").appendTo(li);
+            let clear = $("<div/>").addClass("qe_clear").appendTo(li);
             if (item.temp) {
                 li.addClass("queue_temp")
             }
@@ -211,21 +209,21 @@ function playlist(active) {
         if (!options.markAlert) {
             return
         }
-        var _aQB = window.addQueueButtons;
+        let _aQB = window.addQueueButtons;
         window.addQueueButtonsOld = _aQB;
         $("#queue").data("marked", []);
         window.addQueueButtons = function(li) {
             li.find(".qbtn-mark").remove();
             window.addQueueButtonsOld(li);
             const usingGroup = hasPermission("playlistjump") || hasPermission("playlistmove") || hasPermission("settemp") || hasPermission("playlistdelete");
-            var uid = li.data("uid");
-            var blame = li.data("blame");
-            var menu = li.find(".btn-group");
-            var title = li.find(".qe_title");
-            var mark = $("#queue").data("marked").includes(uid);
-            var marker = $("<button/>").addClass("btn btn-xs qbtn-mark").addClass(`${mark?"btn-warning":"btn-default"}`).html("<span class='glyphicon glyphicon-bell'></span>Notify").click(function() {
-                var marked = $("#queue").data("marked");
-                var isMarked = marked.includes(uid);
+            let uid = li.data("uid");
+            let blame = li.data("blame");
+            let menu = li.find(".btn-group");
+            let title = li.find(".qe_title");
+            let mark = $("#queue").data("marked").includes(uid);
+            let marker = $("<button/>").addClass("btn btn-xs qbtn-mark").addClass(`${mark?"btn-warning":"btn-default"}`).html("<span class='glyphicon glyphicon-bell'></span>Notify").click(function() {
+                let marked = $("#queue").data("marked");
+                let isMarked = marked.includes(uid);
                 $(this).removeClass("btn-default btn-warning").addClass(`${isMarked?"btn-default":"btn-warning"}`);
                 if (isMarked) {
                     marked.splice(marked.indexOf(uid), 1)
@@ -247,7 +245,7 @@ function playlist(active) {
             return
         }
         HTMLCollection.prototype.each = Array.prototype.each = NodeList.prototype.each = function(func, _this) {
-            var i = -1,
+            let i = -1,
                 bindeach = _this === undefined;
             while (++i < this.length) {
                 if (bindeach) {
@@ -257,9 +255,9 @@ function playlist(active) {
             }
         };
         document.head.insertAdjacentHTML("beforeEnd", "<style>#queue li:hover .qe_time:before { content: attr(data-timeleft); }</style>");
-        var _mQE = window.makeQueueEntry;
+        let _mQE = window.makeQueueEntry;
         window.makeQueueEntry = function(item, addbtns) {
-            var li = _mQE(item, addbtns);
+            let li = _mQE(item, addbtns);
             li[0].dataset.seconds = item.media.seconds;
             return li
         };
@@ -267,16 +265,16 @@ function playlist(active) {
         function calculateRemainingTime() {
             function secondsToTimeStr(d) {
                 d = Number(d);
-                var h = Math.floor(d / 3600);
-                var m = Math.floor(d % 3600 / 60);
-                var s = Math.floor(d % 3600 % 60);
+                let h = Math.floor(d / 3600);
+                let m = Math.floor(d % 3600 / 60);
+                let s = Math.floor(d % 3600 % 60);
                 return (h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s
             }
-            var q = document.querySelectorAll("#queue li");
-            var m = document.querySelector("#plmeta");
-            var active, cycle = [],
+            let q = document.querySelectorAll("#queue li");
+            let m = document.querySelector("#plmeta");
+            let active, cycle = [],
                 total = 0;
-            var currentTime = m && "playtime" in m.dataset && m.dataset["playtime"] >= 0 ? m.dataset["playtime"] : 0;
+            let currentTime = m && "playtime" in m.dataset && m.dataset["playtime"] >= 0 ? m.dataset["playtime"] : 0;
             if (q.length == 0) return;
             q.each(function injectDOM() {
                 if (!this.querySelector(".qe_time")) return;
@@ -298,7 +296,7 @@ function playlist(active) {
             })
         }
         socket.on("mediaUpdate", function(data) {
-            var meta = document.querySelector("#plmeta");
+            let meta = document.querySelector("#plmeta");
             if (meta && (!meta.dataset["playtime"] || !data.paused)) {
                 meta.dataset["playtime"] = Math.abs(Math.ceil(data.currentTime))
             }
@@ -316,21 +314,21 @@ function playlist(active) {
         },
         view: function() {
             function createEntry(media) {
-                var li = $("<li>").addClass("recent_entry queue_entry");
-                var a = $("<a>").addClass("recent_link qe_title").attr("target", "_blank").attr("href", media.link).text(media.title).appendTo(li);
-                var time = $("<span>").addClass("qe_time").text(media.duration).appendTo(li);
-                var blame = $("<span>").addClass("qe_blame").text(media.blame + " | ").appendTo(li);
+                let li = $("<li>").addClass("recent_entry queue_entry");
+                let a = $("<a>").addClass("recent_link qe_title").attr("target", "_blank").attr("href", media.link).text(media.title).appendTo(li);
+                let time = $("<span>").addClass("qe_time").text(media.duration).appendTo(li);
+                let blame = $("<span>").addClass("qe_blame").text(media.blame + " | ").appendTo(li);
                 return li
             }
             $("#recentmedia-list").empty();
             if (this.history.length) {
-                for (var i = this.history.length - 1; i >= 0; i--) {
+                for (let i = this.history.length - 1; i >= 0; i--) {
                     createEntry(this.history[i]).appendTo("#recentmedia-list")
                 }
             }
         },
         update: function(data) {
-            var newEntry = {
+            let newEntry = {
                 title: data["title"],
                 link: formatURL(data),
                 duration: data["duration"],
@@ -359,10 +357,10 @@ function playlist(active) {
                 localStorage.setItem(`${CHANNEL.name}_RecentMedia`, JSON.stringify([]))
             }
             this.history = JSON.parse(localStorage.getItem(`${CHANNEL.name}_RecentMedia`));
-            var self = this;
-            var pane = $("<div>").attr("id", "recentmedia").addClass("plcontrol-collapse col-lg-12 col-md-12 collapse in").prependTo("#rightpane-inner").append($("<div>").addClass("vertical-spacer")).append($("<ol>").attr("id", "recentmedia-list").text("Initializing.")).attr("aria-expanded", "true").css("height", "0");
-            var button = $("<button>").attr("id", "showrecent").attr("title", "Recently shown videos").attr("data-toggle", "collapse").attr("data-target", "#recentmedia").addClass("btn btn-sm btn-default collapsed").append($("<span>").addClass("glyphicon glyphicon-time")).on("click", function() {
-                var wasActive = $(this).hasClass("active");
+            let self = this;
+            let pane = $("<div>").attr("id", "recentmedia").addClass("plcontrol-collapse col-lg-12 col-md-12 collapse in").prependTo("#rightpane-inner").append($("<div>").addClass("vertical-spacer")).append($("<ol>").attr("id", "recentmedia-list").text("Initializing.")).attr("aria-expanded", "true").css("height", "0");
+            let button = $("<button>").attr("id", "showrecent").attr("title", "Recently shown videos").attr("data-toggle", "collapse").attr("data-target", "#recentmedia").addClass("btn btn-sm btn-default collapsed").append($("<span>").addClass("glyphicon glyphicon-time")).on("click", function() {
+                let wasActive = $(this).hasClass("active");
                 $(".plcontrol-collapse").collapse("hide");
                 $("#plcontrol button.active").button("toggle");
                 if (!wasActive) {
@@ -370,7 +368,7 @@ function playlist(active) {
                 }
                 self.view()
             }).appendTo("#plcontrol").click();
-            var style = $("<style>").text("#recentmedia-list>li:first-child { border-top-width: 1px }").prependTo($("head"));
+            let style = $("<style>").text("#recentmedia-list>li:first-child { border-top-width: 1px }").prependTo($("head"));
             socket.on("changeMedia", (data => {
                 this.update(data);
                 this.view()
@@ -476,7 +474,7 @@ function playlist(active) {
         if (!options.quickQuality) {
             return
         }
-        var qualityChoices = [{
+        let qualityChoices = [{
             code: "auto",
             text: "Auto"
         }, {
@@ -498,14 +496,14 @@ function playlist(active) {
             code: "best",
             text: "Highest"
         }];
-        var current = qualityChoices.filter((cv => {
+        let current = qualityChoices.filter((cv => {
             return cv.code == USEROPTS.default_quality
         }))[0]["text"];
-        var quickQuality = $("<div/>").addClass("btn-group dropdown").prop("id", "quickQuality").prependTo("#videocontrols");
+        let quickQuality = $("<div/>").addClass("btn-group dropdown").prop("id", "quickQuality").prependTo("#videocontrols");
         $("<button/>").addClass("btn btn-default btn-sm dropdown-toggle").attr("type", "button").attr("title", "Preferred Quality").attr("href", "javascript:void(0)").attr("data-toggle", "dropdown").html("<span class='glyphicon glyphicon-hd-video'></span><strong> " + current + " </strong><span class='caret'></span>").appendTo(quickQuality);
-        var quickChoices = $("<ul/>").addClass("dropdown-menu ul-double").appendTo(quickQuality);
+        let quickChoices = $("<ul/>").addClass("dropdown-menu ul-double").appendTo(quickQuality);
         qualityChoices.forEach((cv => {
-            var link = $("<li/>").addClass("li-double").appendTo(quickChoices);
+            let link = $("<li/>").addClass("li-double").appendTo(quickChoices);
             $("<a/>").text(cv.text).attr("quality", cv.code).appendTo(link).click(function() {
                 $("#quickQuality strong").text(" " + $(this).text());
                 USEROPTS.default_quality = $(this).attr("quality");
@@ -549,7 +547,7 @@ function playlist(active) {
         },
         up: $("<button/>").prop("id", "volumeButtonUp").addClass("btn btn-default btn-sm").attr("type", "button").attr("title", "Volume Up").html("<span class='glyphicon glyphicon-volume-up'></span>").on("click", function() {
             PLAYER.getVolume((currentVolume => {
-                var newVolume = Math.min(1, Math.max(0, Math.round((currentVolume + (currentVolume >= .1 ? currentVolume >= .2 ? .05 : .02 : .01)) / .01) * .01)).toFixed(2);
+                let newVolume = Math.min(1, Math.max(0, Math.round((currentVolume + (currentVolume >= .1 ? currentVolume >= .2 ? .05 : .02 : .01)) / .01) * .01)).toFixed(2);
                 PLAYER.setVolume(newVolume);
                 $("#volumeButtonIndicator").html(newVolume)
             }))
@@ -571,7 +569,7 @@ function playlist(active) {
         }),
         down: $("<button/>").prop("id", "volumeButtonDown").addClass("btn btn-default btn-sm").attr("type", "button").attr("title", "Volume Down").html("<span class='glyphicon glyphicon-volume-down'></span>").on("click", function() {
             PLAYER.getVolume((currentVolume => {
-                var newVolume = Math.min(1, Math.max(0, Math.round((currentVolume - (currentVolume <= .2 ? currentVolume <= .1 ? .01 : .02 : .05)) / .01) * .01)).toFixed(2);
+                let newVolume = Math.min(1, Math.max(0, Math.round((currentVolume - (currentVolume <= .2 ? currentVolume <= .1 ? .01 : .02 : .05)) / .01) * .01)).toFixed(2);
                 PLAYER.setVolume(newVolume);
                 $("#volumeButtonIndicator").html(newVolume)
             }))
@@ -586,7 +584,7 @@ function playlist(active) {
             if (event.shiftKey) {
                 return socket.emit("shufflePlaylist")
             }
-            var shuffle = confirm("Are you sure you want to shuffle the playlist?");
+            let shuffle = confirm("Are you sure you want to shuffle the playlist?");
             if (shuffle) {
                 socket.emit("shufflePlaylist")
             }

@@ -21,7 +21,7 @@ $emotelistbtn.detach().insertBefore($formElementsUnderChatWrap)
 //Sure
 $(leftcontrols).remove();
 
-export const $navBar = $(".nav.navbar-nav");
+const $navBar = $(".nav.navbar-nav");
 const $audioOnly = $('<li><a id="audio-only" href="javascript:void(0)">A/O</a></li>');
 const $holoDex = $("<li class='dropdown'><a target='_blank' href='https://holodex.net/home'>HoloDex</a></li>");
 const $kusasNewStupidAssBitForAugust = $("<li class='dropdown'><a target='_blank' href='https://docs.google.com/forms/d/e/1FAIpQLScmTUBfSR1bgRjQskGCMhnNpV_wZTIyQ17oMAZA1FoD5LY7LA/viewform?usp=sharing&ouid=112222705232140937762'><img src='https://twemoji.maxcdn.com/v/latest/72x72/1f1ec-1f1e7.png' alt='UK Flag' style='width: 1em; vertical-align: middle; margin-right: 0.25em;'>UK Age Verification Form</a></li>");

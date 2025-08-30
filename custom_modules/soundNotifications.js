@@ -1,3 +1,5 @@
+const defaultVolume = 0.1;
+
 function isItHalloween() {
     const currentYear = new Date().getFullYear();
     const HALLOWEEN_START = new Date(`${currentYear}-10-31T04:00:00Z`);
@@ -19,6 +21,7 @@ function isItHalloween() {
     }
 
     //Rename this god damned fuck function "playlist" to something else
+
     await window.waitForFunc("playlist")
 
     class AudioNotifier {
@@ -32,13 +35,13 @@ function isItHalloween() {
             timeSinceLast: 0,
             toggleState: true,
             volume: .2,
-            id: "votingpoll"
+            id: "newPoll"
         };
         Priv = {
             timeSinceLast: 0,
             toggleState: true,
             volume: .15,
-            id: "uhoh"
+            id: "privateMessage"
         };
         Video = {
             timeSinceLast: 0,
@@ -95,7 +98,10 @@ function isItHalloween() {
                 if (!this.Poll.toggleState) return;
                 if (CLIENT.rank < CHANNEL.perms.pollvote) return;
                 if (Date.now() - this.Poll.timeSinceLast < 6e4) return;
-                this.Poll.audio[0].play();
+                console.log(this.choices.newPoll)
+                let audio = new Audio(this.choices.newPoll);
+                audio.volume = 0.2;
+                audio.play();
                 this.Poll.timeSinceLast = Date.now();
             },
             Priv: (data) => {
@@ -104,7 +110,9 @@ function isItHalloween() {
                 if (window.IGNORED.includes(data.username)) return;
                 if ($(document.activeElement).hasClass("pm-input")) return;
                 if (Date.now() - this.Priv.timeSinceLast < 18e4) return;
-                this.Priv.audio[0].play();
+                let audio = new Audio(this.choices.privateMessage);
+                audio.volume = 0.15;
+                audio.play();
                 this.Priv.timeSinceLast = Date.now();
                 $("div.chat-msg-\\\\\\$server\\\\\\$:contains(Direct Message Notification)").remove();
                 $("#messagebuffer").trigger("whisper", `Direct Message Notification: ${data.username}`);
@@ -121,7 +129,9 @@ function isItHalloween() {
                 this.Video.last = false;
                 if (!addedby) return;
                 if (Date.now() - this.Video.timeSinceLast < 6e5) return;
-                this.Video.audio[0].play();
+                let audio = new Audio(this.choices.yourVideoPlay);
+                audio.volume = 0.35;
+                audio.play();
                 this.Video.timeSinceLast = Date.now();
                 this.Video.last = true;
                 $("div.chat-msg-\\\\\\$server\\\\\\$:contains(Video Notification)").remove();
