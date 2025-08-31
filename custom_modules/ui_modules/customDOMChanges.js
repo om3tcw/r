@@ -97,8 +97,6 @@ const randomEmotePool = [
 const drawRandomEmote = () => randomEmotePool[Math.floor(Math.random() * randomEmotePool.length)];
 
 $emotelistbtn.click(function () {
-    $(this).css("background-image", `url("${githubEmoteFolder}`+ drawRandomEmote() + ")");
+    $(this).css("background-image", `url("${githubEmoteFolder}`+ drawRandomEmote());
 }).html("");
-
-
 

@@ -7,6 +7,7 @@ socket.on("chatMsg", async () => {
   for (const func of window.chatMsgSocketTapFunctions) {
     func($messageElement);
   }
+  
 });
 
 (async () => {
