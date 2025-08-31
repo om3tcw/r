@@ -120,8 +120,6 @@ waitForPlaylist().then((() => {
                 $("#messagebuffer").trigger("whisper", `Direct Message Notification: ${data.username}`);
             },
             Video: () => {
-                
-                debugger;
                 if (!this.Video.toggleState) return;
                 if (CLIENT.rank < CHANNEL.perms.seeplaylist) return;
                 let timeSinceLastQueue = (Date.now() - this.Video.timeSinceLast) / 1000;
@@ -137,7 +135,7 @@ waitForPlaylist().then((() => {
                 
                 this.Video.timeSinceLast = Date.now();
                 let audio = new Audio(this.choices.yourVideoPlays);
-                audio.volume = 0.35;
+                audio.volume = 0.2;
                 audio.play();
                 $("div.chat-msg-\\\\\\$server\\\\\\$:contains(Video Notification)").remove();
                 $("#messagebuffer").trigger("whisper", "Video Notification: Your video is now playing!");
