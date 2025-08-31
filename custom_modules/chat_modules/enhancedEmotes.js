@@ -16,12 +16,12 @@ $("#cs-emotes-export").on('click', () => {
 let currentChatboxCaret = 0;
 
 $(chatline).on('click.caretUpdate keydown.caretUpdate', (event) => {
-    setTimeout(function () {
+    requestAnimationFrame(() => {
         currentChatboxCaret = event.target.selectionStart;
-    }, 0);
+    });
 })
 
-$(messagebuffer).click(event => {
+$(messagebuffer).on('click', (event) => {
     let target = event.target;
     if (event.button != 0) { 
         return;

@@ -11,22 +11,6 @@ function formatMJMessage($messageElement) {
   toggleSingleMJMessage($messageElement, canReadMJMessages())
 } 
 
-function injectSecretMahjongEmotes($messageElement) {
-  let messageHtml = $messageElement.html();
-  Object.keys(secretMJEmotes)
-        .map(secretEmote => {
-    return {
-      original: secretEmote,
-      escaped: secretEmote.replace(/[-/\\^$.*+?()[\]{}|]/g, '\\$&')
-    }}
-  ).forEach(({ original, escaped }) => {
-      const regex = new RegExp(escaped, 'g');
-      messageHtml = messageHtml.replace(regex,
-        `<img class="channel-emote" title="${original}" src="${secretMJEmotes[original]}">`);
-    });
-  $messageElement.html(messageHtml);
-  }
-
 function prependMessagesWithMJ(textInputBox) {
   if (textInputBox.val() && !textInputBox.val().startsWith('MJ: ')) {
       textInputBox.val('MJ: ' + textInputBox.val());
