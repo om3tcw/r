@@ -31,12 +31,12 @@ const xaeModule = {
         various: { notepad: true, emoteToggle: false }
     },
     modules: {
-        settings: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r/customsettingsmodal.js", done: true },
-        playlist: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r/playlistenhancement2.js", done: true },
-        privmsg: { active: 1, rank: 1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r/pmenhancement.js", done: true },
-        notifier: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/notifier.js", done: true },
-        layout: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/layoutoptions.js", done: true },
-        userlist: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/userlist.js", done: true },
+        settings: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes-backup/customsettingsmodal.js", done: true },
+        playlist: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes-backup/playlistenhancement2.js", done: true },
+        privmsg: { active: 1, rank: 1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes-backup/pmenhancement.js", done: true },
+        notifier: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes-backup/notifier.js", done: true },
+        layout: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes-backup/layoutoptions.js", done: true },
+        userlist: { active: 1, rank: -1, url: "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes-backup/userlist.js", done: true },
         html2canvas: { active: 1, rank: -1, url: "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js", done: true }
     },
     getScript(url, success, cache = true) {
