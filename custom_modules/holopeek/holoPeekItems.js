@@ -142,7 +142,7 @@ export const holoPeekObjects = [
     },
     {
         optionName: "imageHover",
-        optionDescription: "Enable image on link Hover",
+        optionDescription: "Image hover will never be real",
     },
     {
         optionName: "revealSpoilers",

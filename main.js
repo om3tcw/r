@@ -23,7 +23,7 @@ const MODULES_FOLDER = "custom_modules/";
 const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`
 const ModulePaths = [
     { CSSInjection: `custom_css_injection/customCssInjection.js`},
-    { MahjongMode: `chat_modules/mahjongMode.js` },
+    { MahjongMode: `chat_modules/mahjongMode.js` , isActive: 1, rank: -1 },
     { ChatMessageProcessor: `module_orchestration/chatMessageProcessor.js`},
     { TabsBelowVideo: `ui_modules/tabsBelowVideo.js`}, //I wouldn't disable this one
     { CustomDOMChanges: `ui_modules/customDOMChanges.js`},
