@@ -27,7 +27,6 @@ function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
 }
 
 function injectSoundpost($message) {
-
     if (window.SOUNDPOST_STATE) {
         const $emotes = $message.find(".channel-emote[title]");
         $emotes.each((_, element) => {

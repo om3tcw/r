@@ -2,13 +2,13 @@ window.chatMsgSocketTapFunctions = []
 window.postMessageTapFunctions = []
 
 function isItServerMessage() {
-  if ( $messageElement.attr('class') === 'server-whisper' ) {
+  if ($messageElement.attr('class') === 'server-whisper' ) {
     return true;
   }
 }
 
 function changeDOMMessageElement($messageElement) {
-  if (!isItServerMessage) {
+  if (!isItServerMessage()) {
     for (const func of window.chatMsgSocketTapFunctions) {
       func($messageElement);
     }
