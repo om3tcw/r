@@ -1,4 +1,7 @@
-on: push
+on: 
+  push:
+    branches:
+      - emotes
 
 env: 
     cloudflare_account_id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

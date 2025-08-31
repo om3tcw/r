@@ -49,16 +49,32 @@ function toggleMJMessages(self) {
   })
 }
 
-const secretMJEmotes = {
-    ":nyaggernap:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggernap.jpg",
-    ":yakuless:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/yakuless.gif",
-    ":nightynightnyagger:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nightynightnyagger.png",
-    ":chinpo:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/chinpo.png",
-    ":sharingiscaring:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/sharingiscaring.png",
-    ":pardner:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/pardner.png",
-    ":nyaggerfed:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfed.png",
-    ":nyaggerfish:": "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfish.png"
-};
+const secretMJEmotes = [
+  { name: ":nyaggernap:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggernap.jpg"},
+  { name: ":yakuless:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/yakuless.gif" },
+  { name: ":nightynightnyagger:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nightynightnyagger.png" },
+  { name: ":chinpo:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/chinpo.png" },
+  { name: ":sharingiscaring:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/sharingiscaring.png" },
+  { name: ":pardner:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/pardner.png" },
+  { name: ":nyaggerfed:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfed.png" },
+  { name: ":nyaggerfish:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfish.png" }  
+]
+
+function sanitizeText(str) {
+    str = str.replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;");
+    return str;
+}
+
+function turnMahjongEmotesReal(emotes) {
+  emotes.forEach(function (emote) {
+    emote.regex = new RegExp(emote.source, "gi");
+    CHANNEL.emotes.push(emote);
+    CHANNEL.emoteMap[sanitizeText(emote.name)] = emote;
+  })
+}
 
 function prependMahjongMode(self) {
   $textInputBox.on('input.prependMJ focus.prependMJ', 
@@ -108,6 +124,5 @@ function canReadMJMessages() {
   await window.waitForFunc("chatMsgSocketTapFunctions")
 
   window.chatMsgSocketTapFunctions.push(formatMJMessage);
-  window.chatMsgSocketTapFunctions.push(injectSecretMahjongEmotes);
-  
+  turnMahjongEmotesReal(secretMJEmotes);  
 })();
