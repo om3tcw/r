@@ -46,7 +46,8 @@ const ModulePaths = [
 function makeLiveCDNLink(fileName) {
     return  CURRENT_CDN +
             "/" +
-            fileName
+            fileName +
+            "?ver=1"
 }
 
 //candidate to move to util.js

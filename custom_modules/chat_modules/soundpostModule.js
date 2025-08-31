@@ -27,6 +27,7 @@ function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
 }
 
 function injectSoundpost($message) {
+
     if (window.SOUNDPOST_STATE) {
         const $emotes = $message.find(".channel-emote[title]");
         $emotes.each((_, element) => {
@@ -119,7 +120,6 @@ function toggleSoundpostButtonImage(soundpostButton) {
 (async () => {
     await window.waitForFunc("chatMsgSocketTapFunctions")
     window.chatMsgSocketTapFunctions.push(injectSoundpost);
-    
 
     const soundpostButton = document.createElement("button");
     soundpostButton.style.backgroundSize = "cover";

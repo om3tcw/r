@@ -21,11 +21,13 @@
   - not legally binding
     - specially if I land this job i'm in wait for
 
+## 0.1.1 Bugfixin'
+
 ## 0.1.0 [31Aug2025 - "Laying out the groundwork"] (WIP)
 
 ### Temporary
 
-- [#_] Due to the change in the chat message intercept code, "boo" now only triggers with "/boo", this will be reverted sometime soon, unless people like it.
+- [#27] Due to the change in the chat message intercept code, "boo" now only triggers with "/boo", this will be reverted sometime soon, unless people like it.
 
 ### WIP Wiki with Module information
 
@@ -54,7 +56,7 @@ I put my grubby hands all over holopeek. Adding any functionality or touching an
 - NEW: The range sliders will now update their style live, instead of when you refresh the checkbox.
 - NEW: Reset button now comes with an alert so you don't reset on accident.
 - It now works with localStorage instead of cookies.
-- [#_] The image leaves if you leave the cursor, it's minor so I'm not going to fix it right now.
+- [#26] The image leaves if you leave the cursor, it's minor so I'm not going to fix it right now.
 
 #### Offtopic mode rewrite
 
