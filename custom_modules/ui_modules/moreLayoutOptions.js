@@ -45,7 +45,7 @@ function removeVideo(event) {
         console.log(e)
     }
 
-    $videowrap.hide()
+    $videowrap = $videowrap.detach()
     $chatwrap.removeClass("col-lg-5 col-md-5").addClass("col-md-12");
     $removeVideoListLink.text("Restore Video");
     $removeVideoListLink.off('click.removeVideo');
@@ -66,7 +66,7 @@ function restoreVideo(event) {
         console.debug("Player not found when restoring video", e)
     }
 
-    $videowrap.show();
+    $videowrap.appendTo($("#main"))
     $chatwrap.addClass("col-lg-5 col-md-5").removeClass("col-md-12");
     $removeVideoListLink.text("Remove Video");
 
@@ -108,6 +108,7 @@ function toggleChat() {
 }
 
 function restoreHeaderAndVideo($chat) {
+    $("body").removeClass("chatOnly");
     $chatheader.find("span:gt(0)").remove();
     $("#wrap").show();
     

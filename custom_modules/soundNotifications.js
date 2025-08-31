@@ -8,7 +8,13 @@ function isItHalloween() {
     return (currentTimestamp > HALLOWEEN_START && currentTimestamp < HALLOWEEN_END)
 }
 
-((async () => {
+//Rename this god damned fuck function "playlist" to something else
+
+async function waitForPlaylist() {
+    await window.waitForFunc("fetchActiveVideoQueue");
+}
+
+waitForPlaylist().then((() => {
     if (typeof Storage === "undefined") {
         console.error("[XaeTube: Audio Notifier]", "localStorage not supported. Aborting load.");
         return
@@ -19,10 +25,6 @@ function isItHalloween() {
     if (!$("#customSettingsStaging").length) {
         console.warn("[XaeTube: Audio Notifier]", "WARNING: Settings module not loaded.")
     }
-
-    //Rename this god damned fuck function "playlist" to something else
-
-    await window.waitForFunc("playlist")
 
     class AudioNotifier {
         Squee = {
@@ -118,43 +120,30 @@ function isItHalloween() {
                 $("#messagebuffer").trigger("whisper", `Direct Message Notification: ${data.username}`);
             },
             Video: () => {
-                let addedby;
+                
+                debugger;
                 if (!this.Video.toggleState) return;
                 if (CLIENT.rank < CHANNEL.perms.seeplaylist) return;
-                addedby = playlist(true).addedby == CLIENT.name;
-                if (addedby && this.Video.last) {
-                    this.Video.timeSinceLast = Date.now();
+                let timeSinceLastQueue = (Date.now() - this.Video.timeSinceLast) / 1000;
+
+                if (timeSinceLastQueue < 60) {
                     return;
                 }
-                this.Video.last = false;
-                if (!addedby) return;
-                if (Date.now() - this.Video.timeSinceLast < 6e5) return;
-                let audio = new Audio(this.choices.yourVideoPlay);
+
+                let currentQueue = fetchActiveVideoQueue();
+                if (currentQueue.addedby != CLIENT.name) {
+                    return;
+                }
+                
+                this.Video.timeSinceLast = Date.now();
+                let audio = new Audio(this.choices.yourVideoPlays);
                 audio.volume = 0.35;
                 audio.play();
-                this.Video.timeSinceLast = Date.now();
-                this.Video.last = true;
                 $("div.chat-msg-\\\\\\$server\\\\\\$:contains(Video Notification)").remove();
                 $("#messagebuffer").trigger("whisper", "Video Notification: Your video is now playing!");
             },
-            Marked: (uid) => {
-                if (!this.Marked.toggleState) return;
-                if (CLIENT.rank < CHANNEL.perms.seeplaylist) return;
-                if (Date.now() - this.Marked.timeSinceLast < 1 * 1e3) return;
-                let item = $(`.pluid-${uid}`);
-                let marked = $("#queue").data("marked");
-                let isMarked = marked.includes(uid);
-                if (!isMarked) {
-                    return;
-                }
-                marked.splice(marked.indexOf(uid), 1);
-                item.find(".qbtn-mark").removeClass("btn-warning").addClass("btn-default disabled");
-                this.Marked.audio[0].play();
-                this.Marked.timeSinceLast = Date.now();
-                this.Marked.last = true;
-                $("div.chat-msg-\\\\\\$server\\\\\\$:contains(Video Notification)").remove();
-                $("#messagebuffer").trigger("whisper", "Video Notification: A video you marked is now playing!");
-            },
+            //Removed Marked
+            //I'd rather rewrite it than fucking deal with this code.
         }
     }
     Object.assign(AudioNotifier.prototype, {
@@ -274,9 +263,6 @@ function isItHalloween() {
             socket.on("changeMedia", (data => {
                 this.handler["Video"](data)
             }));
-            socket.on("setCurrent", (data => {
-                this.handler["Marked"](data)
-            }));
             if (window[CHANNEL.name].modulesOptions && window[CHANNEL.name].modulesOptions.audioNotice) {
                 this.choices = Object.assign(this.choices, window[CHANNEL.name].modulesOptions.audioNotice.choices);
                 let notices = Object.keys(window[CHANNEL.name].modulesOptions.audioNotice.notices);
@@ -312,4 +298,4 @@ function isItHalloween() {
         }
     });
     window[CHANNEL.name].audioNotice = (new AudioNotifier).initialize()
-}))();
+}));

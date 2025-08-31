@@ -1,23 +1,17 @@
-export function playlist(active) {
-    let queue = [];
-    let selector = `#queue > .queue_entry${active?".queue_active":""}`;
-    $(selector).each(function() {
-        let data = $(this).data();
-        let addedby;
-        if ($(this).attr("data-original-title")) {
-            addedby = $(this).attr("data-original-title").match(/: ([-\w\u00c0-\u00ff]{1,20})$/)[1]
-        } else {
-            addedby = $(this).attr("title").match(/: ([-\w\u00c0-\u00ff]{1,20})$/)[1]
-        }
-        queue.push({
+export function fetchActiveVideoQueue() {
+    let playlistEntry = {}
+    const $queue = $("#queue");
+    const entries = $queue.children(".queue_entry");
+    let activeQueue = entries.filter(".queue_active")
+    let data = activeQueue.data();
+    playlistEntry = {
             uid: data.uid,
             media: data.media,
             temp: data.temp,
-            active: $(this).hasClass("queue_active"),
-            addedby: addedby
-        })
-    });
-    return active ? queue[0] : queue
+            active: true,
+            addedby: data.blame
+        }
+    return playlistEntry;
 }(function(CyTube_Playlist) {
     return CyTube_Playlist(window, document, window.jQuery)
 })(function(window, document, $, undefined) {
