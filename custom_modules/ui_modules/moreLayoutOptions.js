@@ -12,13 +12,14 @@ const $toggleChatListLink = $("<li>")
 
 let chatToggledOff = false;
 
-let $chatwrap, $videowrap, $navbar;
+let $chatwrap, $chatheader, $videowrap, $navbar;
 let $layoutDropdownList, $chatOnlyListLink, $removeVideoListLink
 //On Document Load IIFE
 $(function changeLayoutDOM() {
     $chatwrap = $("#chatwrap");
     $videowrap = $("#videowrap");
     $navbar = $(".nav.navbar-nav");
+    $chatheader = $("#chatheader");
     $layoutDropdownList = $navbar.children().eq(4).children().last().attr("id", "layout-nav-toggle");
     $chatOnlyListLink = $layoutDropdownList.children().eq(0).children();
     $removeVideoListLink = $layoutDropdownList.children().eq(1).children();
@@ -106,13 +107,32 @@ function toggleChat() {
     }
 }
 
+function restoreHeaderAndVideo($chat) {
+    $chatheader.find("span:gt(0)").remove();
+    $("#wrap").show();
+    
+    $chat.css({
+        "min-height": "",
+        "min-width": "",
+        "margin": "",
+        "padding": ""
+    });
+    if (!USEROPTS.layout.match(/synchtube/)) {
+        $chat.prependTo("#main")
+    } else {
+        $chat.appendTo("#main")
+    }    
+    restoreVideo();
+}
+
 function chatOnly() {
     removeVideo();
-    let chat = $chatwrap.detach();
+
+    let $chat = $chatwrap.detach();
     $("#wrap").hide();
     $("#footer").hide();
-    chat.prependTo($("body"));
-    chat.css({
+    $chat.prependTo($("body"));
+    $chat.css({
         "min-height": "100%",
         "min-width": "100%",
         margin: "0",
@@ -122,25 +142,9 @@ function chatOnly() {
     let $restoreHeaderAndVideoLabel = $("<span/>")
         .addClass("label label-default pull-right pointer")
         .text("Restore Header and Video")
-        .on('click.undoChatOnly', function undoChatOnly() {
-            $("#chatheader").find("span:gt(0)").remove();
-            $("#wrap").show();
-            $("#footer").show();
-            chat.css({
-                "min-height": "",
-                "min-width": "",
-                "margin": "",
-                "padding": ""
-            });
-            if (!USEROPTS.layout.match(/synchtube/)) {
-                chat.prependTo("#main")
-            } else {
-                chat.appendTo("#main")
-            }    
-            restoreVideo()
-        });
+        .on('click.undoChatOnly', (e) => restoreHeaderAndVideo($chat));
 
-    $restoreHeaderAndVideoLabel.appendTo($chatwrap);
+    $restoreHeaderAndVideoLabel.appendTo($chatheader);
     
     setVisible("#showchansettings", CLIENT.rank >= 2);
     $("body").addClass("chatOnly");

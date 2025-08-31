@@ -1,14 +1,14 @@
 "use strict";
 
 function createModal(data) {
-    var title = data.title || "Empty Modal";
-    var title_m = !!data.titleIsMarkup;
-    var wrap = $("<div/>").addClass("modal fade").attr("tabindex", "-1");
-    var dialog = $("<div/>").addClass("modal-dialog").appendTo(wrap);
-    var content = $("<div/>").addClass("modal-content").appendTo(dialog);
-    var head = $("<div/>").addClass("modal-header").appendTo(content);
-    var body = $("<div/>").addClass("modal-body").appendTo(content);
-    var foot = $("<div/>").addClass("modal-footer");
+    let title = data.title || "Empty Modal";
+    let title_m = !!data.titleIsMarkup;
+    let wrap = $("<div/>").addClass("modal fade").attr("tabindex", "-1");
+    let dialog = $("<div/>").addClass("modal-dialog").appendTo(wrap);
+    let content = $("<div/>").addClass("modal-content").appendTo(dialog);
+    let head = $("<div/>").addClass("modal-header").appendTo(content);
+    let body = $("<div/>").addClass("modal-body").appendTo(content);
+    let foot = $("<div/>").addClass("modal-footer");
     $("<button/>").addClass("close").attr("data-dismiss", "modal").attr("data-hidden", "true").html("&times;").appendTo(head);
     $("<button/>").addClass("btn btn-default").attr("data-dismiss", "modal").prop("type", "button").html("Close").appendTo(foot);
     if (title_m) {
@@ -54,11 +54,11 @@ function createModal(data) {
             body_id: "customSettingsWrap",
             footer: true
         }).on("show.bs.modal", function(event) {
-            var row = $("<div/>").addClass("row").appendTo("#customSettingsWrap");
+            let row = $("<div/>").addClass("row").appendTo("#customSettingsWrap");
             $("#customSettingsStaging .customSettings").each(function() {
-                var panel = $("<div/>").addClass("panel panel-primary");
-                var heading = $("<div/>").addClass("panel-heading").appendTo(panel).text($(this).data().title);
-                var body = $("<div/>").addClass("panel-body").appendTo(panel);
+                let panel = $("<div/>").addClass("panel panel-primary");
+                let heading = $("<div/>").addClass("panel-heading").appendTo(panel).text($(this).data().title);
+                let body = $("<div/>").addClass("panel-body").appendTo(panel);
                 if ($(this).data("column-class")) {
                     $("<div/>").addClass($(this).data("column-class")).appendTo(row).append(panel)
                 } else {
