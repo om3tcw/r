@@ -21,7 +21,7 @@
   - not legally binding
     - specially if I land this job i'm in wait for
 
-## 0.1.0 [30Aug2025 - "Laying out the groundwork"] (WIP)
+## 0.1.0 [31Aug2025 - "Laying out the groundwork"] (WIP)
 
 ### Temporary
 
@@ -59,7 +59,8 @@ I put my grubby hands all over holopeek. Adding any functionality or touching an
 #### Offtopic mode rewrite
 
 - Changed the name from "Offtopic mode" to "Mahjong Mode", subject to change.
-- It works now.
+- NEW: Emotes show up in the emote list and are functionally just like normal emotes
+  - This will be changed in the future to only be enabled if mahjong mode is explicitly on, as right now these are emotes that you can't disable in any way.
 
 #### Module load logic
 
