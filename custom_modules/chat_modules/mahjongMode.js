@@ -7,7 +7,8 @@ function formatMJMessage($messageElement) {
   let $timestampElement = $messageElement.parent().find('.timestamp')
   $($messageElement).addClass("MahjongMessage")
   $timestampElement.css("background-image", "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/nyagger.png')")
-  $messageElement.html($messageElement.html().replace(/^MJ: /, ''));
+  const textNodeFromMessage = $messageElement.contents()[0];
+  textNodeFromMessage.nodeValue = textNodeFromMessage.nodeValue.replace(/^MJ: /, '');
   toggleSingleMJMessage($messageElement, canReadMJMessages())
 } 
 
