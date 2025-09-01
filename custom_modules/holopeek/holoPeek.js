@@ -44,15 +44,16 @@ function loadStoredValueForHolopeek(holoPeekItem) {
 }
 
 //Candidate for util.js
-export function setupAnimationForHoloPeekImg(imageUrl) {
+export function setupAnimationForHoloPeekImg($holoPeekImage, imageUrl) {
     const imgObj = new Image();
     imgObj.src = imageUrl;
     imgObj.decode().then(() => {
-        let scaledHeight = scaledHeightForImageConstraint(holoPeekSizePx, imgObj.width, imgObj.height)
-        const root = document.documentElement;
-        root.style.setProperty('--holoPeek-img-y-offset', `${scaledHeight}px`);
+        let scaledHeight = scaledHeightForImageConstraint(holoPeekSizePx, imgObj.width, imgObj.height);
+        //Jquery 1.14 doesn't have support for -- variables
+        $holoPeekImage[0].style.setProperty('--holoPeek-img-y-offset', `${scaledHeight}px`);
     });  
 }
+
 
 function scaledHeightForImageConstraint(constraintSquareSize, imageWidth, imageHeight) {
     let imageRatio = imageWidth/imageHeight;
@@ -69,14 +70,14 @@ function appendHoloPeekToDOM() {
         }
     });
 
-    setupAnimationForHoloPeekImg(holoPeekImgUrl)
-
     $holoPeekImage = $('<div>', {
         id: 'holopeek_img',
         css: {
-            'background-image': `url(${holoPeekImgUrl})`
+            'background-image': `url(${holoPeekImgUrl})`,
         }
     });
+
+    setupAnimationForHoloPeekImg($holoPeekImage, holoPeekImgUrl)
 
     $('body').append($holoPeekButton);
     $holoPeekButton.append($holoPeekImage);

@@ -118,8 +118,9 @@ function chatVideoOnly(self) {
 
 function changeHoloPeekImage(self) { 
     let imageUrl = self.inputElement.val();
-    window.setupAnimationForHoloPeekImg(imageUrl);
-    $('#holopeek_img').css("background-image", `url(${imageUrl})`);
+    let $holoPeekImg = $('#holopeek_img')
+    $holoPeekImg.css("background-image", `url(${imageUrl})`);
+    window.setupAnimationForHoloPeekImg($holoPeekImg, imageUrl);
 }
 
 //Needs globally visible scope for the tabcontainer

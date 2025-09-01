@@ -100,7 +100,6 @@ waitForPlaylist().then((() => {
                 if (!this.Poll.toggleState) return;
                 if (CLIENT.rank < CHANNEL.perms.pollvote) return;
                 if (Date.now() - this.Poll.timeSinceLast < 6e4) return;
-                console.log(this.choices.newPoll)
                 let audio = new Audio(this.choices.newPoll);
                 audio.volume = 0.2;
                 audio.play();
