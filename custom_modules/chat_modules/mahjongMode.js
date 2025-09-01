@@ -7,7 +7,7 @@ function formatMJMessage($messageElement) {
   let $timestampElement = $messageElement.parent().find('.timestamp')
   $($messageElement).addClass("MahjongMessage")
   $timestampElement.css("background-image", "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/nyagger.png')")
-  $messageElement.text($messageElement.text().replace(/^MJ: /, ''));
+  $messageElement.html($messageElement.html().replace(/^MJ: /, ''));
   toggleSingleMJMessage($messageElement, canReadMJMessages())
 } 
 
@@ -105,8 +105,8 @@ function canReadMJMessages() {
   window.addToHoloPeekContainer(MahjongLurkHoloPeekItem, true);
   window.addToHoloPeekContainer(MahjongModeHoloPeekItem, true);
 
-  await window.waitForFunc("chatMsgSocketTapFunctions")
+  await window.waitForFunc("MESSAGE_PROCESSOR")
 
-  window.chatMsgSocketTapFunctions.push(formatMJMessage);
+  MESSAGE_PROCESSOR.addTap(formatMJMessage);
   turnMahjongEmotesReal(secretMJEmotes);  
 })();

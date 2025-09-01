@@ -172,8 +172,7 @@ function playBooSound() {
 }
 
 (async () => {
-    await window.waitForFunc("chatMsgSocketTapFunctions");
-
-    window.chatMsgSocketTapFunctions.push(formatCommandMessage);
+    await window.waitForFunc("MESSAGE_PROCESSOR");
+    MESSAGE_PROCESSOR.addTap(formatCommandMessage);
 })();
 

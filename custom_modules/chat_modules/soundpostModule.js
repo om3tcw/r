@@ -117,8 +117,8 @@ function toggleSoundpostButtonImage(soundpostButton) {
 }
 
 (async () => {
-    await window.waitForFunc("chatMsgSocketTapFunctions")
-    window.chatMsgSocketTapFunctions.push(injectSoundpost);
+    await window.waitForFunc("MESSAGE_PROCESSOR");
+    MESSAGE_PROCESSOR.addTap(injectSoundpost);
 
     const soundpostButton = document.createElement("button");
     soundpostButton.style.backgroundSize = "cover";

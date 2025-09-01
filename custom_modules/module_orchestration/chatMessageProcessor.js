@@ -1,30 +1,43 @@
-window.chatMsgSocketTapFunctions = []
-window.postMessageTapFunctions = []
-
-function isItServerMessage($messageElement) {
-  if ($messageElement.attr('class') === 'server-whisper' ) {
-    return true;
+class MessageSocketTap {
+  constructor() {
+    this.chatMsgSocketTapFunctions = [];
   }
-}
 
-function changeDOMMessageElement($messageElement) {
-  if (!isItServerMessage($messageElement)) {
-    for (const func of window.chatMsgSocketTapFunctions) {
-      func($messageElement);
+  addTap(fn) {
+    this.chatMsgSocketTapFunctions.push(fn);
+    this.runTapForExistingMessages(fn);
+  }
+
+  runTapForExistingMessages(fn) {
+    $('#messagebuffer [class|="chat-msg"]').each(async (index, element) => {
+      const $jqElement = $(element); 
+      const $messageElement = $jqElement.children().last();  
+      fn($messageElement);
+    })
+  }
+
+  unsubscribe(fn) {
+    this.chatMsgSocketTapFunctions = this.chatMsgSocketTapFunctions.filter(fnObserved => fnObserved !== fn);
+  }
+
+  isItServerMessage($messageElement) {
+    if ($messageElement.attr('class') === 'server-whisper' ) {
+      return true;
+    }
+  }
+
+  changeDOMMessageElement($messageElement) {
+    if (!isItServerMessage($messageElement)) {
+      for (const func of this.chatMsgSocketTapFunctions) {
+        func($messageElement);
+      }
     }
   }
 }
 
-socket.on("chatMsg", async () => {
-  let $messageElement = fetchLastChatElement();
-  changeDOMMessageElement($messageElement)
-});
+export const MESSAGE_PROCESSOR = new MessageSocketTap();
 
-(async () => {
-  await window.allModulesReady;
-  $('#messagebuffer [class|="chat-msg"]').each(async (index, element) => {
-    const $jqElement = $(element); 
-    const $messageElement = $jqElement.children().last();  
-    changeDOMMessageElement($messageElement);
-  })
-})();
+socket.on("chatMsg", () => {
+  let $messageElement = fetchLastChatElement();
+  MESSAGE_PROCESSOR.changeDOMMessageElement($messageElement)
+});
