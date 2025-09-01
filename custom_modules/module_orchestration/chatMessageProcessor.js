@@ -27,7 +27,7 @@ class MessageSocketTap {
   }
 
   changeDOMMessageElement($messageElement) {
-    if (!isItServerMessage($messageElement)) {
+    if (!this.addTapisItServerMessage($messageElement)) {
       for (const func of this.chatMsgSocketTapFunctions) {
         func($messageElement);
       }
