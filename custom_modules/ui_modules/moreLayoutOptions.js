@@ -53,7 +53,7 @@ function removeVideo(event) {
     if (event) { event.preventDefault() };
 }
 
-function restoreVideo(event) {
+export function restoreVideo(event) {
     socket.off("changeMedia", restoreVideo);
     //Reloads the player
     socket.emit("playerReady");

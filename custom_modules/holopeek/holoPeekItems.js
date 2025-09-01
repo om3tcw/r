@@ -122,10 +122,57 @@ function changeHoloPeekImage(self) {
     $('#holopeek_img').css("background-image", `url(${imageUrl})`);
 }
 
+//Needs globally visible scope for the tabcontainer
+function cleanupVerticalLayout(self) {
+    window.$tabContainer.show();
+}
+
+//Globally visible scope update
+function verticalLayout(self) {
+    if ($("#videowrap").length < 1) {
+        window.restoreVideo();
+    }
+    self.tabs = window.$tabContainer.hide();
+    self.cssData = `
+        #chatwrap {
+            position: fixed;
+            width: 100%;
+            height: auto;
+            top: 60vw;
+            bottom: 0;
+        }
+        #videowrap {
+            width: 100vw;
+            height: 56.25vw;
+            max-height: 100vh;
+            max-width: 177.78vh;
+            position: absolute;
+            margin: 0 0 0 auto !important;
+            padding: 0 !important;
+            top: 32px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        #main { height: 100% !important; }
+        .linewrap {
+            background-color: #0000 !important;
+            box-shadow: none !important;
+        }
+        #videowrap-header { display: none !important; }
+        `
+}
+
 let blackBg = makeLiveCDNLink("emotes/custom_modules/holopeek/black.png");
 let polkaPeek = makeLiveCDNLink("custom_modules/holopeek/polkapeek.png");
 
 export const holoPeekObjects = [
+    {
+        optionName: "verticalLayout", 
+        optionDescription: "Vertical Layout", 
+        optionFunc: verticalLayout, 
+        cleanupFunc: cleanupVerticalLayout
+    },
     {
         optionName: "changeBackground", 
         optionDescription: "Custom Background", 
