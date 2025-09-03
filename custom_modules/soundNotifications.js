@@ -259,7 +259,7 @@ waitForPlaylist().then((() => {
                 this.handler["Priv"](data)
             }));
             socket.on("changeMedia", (data => {
-                this.handler["Video"](fetchActiveVideoQueue(data))
+                this.handler["Video"](data)
             }));
             if (window[CHANNEL.name].modulesOptions && window[CHANNEL.name].modulesOptions.audioNotice) {
                 this.choices = Object.assign(this.choices, window[CHANNEL.name].modulesOptions.audioNotice.choices);
