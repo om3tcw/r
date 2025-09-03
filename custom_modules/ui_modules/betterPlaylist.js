@@ -1,3 +1,4 @@
+//Why is this here?
 export function fetchActiveVideoQueue() {
     let playlistEntry = {}
     const $queue = $("#queue");

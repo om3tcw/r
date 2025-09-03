@@ -1,3 +1,5 @@
+import { fetchActiveVideoQueue } from "./ui_modules/betterPlaylist";
+
 const defaultVolume = 0.1;
 
 function isItHalloween() {
@@ -126,9 +128,8 @@ waitForPlaylist().then((() => {
                 if (timeSinceLastQueue < 60) {
                     return;
                 }
-
-                let currentQueue = fetchActiveVideoQueue();
-                if (currentQueue.addedby != CLIENT.name) {
+                let data = fetchActiveVideoQueue()
+                if (data.addedby != CLIENT.name) {
                     return;
                 }
                 
@@ -258,7 +259,7 @@ waitForPlaylist().then((() => {
                 this.handler["Priv"](data)
             }));
             socket.on("changeMedia", (data => {
-                this.handler["Video"](data)
+                this.handler["Video"](fetchActiveVideoQueue(data))
             }));
             if (window[CHANNEL.name].modulesOptions && window[CHANNEL.name].modulesOptions.audioNotice) {
                 this.choices = Object.assign(this.choices, window[CHANNEL.name].modulesOptions.audioNotice.choices);

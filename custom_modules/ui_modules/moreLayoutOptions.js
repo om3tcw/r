@@ -35,45 +35,76 @@ $(function changeLayoutDOM() {
     $removeVideoListLink.on('click.removeVideo', removeVideo);
 })
 
-function removeVideo(event) {
-    try {
-        PLAYER.pause()
-        //This won't save to local user session, meaning a reload 
-        //(which originally resets a hidden video) will maintain the same behavior.
-        USEROPTS.synch = false;
-    } catch (e) {
-        console.log(e)
-    }
+let currentVideoData = null;
+let currentVideoSync = null;
+const storeCurrentVideoPlaying = (data) => {
+    currentVideoData = data;
+}
+const storeCurrentVideoSync = (data) => {
+    currentVideoSync = data;
+}
 
-    $videowrap = $videowrap.detach()
+//HIJACK THE SOCKET CALLBACKS
+let mediaUpdateCallback = socket._callbacks.$mediaUpdate[0];
+let setCurrentCallback = socket._callbacks.$setCurrent[0];
+let changeMediaCallback = socket._callbacks.$changeMedia[0];
+
+function readdVideoListeners() {
+    socket.on("mediaUpdate", mediaUpdateCallback);
+    socket.on("setCurrent", setCurrentCallback);
+    socket.on("changeMedia", changeMediaCallback);
+}
+
+function removeVideoListeners() {
+    socket.off("mediaUpdate", mediaUpdateCallback);
+    socket.off("setCurrent", setCurrentCallback);
+    socket.off("changeMedia", changeMediaCallback);
+}
+
+function storeSocketResponses() {
+    socket.on("changeMedia", storeCurrentVideoPlaying);
+    socket.on("mediaUpdate", storeCurrentVideoSync);
+}
+
+function restoreVideoValues() {
+    socket.off("changeMedia", storeCurrentVideoPlaying);
+    socket.off("mediaUpdate", storeCurrentVideoSync);
+    changeMediaCallback(currentVideoData);
+    mediaUpdateCallback(currentVideoSync);
+}
+
+function removeVideoDOMUpdates() {
+    $videowrap.hide();
     $chatwrap.removeClass("col-lg-5 col-md-5").addClass("col-md-12");
     $removeVideoListLink.text("Restore Video");
     $removeVideoListLink.off('click.removeVideo');
     $removeVideoListLink.on('click.restoreVideo', restoreVideo);
-    if (event) { event.preventDefault() };
 }
 
-export function restoreVideo(event) {
-    socket.off("changeMedia", restoreVideo);
-    //Reloads the player
-    socket.emit("playerReady");
-    try {
-        PLAYER.mediaType = "";
-        PLAYER.mediaId = "";
-        PLAYER.play();
-        USEROPTS.synch = true;
-    } catch(e) {
-        console.debug("Player not found when restoring video", e)
-    }
-
-    $videowrap.appendTo($("#main"))
+function restoreVideoDOMUpdates() {
+    $videowrap.show();
     $chatwrap.addClass("col-lg-5 col-md-5").removeClass("col-md-12");
     $removeVideoListLink.text("Remove Video");
-
     $removeVideoListLink.off('click.restoreVideo');
     $removeVideoListLink.on('click.removeVideo', removeVideo);
+}
 
-    if (event) { event.preventDefault() };
+export function removeVideo() {
+    PLAYER.pause();
+    if (PLAYER.yt) {
+        PLAYER.yt.stopVideo();
+    }
+    
+    removeVideoListeners();
+    storeSocketResponses();
+    removeVideoDOMUpdates();
+}
+
+export function restoreVideo() {
+    PLAYER.play();
+    readdVideoListeners();
+    restoreVideoValues();
+    restoreVideoDOMUpdates()
 }
 
 function removeUntilNext() {
