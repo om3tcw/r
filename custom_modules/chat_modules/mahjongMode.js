@@ -91,7 +91,7 @@ let MahjongLurkHoloPeekItem = {
 
 function canReadMJMessages() {
   return MahjongLurkHoloPeekItem.checkbox.prop('checked') ||
-         MahjongModeHoloPeekItem.checkbox.prop('checked')
+          MahjongModeHoloPeekItem.checkbox.prop('checked')
 }
 
 

@@ -87,12 +87,14 @@ function runescape($message) {
     $message.html(html);
 }
 
-function yayConfetti($message) {
+function yayConfetti($messageElement) {
 
-    const $text = $message.text().replace('/yay', '');
-    $message.text($text);
+    const $commandNode = $messageElement.contents()[0];
+    const $formattedCommandNode = $commandNode.nodeValue.replace("/yay", "")
 
-    const rect = $message[0].getBoundingClientRect();
+    $commandNode.nodeValue = $formattedCommandNode;
+
+    const rect = $messageElement[0].getBoundingClientRect();
     const centerX = rect.left + (rect.width / 2);
     const centerY = rect.top + (rect.height / 2);
 

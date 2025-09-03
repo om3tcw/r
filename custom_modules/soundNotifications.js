@@ -1,5 +1,3 @@
-import { fetchActiveVideoQueue } from "./ui_modules/betterPlaylist";
-
 const defaultVolume = 0.1;
 
 function isItHalloween() {
