@@ -1,5 +1,13 @@
 /* Start of Oshi Eyes */
 
+.chat-msg-recipient .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/tenma.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
 .chat-msg-RaoraPenaltyFumble .timestamp {
     color: transparent;
     background-size: 50px 15px;
