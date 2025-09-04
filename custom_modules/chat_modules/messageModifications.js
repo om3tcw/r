@@ -27,8 +27,8 @@ function surroundTextSelection($textField, leftSurroundString, rightSurroundStri
                 caretPositionEnd + (leftSurroundString.length + rightSurroundString.length),
                 caretPositionEnd + (leftSurroundString.length + rightSurroundString.length));
         }
-    }
-}
+    };
+};
 
 
 const $chatBox = $(chatline);
@@ -40,19 +40,17 @@ const ctrlKeyComboEvents = {
             chatBoxDOM.setSelectionRange(0, $chatBox.val().length);
         }
     },
+    'r'() {
+        //Future: Change event.propagation logic so this only happens if you're on the chatbox.
+        surroundTextSelection($chatBox, "[r]", "[/r]");
+    },
     's'() {
         surroundTextSelection($chatBox, "[sp]", "[/sp]");
     },
-    'r'() {
-        if (document.activeElement === chatBoxDOM) {
-            surroundTextSelection($chatBox, "[r]", "[/r]");
-        }
-    },
     'e'() {
-        //On chromium, this toggles the search bar
         EMOTELISTMODAL.modal();
     }
-}
+};
 
 $(window).on('keydown', (event) => {
     if (event.ctrlKey && !event.shiftKey) {
@@ -65,40 +63,70 @@ $(window).on('keydown', (event) => {
     }
 });
 
-function runescape($message) {
+function eraseStartingString($messageElement, commandString) {
+    const $commandNode = $messageElement.contents()[0];
+    const $formattedCommandNode = $commandNode.nodeValue.replace(commandString, "");
+    $commandNode.nodeValue = $formattedCommandNode;
+};
 
-    const text = $message.text().replace('/runescape', '');
-    let html = '';
-    let mynumber = 0;
+const runescapeStyles = document.createElement('style');
+runescapeStyles.textContent = `
+    .runescape-char {
+        font-weight: bold;
+        display: inline-block;
+        animation: wave .66s linear infinite var(--delay), glow 3s linear infinite;
+    }
+    .runescape-image {
+        position: relative;
+        display: inline-block;
+        z-index: -1;
+        animation: wave .66s linear infinite var(--delay);
+    }`;
+document.head.appendChild(runescapeStyles);
 
-    const parts = text.split(/(<[^>]*>)|\b(\w+)\b/g);
+const createRunescapeSpan = (className) => (content, delay) => {
+    const $span = $('<span>', {
+        html: content,
+        class: className
+    });
+    $span[0].style.setProperty('--delay', `${delay}ms`);
+    return $span;
+};
+//Testing curried approach for fun
+const runescapeAnimationChars = createRunescapeSpan('runescape-char');
+const runescapeAnimationHTMLTags = createRunescapeSpan('runescape-image');
+
+function runescape($messageElement) {
+    eraseStartingString($messageElement, "/runescape");
+    let newHTMLElements = []
+    let delayCounter = 0;
+    const matchHTMLTagsOrWords = /(<[^>]*>)|\b(\w+)\b/g;
+
+    const parts = $messageElement.html().split(matchHTMLTagsOrWords);
 
     parts.forEach(part => {
         if (part) {
+            let msDelay = delayCounter * -50;
             if (part.startsWith("<")) {
-                const mydelay = mynumber * -50;
-                html += `<span style="display: inline-block; position: relative; z-index: -1; animation: wave .66s linear infinite ${mydelay}ms">${part}</span>`;
-                mynumber++;
+                newHTMLElements.push(runescapeAnimationHTMLTags(part, msDelay));
+                delayCounter++;
             } else {
                 const characters = part.split('');
                 characters.forEach(char => {
-                    const mydelay = mynumber * -50;
-                    html += `<span style="display: inline-block; font-weight: bold; animation: wave .66s linear infinite ${mydelay}ms, glow 3s linear infinite">${char}</span>`;
-                    mynumber++;
+                    newHTMLElements.push(runescapeAnimationChars(char, msDelay));
+                    delayCounter++;
+                    msDelay = delayCounter * -50;
                 });
             }
         }
     });
 
-    $message.html(html);
+    $messageElement.empty().append(newHTMLElements);
 }
 
 function yayConfetti($messageElement) {
 
-    const $commandNode = $messageElement.contents()[0];
-    const $formattedCommandNode = $commandNode.nodeValue.replace("/yay", "")
-
-    $commandNode.nodeValue = $formattedCommandNode;
+    eraseStartingString($messageElement, "/yay");
 
     const rect = $messageElement[0].getBoundingClientRect();
     const centerX = rect.left + (rect.width / 2);

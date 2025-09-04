@@ -47,12 +47,12 @@ const ModulePaths = [
 ]
 
 //candidate to move to util.js
-//Obsolete?
+//change ?ver=n to automatically push changes.
 function makeLiveCDNLink(fileName) {
     return  CURRENT_CDN +
             "/" +
             fileName +
-            "?ver=4"
+            "?ver=5"
 }
 
 //candidate to move to util.js

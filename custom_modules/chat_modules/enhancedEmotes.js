@@ -22,13 +22,18 @@ $(chatline).on('click.caretUpdate keydown.caretUpdate', (event) => {
 })
 
 $(messagebuffer).on('click', (event) => {
-    let target = event.target;
     if (event.button != 0) { 
         return;
     }
-    if (target.className == 'channel-emote') {
+    let emoteElement = event.target.closest('.channel-emote') || event.target.querySelector('.channel-emote');
+    let emoteName = null;
+
+    if (emoteElement) {
+        emoteName = emoteElement.title;
+    }
+
+    if (emoteName) {
         let curChatVal = $(chatline).val();
-        let emoteName = event.target.title;
         let firstHalf = curChatVal.substring(0, currentChatboxCaret);
         let secondHalf = curChatVal.substring(currentChatboxCaret);
         let newChatVal = firstHalf + emoteName + " ";

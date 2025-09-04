@@ -6,8 +6,8 @@ const $containerList = () => $('<li>', {
     role: 'presentation'
 })
 
-let $playlistControlButtons =  $('#rightcontrols').detach()
-let $playlistRows = $('#playlistrow').detach().removeClass('row')
+let $playlistControlButtons =  $('#rightcontrols').detach();
+let $playlistRows = $('#playlistrow').detach().removeClass('row');
 
 const $playlistTab = $('<div>', {
     role: 'tabpanel',
