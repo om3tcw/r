@@ -25,11 +25,11 @@ $(messagebuffer).on('click', (event) => {
     if (event.button != 0) { 
         return;
     }
-    let emoteElement = event.target.closest('.channel-emote') || event.target.querySelector('.channel-emote');
+    let emoteElement = event.target.className === 'channel-emote';
     let emoteName = null;
 
     if (emoteElement) {
-        emoteName = emoteElement.title;
+        emoteName = event.target.title;
     }
 
     if (emoteName) {

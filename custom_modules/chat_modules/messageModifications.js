@@ -30,7 +30,6 @@ function surroundTextSelection($textField, leftSurroundString, rightSurroundStri
     };
 };
 
-
 const $chatBox = $(chatline);
 const chatBoxDOM = $chatBox[0];
 const ctrlKeyComboEvents = {
