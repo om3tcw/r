@@ -79,7 +79,6 @@ runescapeStyles.textContent = `
     .runescape-image {
         position: relative;
         display: inline-block;
-        z-index: -1;
         animation: wave .66s linear infinite var(--delay);
     }`;
 document.head.appendChild(runescapeStyles);
