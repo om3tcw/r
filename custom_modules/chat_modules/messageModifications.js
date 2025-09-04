@@ -40,18 +40,15 @@ const ctrlKeyComboEvents = {
             chatBoxDOM.setSelectionRange(0, $chatBox.val().length);
         }
     },
-    's'(event) {
-        event.stopPropagation(event);
+    's'() {
         surroundTextSelection($chatBox, "[sp]", "[/sp]");
     },
-    'r'(event) {
+    'r'() {
         if (document.activeElement === chatBoxDOM) {
-            event.stopPropagation(event);
-            event.returnValue = false;
             surroundTextSelection($chatBox, "[r]", "[/r]");
         }
     },
-    'e'(event) {
+    'e'() {
         //On chromium, this toggles the search bar
         EMOTELISTMODAL.modal();
     }
@@ -62,7 +59,8 @@ $(window).on('keydown', (event) => {
         const handler = ctrlKeyComboEvents[event.key];
         if (handler) {
             event.preventDefault();
-            handler(event);
+            event.stopPropagation();
+            handler();
         }
     }
 });
