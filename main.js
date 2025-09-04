@@ -3,6 +3,10 @@ if (!window[CHANNEL.name]) {
     window[CHANNEL.name] = {};
 }
 
+/*
+Find THIS secret https://cdn.frankerfacez.com/emoticon/655547/4
+*/
+
 //XaeModules leftover
 if (![CHANNEL.name].favicon) {
     [CHANNEL.name].favicon = $("<link/>")

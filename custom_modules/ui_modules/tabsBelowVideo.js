@@ -54,8 +54,22 @@ $pollsContainer.on("click", function () {
     $('#pollsbadge').text('');
 });
 
-$('<div role="tabpanel" class="tab-pane" id="pollsTab"><div class="col-lg-12 col-md-12" id="pollhistory"></div></div>')
-    .appendTo($tabContent).prepend($('#newpollbtn').detach());
+const $newPollBtn = $('#newpollbtn').detach();
+
+const $pollsTabDiv = $('<div>', { 
+    role: "tabpanel",
+    class: "tab-pane",
+    id: "pollsTab"
+}) 
+const $pollHistoryDiv = $('<div>', {
+    class: "col-lg-12 col-md-12", 
+    id: "pollhistory"
+})
+$pollHistoryDiv.appendTo($pollsTabDiv);
+
+$pollsTabDiv.appendTo($tabContent);
+
+$pollsTabDiv.prepend($newPollBtn);
 
 const redoPollwrap = function () {
     $('#pollwrap').detach().insertBefore('#MainTabContainer');

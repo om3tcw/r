@@ -30,31 +30,39 @@ function surroundTextSelection($textField, leftSurroundString, rightSurroundStri
     }
 }
 
-$(window).on('keydown', (event) => {
-    const $chatBox = $(chatline);
-    const chatBoxDOM = $chatBox[0]
 
+const $chatBox = $(chatline);
+const chatBoxDOM = $chatBox[0];
+const ctrlKeyComboEvents = {
+    'a'() {
+        if ($chatBox.val().length) {
+            chatBoxDOM.focus();
+            chatBoxDOM.setSelectionRange(0, $chatBox.val().length);
+        }
+    },
+    's'(event) {
+        event.stopPropagation(event);
+        surroundTextSelection($chatBox, "[sp]", "[/sp]");
+    },
+    'r'(event) {
+        if (document.activeElement === chatBoxDOM) {
+            event.stopPropagation(event);
+            event.returnValue = false;
+            surroundTextSelection($chatBox, "[r]", "[/r]");
+        }
+    },
+    'e'(event) {
+        //On chromium, this toggles the search bar
+        EMOTELISTMODAL.modal();
+    }
+}
+
+$(window).on('keydown', (event) => {
     if (event.ctrlKey && !event.shiftKey) {
-        switch (event.key) {
-            case 'a':
-                if ($chatBox.val().length) {
-                    chatBoxDOM.focus();
-                    chatBoxDOM.setSelectionRange(0, $chatBox.val().length);
-                }
-                break;
-            case 's':
-                event.preventDefault();
-                event.stopPropagation(event);
-                surroundTextSelection($chatBox, "[sp]", "[/sp]")
-                break;
-            case 'r':
-                if (document.activeElement === chatBoxDOM) {
-                    event.preventDefault();
-                    event.stopPropagation(event);
-                    event.returnValue = false;
-                    surroundTextSelection($chatBox, "[r]", "[/r]");
-                    break;
-                }
+        const handler = ctrlKeyComboEvents[event.key];
+        if (handler) {
+            event.preventDefault();
+            handler(event);
         }
     }
 });
