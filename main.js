@@ -52,7 +52,7 @@ function makeLiveCDNLink(fileName) {
     return  CURRENT_CDN +
             "/" +
             fileName +
-            "?ver=banana"
+            "?ver=inacute"
 }
 
 //candidate to move to util.js

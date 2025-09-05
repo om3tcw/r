@@ -37,19 +37,20 @@ $(function changeLayoutDOM() {
 
 let currentVideoData = null;
 let currentVideoSync = null;
-const storeCurrentVideoPlaying = (data) => {
+const storeChangeMediaValue = (data) => {
     currentVideoData = data;
 }
-const storeCurrentVideoSync = (data) => {
+const storeMediaUpdateValue = (data) => {
     currentVideoSync = data;
 }
 
 //HIJACK THE SOCKET CALLBACKS
+//For 500 dollars "What is DRY"
 let mediaUpdateCallback = socket._callbacks.$mediaUpdate[0];
 let setCurrentCallback = socket._callbacks.$setCurrent[0];
 let changeMediaCallback = socket._callbacks.$changeMedia[0];
 
-function readdVideoListeners() {
+function restoreVideoListeners() {
     socket.on("mediaUpdate", mediaUpdateCallback);
     socket.on("setCurrent", setCurrentCallback);
     socket.on("changeMedia", changeMediaCallback);
@@ -62,15 +63,18 @@ function removeVideoListeners() {
 }
 
 function storeSocketResponses() {
-    socket.on("changeMedia", storeCurrentVideoPlaying);
-    socket.on("mediaUpdate", storeCurrentVideoSync);
+    socket.on("changeMedia", storeChangeMediaValue);
+    socket.on("mediaUpdate", storeMediaUpdateValue);
 }
 
-function restoreVideoValues() {
-    socket.off("changeMedia", storeCurrentVideoPlaying);
-    socket.off("mediaUpdate", storeCurrentVideoSync);
+function updateVideoWithStoredVideoData() {
+    socket.off("changeMedia", storeChangeMediaValue);
+    socket.off("mediaUpdate", storeMediaUpdateValue);
     changeMediaCallback(currentVideoData);
-    mediaUpdateCallback(currentVideoSync);
+    if (currentVideoSync) {
+        mediaUpdateCallback(currentVideoSync);
+    }
+    
 }
 
 function removeVideoDOMUpdates() {
@@ -89,27 +93,42 @@ function restoreVideoDOMUpdates() {
     $removeVideoListLink.on('click.removeVideo', removeVideo);
 }
 
+function storeCurrentVideoData() {
+    let data = {
+        id: PLAYER.mediaId,
+        meta: {},
+        paused: false,
+        seconds: PLAYER.mediaLength,
+        type: PLAYER.mediaType
+    }
+    storeChangeMediaValue(data);
+}
+
 export function removeVideo() {
     PLAYER.pause();
     if (PLAYER.yt) {
         PLAYER.yt.stopVideo();
     }
-    
+    storeCurrentVideoData();
+    removeVideoDOMUpdates();
     removeVideoListeners();
     storeSocketResponses();
-    removeVideoDOMUpdates();
 }
 
 export function restoreVideo() {
     PLAYER.play();
-    readdVideoListeners();
-    restoreVideoValues();
     restoreVideoDOMUpdates()
+    restoreVideoListeners();
+    updateVideoWithStoredVideoData();
 }
 
 function removeUntilNext() {
     removeVideo();
-    socket.once("changeMedia", restoreVideo);
+
+    socket.once("changeMedia", (data) => {
+        storeChangeMediaValue(data);
+        restoreVideo();
+    });
 }
 
 //I don't really wanna touch this.
