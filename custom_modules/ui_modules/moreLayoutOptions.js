@@ -99,7 +99,8 @@ function storeCurrentVideoData() {
         meta: {},
         paused: false,
         seconds: PLAYER.mediaLength,
-        type: PLAYER.mediaType
+        type: PLAYER.mediaType,
+        title: PLAYER.yt.videoTitle ?? "title not found :redalert:"
     }
     storeChangeMediaValue(data);
 }
