@@ -256,8 +256,8 @@ function isItHalloween() {
             socket.on("pm", (data => {
                 this.handler["Priv"](data)
             }));
-            socket.on("changeMedia", (data => {
-                this.handler["Video"](data)
+            socket.on("changeMedia", (() => {
+                this.handler["Video"]()
             }));
             if (window[CHANNEL.name].modulesOptions && window[CHANNEL.name].modulesOptions.audioNotice) {
                 this.choices = Object.assign(this.choices, window[CHANNEL.name].modulesOptions.audioNotice.choices);

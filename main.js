@@ -19,12 +19,12 @@ if (![CHANNEL.name].favicon) {
 }
 
 const LOCAL_CDN_URL = "https://immergrok.mikobotecdn.win/immergrok-cytube-fork";
-const ONLINE_CDN = "https://mikobotecdn.win"
+const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
 const CURRENT_CDN = ONLINE_CDN;
 
 const MODULES_FOLDER = "custom_modules/";
-const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`
+const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`;
 const ModulePaths = [
     { CSSInjection: `custom_css_injection/customCssInjection.js`},
     { MahjongMode: `chat_modules/mahjongMode.js` , isActive: 1, rank: -1 },
@@ -51,7 +51,7 @@ function makeLiveCDNLink(fileName) {
     return  CURRENT_CDN +
             "/" +
             fileName +
-            "?ver=mambodetected"
+            "?ver=10chou"
 }
 
 //candidate to move to util.js
