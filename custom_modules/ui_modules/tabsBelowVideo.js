@@ -54,7 +54,6 @@ $pollsContainer.on("click", function () {
     $('#pollsbadge').text('');
 });
 
-const $newPollBtn = $('#newpollbtn').detach();
 
 const $pollsTabDiv = $('<div>', { 
     role: "tabpanel",
@@ -69,7 +68,13 @@ $pollHistoryDiv.appendTo($pollsTabDiv);
 
 $pollsTabDiv.appendTo($tabContent);
 
-$pollsTabDiv.prepend($newPollBtn);
+$(() => {
+    const $newPollBtn = $('#newpollbtn')
+    $pollsTabDiv.prepend($newPollBtn.detach());
+    if ($newPollBtn.length == 0) {
+        console.error("The poll button wasn't found?!");
+    }
+});
 
 const redoPollwrap = function () {
     $('#pollwrap').detach().insertBefore('#MainTabContainer');

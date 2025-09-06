@@ -9,9 +9,6 @@ const $formElementsUnderChatWrap = $chatwrap.children('form')
 const $emotelistbtn = $(emotelistbtn)
 $emotelistbtn.detach().insertBefore($formElementsUnderChatWrap)
 
-//Sure
-$(leftcontrols).remove();
-
 const $navBar = $(".nav.navbar-nav");
 const $audioOnly = $('<li><a id="audio-only"">A/O</a></li>');
 const $holoDex = $("<li class='dropdown'><a target='_blank' href='https://holodex.net/home'>HoloDex</a></li>");

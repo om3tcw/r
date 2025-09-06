@@ -31,7 +31,6 @@ const ModulePaths = [
     { ChatMessageProcessor: `module_orchestration/chatMessageProcessor.js`},
     { TabsBelowVideo: `ui_modules/tabsBelowVideo.js`}, //I wouldn't disable this one
     { CustomDOMChanges: `ui_modules/customDOMChanges.js`},
-    { CustomSettings:`ui_modules/customSettingsModal.js` },
     { BetterPlaylist: `ui_modules/betterPlaylist.js` },
     { BetterPms: `ui_modules/betterPms.js` },
     { SoundNotifications: `soundNotifications.js` },
@@ -52,7 +51,7 @@ function makeLiveCDNLink(fileName) {
     return  CURRENT_CDN +
             "/" +
             fileName +
-            "?ver=inacute"
+            "?ver=mambo"
 }
 
 //candidate to move to util.js
