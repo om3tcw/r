@@ -100,7 +100,7 @@ function storeCurrentVideoData() {
         paused: false,
         seconds: PLAYER.mediaLength,
         type: PLAYER.mediaType,
-        title: PLAYER.yt.videoTitle ?? "title not found :redalert:"
+        title: PLAYER.yt?.videoTitle ?? playlistFind(window.PL_CURRENT).children[0].innerText
     }
     storeChangeMediaValue(data);
 }
