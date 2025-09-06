@@ -8,13 +8,7 @@ function isItHalloween() {
     return (currentTimestamp > HALLOWEEN_START && currentTimestamp < HALLOWEEN_END)
 }
 
-//Rename this god damned fuck function "playlist" to something else
-
-async function waitForPlaylist() {
-    await window.waitForFunc("fetchActiveVideoQueue");
-}
-
-waitForPlaylist().then((() => {
+(() => {
     if (typeof Storage === "undefined") {
         console.error("[XaeTube: Audio Notifier]", "localStorage not supported. Aborting load.");
         return
@@ -123,11 +117,19 @@ waitForPlaylist().then((() => {
                 if (CLIENT.rank < CHANNEL.perms.seeplaylist) return;
                 let timeSinceLastQueue = (Date.now() - this.Video.timeSinceLast) / 1000;
 
-                if (timeSinceLastQueue < 60) {
+                if (timeSinceLastQueue < 10) {
                     return;
                 }
-                let data = fetchActiveVideoQueue()
-                if (data.addedby != CLIENT.name) {
+
+                // This shouldn't fail randomly or depend on anything other than the DOM existing. 
+                // Also skips an unnecessary DOM loop. 
+                let queuedBy = $('.pluid-' + window.PL_CURRENT)
+                    .children()
+                    .filter(".qe_blame")
+                    .text()
+                    .slice(0,-3);
+
+                if (queuedBy != CLIENT.name) {
                     return;
                 }
                 
@@ -135,8 +137,6 @@ waitForPlaylist().then((() => {
                 let audio = new Audio(this.choices.yourVideoPlays);
                 audio.volume = 0.2;
                 audio.play();
-                $("div.chat-msg-\\\\\\$server\\\\\\$:contains(Video Notification)").remove();
-                $("#messagebuffer").trigger("whisper", "Video Notification: Your video is now playing!");
             },
             //Removed Marked
             //I'd rather rewrite it than fucking deal with this code.
@@ -294,4 +294,4 @@ waitForPlaylist().then((() => {
         }
     });
     window[CHANNEL.name].audioNotice = (new AudioNotifier).initialize()
-}));
+})();

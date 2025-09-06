@@ -1,19 +1,4 @@
-//Why is this here?
-export function fetchActiveVideoQueue() {
-    let playlistEntry = {}
-    const $queue = $("#queue");
-    const entries = $queue.children(".queue_entry");
-    let activeQueue = entries.filter(".queue_active")
-    let data = activeQueue.data();
-    playlistEntry = {
-            uid: data.uid,
-            media: data.media,
-            temp: data.temp,
-            active: true,
-            addedby: data.blame
-        }
-    return playlistEntry;
-}(function(CyTube_Playlist) {
+(function(CyTube_Playlist) {
     return CyTube_Playlist(window, document, window.jQuery)
 })(function(window, document, $, undefined) {
     if (typeof Storage === "undefined") {

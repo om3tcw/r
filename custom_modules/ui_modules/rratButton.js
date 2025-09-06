@@ -1,6 +1,5 @@
 (function rratButton() {
     $('#plcontrol').append('<input type="button" class="btn btn-sm btn-default" value="🐀" id="replacebutton">');
-    $('#plcontrol').append('<input type="button" class="btn btn-sm btn-default" value="🔃" id="refreshbutton">');
 
     $('#replacebutton').click(function () {
         let newId = window.prompt("Replace the current playing stream\nRefresh to undo\n\nSwitching back to YouTube from Twitch is broken, so reloading the player is necessary in that case\n\nYoutube URL/ID:", "");
@@ -41,10 +40,4 @@
         }
     });
 
-    $('#refreshbutton').click(function () {
-        document.body.classList.remove('chatOnly');
-        $("mediarefresh").click();
-        socket.emit("restoreVideo");
-        CLIENT.videoRemoved = false;
-    });
 })();
