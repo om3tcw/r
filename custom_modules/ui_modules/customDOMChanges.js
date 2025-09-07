@@ -1,8 +1,5 @@
-//This fucking website has every fucking element as a global scope variable I swear to fukcvkigfn
-if (!USEROPTS.hidevid) {
-    const $videowrap = $(videowrap);
-    $videowrap.append("<span id='vidchatcontrols' style='float:right'>");
-}
+const $videowrap = $(videowrap);
+$videowrap.append("<span id='vidchatcontrols' style='float:right'>");
 
 let $chatwrap = $(chatwrap);
 const $formElementsUnderChatWrap = $chatwrap.children('form')

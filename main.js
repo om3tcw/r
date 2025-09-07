@@ -3,10 +3,6 @@ if (!window[CHANNEL.name]) {
     window[CHANNEL.name] = {};
 }
 
-/*
-Find THIS secret https://cdn.frankerfacez.com/emoticon/655547/4
-*/
-
 //XaeModules leftover
 if (![CHANNEL.name].favicon) {
     [CHANNEL.name].favicon = $("<link/>")
@@ -21,7 +17,7 @@ if (![CHANNEL.name].favicon) {
 const LOCAL_CDN_URL = "https://immergrok.mikobotecdn.win/immergrok-cytube-fork";
 const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
-const CURRENT_CDN = ONLINE_CDN;
+const CURRENT_CDN = LOCAL_CDN_URL;
 
 const MODULES_FOLDER = "custom_modules/";
 const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`;
@@ -42,7 +38,7 @@ const ModulePaths = [
     { ImagePreview: `chat_modules/imagePreview.js` , isActive: 0, rank: -1},
     { Soundposts: `chat_modules/soundpostModule.js` },
     { NNDChatModule: `chat_modules/nndChatModule.js`, isActive: 0, rank: -1},
-    { RratButton: `ui_modules/rratButton.js`}
+    { RratButton: `ui_modules/rratButton.js`},
 ]
 
 //candidate to move to util.js

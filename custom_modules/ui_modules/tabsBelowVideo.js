@@ -47,7 +47,8 @@ const $pollsBadge = $('<span>', {
 });
 
 let $pollsContainer = $containerList();
-$pollsContainer.append($pollsTab).append($pollsBadge);
+$pollsContainer.append($pollsTab);
+$pollsTab.append($pollsBadge);
 $pollsContainer.appendTo($tabsNavigator);
 
 $pollsContainer.on("click", function () {

@@ -79,7 +79,7 @@ function updateVideoWithStoredVideoData() {
 
 function removeVideoDOMUpdates() {
     $videowrap.hide();
-    $chatwrap.removeClass("col-lg-5 col-md-5").addClass("col-md-12");
+    $chatwrap.css({ width: "100%"});
     $removeVideoListLink.text("Restore Video");
     $removeVideoListLink.off('click.removeVideo');
     $removeVideoListLink.on('click.restoreVideo', restoreVideo);
@@ -87,7 +87,7 @@ function removeVideoDOMUpdates() {
 
 function restoreVideoDOMUpdates() {
     $videowrap.show();
-    $chatwrap.addClass("col-lg-5 col-md-5").removeClass("col-md-12");
+    $chatwrap.css({ width: ""});
     $removeVideoListLink.text("Remove Video");
     $removeVideoListLink.off('click.restoreVideo');
     $removeVideoListLink.on('click.removeVideo', removeVideo);

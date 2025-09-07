@@ -41,10 +41,11 @@ const ctrlKeyComboEvents = {
     },
     'r'() {
         //Future: Change event.propagation logic so this only happens if you're on the chatbox.
-        surroundTextSelection($chatBox, "[r]", "[/r]");
+        //Adding a space before the wrap so that emotes can autocomplete.
+        surroundTextSelection($chatBox, "[r] ", "[/r]");
     },
     's'() {
-        surroundTextSelection($chatBox, "[sp]", "[/sp]");
+        surroundTextSelection($chatBox, "[sp] ", "[/sp]");
     },
     'e'() {
         EMOTELISTMODAL.modal();
@@ -53,7 +54,7 @@ const ctrlKeyComboEvents = {
 
 $(window).on('keydown', (event) => {
     if (event.ctrlKey && !event.shiftKey) {
-        const handler = ctrlKeyComboEvents[event.key];
+        const handler = ctrlKeyComboEvents[event.key.toLowerCase()];
         if (handler) {
             event.preventDefault();
             event.stopPropagation();

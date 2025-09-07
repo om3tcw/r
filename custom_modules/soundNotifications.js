@@ -138,8 +138,6 @@ function isItHalloween() {
                 audio.volume = 0.2;
                 audio.play();
             },
-            //Removed Marked
-            //I'd rather rewrite it than fucking deal with this code.
         }
     }
     Object.assign(AudioNotifier.prototype, {

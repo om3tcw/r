@@ -1,8 +1,8 @@
 function chatToVideoRatio(self) {
     self.cssData = 
-        `#videowrap { width: ${100 - self.value}% !important; }
+        `#videowrap { width: ${100 - self.value}%}
         #videowrap-header { display: none; }
-        #chatwrap { width: ${self.value}% !important; }}` 
+        #chatwrap { width: ${self.value}%}}` 
 }
 
 function chatTransparency(self) {
