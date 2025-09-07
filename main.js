@@ -17,7 +17,7 @@ if (![CHANNEL.name].favicon) {
 const LOCAL_CDN_URL = "https://immergrok.mikobotecdn.win/immergrok-cytube-fork";
 const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
-const CURRENT_CDN = LOCAL_CDN_URL;
+const CURRENT_CDN = ONLINE_CDN;
 
 const MODULES_FOLDER = "custom_modules/";
 const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`;
@@ -47,7 +47,7 @@ function makeLiveCDNLink(fileName) {
     return  CURRENT_CDN +
             "/" +
             fileName +
-            "?ver=10chou"
+            "?ver=1-12-0"
 }
 
 //candidate to move to util.js
