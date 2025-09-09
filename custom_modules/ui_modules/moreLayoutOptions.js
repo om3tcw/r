@@ -205,3 +205,13 @@ function chatOnly() {
     $("body").addClass("chatOnly");
     handleWindowResize();
 }
+
+let isVideoToggled = false;
+export function toggleVideo(toggle) {
+    isVideoToggled = (toggle === undefined) ? !isVideoToggled : toggle;
+    if (isVideoToggled) {
+        window.removeVideo();
+    } else {
+        window.restoreVideo();
+    }
+}
