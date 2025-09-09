@@ -35,66 +35,56 @@ $(function changeLayoutDOM() {
     $removeVideoListLink.on('click.removeVideo', removeVideo);
 })
 
-let currentVideoData = null;
-let currentVideoSync = null;
-const storeChangeMediaValue = (data) => {
-    currentVideoData = data;
+let videoData = null;
+let videoSyncData = null;
+export const storeVideoData = (data) => {
+    videoData = data;
 }
-const storeMediaUpdateValue = (data) => {
-    currentVideoSync = data;
-}
-
-//HIJACK THE SOCKET CALLBACKS
-//For 500 dollars "What is DRY"
-let mediaUpdateCallback = socket._callbacks.$mediaUpdate[0];
-let setCurrentCallback = socket._callbacks.$setCurrent[0];
-let changeMediaCallback = socket._callbacks.$changeMedia[0];
-
-function restoreVideoListeners() {
-    socket.on("mediaUpdate", mediaUpdateCallback);
-    socket.on("setCurrent", setCurrentCallback);
-    socket.on("changeMedia", changeMediaCallback);
+export const storeVideoSyncData = (data) => {
+    videoSyncData = data;
 }
 
-function removeVideoListeners() {
-    socket.off("mediaUpdate", mediaUpdateCallback);
-    socket.off("setCurrent", setCurrentCallback);
-    socket.off("changeMedia", changeMediaCallback);
-}
+export const mediaUpdateCb = socket._callbacks.$mediaUpdate[0];
+export const setCurrentCb = socket._callbacks.$setCurrent[0];
+export const changeMediaCb = socket._callbacks.$changeMedia[0];
 
-function storeSocketResponses() {
-    socket.on("changeMedia", storeChangeMediaValue);
-    socket.on("mediaUpdate", storeMediaUpdateValue);
-}
 
-function updateVideoWithStoredVideoData() {
-    socket.off("changeMedia", storeChangeMediaValue);
-    socket.off("mediaUpdate", storeMediaUpdateValue);
-    changeMediaCallback(currentVideoData);
-    if (currentVideoSync) {
-        mediaUpdateCallback(currentVideoSync);
+let listenersActive = false;
+export function toggleSocketListeners(restore) {
+    const restoreVideo = (restore === undefined) ? !listenersActive : restore;
+
+    if (restoreVideo) {
+        socket.off("mediaUpdate", mediaUpdateCb);
+        socket.off("setCurrent", setCurrentCb);
+        socket.off("changeMedia", changeMediaCb);
+
+        socket.on("mediaUpdate", mediaUpdateCb);
+        socket.on("setCurrent", setCurrentCb);
+        socket.on("changeMedia", changeMediaCb);
+
+        if (videoData) {
+            changeMediaCb(videoData);
+        }
+        if (videoSyncData) {
+            mediaUpdateCb(videoSyncData);
+        }
+    } else {
+        socket.off("mediaUpdate", mediaUpdateCb);
+        socket.off("setCurrent", setCurrentCb);
+        socket.off("changeMedia", changeMediaCb);
+
+        socket.on("changeMedia", storeVideoData);
+        socket.on("mediaUpdate", storeVideoSyncData);
+        
+        let currentVideoData = fetchCurrentVideoData();
+        storeVideoData(currentVideoData);
     }
     
+    listenersActive = restoreVideo;
 }
 
-function removeVideoDOMUpdates() {
-    $videowrap.hide();
-    $chatwrap.css({ width: "100%"});
-    $removeVideoListLink.text("Restore Video");
-    $removeVideoListLink.off('click.removeVideo');
-    $removeVideoListLink.on('click.restoreVideo', restoreVideo);
-}
-
-function restoreVideoDOMUpdates() {
-    $videowrap.show();
-    $chatwrap.css({ width: ""});
-    $removeVideoListLink.text("Remove Video");
-    $removeVideoListLink.off('click.restoreVideo');
-    $removeVideoListLink.on('click.removeVideo', removeVideo);
-}
-
-function storeCurrentVideoData() {
-    let data = {
+export function fetchCurrentVideoData() {
+    return {
         id: PLAYER.mediaId,
         meta: {},
         paused: false,
@@ -102,7 +92,23 @@ function storeCurrentVideoData() {
         type: PLAYER.mediaType,
         title: PLAYER.yt?.videoTitle ?? playlistFind(window.PL_CURRENT).children[0].innerText
     }
-    storeChangeMediaValue(data);
+}
+
+
+export function removeVideoDOMElements() {
+    $videowrap.hide();
+    $chatwrap.css({ width: "100%"});
+    $removeVideoListLink.text("Restore Video");
+    $removeVideoListLink.off('click.removeVideo');
+    $removeVideoListLink.on('click.restoreVideo', restoreVideo);
+}
+
+export function restoreVideoDOMElements() {
+    $videowrap.show();
+    $chatwrap.css({ width: ""});
+    $removeVideoListLink.text("Remove Video");
+    $removeVideoListLink.off('click.restoreVideo');
+    $removeVideoListLink.on('click.removeVideo', removeVideo);
 }
 
 export function removeVideo() {
@@ -110,24 +116,21 @@ export function removeVideo() {
     if (PLAYER.yt) {
         PLAYER.yt.stopVideo();
     }
-    storeCurrentVideoData();
-    removeVideoDOMUpdates();
-    removeVideoListeners();
-    storeSocketResponses();
+    toggleSocketListeners(false);
+    removeVideoDOMElements();
 }
 
 export function restoreVideo() {
+    toggleSocketListeners(true);
+    restoreVideoDOMElements();
     PLAYER.play();
-    restoreVideoDOMUpdates()
-    restoreVideoListeners();
-    updateVideoWithStoredVideoData();
 }
 
-function removeUntilNext() {
+export function removeUntilNext() {
     removeVideo();
 
     socket.once("changeMedia", (data) => {
-        storeChangeMediaValue(data);
+        storeVideoData(data);
         restoreVideo();
     });
 }

@@ -1,43 +1,89 @@
-(function rratButton() {
-    $('#plcontrol').append('<input type="button" class="btn btn-sm btn-default" value="🐀" id="replacebutton">');
+function parseURLInput(newId) {
+    const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?]+)/;
+    const youtubeMatch = newId.match(youtubeRegex);
+    if (youtubeMatch) {
+        return {
+            id: youtubeMatch[1].substring(0, 11),
+            source: "yt"
+        };
+    }
 
-    $('#replacebutton').click(function () {
-        let newId = window.prompt("Replace the current playing stream\nRefresh to undo\n\nSwitching back to YouTube from Twitch is broken, so reloading the player is necessary in that case\n\nYoutube URL/ID:", "");
-        let newSource = "YT";
+    const twitchRegex = /(?:https?:\/\/)?(?:www\.)?(?:twitch\.tv\/)([^/]+)/;
+    const twitchMatch = newId.match(twitchRegex);
+    if (twitchMatch) {
+        return {
+            id: twitchMatch[1],
+            source: "tw"
+        };
+    }
 
-        if (newId == null) {
-            newId = "";
-        } else if (newId.includes("https://youtube.com/watch?v=")) {
-            newId = newId.replace('https://youtube.com/watch?v=', '').substring(0, 11);
-        } else if (newId.includes("https://www.youtube.com/watch?v=")) {
-            newId = newId.replace('https://www.youtube.com/watch?v=', '').substring(0, 11);
-        } else if (newId.includes("https://youtu.be/")) {
-            newId = newId.replace('https://youtu.be/', '').substring(0, 11);
-        } else if (newId.includes("https://www.twitch.tv/")) {
-            newId = newId.replace('https://www.twitch.tv/', '');
-            newSource = "TTV";
-        } else if (newId.includes("https://twitch.tv/")) {
-            newId = newId.replace('https://twitch.tv/', '');
-            newSource = "TTV";
-        } else if (newId === "om3tcw") {
-            newId = "cJtkxZrUicI";
-        } else if (newId === "ogey" || newId === "rrat" || newId === "ogey rrat") {
-            newId = "JacN1MzyeKo";
-        } else if (newId.length !== 11) {
-            alert("Invalid input.\nExample input: https://www.youtube.com/watch?v=X9zw0QF12Kc, https://youtu.be/X9zw0QF12Kc, X9zw0QF12Kc, https://www.twitch.tv/holofightz, https://twitch.tv/holofightz");
-            newId = "";
+    switch (newId) {
+        case "om3tcw":
+            return {
+                id: "cJtkxZrUicI",
+                source: "yt"
+            };
+        case "ogey":
+        case "rrat":
+        case "ogey rrat":
+            return {
+                id: "JacN1MzyeKo",
+                source: "yt"
+            };
+        default:
+            if (newId.length === 11) {
+                return {
+                    id: newId,
+                    source: "yt"
+                };
+            }
         }
+    alert("Invalid input.\nExample input: https://www.youtube.com/watch?v=X9zw0QF12Kc, https://youtu.be/X9zw0QF12Kc, X9zw0QF12Kc, https://www.twitch.tv/holofightz, https://twitch.tv/holofightz");
+    return null;
+}
 
-        document.body.classList.add('chatOnly');
-        socket.emit("removeVideo");
-        CLIENT.videoRemoved = true;
+function bootstrapBtnFactory(id, icon) {
+    return $("<input>", {
+        type: "button",
+        class: "btn btn-sm btn-default",
+        value: icon,
+        id: id
+    })
+}
+const $rratButton = bootstrapBtnFactory("rratbutton", "🐀")
+const $rratRefresh = bootstrapBtnFactory("rratrefresh", "🔃");
 
-        if (newId !== "") {
-            const playerSrc = newSource === "YT"
-                ? `https://www.youtube.com/embed/${newId}?autohide=1&autoplay=1&controls=1&iv_load_policy=3&rel=0&wmode=opaque&enablejsapi=1&origin=https%3A%2F%2Fom3tcw.com&widgetid=2`
-                : `https://player.twitch.tv?channel=${newId}&parent=om3tcw.com&referrer=location.host`;
-            $("#ytapiplayer")[0].src = playerSrc;
-        }
-    });
+$(plcontrol).append($rratButton);
+$(plcontrol).append($rratRefresh);
 
-})();
+$rratButton.on("click", () => rratButtonClick()); 
+$rratRefresh.on("click", () => toggleSocketListeners(true))
+
+function rratButtonClick() {
+    let urlPrompt = window.prompt("Replace the current playing stream\nRefresh to undo\n\nSwitching back to YouTube from Twitch is broken, so reloading the player is necessary in that case\n\nYoutube URL/ID:", "");
+    
+    let idObject = parseURLInput(urlPrompt);
+    if (!idObject) {
+        return;
+    }
+    
+    let currentVideoData = fetchCurrentVideoData();
+    
+    if (currentVideoData.id === idObject.id) {
+        alert("Don't rrat the same video you already have rratted, fool");
+        return;
+    }
+
+    let videoData = {
+        id: idObject.id,
+        meta: {},
+        paused: false,
+        seconds: '00:00',
+        type: idObject.source,
+        title: "Rratted video"
+    } 
+    
+    changeMediaCb(videoData);
+    toggleSocketListeners(false);
+    storeVideoData(currentVideoData);
+}
