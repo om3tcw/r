@@ -30,13 +30,23 @@ function surroundTextSelection($textField, leftSurroundString, rightSurroundStri
     };
 };
 
+let allowToggleRemoveVideo = true;
+let allowToggleRemoveVideoUntilNext = true;
 const $chatBox = $(chatline);
 const chatBoxDOM = $chatBox[0];
 const ctrlKeyComboEvents = {
     '2'() {
+        let returnNormalEvent = true
+        if (allowToggleRemoveVideoUntilNext === false) {
+            return returnNormalEvent;
+        }
         window.toggleVideoUntilNext();
     },
     '1'() {
+        let returnNormalEvent = true
+        if (allowToggleRemoveVideo === false) {
+            return returnNormalEvent;
+        }
         window.toggleVideo();
     },
     'a'() {
@@ -58,16 +68,47 @@ const ctrlKeyComboEvents = {
     }
 };
 
+let disableRemoveVideoHoloPeek = 
+{
+    optionName: "toggleRemoveVideo", 
+    optionDescription: "Disable 'Ctrl+1'", 
+    optionFunc: () => allowToggleRemoveVideo = false,
+};
+//RemoveVideoUntilNext
+let disableRVUNHoloPeek = 
+{
+    optionName: "toggleRemoveVideoUntilNext", 
+    optionDescription: "Disable 'Ctrl+2'", 
+    optionFunc: () => allowToggleRemoveVideoUntilNext = false,
+};
+
+(async function kurosuWantsAToggleAndImLazy() {
+    await window.waitForFunc("createHoloPeekItem");
+    await window.waitForFunc("addToHoloPeekContainer");
+
+    let disableRemoveVideoToggle = window.createHoloPeekItem(disableRemoveVideoHoloPeek);
+    let disableRemoveVideoUntilNextToggle = window.createHoloPeekItem(disableRVUNHoloPeek);
+    
+    window.addToHoloPeekContainer(disableRemoveVideoToggle);
+    window.addToHoloPeekContainer(disableRemoveVideoUntilNextToggle);
+    
+})();
+
 $(window).on('keydown', (event) => {
     if (event.ctrlKey && !event.shiftKey) {
         const handler = ctrlKeyComboEvents[event.key.toLowerCase()];
+        let executeRegularEventHandler = true; 
         if (handler) {
+            executeRegularEventHandler = handler(event);
+        }
+        if (executeRegularEventHandler !== false) {    
             event.preventDefault();
             event.stopPropagation();
-            handler();
         }
     }
 });
+
+
 
 function eraseStartingString($messageElement, commandString) {
     const $commandNode = $messageElement.contents()[0];
