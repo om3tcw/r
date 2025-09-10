@@ -33,6 +33,9 @@ function surroundTextSelection($textField, leftSurroundString, rightSurroundStri
 const $chatBox = $(chatline);
 const chatBoxDOM = $chatBox[0];
 const ctrlKeyComboEvents = {
+    '2'() {
+        window.toggleVideoUntilNext();
+    },
     '1'() {
         window.toggleVideo();
     },

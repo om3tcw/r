@@ -2,7 +2,7 @@ const $removeVideoUntilNext = $("<li>")
     .append($("<a>")
         .attr("id", "remove-video-until-next")
         .text("Remove Video Until Next"))
-        .on('click', removeUntilNext);
+        .on('click', removeVideoUntilNext);
 
 const $toggleChatListLink = $("<li>")
     .append($("<a>")
@@ -111,7 +111,12 @@ export function restoreVideoDOMElements() {
     $removeVideoListLink.on('click.removeVideo', removeVideo);
 }
 
-export function removeVideo() {
+function setVideoToggledFlag(toggle) {
+    isVideoToggled = (toggle === undefined) ? !isVideoToggled : toggle;
+} 
+
+export function removeVideo(toggle) {
+    setVideoToggledFlag(toggle);
     PLAYER.pause();
     if (PLAYER.yt) {
         PLAYER.yt.stopVideo();
@@ -120,13 +125,14 @@ export function removeVideo() {
     removeVideoDOMElements();
 }
 
-export function restoreVideo() {
+export function restoreVideo(toggle) {
+    setVideoToggledFlag(toggle)
     toggleSocketListeners(true);
     restoreVideoDOMElements();
     PLAYER.play();
 }
 
-export function removeUntilNext() {
+export function removeVideoUntilNext() {
     removeVideo();
 
     socket.once("changeMedia", (data) => {
@@ -208,10 +214,17 @@ function chatOnly() {
 
 let isVideoToggled = false;
 export function toggleVideo(toggle) {
-    isVideoToggled = (toggle === undefined) ? !isVideoToggled : toggle;
     if (isVideoToggled) {
-        window.removeVideo();
+        window.removeVideo(toggle);
     } else {
-        window.restoreVideo();
+        window.restoreVideo(toggle);
+    }
+}
+
+export function toggleVideoUntilNext(toggle) {
+    if (isVideoToggled) {
+        window.removeVideoUntilNext(toggle);
+    } else {
+        window.restoreVideo(toggle);
     }
 }
