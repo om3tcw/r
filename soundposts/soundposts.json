@@ -355,6 +355,7 @@
 	":notreadin:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/notreadin.ogg"},
 	":chihayadoot:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/chihayadoot.ogg"},
 	":gigiglitch:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/gigiglitch.ogg"},
+    ":sundaycalling:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/sundaycalling.ogg"},
 	":laughingbote:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/laughingbote.ogg"},
 	":mococoturbo:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mococoturbo.ogg"},
 	":gigicolonthree:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/gigicolonthree.ogg"},
@@ -368,4 +369,5 @@
 	":mambo:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mambo.ogg"},
 	":otomostare:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/otomostare.ogg"}
 }
+
 
