@@ -627,6 +627,7 @@
     background-repeat: no-repeat
 }
 
+.chat-msg-japhony .timestamp,
 .chat-msg-jafafafy .timestamp {
     color: transparent;
     background-size: 50px 15px;
