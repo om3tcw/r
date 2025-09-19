@@ -39,6 +39,7 @@ const ModulePaths = [
     { Soundposts: `chat_modules/soundpostModule.js` },
     { NNDChatModule: `chat_modules/nndChatModule.js`, isActive: 0, rank: -1},
     { RratButton: `ui_modules/rratButton.js`},
+    { ChatImages: `chat_modules/chatImages.js` },
 ]
 
 //candidate to move to util.js
