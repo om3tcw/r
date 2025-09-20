@@ -214,7 +214,20 @@ export const holoPeekObjects = [
     {
         optionName: "invertChatPosition",
         optionDescription: "Invert Chat Position",
-        optionFunc: (self) => self.cssData = `#main { flex-direction: row-reverse !important; }`
+        optionFunc: (self) => self.cssData = `
+          #main { 
+            flex-direction: row-reverse !important; 
+          }
+
+          #holopeek {
+            left: calc(100px + 5vw);  
+          }
+
+          #holoPeekBubble {
+            left: 6.5vw;
+            width: 255px;
+          }
+        `
     },
     {
         optionName: "hidePlaylist",
