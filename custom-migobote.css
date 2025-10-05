@@ -116,9 +116,10 @@
 .chat-msg-iTako .timestamp {
     color: transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/itako.jpg');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png');
     background-position: center;
     background-repeat: no-repeat
+	animation: ironmouse 45s infinite alternate;
 }
 
 .chat-msg-Takoyomi .timestamp {
