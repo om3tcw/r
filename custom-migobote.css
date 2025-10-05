@@ -116,10 +116,10 @@
 .chat-msg-iTako .timestamp {
     color: transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ironmouse.png');
     background-position: center;
     background-repeat: no-repeat
-	animation: ironmouse 45s infinite alternate;
+	
 }
 
 .chat-msg-Takoyomi .timestamp {
@@ -2681,62 +2681,6 @@ img.channel-emote[title$=":gigispeed:"] {
     }
 }
 
-@keyframes ironmouse {
-    0% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ironmouse.png') 0 0 no-repeat;
-        opacity: 1;
-    }
-
-    43% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ironmouse.png') 0 0 no-repeat;
-        opacity: 1;
-    }
-
-    45% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ironmouse.png') 0 0 no-repeat;
-        opacity: 0;
-    }
-
-    46% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ironmouse.png') 0 0 no-repeat;
-        opacity: 0;
-    }
-
-    48% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ironmouse.png') 0 0 no-repeat;
-        opacity: 1;
-    }
-
-    50% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ironmouse.png') 0 0 no-repeat;
-        opacity: 1;
-    }
-
-    93% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ironmouse.png') 0 0 no-repeat;
-        opacity: 1;
-    }
-
-    95% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/ironmouse.png') 0 0 no-repeat;
-        opacity: 0;
-    }
-
-    96% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat;
-        opacity: 0;
-    }
-
-    98% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat;
-        opacity: 1;
-    }
-
-    100% {
-        background: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/whore.png') 0 0 no-repeat;
-        opacity: 1;
-    }
-}
 
 
 /* Displaced emotes */
