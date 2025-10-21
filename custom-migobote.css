@@ -3121,14 +3121,7 @@ img.channel-emote[title$=":kaelabonk:"] {
     content: 'DEInan: ';
 }
 
-.chat-msg-iTako .username {
-    font-size: 0;
-}
 
-.chat-msg-iTako .username:after {
-    font-size: 14px;
-    content: 'iKa: ';
-}
 
 .chat-msg-jafafafy .username:after {
     font-size: 14px;
