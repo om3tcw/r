@@ -3129,6 +3129,11 @@ img.channel-emote[title$=":kaelabonk:"] {
     content: 'DEInan: ';
 }
 
+.chat-msg-etch .username:after {
+    font-size: 14px;
+    content: 'sloptch: ';
+}
+
 
 
 .chat-msg-jafafafy .username:after {
