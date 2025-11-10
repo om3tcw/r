@@ -2944,6 +2944,12 @@ img.channel-emote[title$=":kaelabonk:"] {
     margin: -112px;
 }
 
+img.channel-emote[title$=":rionahood:"] {
+    bottom: 0px;
+    right: 105px;
+    z-index: 1;
+}
+
 /* might add 'top:5px;' later to do a bottom offset */
 /* End of Emote Animations */
 
