@@ -3135,6 +3135,16 @@ img.channel-emote[title$=":rionahood:"] {
     content: 'DEInan: ';
 }
 
+.chat-msg-rratbastard .username {
+    font-size: 0;
+}
+
+.chat-msg-rratbastard .username:after {
+    font-size: 14px;
+    content: 'rratferroIVbastard: ';
+}
+
+
 .chat-msg-etch .username {
     font-size: 0;
 }
