@@ -308,6 +308,7 @@
     ":grempreg:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/grempreg.ogg"},
     ":gigimage:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/gigimage.ogg"},
 	":gurabooba:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/gurabooba.ogg"},
+	":golshialarm:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/golshialarm.ogg"},
 	":gigiwants:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/gigiwants.ogg"},
 	":doobro:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/doobro.ogg"},
 	":towangry:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/towangry.ogg"},
@@ -372,6 +373,7 @@
 	":watamelon:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/watamelon.ogg"},
     ":koboehe:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/koboehe.ogg"}
 }
+
 
 
 
