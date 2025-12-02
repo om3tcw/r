@@ -246,5 +246,19 @@ export const holoPeekObjects = [
         optionDescription: "Custom CSS",
         type: "textarea",
         optionFunc: (self) => self.cssData = self.value
+    },
+    {
+    optionName: "christmasSnow",
+    optionDescription: "Christmas Snow (Falling Flakes)",
+    optionFunc: (self) => {
+        if (self.checkbox.prop('checked')) {
+            self.cssData = `#snow-container { display: block !important; }`;
+        } else {
+            self.cssData = `#snow-container { display: none !important; }`;
+        }
+    },
+    cleanupFunc: (self) => {
+        self.cssData = `#snow-container { display: none !important; }`;  // Hide on cleanup
     }
+},
 ]
