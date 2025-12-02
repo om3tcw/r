@@ -1,72 +1,89 @@
-(function injectSnowStyles() {
-  // Inject HTML once (check if exists to avoid duplicates)
-  if (!document.getElementById('snow-container')) {
-    const snowContainer = document.createElement('div');
-    snowContainer.id = 'snow-container';
-    snowContainer.style.display = 'none'; // Hidden by default
-    document.body.appendChild(snowContainer);
+// custom_modules/custom_css_injection/snow-css.js  ←  overwrite with this
+(function injectGorgeousSnow() {
+  if (document.getElementById('snow-container')) return;
 
-    // Generate 50 snowflakes
-    for (let i = 0; i < 50; i++) {
-      const flake = document.createElement('div');
-      flake.className = 'snowflake';
-      flake.textContent = '❄'; // Unicode snowflake; alternatives: '✻' or '❅'
-      snowContainer.appendChild(flake);
+  const container = document.createElement('div');
+  container.id = 'snow-container';
+  container.style.cssText = `
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+    display: none;
+  `;
+  document.body.appendChild(container);
+
+  // Generate all 350 flakes with unique properties
+  const totalFlakes = 250 + 50 + 50;
+  const flakeChars = ['❄', '❅', '❆', '✻', '✼', '❉', '❈'];
+
+  for (let i = 1; i <= totalFlakes; i++) {
+    const flake = document.createElement('div');
+    flake.textContent = flakeChars[Math.floor(Math.random() * flakeChars.length)];
+    flake.className = 'snowflake';
+
+    let sizeClass = '';
+    let fontSize = '1em';
+
+    if (i <= 250) {
+      // small
+      fontSize = '0.8em';
+    } else if (i <= 300) {
+      // medium
+      sizeClass = ' _md';
+      fontSize = '1.5em';
+    } else {
+      // large
+      sizeClass = ' _lg';
+      fontSize = '2.25em';
     }
+
+    const left = Math.random() * 120 - 20;           // -20vw to 100vw
+    const blur = Math.random() < 0.5 ? 0 : 1;         // 50% chance of slight blur
+    const flickrDuration = (Math.random() * 2 + 2); // 2–4s
+    const flickrDelay = Math.random() * -2;
+    const fallDuration = Math.random() * 20 + 10;    // 10–30s
+    const fallDelay = Math.random() * -10;
+    const drift = Math.random() * 40 - 20;           // -20vw to +20vw drift
+
+    flake.style.cssText = `
+      position: absolute;
+      top: -10vh;
+      left: ${left}vw;
+      font-size: ${fontSize};
+      color: #fff;
+      opacity: 0.9;
+      filter: blur(${blur}px);
+      user-select: none;
+      text-shadow: 0 0 10px rgba(255,255,255,0.8);
+      animation:
+        flickr ${flickrDuration}s ease-in-out ${flickrDelay}s infinite,
+        fall-${i} ${fallDuration}s linear ${fallDelay}s infinite;
+      will-change: transform, opacity;
+    `;
+
+    // Unique fall animation per flake (with custom drift)
+    const style = document.createElement('style');
+    style.textContent += `
+      @keyframes fall-${i} {
+        0%   { transform: translate(0, 0) rotate(0deg); }
+        100% { transform: translate(${drift}vw, 110vh) rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    container.appendChild(flake);
   }
 
-  const cssSnow = `
-    #snow-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 9999; /* On top of everything */
-      display: none; /* Toggled via HoloPeek */
+  // Global animations
+  const globalStyle = document.createElement('style');
+  globalStyle.textContent = `
+    @keyframes flickr {
+      0%, 100% { opacity: 0.9; }
+      50%      { opacity: 0.2; }
     }
-
-    .snowflake {
-      position: absolute;
-      color: #fff;
-      font-size: 1em; /* Randomize sizes in JS if needed, or use classes */
-      text-shadow: 0 0 1px #000;
-      user-select: none;
-      animation: snowFall linear infinite, snowSway ease-in-out infinite;
-    }
-
-    /* Base fall animation: top to bottom */
-    @keyframes snowFall {
-      0% { top: -10%; }
-      100% { top: 100vh; }
-    }
-
-    /* Sway animation: left-right wiggle */
-    @keyframes snowSway {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(20px); } /* Adjust for more/less sway */
-    }
-
-    /* Unique delays and durations for each flake (simulates randomness) */
-    .snowflake:nth-of-type(1) { left: 10%; animation-duration: 10s, 3s; animation-delay: 0s, 0s; font-size: 0.8em; }
-    .snowflake:nth-of-type(2) { left: 20%; animation-duration: 12s, 2s; animation-delay: 2s, 1s; font-size: 1.2em; opacity: 0.9; }
-    .snowflake:nth-of-type(3) { left: 30%; animation-duration: 15s, 4s; animation-delay: 5s, 0.5s; font-size: 0.6em; }
-    .snowflake:nth-of-type(4) { left: 40%; animation-duration: 8s, 2.5s; animation-delay: 1s, 2s; font-size: 1em; }
-    .snowflake:nth-of-type(5) { left: 50%; animation-duration: 11s, 3s; animation-delay: 3s, 1.5s; font-size: 0.9em; }
-    .snowflake:nth-of-type(6) { left: 60%; animation-duration: 13s, 2s; animation-delay: 4s, 0s; font-size: 1.1em; }
-    .snowflake:nth-of-type(7) { left: 70%; animation-duration: 9s, 3.5s; animation-delay: 6s, 2s; font-size: 0.7em; }
-    .snowflake:nth-of-type(8) { left: 80%; animation-duration: 14s, 2s; animation-delay: 1.5s, 1s; font-size: 1em; }
-    .snowflake:nth-of-type(9) { left: 90%; animation-duration: 10s, 4s; animation-delay: 7s, 0.5s; font-size: 0.8em; }
-    .snowflake:nth-of-type(10) { left: 5%; animation-duration: 12s, 3s; animation-delay: 0.5s, 2s; font-size: 1.3em; }
-    /* ... Continue this pattern up to nth-of-type(50) for full effect. Vary left (1-100%), duration (8-15s), delay (0-7s), font-size (0.5-1.5em), and opacity (0.7-1) for variety. */
-
-    /* Repeat for 11-50 with varied values... (abbreviated for brevity; generate via loop in JS if preferred) */
-    .snowflake:nth-of-type(11) { left: 15%; animation-duration: 11s, 2.5s; animation-delay: 2.5s, 1.5s; font-size: 0.9em; }
-    /* ... (up to 50) */
+    #snow-container.show { display: block !important; }
   `;
-
-  const $styleElement = $('<style>');
-  $styleElement.text(cssSnow);
-  $('head').append($styleElement);
+  document.head.appendChild(globalStyle);
 })();
