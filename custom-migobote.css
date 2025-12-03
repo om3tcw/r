@@ -2958,6 +2958,13 @@ img.channel-emote[title$=":rionahood:"] {
     z-index: 1;
 }
 
+img.channel-emote[title$=":santahat:"] {
+    bottom: 40px;
+    right: 110px;
+    max-height: 60px;
+    z-index: 1;
+}
+
 /* might add 'top:5px;' later to do a bottom offset */
 /* End of Emote Animations */
 
