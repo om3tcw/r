@@ -1,4 +1,3 @@
-// custom_modules/chat_modules/nndChatModule.js  ←  SIMPLIFIED APPROACH
 (() => {
   if (window.NND_MODULE_ACTIVE) return;
   window.NND_MODULE_ACTIVE = true;
@@ -25,35 +24,35 @@
   let socketListener = null;
   let activeMessages = 0;
 
-  // SIMPLE EXTRACTOR - just get what we need
+  
   function extractContent(html) {
     if (!html) return '';
     
-    // Create a temporary element to parse HTML
+    
     const temp = document.createElement('div');
     temp.innerHTML = html;
     
-    // Remove timestamp (span with class "timestamp")
+    
     const timestamps = temp.querySelectorAll('.timestamp');
     timestamps.forEach(el => el.remove());
     
-    // Remove username (strong with class "username")
+    
     const usernames = temp.querySelectorAll('.username');
     usernames.forEach(el => el.remove());
     
-    // Now extract all img tags and text
+    
     let content = '';
     
-    // Function to process nodes
+    
     function processNode(node) {
       if (node.nodeType === Node.TEXT_NODE) {
         content += node.textContent;
       } else if (node.nodeType === Node.ELEMENT_NODE) {
         if (node.tagName === 'IMG') {
-          // Check if it looks like an emote (has src and maybe class="channel-emote")
+          
           const src = node.getAttribute('src');
           if (src) {
-            // Create clean image
+            
             const img = document.createElement('img');
             img.src = src;
             img.alt = node.getAttribute('alt') || node.getAttribute('title') || '';
@@ -74,67 +73,62 @@
           Array.from(node.childNodes).forEach(processNode);
           content += '</em>';
         } else {
-          // For other elements, just process their children
+          
           Array.from(node.childNodes).forEach(processNode);
         }
       }
     }
     
-    // Process all child nodes of the temp div
+    
     Array.from(temp.childNodes).forEach(processNode);
     
-    // Clean up: remove multiple spaces and trim
+    
     content = content.replace(/\s+/g, ' ').trim();
     
     return content;
   }
 
-  // Even simpler: Just get all img tags and text
-  function simpleExtract(html) {
-    const temp = document.createElement('div');
-    temp.innerHTML = html;
-    
-    // Find all images
-    const images = Array.from(temp.querySelectorAll('img'));
-    
-    // Find all text nodes (excluding those in timestamp/username)
-    let text = '';
-    const walker = document.createTreeWalker(
-      temp,
-      NodeFilter.SHOW_TEXT,
-      {
-        acceptNode: function(node) {
-          // Skip text nodes inside timestamp or username
-          let parent = node.parentElement;
-          while (parent) {
-            if (parent.classList && 
-                (parent.classList.contains('timestamp') || 
-                 parent.classList.contains('username'))) {
-              return NodeFilter.FILTER_REJECT;
-            }
-            parent = parent.parentElement;
+  
+function simpleExtract(html) {
+  const temp = document.createElement('div');
+  temp.innerHTML = html;
+
+  // Remove unwanted elements
+  temp.querySelectorAll('.timestamp, .username').forEach(el => el.remove());
+
+  let result = '';
+
+  // Walk through nodes in ORIGINAL order
+  const walker = document.createTreeWalker(
+    temp,
+    NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
+    {
+      acceptNode: (node) => {
+        if (node.nodeType === Node.TEXT_NODE) return NodeFilter.FILTER_ACCEPT;
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.tagName === 'IMG') return NodeFilter.FILTER_ACCEPT;
+          if (node.tagName === 'BR') return NodeFilter.FILTER_ACCEPT;
+          if (node.classList?.contains('timestamp') || node.classList?.contains('username')) {
+            return NodeFilter.FILTER_REJECT;
           }
           return NodeFilter.FILTER_ACCEPT;
         }
+        return NodeFilter.FILTER_REJECT;
       }
-    );
-    
-    let node;
-    while (node = walker.nextNode()) {
-      text += node.textContent + ' ';
     }
-    
-    // Build the result
-    let result = '';
-    
-    // Add images
-    images.forEach(img => {
-      const src = img.getAttribute('src');
+  );
+
+  let node;
+  while (node = walker.nextNode()) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      result += node.textContent;
+    } else if (node.tagName === 'IMG') {
+      const src = node.getAttribute('src');
       if (src) {
-        const newImg = document.createElement('img');
-        newImg.src = src;
-        newImg.alt = img.getAttribute('alt') || img.getAttribute('title') || '';
-        newImg.style.cssText = `
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = node.getAttribute('alt') || node.getAttribute('title') || '';
+        img.style.cssText = `
           height: ${CONFIG.EMOJI_HEIGHT};
           width: auto;
           vertical-align: middle;
@@ -142,23 +136,21 @@
           margin: 0 2px;
           display: inline-block;
         `;
-        result += newImg.outerHTML + ' ';
+        result += img.outerHTML;
       }
-    });
-    
-    // Add text
-    if (text.trim()) {
-      result += text.trim();
+    } else if (node.tagName === 'BR') {
+      result += '<br>';
     }
-    
-    return result.trim();
   }
 
-  // Initialize
+  return result.trim();
+}
+
+  
   function init() {
     if (container) return;
     
-    // Add styles
+    
     style = document.createElement('style');
     style.textContent = `
       .nnd-container {
@@ -204,13 +196,13 @@
     `;
     document.head.appendChild(style);
     
-    // Create container
+    
     container = document.createElement('div');
     container.className = 'nnd-container';
     document.body.appendChild(container);
   }
 
-  // Create message
+  
   function createMessage(html) {
     if (!container) init();
     
@@ -224,36 +216,36 @@
       }
     }
     
-    // Extract content
+    
     const content = simpleExtract(html);
     if (!content) return;
     
-    // Create element
+    
     const el = document.createElement('div');
     el.className = 'nnd-msg';
     el.innerHTML = content;
     
-    // Random position and animation
+    
     el.style.top = Math.random() * (CONFIG.TOP_MAX - CONFIG.TOP_MIN) + CONFIG.TOP_MIN + 'vh';
     const duration = Math.random() * (CONFIG.ANIMATION_MAX_DURATION - CONFIG.ANIMATION_MIN_DURATION) + CONFIG.ANIMATION_MIN_DURATION;
     el.style.animationDuration = duration + 's';
     el.style.webkitAnimationDuration = duration + 's';
     
-    // Random color
+    
     el.style.color = CONFIG.COLORS[Math.floor(Math.random() * CONFIG.COLORS.length)];
     
-    // Add to container
+    
     container.appendChild(el);
     activeMessages++;
     
-    // Clean up after animation
+    
     el.addEventListener('animationend', () => {
       if (el._timeout) clearTimeout(el._timeout);
       el.remove();
       activeMessages--;
     });
     
-    // Fallback timeout
+    
     el._timeout = setTimeout(() => {
       if (el.parentNode) {
         el.remove();
@@ -262,7 +254,7 @@
     }, CONFIG.REMOVE_DELAY);
   }
 
-  // Enable/disable
+  
   function enable() {
     if (socketListener) return;
     init();
@@ -274,7 +266,6 @@
     };
     
     socket.on('chatMsg', socketListener);
-    console.log('NND Mode: ENABLED');
   }
 
   function disable() {
@@ -292,35 +283,8 @@
       });
       activeMessages = 0;
     }
-    console.log('NND Mode: DISABLED');
   }
 
   window.toggleNNDMode = (on) => on ? enable() : disable();
-  
-  // Auto-enable
-  try {
-    if (localStorage.getItem('holopeek_nndMode') === 'true') {
-      // Wait for socket to be ready
-      const checkSocket = setInterval(() => {
-        if (typeof socket !== 'undefined' && socket) {
-          clearInterval(checkSocket);
-          enable();
-        }
-      }, 100);
-    }
-  } catch (e) {
-    console.warn('Could not read NND Mode preference:', e);
-  }
 
-  // Debug helper
-  window.debugNND = {
-    test: (html) => {
-      console.log('Input:', html);
-      console.log('Output:', simpleExtract(html));
-    },
-    enable,
-    disable
-  };
-
-  console.log('NND Module: SIMPLIFIED VERSION LOADED');
 })();
