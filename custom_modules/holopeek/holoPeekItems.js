@@ -241,6 +241,21 @@ export const holoPeekObjects = [
         optionFunc: chatVideoOnly,
         cleanupFunc: (self) => self.lunaButton.remove(),
     },
+	{
+		optionName: "christmasSnow",
+		optionDescription: "Snow",
+		optionFunc: (self) => {
+			if (self.checkbox.prop('checked')) {
+				self.cssData = `#snow-container { display: block !important; }`;
+			} else {
+				self.cssData = `#snow-container { display: none !important; }`;
+			}
+		},
+		cleanupFunc: (self) => {
+			self.cssData = `#snow-container { display: none !important; }`;
+		},
+		defaultChecked: true
+	},
     {
         optionName: "customCSS",
         optionDescription: "Custom CSS",

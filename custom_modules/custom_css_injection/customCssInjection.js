@@ -1,6 +1,7 @@
 const STYLES = {
     CONFETTI_STYLE: `custom_modules/custom_css_injection/confetti-css.js`,
-    HOLOPEEK_STYLE: `custom_modules/custom_css_injection/holoPeek-css.js`
+    HOLOPEEK_STYLE: `custom_modules/custom_css_injection/holoPeek-css.js`,
+    SNOW_STYLE: `custom_modules/custom_css_injection/snow-css.js`
 }
 
 $(document).ready(() => {
