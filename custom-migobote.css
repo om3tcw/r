@@ -3121,13 +3121,13 @@ img.channel-emote[title$=":santahat:"] {
 }
 
 .chat-msg-Noroba,
-.chat-msg-Noromo {
+.chat-msg-Namoro {
     font-family: Noroba, system-ui;
 }
 
 @font-face {
     font-family: Noroba;
-    src: url(https://files.catbox.moe/jnh2x7.ttf);
+    src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/roboto.ttf);
 }
 
 .chat-msg-nautilus {
