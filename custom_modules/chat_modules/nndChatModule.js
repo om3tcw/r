@@ -27,7 +27,7 @@
     style.textContent = `
       .nnd-container{position:fixed;inset:0;pointer-events:none;z-index:9998;overflow:hidden;display:none}
       .nnd-msg{position:absolute;white-space:nowrap;font-weight:bold;font-size:${CONFIG.fontSize};line-height:1.1;
-               text-shadow:3px 3px 0 #000,-3px -3px 0 #000,3px -3px 0 #000,-3px 3px 0 #000;
+               text-shadow:none!important;
                animation:nnd-scroll linear forwards;will-change:transform}
       .nnd-msg img{height:${CONFIG.emojiHeight}!important;width:auto!important;vertical-align:middle;
                    image-rendering:pixelated;margin:0 3px;display:inline-block}
