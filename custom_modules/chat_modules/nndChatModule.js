@@ -1,93 +1,112 @@
-//Non functional non-implemented
-function nicomessage(myplayer, mycontainer, mymsg) {
-    mycontainer.appendChild(mymsg);
+(() => {
+  if (window.NND_MODULE_ACTIVE) return;
+  window.NND_MODULE_ACTIVE = true;
 
-    mymsg.addEventListener("transitionend", function () {
-        mymsg.remove();
+  let container = null;
+  let style = null;
+  let listener = null;
+  let activeMessages = 0;
+  let queue = [];
+  let delayTimer = null;
+
+  // CHANGE THESE VALUES TO TWEAK NND MODE
+  const CONFIG = {
+    maxMessages: 15,           // Max messages on screen at once
+    delayWhenFull: 1500,       // Delay in ms when full (1500 = 1.5 seconds)
+    minDuration: 4,            // Fastest scroll time (seconds)
+    maxDuration: 9,            // Slowest scroll time (seconds)
+    fontSize: '2.6rem',        // Text size
+    emojiHeight: '2.8em',      // Emote size
+    colors: ['#FFFFFF','#FFFF00','#FF00FF','#00FFFF','#FF8000','#00FF00','#FF0080','#0088FF','#FF1493','#7FFF00']
+  };
+
+  function init() {
+    if (container) return;
+
+    style = document.createElement('style');
+    style.textContent = `
+      .nnd-container{position:fixed;inset:0;pointer-events:none;z-index:9998;overflow:hidden;display:none}
+      .nnd-msg{position:absolute;white-space:nowrap;font-weight:bold;font-size:${CONFIG.fontSize};line-height:1.1;
+               text-shadow:3px 3px 0 #000,-3px -3px 0 #000,3px -3px 0 #000,-3px 3px 0 #000;
+               animation:nnd-scroll linear forwards;will-change:transform}
+      .nnd-msg img{height:${CONFIG.emojiHeight}!important;width:auto!important;vertical-align:middle;
+                   image-rendering:pixelated;margin:0 3px;display:inline-block}
+      @keyframes nnd-scroll{from{transform:translateX(110vw)}to{transform:translateX(-100%)}}
+    `;
+    document.head.appendChild(style);
+
+    container = document.createElement('div');
+    container.className = 'nnd-container';
+    document.body.appendChild(container);
+  }
+
+  function spawnMessage(html) {
+    const el = document.createElement('div');
+    el.className = 'nnd-msg';
+
+    
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+    temp.querySelectorAll('.username').forEach(u => u.remove());
+    el.innerHTML = temp.innerHTML || html;
+
+    el.style.top = Math.random() * 90 + 5 + 'vh';
+    const duration = Math.random() * (CONFIG.maxDuration - CONFIG.minDuration) + CONFIG.minDuration;
+    el.style.animationDuration = duration + 's';
+
+    el.style.color = CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
+
+    container.appendChild(el);
+    activeMessages++;
+
+    el.addEventListener('animationend', () => {
+      el.remove();
+      activeMessages--;
+      processQueue();
     }, { once: true });
+  }
 
-    setTimeout(function () {
-        mymsg.remove();
-    }, 10000);
+  function processQueue() {
+    if (queue.length === 0) return;
 
-    let maxLane = Math.floor(myplayer.clientHeight / 32) - 1;
-    let lane = Math.floor(Math.random() * (maxLane + 1));
-    let playerWidth = myplayer.clientWidth;
-    let thisWidth = mymsg.clientWidth;
-
-    mymsg.style.top = (32 * lane) + 'px';
-    mymsg.style.right = (0 - thisWidth) + 'px';
-    mymsg.classList.add('moving');
-    requestAnimationFrame(function () {
-        mymsg.style.visibility = 'visible';
-        mymsg.style.right = playerWidth + 'px';
-    });
-}
-
-function nicoprocess(mymsg, myclass) {
-    const container = document.getElementsByClassName("videochatContainer")[0];
-    const player = $("ytapiplayer");
-    if (!container || !player) return;
-
-    if (mymsg.innerHTML.trim()) {
-        let txt = document.createElement("div");
-        txt.classList.add('videoText');
-        if (myclass.trim()) txt.classList.add(myclass);
-        txt.style.visibility = "hidden";
-        txt.innerHTML = mymsg.innerHTML;
-
-        const imgs = txt.getElementsByTagName("img");
-        let loadedImgs = 0;
-
-        [...imgs].forEach(img => {
-            img.onload = () => {
-                if (++loadedImgs === imgs.length) nicomessage(player, container, txt);
-            };
-        });
-
-        if (imgs.length === 0) nicomessage(player, container, txt);
+    if (activeMessages < CONFIG.maxMessages) {
+      spawnMessage(queue.shift());
+      if (queue.length > 0 && activeMessages < CONFIG.maxMessages) {
+        setTimeout(processQueue, 50);
+      }
+    } else if (!delayTimer) {
+      delayTimer = setTimeout(() => {
+        delayTimer = null;
+        processQueue();
+      }, CONFIG.delayWhenFull);
     }
-}
-
-$('.head-NNDCSS').remove();
-$('.videochatContainer').remove();
-
-const NNDCSSRules = `
-  .videoText {
-    color: white;
-    position: absolute;
-    z-index: 1;
-    cursor: default;
-    white-space: nowrap;
-    font-family: 'Meiryo', sans-serif;
-    letter-spacing: 0.063em;
-    user-select: none;
-    text-shadow: 0 -0.063em #000, 0.063em 0 #000, 0 0.063em #000, -0.063em 0 #000;
-    pointer-events: none;
   }
-  .videoText.moving {
-    transition: right ${7}s linear, left ${7}s linear;
-  }
-  .videoText.greentext {
-    color: #789922;
-  }
-  .videoText img, .videochatContainer .channel-emote {
-    box-shadow: none!important;
-    vertical-align: middle!important;
-    display: inline-block!important;
-    transition: none!important;
-  }
-  .videoText.shout {
-    color: #f00;
-  }
-`;
 
-$('<style />', {
-    'class': 'head-NNDCSS',
-    text: NNDCSSRules
-}).appendTo('head');
+  function createMessage(html) {
+    init();
+    queue.push(html);
+    processQueue();
+  }
 
-$('.embed-responsive').prepend($('<div/>', {
-    'class': 'videochatContainer'
-}));
+  function enable() {
+    if (listener) return;
+    init();
+    container.style.display = 'block';
+    listener = d => {
+      if (d.msg.startsWith('/me ') || d.username === '[server]') return;
+      createMessage(d.msg);
+    };
+    socket.on('chatMsg', listener);
+  }
 
+  function disable() {
+    if (container) container.style.display = 'none';
+    if (listener) { socket.off('chatMsg', listener); listener = null; }
+    container.innerHTML = '';
+    queue = [];
+    activeMessages = 0;
+    if (delayTimer) clearTimeout(delayTimer);
+  }
+
+  window.toggleNNDMode = on => on ? enable() : disable();
+})();

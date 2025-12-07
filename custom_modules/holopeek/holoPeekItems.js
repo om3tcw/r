@@ -242,6 +242,19 @@ export const holoPeekObjects = [
         cleanupFunc: (self) => self.lunaButton.remove(),
     },
 	{
+        optionName: "nndMode",
+        optionDescription: "NND Mode",
+        optionFunc: (self) => {
+            const enabled = self.checkbox.prop('checked');
+            localStorage.setItem('holopeek_nndMode', enabled);
+            window.toggleNNDMode(enabled);
+        },
+        cleanupFunc: () => {
+            localStorage.removeItem('holopeek_nndMode');
+            window.toggleNNDMode(false);
+        }
+    },
+	{
 		optionName: "christmasSnow",
 		optionDescription: "Snow",
 		optionFunc: (self) => {
