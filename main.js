@@ -17,7 +17,7 @@ if (![CHANNEL.name].favicon) {
 const LOCAL_CDN_URL = "https://cdn.jsdelivr.net/gh/9nee/r@e9873fb18105c7727e28d7ffecc7161312d82cd1/";
 const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
-const CURRENT_CDN = ONLINE_CDN;
+const CURRENT_CDN = LOCAL_CDN_URL;
 
 const MODULES_FOLDER = "custom_modules/";
 const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`;
