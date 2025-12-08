@@ -179,10 +179,6 @@ function buildEmbed(info) {
     return embed;
 }
 
-function scrolledToBottom(element) {
-    return Math.abs(element.scrollHeight - element.scrollTop - element.clientHeight) < 1
-}
-
 function addPreview(linkElement) {
     let msgElement = linkElement.parentElement.parentElement;
     let previewDiv = document.createElement("div");
