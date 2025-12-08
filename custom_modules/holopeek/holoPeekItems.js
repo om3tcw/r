@@ -270,6 +270,16 @@ export const holoPeekObjects = [
 		defaultChecked: true
 	},
     {
+        optionName: "tweetEmbed",
+        optionDescription: "Embed tweet links",
+        optionFunc: (self) => {
+            window.tweetPreview.toggle(true);
+        },
+        cleanupFunc: (self) => {
+            window.tweetPreview.toggle(false);
+        },
+    },
+    {
         optionName: "customCSS",
         optionDescription: "Custom CSS",
         type: "textarea",
