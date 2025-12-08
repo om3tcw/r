@@ -5,7 +5,6 @@ let tweetInfoCache = {};
 
 function createStyle() {
     let css = `
-
    .tweet-inline-preview {
         background-color: black;
         color: white;
@@ -225,18 +224,6 @@ async function addTweetPreview($messageElement) {
         .each((k, v) => addPreview(v));
 }
 
-function makeToggleButton() {
-    var button = document.createElement("button");
-    button.innerText = "🐦";
-    button.classList.add("btn", "btn-sm", "btn-default", "collapsed", "active");
-    button.addEventListener("click", ({target}) => {
-        window.tweetPreview.toggle();
-        target.classList.toggle("collapsed");
-        target.classList.toggle("active");
-    })
-    document.querySelector("#plcontrol").appendChild(button);
-}
-
 window.tweetPreview = {
     toggle : function(on) {
         if (on) {
@@ -251,8 +238,5 @@ window.tweetPreview = {
 };
 
 (async () => {
-    //await window.waitForFunc("MESSAGE_PROCESSOR");
-    //MESSAGE_PROCESSOR.addTap(addTweetPreview);
     createStyle();
-    //makeToggleButton();
 })();
