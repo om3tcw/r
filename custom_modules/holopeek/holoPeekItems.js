@@ -269,6 +269,17 @@ export const holoPeekObjects = [
 		},
 		defaultChecked: true
 	},
+
+    {
+        optionName: "tweetEmbed",
+        optionDescription: "Embed tweets into the chat",
+        optionFunc: (self) => {
+            console.log("self.value", self.value);
+            window.tweetPreview.toggle(self.checkbox.prop("checked"));
+        },
+        cleanupFunc: (self) => {
+        },
+    },
     {
         optionName: "customCSS",
         optionDescription: "Custom CSS",
