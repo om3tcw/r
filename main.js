@@ -14,7 +14,7 @@ if (![CHANNEL.name].favicon) {
         .appendTo("head");
 }
 
-const LOCAL_CDN_URL = "https://cdn.jsdelivr.net/gh/9nee/r@e9873fb18105c7727e28d7ffecc7161312d82cd1/";
+const LOCAL_CDN_URL = "https://cdn.jsdelivr.net/gh/9nee/r@29bb4a051637222f958c8339f4ef8d391544f7b2/";
 const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
 const CURRENT_CDN = LOCAL_CDN_URL;
