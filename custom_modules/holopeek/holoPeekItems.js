@@ -272,12 +272,12 @@ export const holoPeekObjects = [
 
     {
         optionName: "tweetEmbed",
-        optionDescription: "Embed tweets into the chat",
+        optionDescription: "Embed tweet links",
         optionFunc: (self) => {
-            console.log("self.value", self.value);
-            window.tweetPreview.toggle(self.checkbox.prop("checked"));
+            window.tweetPreview.toggle(true);
         },
         cleanupFunc: (self) => {
+            window.tweetPreview.toggle(false);
         },
     },
     {
