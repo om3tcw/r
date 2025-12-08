@@ -269,7 +269,6 @@ export const holoPeekObjects = [
 		},
 		defaultChecked: true
 	},
-
     {
         optionName: "tweetEmbed",
         optionDescription: "Embed tweet links",
