@@ -3268,9 +3268,6 @@ body.fluid>#wrap,
     font-weight: bold !important;
 }
 
-.userlist_op {
-    color:  #c8c8c8 !important;
-}
 
 .userlist-deadbeete,
 .userlist-CEOofBandaids,
@@ -3312,6 +3309,9 @@ userlist-darkoracle363 .userlist-Kusa,
     content: 'ryle' !important;
 }
 
+.userlist_op {
+    color:  #c8c8c8 !important;
+}
 .spoiler {
     color: #1e1e1e;
     background-color: #1e1e1e;
