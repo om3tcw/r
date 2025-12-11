@@ -3268,11 +3268,14 @@ body.fluid>#wrap,
     font-weight: bold !important;
 }
 
+.userlist_op {
+    color: #2c8c11 !important;
+}
 
 .userlist-deadbeete,
 .userlist-CEOofBandaids,
 .userlist-Deadbeatchama,
-userlist-darkoracle363 .userlist-Kusa,
+.userlist-Kusa,
 .userlist-Luxes {
     color: #7c009e !important;
     font-weight: bold !important;
@@ -3282,8 +3285,35 @@ userlist-darkoracle363 .userlist-Kusa,
 .userlist-SlavBro,
 .userlist-Altearia,
 .userlist-AmesLittleTeamate,
-.userlist-Anonchama {
+.userlist-Anonchama,
+.userlist-BirbUp
+{
     color: #2c8c11 !important;
+    font-weight: bold !important;
+}
+
+.userlist-Crackerjack,
+.userlist-Dango,
+.userlist-egao,
+userlist-etch, 
+.userlist-fuckhead,
+.userlist-Graduated,
+.userlist-jafafafy,
+.userlist-Kurosu,
+.userlist-lonelyteamate,
+userlist-m_, 
+.userlist-Mc,
+.userlist-metatron,
+.userlist-moshmallow,
+.userlist-mrmceggmanjones,
+.userlist-notSkitzo,
+userlist-Pepper, 
+.userlist-Shifumi,
+.userlist-slowchamp,
+.userlist-speec,
+.userlist-tigre
+{
+    color: #c8c8c8 !important;
     font-weight: bold !important;
 }
 
@@ -3309,9 +3339,7 @@ userlist-darkoracle363 .userlist-Kusa,
     content: 'ryle' !important;
 }
 
-.userlist_op {
-    color:  #c8c8c8 !important;
-}
+
 .spoiler {
     color: #1e1e1e;
     background-color: #1e1e1e;
