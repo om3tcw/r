@@ -2092,6 +2092,10 @@ img.channel-emote[title$=":gigispeed:"] {
     animation-name: gigispeed;
 }
 
+img.channel-emote[title$=":kekspin:"] {
+    animation: spinHorizontal 0.8s infinite linear;
+}
+
 /* Keyframes */
 @keyframes sanalive {
     0% {
@@ -2578,6 +2582,15 @@ img.channel-emote[title$=":gigispeed:"] {
         transform: scale(0);
         left: 600px;
         top: 000px;
+    }
+}
+
+@keyframes spinHorizontal {
+	0% { 
+        transform: rotateY(0deg); 
+	}
+    100% {
+        transform: rotateY(360deg);
     }
 }
 
