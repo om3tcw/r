@@ -36,27 +36,40 @@ function injectSoundpost($message) {
 
             const longEmotes = [":homuhomu:", ":rratate:", "bakushin", "calliboy"];
 
-            if (soundpost) {
-                const preload = longEmotes.includes(emoteTitle);
-                initializeSoundpost(emoteTitle, soundpost.soundurl, preload);
-
-                if (preload && SOUNDPOST_PLAYBACK_STATE[emoteTitle].isPreloaded) {
-                    playSoundpost(emoteTitle, 5);
-                } else if (preload) {
-                    SOUNDPOST_PLAYBACK_STATE[emoteTitle].audio.addEventListener(
-                        "canplaythrough",
-                        () => {
-                            playSoundpost(emoteTitle, 3);
-                        },
-                        { once: true }
-                    );
-                } else if (!PLAYED_SOUNDPOSTS.includes(soundpost.soundurl)) {
-                    const myaudio = new Audio(soundpost.soundurl);
-                    myaudio.volume = defaultVolume;
-                    myaudio.play();
-                    PLAYED_SOUNDPOSTS.push(soundpost.soundurl);
-                }
+            if (!soundpost) {
+                return;
             }
+
+            const { soundurl } = soundpost;
+            if (!SOUNDPOST_PLAYBACK_STATE[emoteTitle]) {
+                SOUNDPOST_PLAYBACK_STATE[emoteTitle] = initializeSoundpost(soundurl);
+            }
+
+            const sp = SOUNDPOST_PLAYBACK_STATE[emoteTitle];
+            const { audio, isPreloaded } = sp;
+            if (!longEmotes.includes(emoteTitle)) {
+                audio.play();
+                if (!PLAYED_SOUNDPOSTS.includes(soundurl)) {
+                    PLAYED_SOUNDPOSTS.push(soundurl);
+                }
+
+                return;
+            }
+
+            if (isPreloaded) {
+                playSoundpost(emoteTitle, 5);
+                return;
+            }
+
+            audio.addEventListener(
+                "canplaythrough",
+                () => {
+                        sp.isPreloaded = true;
+
+                    playSoundpost(emoteTitle, 3);
+                },
+                { once: true },
+            );
         });
     }
     PLAYED_SOUNDPOSTS = [];
@@ -78,27 +91,19 @@ function cleanupSoundpostPlaybackState() {
     }
 }
 
-function initializeSoundpost(emote, soundurl, preload = false) {
-    if (!SOUNDPOST_PLAYBACK_STATE[emote]) {
-        SOUNDPOST_PLAYBACK_STATE[emote] = {
-            audio: new Audio(soundurl),
-            totalPlayTime: 0,
-            isPlaying: false,
-            timeout: null,
-            isPreloaded: false,
-        };
+function initializeSoundpost(soundurl) {
+    const audio = new Audio(soundurl);
+    audio.volume = defaultVolume;
 
-        SOUNDPOST_PLAYBACK_STATE[emote].audio.volume = defaultVolume;
-        if (preload) {
-            SOUNDPOST_PLAYBACK_STATE[emote].audio.addEventListener(
-                "canplaythrough",
-                () => {
-                    SOUNDPOST_PLAYBACK_STATE[emote].isPreloaded = true;
-                },
-                { once: true }
-            );
-        }
-    }
+    const soundpost = {
+        audio: audio,
+        totalPlayTime: 0,
+        isPlaying: false,
+        timeout: null,
+        isPreloaded: false,
+    };
+
+    return soundpost;
 }
 
 async function loadSoundposts() {
