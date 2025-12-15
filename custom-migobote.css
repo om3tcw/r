@@ -3177,6 +3177,14 @@ img.channel-emote[title$=":santahat:"] {
     src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/cheeky.ttf);
 }
 
+.chat-msg-Kusa .username {
+    font-size: 0;
+}
+.chat-msg-Kusa .username:after {
+    font-size: 14px;
+    content: 'Kusaslop: ';
+}
+
 /*general css*/
 ::-webkit-scrollbar {
     width: 6px;
