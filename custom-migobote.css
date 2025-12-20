@@ -3107,13 +3107,13 @@ img.channel-emote[title$=":santahat:"] {
 }
 
 
-.chat-msg-rratbastard .username {
+.chat-msg-Tako225 .username {
     font-size: 0;
 }
 
-.chat-msg-rratbastard .username:after {
+.chat-msg-Tako225 .username:after {
     font-size: 14px;
-    content: 'ⓘ This user can only play black champions in league of legends. rratbastard: ';
+    content: 'ⓘ Tako267: ';
 }
 
 
