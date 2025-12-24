@@ -28,32 +28,18 @@ function getTweetId(tweetUrl) {
     return tweetRegex.exec(tweetUrl)[2];
 }
 
-async function fetchTweetInfo(tweetUrl) {
-    let tweetId = getTweetId(tweetUrl);
-
-    return new Promise(async (resolve, reject) => {
-        if (tweetInfoCache[tweetId] !== undefined) {
-            return resolve(tweetInfoCache[tweetId]);
-        }
-        let response = await fetch(`${apiUrl}/api/v1/statuses/${tweetId}`);
-
-        let js = await response.json();
-        tweetInfoCache[tweetId] = js;
-        resolve(js);
-    });
-}
-
 // Using an iframe to hide the referrer so twitter doesn't block us
 function addPreviewIframe(linkElement) {
     let tweetId = getTweetId(linkElement.href);
+
     let msgElement = linkElement.parentElement.parentElement;
-    let previewDiv = document.createElement("div");
-    previewDiv.classList.add("tweet-inline-preview");
 
     let iframe = document.createElement("iframe");
     iframe.allow = "fullscreen"
     iframe.src = `${apiUrl}/embed-iframe/${tweetId}`;
 
+    let previewDiv = document.createElement("div");
+    previewDiv.classList.add("tweet-inline-preview");
     previewDiv.appendChild(iframe);
 
     // resize listener for when the element updates
@@ -67,7 +53,6 @@ function addPreviewIframe(linkElement) {
     // disconnect the observer after 10s, hopefully everything loaded...
     setTimeout(() => {
         observer.disconnect();
-        console.log("Disconnected");
     }, 10000);
 
     observer.observe(previewDiv);
