@@ -53,9 +53,6 @@ function addPreviewIframe(linkElement) {
     let iframe = document.createElement("iframe");
     iframe.allow = "fullscreen"
     iframe.src = `${apiUrl}/embed-iframe/${tweetId}`;
-    iframe.onerror = function() {
-        previewDiv.style.display = "none";
-    }
 
     previewDiv.appendChild(iframe);
 
