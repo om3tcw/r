@@ -68,11 +68,12 @@ function rratButtonClick() {
     }
     
     let currentVideoData = fetchCurrentVideoData();
-    
+    /*  Removing logic check at Deeb's request. Wanting to rrat the same video you have playing is pretty common (poll swaps and you want to keep what you had before you swap, etc)
     if (currentVideoData.id === idObject.id) {
         alert("Don't rrat the same video you already have rratted, fool");
         return;
     }
+    */
 
     let videoData = {
         id: idObject.id,
