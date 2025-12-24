@@ -1,5 +1,5 @@
-const apiUrl      = "https://unable-diet-least-attorneys.trycloudflare.com/api/v1/statuses";
-const tweetRegex  = /https:\/\/(x|twitter|xcancel).com\/.*?\/status\/(\d+)/;
+const tweetRegex = /https:\/\/(x|twitter|xcancel).com\/.*?\/status\/(\d+)/;
+const apiUrl = "https://unable-diet-least-attorneys.trycloudflare.com";
 
 let tweetInfoCache = {};
 
@@ -13,104 +13,10 @@ function createStyle() {
         display: flex;
     }
 
-    .tweet-content {
-        max-height: 500px;
-        margin: 3% 3%;
-        display: flex;
-        flex-flow: column;
-        row-gap: 15px;
+    .tweet-inline-preview > iframe {
+        width: 100%;
+        border: none;
     }
-
-    .tweet-embed {
-        position: relative;
-        flex-grow: 1;
-        max-width: 100%;
-    }
-
-    .tweet-loader {
-        width: 60px;
-        aspect-ratio: 4;
-        background: radial-gradient(circle closest-side,#fff 90%,#0000) 0/calc(100%/3) 100% space;
-        clip-path: inset(0 100% 0 0);
-        animation: tweetanim 1s steps(4) infinite;
-    }
-
-    .tweet-image {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        place-content: center;
-        row-gap: 5px;
-        column-gap: 5px;
-        flex: 1;
-        min-width: 0px;
-        min-height: 0px;
-    }
-
-    .tweet-image :nth-child(1):nth-last-child(3) {
-        grid-column-start: span 2;
-    }
-
-    .tweet-image :nth-child(2):nth-last-child(1) {
-        grid-column-start: span 1;
-    }
-
-    .tweet-image :nth-child(1):nth-last-child(2) {
-        grid-column-start: span 1;
-    }
-
-    .tweet-image :nth-child(1):nth-last-child(1) {
-        grid-column-start: span 2;
-    }
-
-    .tweet-img-preview {
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-    }
-
-    .tweet-img-preview > a {
-        display: flex;
-        justify-content: center;
-    }
-
-    .tweet-img-preview img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    .tweet-img-preview video {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    .tweet-user {
-        display: flex;
-        gap: 5px;
-    }
-
-    .tweet-text {
-        min-height: 50px;
-        overflow: scroll;
-        align-content: center;
-    }
-
-    .tweet-text blockquote {
-        font-size: 14px;
-    }
-
-    .tweet-user-id {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .tweet-avatar > img {
-        width: 48px;
-        height: 48px;
-    }
-
-
-    @keyframes tweetanim {to{clip-path: inset(0 -34% 0 0)}}
-
     `;
 
     let style = document.createElement("style");
@@ -122,77 +28,19 @@ function getTweetId(tweetUrl) {
     return tweetRegex.exec(tweetUrl)[2];
 }
 
-async function fetchTweetInfo(tweetUrl) {
-    let tweetId = getTweetId(tweetUrl);
+// Using an iframe to hide the referrer so twitter doesn't block us
+function addPreviewIframe(linkElement) {
+    let tweetId = getTweetId(linkElement.href);
 
-    return new Promise(async (resolve, reject) => {
-        if (tweetInfoCache[tweetId] !== undefined) {
-            return resolve(tweetInfoCache[tweetId]);
-        }
-        let response = await fetch(`${apiUrl}/${tweetId}`);
-        let js = await response.json();
-        tweetInfoCache[tweetId] = js;
-        resolve(js);
-    });
-}
-
-function buildEmbed(info) {
-    let template = `<div class="tweet-content">
-            <div class="tweet-user">
-                <div class="tweet-avatar"><img src=""/></div>
-                <div class="tweet-user-id">
-                    <span class="tweet-user-name"></span>
-                    <span class="tweet-user-handle" style="color: rgb(113, 118, 123);"></span>
-                </div>
-            </div>
-            <div class="tweet-text">
-            </div>
-            <div class="tweet-image">
-            </div>
-        </div>`;
-
-    let embed = document.createElement("div");
-    embed.classList.add("tweet-embed");
-    embed.innerHTML = template;
-
-    embed.querySelector(".tweet-text").innerHTML = info.content;
-
-    embed.querySelector(".tweet-user-name").innerText = info.account.display_name;
-    embed.querySelector(".tweet-user-handle").innerText = "@" + info.account.acct;
-    embed.querySelector(".tweet-avatar > img").src = info.account.avatar;
-
-    if (info.media_attachments.length == 0) {
-        embed.querySelector(".tweet-image").style.display = "none";
-    }
-
-    for (let attachment of info.media_attachments) {
-        let imgPreview = document.createElement("div");
-        imgPreview.classList.add("tweet-img-preview");
-        if (attachment.type == "video" || attachment.type == "gifv") {
-            imgPreview.innerHTML = `<video controls src="${attachment.url}"></video>`;
-        } else {
-            imgPreview.innerHTML = `<a href="${attachment.preview_url}" target="_blank"> <img src="${attachment.preview_url}"/> </a>`;
-        }
-        embed.querySelector(".tweet-image").appendChild(imgPreview);
-    }
-
-    return embed;
-}
-
-function addPreview(linkElement) {
     let msgElement = linkElement.parentElement.parentElement;
+
+    let iframe = document.createElement("iframe");
+    iframe.allow = "fullscreen"
+    iframe.src = `${apiUrl}/embed-iframe/${tweetId}`;
+
     let previewDiv = document.createElement("div");
     previewDiv.classList.add("tweet-inline-preview");
-    previewDiv.innerHTML = `<div class="tweet-loading" class="tweet-loader"></div><div class="tweet-embed"></div>`;
-
-    previewDiv.querySelector("div.tweet-embed").style.display = "none";
-    previewDiv.querySelector("div.tweet-loading").style.display = "";
-
-    fetchTweetInfo(linkElement.href).then((result) => {
-        previewDiv.querySelector("div.tweet-embed").style.display = "";
-        previewDiv.querySelector("div.tweet-loading").style.display = "none";
-        previewDiv.replaceChild(buildEmbed(result), previewDiv.querySelector("div.tweet-embed"));
-    });
+    previewDiv.appendChild(iframe);
 
     // resize listener for when the element updates
     // must be the last element in the chat and be visible
@@ -205,11 +53,9 @@ function addPreview(linkElement) {
     // disconnect the observer after 10s, hopefully everything loaded...
     setTimeout(() => {
         observer.disconnect();
-        console.log("Disconnected");
     }, 10000);
 
     observer.observe(previewDiv);
-
     msgElement.appendChild(previewDiv);
 }
 
@@ -217,7 +63,7 @@ async function addTweetPreview($messageElement) {
     $messageElement
         .find("a")
         .filter((k, v) => tweetRegex.test(v.href))
-        .each((k, v) => addPreview(v));
+        .each((k, v) => addPreviewIframe(v));
 }
 
 window.tweetPreview = {
@@ -235,4 +81,21 @@ window.tweetPreview = {
 
 (async () => {
     createStyle();
+
+    // Auto resize embed based on content
+    window.addEventListener("message", (event) => {
+        if (event.origin !== apiUrl) return;
+
+        let data = JSON.parse(event.data);
+
+        if (data.context == "iframe.error") {
+            document.querySelectorAll(`iframe[src^="${data.src}"]`).forEach(iframe => {
+                iframe.parentElement.style.display = "none";
+            });
+        } else if (data.context == "iframe.resize") {
+            document.querySelectorAll(`iframe[src^="${data.src}"]`).forEach(iframe => {
+                iframe.height = data.height + 50;
+            });
+        }
+    });
 })();
