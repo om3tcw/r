@@ -4134,3 +4134,93 @@ form input#chatline {
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
 }
+
+/*christmas party hats */
+
+.timestamp {
+  position: relative;
+}
+
+[class^="chat-msg-"] .timestamp::before {
+  content: "";
+  position: absolute;
+
+  top: -8px;
+  left: 4px;
+
+  width: 18px;
+  height: 18px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transform: rotate(-30deg);
+  transform-origin: bottom center;
+  pointer-events: none;
+}
+
+
+/* White hat → a, q, 7, m, 2, z */
+[class^="chat-msg-a" i] .timestamp::before,
+[class^="chat-msg-q" i] .timestamp::before,
+[class^="chat-msg-7" i] .timestamp::before,
+[class^="chat-msg-m" i] .timestamp::before,
+[class^="chat-msg-2" i] .timestamp::before,
+[class^="chat-msg-z" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/White_partyhat.png");
+}
+
+/* Blue hat → b, 4, t, j, 0, r */
+[class^="chat-msg-b" i] .timestamp::before,
+[class^="chat-msg-4" i] .timestamp::before,
+[class^="chat-msg-t" i] .timestamp::before,
+[class^="chat-msg-j" i] .timestamp::before,
+[class^="chat-msg-0" i] .timestamp::before,
+[class^="chat-msg-r" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Blue_partyhat.png");
+}
+
+/* Green hat → c, 9, p, e, y, 1 */
+[class^="chat-msg-c" i] .timestamp::before,
+[class^="chat-msg-9" i] .timestamp::before,
+[class^="chat-msg-p" i] .timestamp::before,
+[class^="chat-msg-e" i] .timestamp::before,
+[class^="chat-msg-y" i] .timestamp::before,
+[class^="chat-msg-1" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Green_partyhat.png");
+}
+
+/* Yellow hat → d, 6, u, n, 5, k */
+[class^="chat-msg-d" i] .timestamp::before,
+[class^="chat-msg-6" i] .timestamp::before,
+[class^="chat-msg-u" i] .timestamp::before,
+[class^="chat-msg-n" i] .timestamp::before,
+[class^="chat-msg-5" i] .timestamp::before,
+[class^="chat-msg-k" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Yellow_partyhat.png");
+}
+
+/* Purple hat → f, 3, s, x, h, 8 */
+[class^="chat-msg-f" i] .timestamp::before,
+[class^="chat-msg-3" i] .timestamp::before,
+[class^="chat-msg-s" i] .timestamp::before,
+[class^="chat-msg-x" i] .timestamp::before,
+[class^="chat-msg-h" i] .timestamp::before,
+[class^="chat-msg-8" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Purple_partyhat.png");
+}
+
+/* Red hat → g, w, o, i, v, l */
+[class^="chat-msg-g" i] .timestamp::before,
+[class^="chat-msg-w" i] .timestamp::before,
+[class^="chat-msg-o" i] .timestamp::before,
+[class^="chat-msg-i" i] .timestamp::before,
+[class^="chat-msg-v" i] .timestamp::before,
+[class^="chat-msg-l" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Red_partyhat.png");
+}
+
+.chat-msg-bibibeat .timestamp::before,
+[class^="chat-msg-bibibeat" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Rainbow_partyhat.png");
+}
