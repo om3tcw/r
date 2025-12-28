@@ -1357,7 +1357,7 @@
     background-repeat: no-repeat
 }
 
-.chat-msg-Mc .timestamp {
+.chat-msg-McFin .timestamp {
     color: transparent;
     background-size: 50px 15px;
     background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/fbk2.png');
@@ -3097,14 +3097,7 @@ img.channel-emote[title$=":santahat:"] {
 
 
 
-.chat-msg-Mc .username {
-    font-size: 0;
-}
 
-.chat-msg-Mc .username:after {
-    font-size: 14px;
-    content: 'McFin: ';
-}
 
 .chat-msg-CEOofBandaids .username {
     font-size: 0;
@@ -3332,7 +3325,7 @@ body.fluid>#wrap,
 .userlist-Kurosu,
 .userlist-LonelyTeamate,
 .userlist-m_, 
-.userlist-Mc,
+.userlist-McFin,
 .userlist-metatron,
 .userlist-Moshmallow,
 .userlist-MrMcEggmanJones,
