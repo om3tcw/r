@@ -4193,15 +4193,6 @@ form input#chatline {
   background-image: url("https://oldschool.runescape.wiki/images/Yellow_partyhat.png");
 }
 
-/* Purple hat → f, 3, s, x, h, 8 */
-[class^="chat-msg-f" i] .timestamp::before,
-[class^="chat-msg-3" i] .timestamp::before,
-[class^="chat-msg-s" i] .timestamp::before,
-[class^="chat-msg-x" i] .timestamp::before,
-[class^="chat-msg-h" i] .timestamp::before,
-[class^="chat-msg-8" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Purple_partyhat.png");
-}
 
 .chat-msg-bibibeat .timestamp::before,
 [class^="chat-msg-bibibeat" i] .timestamp::before {
@@ -4221,5 +4212,15 @@ form input#chatline {
 .chat-msg-EnemyUaV .timestamp::before,
 [class^="chat-msg-EnemyUaV" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Red_partyhat.png");
+}
+
+.chat-msg-Dago552 .timestamp::before,
+[class^="chat-msg-Dago552" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Purple_partyhat.png");
+}
+
+.chat-msg-Tako225 .timestamp::before,
+[class^="chat-msg-Tako225" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Purple_partyhat.png");
 }
 
