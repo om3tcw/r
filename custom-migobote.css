@@ -4173,16 +4173,6 @@ form input#chatline {
   background-image: url("https://oldschool.runescape.wiki/images/Green_partyhat.png");
 }
 
-/* Yellow hat → d, 6, u, n, 5, k */
-[class^="chat-msg-d" i] .timestamp::before,
-[class^="chat-msg-6" i] .timestamp::before,
-[class^="chat-msg-u" i] .timestamp::before,
-[class^="chat-msg-n" i] .timestamp::before,
-[class^="chat-msg-5" i] .timestamp::before,
-[class^="chat-msg-k" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Yellow_partyhat.png");
-}
-
 
 .chat-msg-Shifumi .timestamp::before,
 [class~="chat-msg-Shifumi" i] .timestamp::before {
@@ -4222,3 +4212,7 @@ form input#chatline {
 .chat-msg-undah_skor .timestamp::before,
 [class~="chat-msg-undah_skor" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Blue_partyhat.png");
+
+.chat-msg-MrMcEggmanJones .timestamp::before,
+[class~="chat-msg-MrMcEggmanJones" i] .timestamp::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/orangephat.png");
