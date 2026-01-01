@@ -4212,7 +4212,9 @@ form input#chatline {
 .chat-msg-undah_skor .timestamp::before,
 [class~="chat-msg-undah_skor" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Blue_partyhat.png");
+}
 
 .chat-msg-MrMcEggmanJones .timestamp::before,
 [class~="chat-msg-MrMcEggmanJones" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/orangephat.png");
+}
