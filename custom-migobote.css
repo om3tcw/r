@@ -4195,32 +4195,32 @@ form input#chatline {
 
 
 .chat-msg-Shifumi .timestamp::before,
-[class^="chat-msg-Shifumi" i] .timestamp::before {
+[class~="chat-msg-Shifumi" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Rainbow_partyhat.png");
 }
 
 .chat-msg-jafafafy .timestamp::before,
-[class^="chat-msg-jafafafy" i] .timestamp::before {
+[class~="chat-msg-jafafafy" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Black_partyhat.png");
 }
 
 .chat-msg-Enemy .timestamp::before,
-[class^="chat-msg-Enemy" i] .timestamp::before {
+[class~="chat-msg-Enemy" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Red_partyhat.png");
 }
 
 .chat-msg-EnemyUaV .timestamp::before,
-[class^="chat-msg-EnemyUaV" i] .timestamp::before {
+[class~="chat-msg-EnemyUaV" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Red_partyhat.png");
 }
 
 .chat-msg-Dago552 .timestamp::before,
-[class^="chat-msg-Dago552" i] .timestamp::before {
+[class~="chat-msg-Dago552" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Purple_partyhat.png");
 }
 
 .chat-msg-Tako225 .timestamp::before,
-[class^="chat-msg-Tako225" i] .timestamp::before {
+[class~="chat-msg-Tako225" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Purple_partyhat.png");
 }
 
