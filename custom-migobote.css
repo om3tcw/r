@@ -4203,16 +4203,6 @@ form input#chatline {
   background-image: url("https://oldschool.runescape.wiki/images/Purple_partyhat.png");
 }
 
-/* Red hat → g, w, o, i, v, l */
-[class^="chat-msg-g" i] .timestamp::before,
-[class^="chat-msg-w" i] .timestamp::before,
-[class^="chat-msg-o" i] .timestamp::before,
-[class^="chat-msg-i" i] .timestamp::before,
-[class^="chat-msg-v" i] .timestamp::before,
-[class^="chat-msg-l" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Red_partyhat.png");
-}
-
 .chat-msg-bibibeat .timestamp::before,
 [class^="chat-msg-bibibeat" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Rainbow_partyhat.png");
@@ -4221,5 +4211,15 @@ form input#chatline {
 .chat-msg-jafafafy .timestamp::before,
 [class^="chat-msg-jafafafy" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Black_partyhat.png");
+}
+
+.chat-msg-Enemy .timestamp::before,
+[class^="chat-msg-Enemy" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Red_partyhat.png");
+}
+
+.chat-msg-EnemyUaV .timestamp::before,
+[class^="chat-msg-EnemyUaV" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Red_partyhat.png");
 }
 
