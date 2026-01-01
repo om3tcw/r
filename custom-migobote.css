@@ -4194,8 +4194,8 @@ form input#chatline {
 }
 
 
-.chat-msg-bibibeat .timestamp::before,
-[class^="chat-msg-bibibeat" i] .timestamp::before {
+.chat-msg-Shifumi .timestamp::before,
+[class^="chat-msg-Shifumi" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Rainbow_partyhat.png");
 }
 
