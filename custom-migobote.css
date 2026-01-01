@@ -4199,6 +4199,11 @@ form input#chatline {
   background-image: url("https://oldschool.runescape.wiki/images/Rainbow_partyhat.png");
 }
 
+.chat-msg-Shifumi_ .timestamp::before,
+[class~="chat-msg-Shifumi_" i] .timestamp::before {
+  background-image: url("https://oldschool.runescape.wiki/images/Rainbow_partyhat.png");
+}
+
 .chat-msg-jafafafy .timestamp::before,
 [class~="chat-msg-jafafafy" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Black_partyhat.png");
