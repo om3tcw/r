@@ -4154,16 +4154,6 @@ form input#chatline {
 
 
 
-/* Green hat → c, 9, p, e, y, 1 */
-[class^="chat-msg-c" i] .timestamp::before,
-[class^="chat-msg-9" i] .timestamp::before,
-[class^="chat-msg-p" i] .timestamp::before,
-[class^="chat-msg-e" i] .timestamp::before,
-[class^="chat-msg-y" i] .timestamp::before,
-[class^="chat-msg-1" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Green_partyhat.png");
-}
-
 
 .chat-msg-McFin .timestamp::before,
 [class~="chat-msg-McFin" i] .timestamp::before {
@@ -4224,5 +4214,10 @@ form input#chatline {
 .chat-msg-Pepper .timestamp::before,
 [class~="chat-msg-Pepper" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/triphat.png");
+}
+
+.chat-msg-CEOofBandaids .timestamp::before,
+[class~="chat-msg-CEOofBandaids" i] .timestamp::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/greenphat.png");
 }
 
