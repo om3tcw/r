@@ -4153,15 +4153,6 @@ form input#chatline {
 }
 
 
-/* White hat → a, q, 7, m, 2, z */
-[class^="chat-msg-a" i] .timestamp::before,
-[class^="chat-msg-q" i] .timestamp::before,
-[class^="chat-msg-7" i] .timestamp::before,
-[class^="chat-msg-m" i] .timestamp::before,
-[class^="chat-msg-2" i] .timestamp::before,
-[class^="chat-msg-z" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/White_partyhat.png");
-}
 
 /* Green hat → c, 9, p, e, y, 1 */
 [class^="chat-msg-c" i] .timestamp::before,
@@ -4171,6 +4162,12 @@ form input#chatline {
 [class^="chat-msg-y" i] .timestamp::before,
 [class^="chat-msg-1" i] .timestamp::before {
   background-image: url("https://oldschool.runescape.wiki/images/Green_partyhat.png");
+}
+
+
+.chat-msg-McFin .timestamp::before,
+[class~="chat-msg-keibuhi" i] .timestamp::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/foxphat.png");
 }
 
 
