@@ -375,8 +375,9 @@
     ":koboehe:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/koboehe.ogg"},
 	":fbkdoko:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/fbkdoko.ogg"},
 	":kanadedrool:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/kanadedrool.ogg"}
-	":kusa:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/Kusa.ogg"}
+	"kusa" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/Kusa.ogg"}
 }
+
 
 
 
