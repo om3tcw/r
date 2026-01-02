@@ -4173,12 +4173,12 @@ form input#chatline {
 
 .chat-msg-Shifumi .timestamp::before,
 [class~="chat-msg-Shifumi" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Rainbow_partyhat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/raphat.png");
 }
 
 .chat-msg-Shifumi_ .timestamp::before,
 [class~="chat-msg-Shifumi_" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Rainbow_partyhat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/raphat.png");
 }
 
 .chat-msg-keibu .timestamp::before,
@@ -4193,27 +4193,27 @@ form input#chatline {
 
 .chat-msg-Enemy .timestamp::before,
 [class~="chat-msg-Enemy" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Red_partyhat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/rphat.png");
 }
 
 .chat-msg-EnemyUaV .timestamp::before,
 [class~="chat-msg-EnemyUaV" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Red_partyhat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/rphat.png");
 }
 
 .chat-msg-Dago552 .timestamp::before,
 [class~="chat-msg-Dago552" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Purple_partyhat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/pphat.png");
 }
 
 .chat-msg-Tako225 .timestamp::before,
 [class~="chat-msg-Tako225" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Purple_partyhat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/pphat.png");
 }
 
 .chat-msg-undah_skor .timestamp::before,
 [class~="chat-msg-undah_skor" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Blue_partyhat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/bphat.png");
 }
 
 .chat-msg-MrMcEggmanJones .timestamp::before,
