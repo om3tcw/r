@@ -1065,10 +1065,13 @@
     background-repeat: no-repeat
 }
 
-.chat-msg-Shifumi { 
-    font-family: "Papyrus", fantasy;
+.chat-msg-Shifumi {
+    font-family: Papy, system-ui;
 }
-
+@font-face {
+    font-family: Papy;
+    src: url(https://files.catbox.moe/b89i8x.ttf);
+}
 
 .chat-msg-Shifumi .timestamp {
     color: transparent;
