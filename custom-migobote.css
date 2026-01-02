@@ -4220,3 +4220,9 @@ form input#chatline {
 [class~="chat-msg-MrMcEggmanJones" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/orangephat.png");
 }
+
+.chat-msg-Pepper .timestamp::before,
+[class~="chat-msg-Pepper" i] .timestamp::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/triphat.png");
+}
+
