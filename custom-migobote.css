@@ -4221,3 +4221,22 @@ form input#chatline {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/greenphat.png");
 }
 
+.chat-msg-Jafafafy .timestamp::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 2px;
+  width: 9px;
+  height: 9px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(-30deg);
+  transform-origin: bottom center;
+  pointer-events: none;
+}
+
+.chat-msg-Jafafafy .timestamp::before,
+[class~="chat-msg-Jafafafy" i] .timestamp::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/blphat.png");
+}
+
