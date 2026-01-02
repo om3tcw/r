@@ -3128,14 +3128,6 @@ img.channel-emote[title$=":santahat:"] {
     content: 'sloptch: ';
 }
 
-.chat-msg-jafafafy .username {
-    font-size: 0;
-}
-
-.chat-msg-jafafafy .username:after {
-    font-size: 14px;
-    content: 'Jafuckedup: ';
-}
 
 @font-face {
     font-family: Malk;
@@ -4221,22 +4213,22 @@ form input#chatline {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/greenphat.png");
 }
 
-.chat-msg-Jafafafy .timestamp::before {
-  content: "";
-  position: absolute;
-  top: -3px;
-  left: 2px;
-  width: 9px;
-  height: 9px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  transform: rotate(-30deg);
-  transform-origin: bottom center;
-  pointer-events: none;
+.chat-msg-jafafafy .timestamp::before {
+  content: ""!important;
+  position: absolute!important;
+  top: -3px!important;
+  left: 2px!important;
+  width: 9px!important;
+  height: 9px!important;
+  background-size: contain!important;
+  background-repeat: no-repeat!important;
+  transform: rotate(-30deg)!important;
+  transform-origin: bottom center!important;
+  pointer-events: none!important;
 }
 
-.chat-msg-Jafafafy .timestamp::before,
-[class~="chat-msg-Jafafafy" i] .timestamp::before {
+.chat-msg-jafafafy .timestamp::before,
+[class~="chat-msg-jafafafy" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/blphat.png");
 }
 
