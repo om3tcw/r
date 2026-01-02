@@ -4166,7 +4166,7 @@ form input#chatline {
 
 
 .chat-msg-McFin .timestamp::before,
-[class~="chat-msg-keibuhi" i] .timestamp::before {
+[class~="chat-msg-McFin" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/foxphat.png");
 }
 
