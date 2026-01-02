@@ -4186,12 +4186,12 @@ form input#chatline {
 
 .chat-msg-keibu .timestamp::before,
 [class~="chat-msg-keibu" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Black_partyhat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/pinkphat.png");
 }
 
 .chat-msg-keibuhi .timestamp::before,
 [class~="chat-msg-keibuhi" i] .timestamp::before {
-  background-image: url("https://oldschool.runescape.wiki/images/Black_partyhat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/otherpinkphat.png");
 }
 
 .chat-msg-Enemy .timestamp::before,
