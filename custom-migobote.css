@@ -4191,7 +4191,7 @@ form input#chatline {
 
 .chat-msg-keibuhi .timestamp::before,
 [class~="chat-msg-keibuhi" i] .timestamp::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/otherpinkphat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/pinkphat.png");
 }
 
 .chat-msg-Enemy .timestamp::before,
