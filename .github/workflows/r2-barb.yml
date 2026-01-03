@@ -20,7 +20,12 @@ jobs:
 
     - name: Get files difference
       run: | 
-        git diff --name-status HEAD~10 > FILES_CHANGED.txt
+        git diff --name-status HEAD~10 | while read status a b; do
+        case "$status" in
+        A|M|C*) echo "$a" ;;
+        R*) echo "$b" ;;
+        esac
+        done > FILES_CHANGED.txt
 
     - name: Upload differential upgrade
       uses: Rasea-M/CFR2-BARB@master
