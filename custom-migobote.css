@@ -2121,6 +2121,11 @@ img.channel-emote[title$=":kekspin:"] {
     animation: spinHorizontal 0.8s infinite linear;
 }
 
+img.channel-emote[title$=":uiswing:"] {
+    animation: penr 4s alternate infinite;
+    transform-origin: 50% 0%;
+}
+
 /* Keyframes */
 @keyframes sanalive {
     0% {
