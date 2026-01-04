@@ -2122,8 +2122,8 @@ img.channel-emote[title$=":kekspin:"] {
 }
 
 img.channel-emote[title$=":uiswing:"] {
-    animation: penr 4s alternate infinite;
-    transform-origin: 50% 0%;
+    animation: penr 6s alternate infinite;
+    transform-origin: 90% -40%;
 }
 
 /* Keyframes */
