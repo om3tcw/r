@@ -292,6 +292,7 @@
         ":anyasmile:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/anyasmile.ogg"},
     ":towahaha:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/towahaha.ogg"},
     ":anyahop:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/anyahop.ogg"},
+	 ":1more:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/onemore.ogg"},
     ":anyahunt:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/anyahunt.ogg"},
     ":gremember:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/gremember.ogg"},
     ":eimisip:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/eimisip.ogg"},
@@ -378,6 +379,7 @@
 	"Kusa" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/Kusa.ogg"},
 	":sexsmug:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/sexsmug.ogg"}
 }
+
 
 
 
