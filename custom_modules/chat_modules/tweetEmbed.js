@@ -17,6 +17,11 @@ function createStyle() {
         width: 100%;
         border: none;
     }
+
+    .tweet-button-toggle {
+        cursor: pointer;
+        color: red;
+    };
     `;
 
     let style = document.createElement("style");
@@ -34,13 +39,40 @@ function addPreviewIframe(linkElement) {
 
     let msgElement = linkElement.parentElement.parentElement;
 
+    let previewDiv = document.createElement("div");
+    previewDiv.classList.add("tweet-inline-preview", "tweet-inline-shit");
+
     let iframe = document.createElement("iframe");
     iframe.allow = "fullscreen"
     iframe.src = `${apiUrl}/embed-iframe/${tweetId}`;
 
-    let previewDiv = document.createElement("div");
-    previewDiv.classList.add("tweet-inline-preview");
     previewDiv.appendChild(iframe);
+
+    let toggleButton = document.createElement("span");
+    toggleButton.innerText = `Remove`;
+    toggleButton.role = "button";
+    toggleButton.classList.add("tweet-button-toggle");
+    toggleButton.addEventListener("click", ({target}) => {
+        if (target.innerText == "Remove") {
+            iframe.style.display = "none";
+            target.innerText = "Embed";
+        } else {
+            iframe.style.display = "";
+            target.innerText = "Remove";
+        }
+    });
+    toggleButton.classList.add("tweet-inline-shit");
+
+    let lspan = document.createElement("span");
+    let rspan = document.createElement("span");
+
+    lspan.innerText = " [";
+    rspan.innerText = "]";
+
+    lspan.classList.add("tweet-inline-shit");
+    rspan.classList.add("tweet-inline-shit");
+
+    linkElement.after(lspan, toggleButton, rspan);
 
     // resize listener for when the element updates
     // must be the last element in the chat and be visible
@@ -59,9 +91,14 @@ function addPreviewIframe(linkElement) {
     msgElement.appendChild(previewDiv);
 }
 
-async function addTweetPreview($messageElement) {
-    $messageElement
-        .find("a")
+async function addTweetPreview($message) {
+    $message = $message.parent().find("> span").last();
+    if ($message.parent().find(".tweet-inline-shit").length > 0) {
+        return;
+    }
+
+    $message
+        .find("> a")
         .filter((k, v) => tweetRegex.test(v.href))
         .each((k, v) => addPreviewIframe(v));
 }
@@ -70,12 +107,11 @@ window.tweetPreview = {
     toggle : function(on) {
         if (on) {
             MESSAGE_PROCESSOR.addTap(addTweetPreview);
-            document.querySelectorAll(".tweet-inline-preview").forEach(el => { el.style.display = ""});
+            document.querySelectorAll(".tweet-inline-shit").forEach(el => { el.style.display = ""});
         } else {
             MESSAGE_PROCESSOR.unsubscribe(addTweetPreview);
-            document.querySelectorAll(".tweet-inline-preview").forEach(el => { el.style.display = "none"});
+            document.querySelectorAll(".tweet-inline-shit").forEach(el => { el.style.display = "none"});
         }
-        window.tweetPreview.enabled = !window.tweetPreview.enabled;
     }
 };
 
@@ -86,7 +122,12 @@ window.tweetPreview = {
     window.addEventListener("message", (event) => {
         if (event.origin !== apiUrl) return;
 
-        let data = JSON.parse(event.data);
+        try {
+            var data = JSON.parse(event.data);
+        } catch {
+            console.log("Invalid message: ", event.data);
+            return;
+        }
 
         if (data.context == "iframe.error") {
             document.querySelectorAll(`iframe[src^="${data.src}"]`).forEach(iframe => {
