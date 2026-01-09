@@ -247,11 +247,17 @@ export const holoPeekObjects = [
         optionFunc: (self) => {
             const enabled = self.checkbox.prop('checked');
             localStorage.setItem('holopeek_nndMode', enabled);
-            window.toggleNNDMode(enabled);
+            (async () => {
+                await window.waitForFunc("toggleNNDMode");
+                window.toggleNNDMode(enabled);
+            })();
         },
         cleanupFunc: () => {
             localStorage.removeItem('holopeek_nndMode');
-            window.toggleNNDMode(false);
+            (async () => {
+                await window.waitForFunc("toggleNNDMode");
+                window.toggleNNDMode(false);
+            })();
         }
     },
 	{
@@ -273,10 +279,16 @@ export const holoPeekObjects = [
         optionName: "tweetEmbed",
         optionDescription: "Embed tweet links",
         optionFunc: (self) => {
-            window.tweetPreview.toggle(true);
+            (async () => {
+                await window.waitForFunc("tweetPreview");
+                window.tweetPreview.toggle(true);
+            })();
         },
         cleanupFunc: (self) => {
-            window.tweetPreview.toggle(false);
+            (async () => {
+                await window.waitForFunc("tweetPreview");
+                window.tweetPreview.toggle(false);
+            })();
         },
     },
     {
