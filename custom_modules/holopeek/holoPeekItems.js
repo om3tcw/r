@@ -292,6 +292,22 @@ export const holoPeekObjects = [
         },
     },
     {
+        optionName: "previewVideoTitle",
+        optionDescription: "Preview video titles",
+        optionFunc: (self) => {
+            (async () => {
+                await window.waitForFunc("previewVideoTitle");
+                window.previewVideoTitle.toggle(true);
+            })();
+        },
+        cleanupFunc: (self) => {
+            (async () => {
+                await window.waitForFunc("previewVideoTitle");
+                window.previewVideoTitle.toggle(false);
+            })();
+        },
+    },
+    {
         optionName: "customCSS",
         optionDescription: "Custom CSS",
         type: "textarea",

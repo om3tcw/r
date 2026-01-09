@@ -39,6 +39,7 @@ const ModulePaths = [
     { Soundposts: `chat_modules/soundpostModule.js` },
     { NNDChatModule: `chat_modules/nndChatModule.js`, isActive: 1, rank: -1},
     { TweetEmbed: `chat_modules/tweetEmbed.js`},
+    { VideoTitlePreview : `chat_modules/videoTitlePreview.js`},
     { RratButton: `ui_modules/rratButton.js`},
 ]
 
