@@ -331,7 +331,7 @@
 	":guratuah:" : { "soundurl": "https://www.dl.dropboxusercontent.com/s/d3hyibnrceh5j92va23vt/guratuah.mp3?rlkey=udzeh5cg6jdh024xbvgdfaaz9&st=i46c55by&dl=0"},
 	"marble" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/marble.ogg"},
 	"elbram" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/elbram.ogg"},
-	"mocodemons" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mocodemons.ogg"},
+	":mocodemons:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mocodemons.ogg"},
 	":fuwacube:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/fuwacube.ogg"},
 	":fuwabeam:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/fuwabeam.ogg"},
 	":mocoblast:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mocoblast.ogg"},
@@ -383,6 +383,7 @@
 	":shiorilostchild:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/shiorilostchild.ogg"},
 	":inapotionseller:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/potionseller.ogg"}
 }
+
 
 
 
