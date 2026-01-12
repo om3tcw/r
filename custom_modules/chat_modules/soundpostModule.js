@@ -57,14 +57,7 @@ function isLongRarePlaying(emote) {
     const state = SOUNDPOST_PLAYBACK_STATE[stateKey];
     return state && state.isPlaying;
 }
-function injectSoundpost($message) {
-
-    console.log('[Soundpost Debug] Message class:', $message.attr('class') || 'no class');
-    console.log('[Soundpost Debug] Timestamp count:', $message.find('.timestamp').length);
-    console.log('[Soundpost Debug] Username count:', $message.find('.username').length);
-    console.log('[Soundpost Debug] Raw outer HTML length:', $message.html().length);
-    console.log('[Soundpost Debug] First 150 chars of message HTML:', $message.html().substring(0, 150));
-    
+function injectSoundpost($message) {    
     if (!window.SOUNDPOST_STATE) return;
    
     const $emotes = $message.find(".channel-emote[title]");
