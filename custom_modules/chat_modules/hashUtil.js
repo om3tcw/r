@@ -38,7 +38,7 @@ export function shouldPlayRareDeterministic($message, emoteTitle, rareSoundposts
         utcSeconds -= 86400;
     }
 
-    const bucketSeconds = Math.floor(utcSeconds / 5) * 5;
+    const bucketSeconds = Math.floor(utcSeconds / 5) * 5; // Set a 5 second buffer to account for desync
 
     const seed = bucketSeconds.toString() + emoteTitle;
 
