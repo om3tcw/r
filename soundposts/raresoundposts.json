@@ -1,0 +1,12 @@
+{
+    ":raoraspin:": { 
+      "soundurl": "https://cracklej.win/5EQNkJf8d9.ogg",
+      "Chance": 25,
+      "isLong": true 
+      },
+      ":mocodemons:": {
+        "soundurl": "https://cracklej.win/61nqWY5ery.ogg",
+        "Chance": 50,
+        "isLong": false
+      }
+}
