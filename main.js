@@ -14,7 +14,7 @@ if (![CHANNEL.name].favicon) {
         .appendTo("head");
 }
 
-const LOCAL_CDN_URL = "https://immergrok.mikobotecdn.win/immergrok-cytube-fork";
+const LOCAL_CDN_URL = "https://immergrok.mikobotecdn.win/immergrok-cytube-fork"; //change before push
 const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
 const CURRENT_CDN = ONLINE_CDN;
@@ -36,6 +36,7 @@ const ModulePaths = [
     { MessageModifications: `chat_modules/messageModifications.js`},
     { EnhancedEmotes: `chat_modules/enhancedEmotes.js` },
     { ImagePreview: `chat_modules/imagePreview.js` , isActive: 0, rank: -1},
+    { HashUtil: `chat_modules/hashUtil.js` },
     { Soundposts: `chat_modules/soundpostModule.js` },
     { NNDChatModule: `chat_modules/nndChatModule.js`, isActive: 1, rank: -1},
     { TweetEmbed: `chat_modules/tweetEmbed.js`},
