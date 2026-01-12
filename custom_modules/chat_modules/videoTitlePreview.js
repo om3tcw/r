@@ -28,7 +28,6 @@ async function renameLink(element) {
         // If the message was sent in a filter, the text is modified and the element
         // passed to us is no longer in the DOM. Find it again.
         const a = parent.querySelector(`span > a[href="${element.href}"]`);
-        console.log(a, parent, parent.querySelectorAll(`a[href="${element.href}"]`));
         if (a) {
             a.classList.add("vid-title-preview");
             a.innerText = `[${site}] ${json.title} [${json.author_name}]`;
