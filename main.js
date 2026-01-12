@@ -14,7 +14,7 @@ if (![CHANNEL.name].favicon) {
         .appendTo("head");
 }
 
-const LOCAL_CDN_URL = "https://conzz97.github.io/test";
+const LOCAL_CDN_URL = "https://conzz97.github.io/test"; //change before push
 const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
 const CURRENT_CDN = LOCAL_CDN_URL;
