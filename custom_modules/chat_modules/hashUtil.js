@@ -1,11 +1,36 @@
-// Fix this to grab the timestamp from message later instead of Date.now
-
 export function shouldPlayRareDeterministic($message, emoteTitle, rareSoundposts) {
     const rareSound = rareSoundposts[emoteTitle];
     if (!rareSound) return false;
 
-    const now = Math.floor(Date.now() / 1000);             
-    const bucketSeconds = Math.floor(now / 5) * 5;       
+
+    const $row = $message.closest('div[class^="chat-msg-"]');
+    
+
+    const tsSpan = $row.find('.timestamp');
+    
+    let timestampStr = tsSpan.length
+        ? tsSpan.text().trim().replace(/[\[\]]/g, '')
+        : null;
+
+    let secondsSinceDay = 0;
+
+    if (timestampStr && timestampStr.includes(':')) {
+        try {
+            const [h, m, s] = timestampStr.split(':').map(Number);
+            if (!isNaN(h) && !isNaN(m) && !isNaN(s)) {
+                secondsSinceDay = h * 3600 + m * 60 + s;
+            }
+        } catch (e) {
+            console.warn('[Rare] Timestamp parse failed:', timestampStr);
+        }
+    }
+
+    if (secondsSinceDay === 0) {
+        secondsSinceDay = Math.floor(Date.now() / 1000) % 86400;
+        console.warn('[Rare] Fallback to client time');
+    }
+
+    const bucketSeconds = Math.floor(secondsSinceDay / 6) * 6;
 
     const seed = bucketSeconds.toString() + emoteTitle;
 
@@ -18,9 +43,11 @@ export function shouldPlayRareDeterministic($message, emoteTitle, rareSoundposts
 
     const roll = Math.abs(hash) % 100;
 
+    // Debug
     console.log(
         `[Rare Test] ${emoteTitle} | ` +
-        `client bucket: ${bucketSeconds} | ` +
+        `original ts: ${timestampStr || 'missing'} | ` +
+        `bucket: ${bucketSeconds} | ` +
         `seed: ${seed} | ` +
         `roll: ${roll}/${rareSound.Chance}`
     );
