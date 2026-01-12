@@ -4,6 +4,7 @@ let SOUNDPOST_PLAYBACK_STATE = {};
 let PLAYED_SOUNDPOSTS = [];
 const defaultVolume = 0.1;
 const defaultAdditionalPlayTime = 3;
+
 function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
     const soundpost = SOUNDPOST_PLAYBACK_STATE[emote];
     if (!soundpost) return;
@@ -27,10 +28,8 @@ function playLongRare(emote, rareSound, additionalPlayTime = defaultAdditionalPl
     const stateKey = `${emote}_rare`;
    
     if (!SOUNDPOST_PLAYBACK_STATE[stateKey]) {
-        // Initialize rare long sound
         initializeSoundpost(stateKey, rareSound.soundurl, true);
        
-        // Wait for audio to be ready before playing
         SOUNDPOST_PLAYBACK_STATE[stateKey].audio.addEventListener(
             "canplaythrough",
             () => {
@@ -40,11 +39,9 @@ function playLongRare(emote, rareSound, additionalPlayTime = defaultAdditionalPl
             { once: true }
         );
     } else {
-        // Extend existing rare long sound
         const state = SOUNDPOST_PLAYBACK_STATE[stateKey];
        
         if (state.isPreloaded && state.audio.duration) {
-            // Calculate how much time we can actually add
             const remainingTime = state.audio.duration - state.audio.currentTime;
             const timeToAdd = Math.min(additionalPlayTime, remainingTime);
            
@@ -64,7 +61,7 @@ function injectSoundpost($message) {
     if (!window.SOUNDPOST_STATE) return;
    
     const $emotes = $message.find(".channel-emote[title]");
-    let hasRolledForRare = false; // Track if any emote has rolled for rare yet
+    let hasRolledForRare = false; 
    
     $emotes.each((index, element) => {
         const $emote = $(element);
@@ -73,9 +70,7 @@ function injectSoundpost($message) {
         const soundpost = SOUNDPOSTS[emoteTitle];
         const rareSound = RARE_SOUNDPOSTS[emoteTitle];
         const longEmotes = [":homuhomu:", ":rratate:", "bakushin", "calliboy"];
-        // === RARE SOUND LOGIC ===
        
-        // Check if this emote should roll for rare (first emote with rare entry)
         if (rareSound && !hasRolledForRare) {
             hasRolledForRare = true;
            
@@ -85,24 +80,21 @@ function injectSoundpost($message) {
                     if (rareSound.isLong) {
                         playLongRare(emoteTitle, rareSound, 5);
                     } else {
-                        // One-shot rare (can overlap - no deduplication)
                         const myaudio = new Audio(rareSound.soundurl);
                         myaudio.volume = defaultVolume;
                         myaudio.play().catch(err => console.error('[Rare Soundpost] Play failed:', err));
                     }
-                    return; // Skip normal sound for this emote
+                    return;
                 } catch (err) {
                     console.error('[Rare Soundpost] Error:', err);
                 }
             }
         }
        
-        // If a long rare is currently playing for this emote, extend it
         if (rareSound && rareSound.isLong && isLongRarePlaying(emoteTitle)) {
             playLongRare(emoteTitle, rareSound, 3);
-            return; // Skip normal sound
+            return; 
         }
-        // === NORMAL SOUNDPOST LOGIC ===
        
         if (soundpost) {
             try {
@@ -130,7 +122,6 @@ function injectSoundpost($message) {
         }
     });
    
-    // Reset tracking for next message
     PLAYED_SOUNDPOSTS = [];
     cleanupSoundpostPlaybackState();
 }
@@ -185,9 +176,8 @@ async function loadSoundposts() {
 }
 async function loadRareSoundposts() {
     try {
-        // ⚠️ PRODUCTION REMINDER: Change this URL to https://raw.githubusercontent.com/om3tcw/r/emotes/soundposts/raresoundposts.json
         const response = await fetch(
-            "https://conzz97.github.io/test/soundposts/raresoundposts.json"
+            "https://raw.githubusercontent.com/om3tcw/r/emotes/soundposts/raresoundposts.json"
         );
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return await response.json();
@@ -216,7 +206,6 @@ function toggleSoundpostButtonImage(soundpostButton) {
         localStorage.setItem("SOUNDPOST_STATE", window.SOUNDPOST_STATE);
         toggleSoundpostButtonImage(soundpostButton);
     });
-    // Load both regular and rare soundposts
     const [soundpostsData, rareSoundpostsData] = await Promise.all([
         loadSoundposts(),
         loadRareSoundposts()
