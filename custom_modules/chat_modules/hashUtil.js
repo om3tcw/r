@@ -1,3 +1,5 @@
+// Fix this to grab the timestamp from message later instead of Date.now
+
 export function shouldPlayRareDeterministic($message, emoteTitle, rareSoundposts) {
     const rareSound = rareSoundposts[emoteTitle];
     if (!rareSound) return false;
