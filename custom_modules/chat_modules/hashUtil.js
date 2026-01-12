@@ -2,12 +2,9 @@ export function shouldPlayRareDeterministic($message, emoteTitle, rareSoundposts
     const rareSound = rareSoundposts[emoteTitle];
     if (!rareSound) return false;
 
-
-    const $row = $message.closest('div[class^="chat-msg-"]');
-    
+    const $row = $message.closest('div[class^="chat-msg-"]') || $message;
 
     const tsSpan = $row.find('.timestamp');
-    
     let timestampStr = tsSpan.length
         ? tsSpan.text().trim().replace(/[\[\]]/g, '')
         : null;
@@ -30,7 +27,18 @@ export function shouldPlayRareDeterministic($message, emoteTitle, rareSoundposts
         console.warn('[Rare] Fallback to client time');
     }
 
-    const bucketSeconds = Math.floor(secondsSinceDay / 6) * 6;
+    const clientTzOffsetMinutes = new Date().getTimezoneOffset();
+    const clientTzOffsetSeconds = clientTzOffsetMinutes * 60;
+
+    let utcSeconds = secondsSinceDay + clientTzOffsetSeconds;
+
+    if (utcSeconds < 0) {
+        utcSeconds += 86400;
+    } else if (utcSeconds >= 86400) {
+        utcSeconds -= 86400;
+    }
+
+    const bucketSeconds = Math.floor(utcSeconds / 5) * 5;
 
     const seed = bucketSeconds.toString() + emoteTitle;
 
@@ -43,11 +51,12 @@ export function shouldPlayRareDeterministic($message, emoteTitle, rareSoundposts
 
     const roll = Math.abs(hash) % 100;
 
-    // Debug
+    // Debug log
     console.log(
         `[Rare Test] ${emoteTitle} | ` +
-        `original ts: ${timestampStr || 'missing'} | ` +
-        `bucket: ${bucketSeconds} | ` +
+        `original local: ${timestampStr || 'missing'} | ` +
+        `client offset (min): ${clientTzOffsetMinutes} | ` +
+        `UTC bucket: ${bucketSeconds} | ` +
         `seed: ${seed} | ` +
         `roll: ${roll}/${rareSound.Chance}`
     );
