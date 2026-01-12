@@ -190,7 +190,7 @@ async function loadSoundposts() {
 }
 async function loadRareSoundposts() {
     try {
-        // ⚠️ PRODUCTION REMINDER: Change this URL to https://mikobotecdn.win/soundposts/raresoundposts.json
+        // ⚠️ PRODUCTION REMINDER: Change this URL to https://raw.githubusercontent.com/om3tcw/r/emotes/soundposts/raresoundposts.json
         const response = await fetch(
             "https://conzz97.github.io/test/soundposts/raresoundposts.json"
         );
