@@ -1,4 +1,13 @@
 /* Start of Oshi Eyes */
+
+.chat-msg-Cream_Shakes .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/Cream_Shakes.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
 .chat-msg-Toki .timestamp {
     color: transparent;
     background-size: 50px 15px;
@@ -3105,15 +3114,6 @@ img.channel-emote[title$=":santahat:"] {
 .chat-msg-marble .username:after {
     font-size: 14px;
     content: 'justmarble: ';
-}
-
-.chat-msg-iTako .username {
-    font-size: 0;
-}
-
-.chat-msg-iTako .username:after {
-    font-size: 14px;
-    content: 'iWhiteGuilTako: ';
 }
 
 
