@@ -3107,7 +3107,14 @@ img.channel-emote[title$=":santahat:"] {
     content: 'justmarble: ';
 }
 
+.chat-msg-iTako .username {
+    font-size: 0;
+}
 
+.chat-msg-iTako .username:after {
+    font-size: 14px;
+    content: 'iWhiteGuilTako: ';
+}
 
 
 
