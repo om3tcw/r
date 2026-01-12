@@ -51,7 +51,7 @@ export function shouldPlayRareDeterministic($message, emoteTitle, rareSoundposts
 
     const roll = Math.abs(hash) % 100;
 
-    // Debug log
+   /* // Debug log
     console.log(
         `[Rare Test] ${emoteTitle} | ` +
         `original local: ${timestampStr || 'missing'} | ` +
@@ -60,6 +60,6 @@ export function shouldPlayRareDeterministic($message, emoteTitle, rareSoundposts
         `seed: ${seed} | ` +
         `roll: ${roll}/${rareSound.Chance}`
     );
-
+    */
     return roll < rareSound.Chance;
 }
