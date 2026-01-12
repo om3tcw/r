@@ -54,13 +54,7 @@ function playLongRare(emote, rareSound, additionalPlayTime = defaultAdditionalPl
         }
     }
 }
-function shouldPlayRareSound(emote) {
-    const rareSound = RARE_SOUNDPOSTS[emote];
-    if (!rareSound) return false;
-   
-    const roll = Math.random() * 100;
-    return roll < rareSound.Chance;
-}
+
 function isLongRarePlaying(emote) {
     const stateKey = `${emote}_rare`;
     const state = SOUNDPOST_PLAYBACK_STATE[stateKey];
@@ -85,7 +79,8 @@ function injectSoundpost($message) {
         if (rareSound && !hasRolledForRare) {
             hasRolledForRare = true;
            
-            if (shouldPlayRareSound(emoteTitle)) {
+            if (shouldPlayRareDeterministic($message, emoteTitle, RARE_SOUNDPOSTS)) {
+                console.log(`[Rare Triggered] ${emoteTitle} - deterministic roll succeeded`);
                 try {
                     if (rareSound.isLong) {
                         playLongRare(emoteTitle, rareSound, 5);
