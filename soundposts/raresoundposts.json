@@ -9,6 +9,12 @@
       "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/raresounds/THIS_IS_DEMOCRACY_MANIFEST.ogg",
       "Chance": 40,
       "isLong": false 
+      },
+
+    ":lapuoh:": { 
+      "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/raresounds/THIS_IS_DEMOCRACY_MANIFEST.ogg",
+      "Chance": 20,
+      "isLong": false 
       }
     
 }
