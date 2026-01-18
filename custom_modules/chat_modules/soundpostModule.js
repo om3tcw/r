@@ -69,7 +69,7 @@ function injectSoundpost($message) {
        
         const soundpost = SOUNDPOSTS[emoteTitle];
         const rareSound = RARE_SOUNDPOSTS[emoteTitle];
-        const longEmotes = [":homuhomu:", ":rratate:", "bakushin", "calliboy"];
+        const longEmotes = [":homuhomu:", ":rratate:", "bakushin", "calliboy", ":mocohoeh:"];
        
         if (rareSound && !hasRolledForRare) {
             hasRolledForRare = true;
