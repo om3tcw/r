@@ -378,6 +378,7 @@
 	":watamelon:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/watamelon.ogg"},
     ":koboehe:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/koboehe.ogg"},
 	":fbkdoko:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/fbkdoko.ogg"},
+	":immercube:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/immercube.mp3"},
 	":kanadedrool:" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/kanadedrool.ogg"},
 	"Kusa" : { "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/Kusa.ogg"},
 	":sexsmug:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/sexsmug.ogg"},
@@ -387,6 +388,7 @@
 	":fbkhaha:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/fbkhaha.ogg"},
 	":doropolish:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/doropolish.ogg"}
 }
+
 
 
 
