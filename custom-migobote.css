@@ -3115,6 +3115,15 @@ img.channel-emote[title$=":santahat:"] {
 /* username edits*/
 
 
+.chat-msg-Pepper .username {
+    font-size: 0;
+}
+
+.chat-msg-Pepper .username:after {
+    font-size: 14px;
+    content: 'BigChunkyCuddlecrump: ';
+}
+
 .chat-msg-marble .username {
     font-size: 0;
 }
@@ -3123,8 +3132,6 @@ img.channel-emote[title$=":santahat:"] {
     font-size: 14px;
     content: 'justmarble: ';
 }
-
-
 
 .chat-msg-CEOofBandaids .username {
     font-size: 0;
