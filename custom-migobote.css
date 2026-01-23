@@ -3115,14 +3115,7 @@ img.channel-emote[title$=":santahat:"] {
 /* username edits*/
 
 
-.chat-msg-Pepper .username {
-    font-size: 0;
-}
 
-.chat-msg-Pepper .username:after {
-    font-size: 14px;
-    content: 'cumin: ';
-}
 
 .chat-msg-marble .username {
     font-size: 0;
