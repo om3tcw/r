@@ -105,5 +105,6 @@ redoPollwrap();
 
 // oshieyes google
 
-$('<li role="presentation">' + '<a href="https://docs.google.com/forms/d/1oqO8DIIyxuKVPvhXSAmxNCy5zCkS8XQAhEKi8a9BK1g/viewform" ' + 'target="_blank" rel="noopener noreferrer">' +'Oshi Eyes' + '</a>' + '</li>').appendTo($tabsNavigator);
+$( '<div role="tabpanel" class="tab-pane" id="calendarTab">' +    '<a href="https://docs.google.com/forms/d/1oqO8DIIyxuKVPvhXSAmxNCy5zCkS8XQAhEKi8a9BK1g/viewform" ' +    'target="_blank" rel="noopener noreferrer" class="btn btn-primary">' +      'Open Oshi Eyes Form' +    '</a>' +  '</div>').appendTo($tabContent);
+$( '<li role="presentation">' + '<a role="tab" data-toggle="tab" aria-expanded="false" href="#calendarTab">' +      'Oshi Eyes' +    '</a>' +  '</li>').appendTo($tabsNavigator);
 $('#leftpane').remove();
