@@ -105,4 +105,5 @@ redoPollwrap();
 
 // oshieyes google
 $('<li role="presentation">' + '<a href="https://docs.google.com/forms/d/1oqO8DIIyxuKVPvhXSAmxNCy5zCkS8XQAhEKi8a9BK1g/viewform" ' + 'target="_blank" rel="noopener noreferrer">' +'Oshi Eyes' + '</a>' + '</li>').appendTo($tabsNavigator);
+
 $('#leftpane').remove();
