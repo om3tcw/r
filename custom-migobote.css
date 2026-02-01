@@ -3155,6 +3155,15 @@ img.channel-emote[title$=":santahat:"] {
     content: 'sloptch: ';
 }
 
+.chat-msg-Kei .username {
+    font-size: 0;
+}
+
+.chat-msg-Kei .username:after {
+    font-size: 14px;
+    content: 'Birthday Boy: ';
+}
+
 
 @font-face {
     font-family: Malk;
