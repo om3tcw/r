@@ -167,6 +167,17 @@ function verticalLayout(self) {
 let blackBg = makeLiveCDNLink("emotes/custom_modules/holopeek/black.png");
 let polkaPeek = makeLiveCDNLink("custom_modules/holopeek/polkapeek.png");
 
+const NND_MODE_ID = "nndMode";
+const NND_EMOTES_ONLY_ID = "nndEmotesOnly";
+
+function disableHoloPeekOption(optionId) {
+    const $checkbox = $(`#${optionId}`);
+    if ($checkbox.length && $checkbox.prop('checked')) {
+        $checkbox.prop('checked', false);
+        $checkbox.triggerHandler('click');
+    }
+}
+
 export const holoPeekObjects = [
     {
         optionName: "verticalLayout", 
@@ -242,13 +253,18 @@ export const holoPeekObjects = [
         cleanupFunc: (self) => self.lunaButton.remove(),
     },
 	{
-        optionName: "nndMode",
+        optionName: NND_MODE_ID,
         optionDescription: "NND Mode",
         optionFunc: (self) => {
             const enabled = self.checkbox.prop('checked');
+            if (enabled) {
+                disableHoloPeekOption(NND_EMOTES_ONLY_ID);
+            }
             localStorage.setItem('holopeek_nndMode', enabled);
             (async () => {
                 await window.waitForFunc("toggleNNDMode");
+                await window.waitForFunc("setNNDEmotesOnlyMode");
+                window.setNNDEmotesOnlyMode(false);
                 window.toggleNNDMode(enabled);
             })();
         },
@@ -261,19 +277,28 @@ export const holoPeekObjects = [
         }
     },
 	{
-		optionName: "christmasSnow",
-		optionDescription: "Snow",
+		optionName: NND_EMOTES_ONLY_ID,
+		optionDescription: "NND Emotes Only",
 		optionFunc: (self) => {
-			if (self.checkbox.prop('checked')) {
-				self.cssData = `#snow-container { display: block !important; }`;
-			} else {
-				self.cssData = `#snow-container { display: none !important; }`;
-			}
-		},
-		cleanupFunc: (self) => {
-			self.cssData = `#snow-container { display: none !important; }`;
-		},
-		defaultChecked: true
+            const enabled = self.checkbox.prop('checked');
+            if (enabled) {
+                disableHoloPeekOption(NND_MODE_ID);
+            }
+            (async () => {
+                await window.waitForFunc("toggleNNDMode");
+                await window.waitForFunc("setNNDEmotesOnlyMode");
+                window.setNNDEmotesOnlyMode(enabled);
+                window.toggleNNDMode(enabled);
+            })();
+        },
+        cleanupFunc: () => {
+            (async () => {
+                await window.waitForFunc("toggleNNDMode");
+                await window.waitForFunc("setNNDEmotesOnlyMode");
+                window.setNNDEmotesOnlyMode(false);
+                window.toggleNNDMode(false);
+            })();
+        }
 	},
     {
         optionName: "tweetEmbed",
