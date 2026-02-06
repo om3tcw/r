@@ -71,6 +71,8 @@
       temp.removeChild(temp.firstChild);
     }
 
+    temp.querySelectorAll('a').forEach(a => a.remove());
+
     if (emotesOnlyMode) {
       const emoteNodes = temp.querySelectorAll('.channel-emote[title]');
       temp.innerHTML = '';
