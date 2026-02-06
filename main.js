@@ -14,7 +14,7 @@ if (![CHANNEL.name].favicon) {
         .appendTo("head");
 }
 
-const LOCAL_CDN_URL = "https://immergrok.mikobotecdn.win/immergrok-cytube-fork"; //change before push
+const LOCAL_CDN_URL = "https://127.0.0.1:5050"; //change before push
 const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
 const CURRENT_CDN = ONLINE_CDN;

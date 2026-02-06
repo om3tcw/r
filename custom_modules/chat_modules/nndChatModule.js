@@ -8,6 +8,8 @@
   let activeMessages = 0;
   let queue = [];
   let delayTimer = null;
+  let emotesOnlyMode = false;
+  let nndEnabled = false;
 
   const CONFIG = {
     maxMessages: 15,         // Max messages on screen at once
@@ -67,6 +69,21 @@
 
     while (temp.firstChild && temp.firstChild.nodeType === Node.TEXT_NODE && temp.firstChild.textContent.trim() === '') {
       temp.removeChild(temp.firstChild);
+    }
+
+    temp.querySelectorAll('a').forEach(a => a.remove());
+
+    if (emotesOnlyMode) {
+      const emoteNodes = temp.querySelectorAll('.channel-emote[title]');
+      temp.innerHTML = '';
+      emoteNodes.forEach((node, index) => {
+        const emote = node.tagName === 'IMG' ? node.cloneNode(true) : node.querySelector('img')?.cloneNode(true);
+        if (!emote) return;
+        temp.appendChild(emote);
+        if (index < emoteNodes.length - 1) {
+          temp.appendChild(document.createTextNode(' '));
+        }
+      });
     }
 
     const finalHTML = temp.innerHTML.trim();
@@ -136,6 +153,7 @@
     if (listener) return;
     init();
     container.style.display = 'block';
+    nndEnabled = true;
     listener = d => {
       if (d.msg.startsWith('/me ') || d.username === '[server]') return;
       if (d.meta && d.meta.addClass === 'spoiler') return;
@@ -150,8 +168,25 @@
     if (container) container.innerHTML = '';
     queue = [];
     activeMessages = 0;
+    nndEnabled = false;
+    emotesOnlyMode = false;
     if (delayTimer) clearTimeout(delayTimer);
   }
 
-  window.toggleNNDMode = on => on ? enable() : disable();
+  window.toggleNNDMode = on => {
+    if (on) {
+      enable();
+      return;
+    }
+    disable();
+  };
+  window.setNNDEmotesOnlyMode = on => {
+    emotesOnlyMode = Boolean(on);
+    if (emotesOnlyMode && !nndEnabled) {
+      enable();
+    }
+    if (!emotesOnlyMode && !nndEnabled) {
+      return;
+    }
+  };
 })();
