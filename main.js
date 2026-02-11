@@ -34,6 +34,7 @@ const ModulePaths = [
     { CustomUserList: `ui_modules/customUserlist.js` },
     { HoloPeek: `holopeek/holoPeek.js` },
     { MessageModifications: `chat_modules/messageModifications.js`},
+    { UserWordReplacement: `chat_modules/userWordReplacement.js`},
     { EnhancedEmotes: `chat_modules/enhancedEmotes.js` },
     { ImagePreview: `chat_modules/imagePreview.js` , isActive: 0, rank: -1},
     { HashUtil: `chat_modules/hashUtil.js` },
