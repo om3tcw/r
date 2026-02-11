@@ -1,4 +1,4 @@
-const TARGET_USERNAME = "Crackerjack";
+const TARGET_USERNAME = "iTako";
 
 const WORD_REPLACEMENTS = [
     { from: "nigga", to: "I'm racist" },
