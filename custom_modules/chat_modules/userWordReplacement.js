@@ -1,6 +1,7 @@
 const TARGET_USERNAME = "iTako";
 
-const WORD_REPLACEMENTS = [
+// Anything here will only be replaced if the sender is included in TARGET_USERNAME
+const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "nigga", to: "I'm racist" },
     { from: "niggas", to: "I'm racist" },
     { from: "nigger", to: "I'm very racist" },
@@ -48,6 +49,11 @@ const WORD_REPLACEMENTS = [
     { from: "madonna", to: "****" }
 ];
 
+// Anything here will be replaced globally regardless of username
+const GLOBAL_WORD_REPLACEMENTS = [
+    {from: "uoh", to:"I miss the good old days where I would spend weeks on the Epstein Island raping and eating children"}
+];
+
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
 
 function normalizeUsername(username) {
@@ -58,8 +64,8 @@ function escapeRegExp(text) {
     return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function getReplacementConfig() {
-    const replacements = WORD_REPLACEMENTS
+function getReplacementConfig(wordReplacements) {
+    const replacements = (wordReplacements || [])
         .filter((entry) => entry && entry.from && entry.to)
         .map((entry) => ({
             from: String(entry.from),
@@ -81,7 +87,8 @@ function getReplacementConfig() {
     return { regex, replacementLookup };
 }
 
-const REPLACEMENT_CONFIG = getReplacementConfig();
+const TARGET_USER_REPLACEMENT_CONFIG = getReplacementConfig(TARGET_USER_WORD_REPLACEMENTS);
+const GLOBAL_REPLACEMENT_CONFIG = getReplacementConfig(GLOBAL_WORD_REPLACEMENTS);
 const TARGET_USERNAME_NORMALIZED = normalizeUsername(TARGET_USERNAME);
 
 function getMessageRow($messageElement) {
@@ -164,7 +171,7 @@ function replaceTextNodes(rootElement, replacementConfig) {
 }
 
 function replaceWordsForTargetUser($messageElement) {
-    if (!REPLACEMENT_CONFIG) {
+    if (!TARGET_USER_REPLACEMENT_CONFIG) {
         return;
     }
 
@@ -182,10 +189,27 @@ function replaceWordsForTargetUser($messageElement) {
         return;
     }
 
-    replaceTextNodes($messageElement[0], REPLACEMENT_CONFIG);
+    replaceTextNodes($messageElement[0], TARGET_USER_REPLACEMENT_CONFIG);
+}
+
+function replaceWordsForAllUsers($messageElement) {
+    if (!GLOBAL_REPLACEMENT_CONFIG) {
+        return;
+    }
+
+    if (!$messageElement || !$messageElement.length) {
+        return;
+    }
+
+    replaceTextNodes($messageElement[0], GLOBAL_REPLACEMENT_CONFIG);
+}
+
+function replaceWords($messageElement) {
+    replaceWordsForTargetUser($messageElement);
+    replaceWordsForAllUsers($messageElement);
 }
 
 (async () => {
     await window.waitForFunc("MESSAGE_PROCESSOR");
-    MESSAGE_PROCESSOR.addTap(replaceWordsForTargetUser);
+    MESSAGE_PROCESSOR.addTap(replaceWords);
 })();
