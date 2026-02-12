@@ -9,7 +9,6 @@ const WORD_REPLACEMENTS = [
     { from: "faggots", to: "I'm homophobic" },
     { from: "fag", to: "I'm homophobic" },
     { from: "fagg", to: "I'm homophobic" },
-
     { from: "fuck", to: "****" },
     { from: "fucking", to: "****" },
     { from: "fucked", to: "****" },
@@ -28,7 +27,6 @@ const WORD_REPLACEMENTS = [
     { from: "damn", to: "****" },
     { from: "hell", to: "****" },
     { from: "motherfucker", to: "****" },
-
     { from: "cazzo", to: "****" },
     { from: "cazzi", to: "****" },
     { from: "vaffanculo", to: "****" },
