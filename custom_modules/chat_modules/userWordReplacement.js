@@ -54,6 +54,10 @@ const GLOBAL_WORD_REPLACEMENTS = [
 ];
 
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
+const UOH_TRIGGER_REGEX = /\buoh\b/i;
+const UOH_OSHI_EYES_IMAGE_URL = "https://cracklej.win/7OwAi9DnfA.png";
+const UOH_OSHI_EYES_STYLE_ID = "user-word-replacement-uoh-eyes-style";
+const uohOshiEyesRulesByKey = new Map();
 
 function normalizeUsername(username) {
     return String(username || "").trim().toLowerCase();
@@ -61,6 +65,67 @@ function normalizeUsername(username) {
 
 function escapeRegExp(text) {
     return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function escapeCssIdentifier(value) {
+    if (typeof CSS !== "undefined" && typeof CSS.escape === "function") {
+        return CSS.escape(value);
+    }
+
+    return String(value).replace(/[^a-zA-Z0-9_-]/g, (char) => `\\${char}`);
+}
+
+function getMessageClassName($row) {
+    if (!$row || !$row.length) {
+        return "";
+    }
+
+    return ($row.attr("class") || "")
+        .split(/\s+/)
+        .find((cls) => cls.startsWith("chat-msg-") && cls !== "chat-msg-$server$") || "";
+}
+
+function getOrCreateUohEyesStyleElement() {
+    let styleElement = document.getElementById(UOH_OSHI_EYES_STYLE_ID);
+    if (styleElement) {
+        return styleElement;
+    }
+
+    styleElement = document.createElement("style");
+    styleElement.id = UOH_OSHI_EYES_STYLE_ID;
+    document.head.appendChild(styleElement);
+    return styleElement;
+}
+
+function renderUohEyesCssRules() {
+    const styleElement = getOrCreateUohEyesStyleElement();
+    styleElement.textContent = Array.from(uohOshiEyesRulesByKey.values()).join("\n");
+}
+
+function applyUohOshiEyesOverride($row) {
+    const messageAuthor = normalizeUsername(getMessageAuthor($row));
+    const messageClass = getMessageClassName($row);
+    if (!messageAuthor || !messageClass) {
+        return;
+    }
+
+    if (uohOshiEyesRulesByKey.has(messageAuthor)) {
+        return;
+    }
+
+    const escapedMessageClass = escapeCssIdentifier(messageClass);
+    const cssRule = [
+        `.${escapedMessageClass} .timestamp {`,
+        "    color: transparent !important;",
+        "    background-size: 50px 15px !important;",
+        `    background-image: url('${UOH_OSHI_EYES_IMAGE_URL}') !important;`,
+        "    background-position: center !important;",
+        "    background-repeat: no-repeat !important;",
+        "}"
+    ].join("\n");
+
+    uohOshiEyesRulesByKey.set(messageAuthor, cssRule);
+    renderUohEyesCssRules();
 }
 
 function getReplacementConfig(wordReplacements) {
@@ -244,6 +309,10 @@ function replaceWords($messageElement) {
     const $row = getMessageRow($messageElement);
     if (!$row || isServerMessageRow($row)) {
         return;
+    }
+
+    if (UOH_TRIGGER_REGEX.test($messageElement.text())) {
+        applyUohOshiEyesOverride($row);
     }
 
     replaceWordsForTargetUser($messageElement);
