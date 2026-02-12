@@ -1,6 +1,7 @@
-const TARGET_USERNAME = "iTako";
+// List of usernames to target
+const TARGET_USERNAMES = ["iTako"];
 
-// Anything here will only be replaced if the sender is included in TARGET_USERNAME
+// Anything here will only be replaced if the sender is included in TARGET_USERNAMES
 const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "nigga", to: "I'm racist" },
     { from: "niggas", to: "I'm racist" },
@@ -10,7 +11,6 @@ const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "faggots", to: "I'm homophobic" },
     { from: "fag", to: "I'm homophobic" },
     { from: "fagg", to: "I'm homophobic" },
-
     { from: "fuck", to: "****" },
     { from: "fucking", to: "****" },
     { from: "fucked", to: "****" },
@@ -29,7 +29,6 @@ const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "damn", to: "****" },
     { from: "hell", to: "****" },
     { from: "motherfucker", to: "****" },
-
     { from: "cazzo", to: "****" },
     { from: "cazzi", to: "****" },
     { from: "vaffanculo", to: "****" },
@@ -51,7 +50,7 @@ const TARGET_USER_WORD_REPLACEMENTS = [
 
 // Anything here will be replaced globally regardless of username
 const GLOBAL_WORD_REPLACEMENTS = [
-    {from: "uoh", to:"I miss the good old days where I would spend weeks on the Epstein Island raping and eating children"}
+    {from: "uoh", to:"I miss the good old days where I would spend weeks on the Epstein Island **** and eating children"}
 ];
 
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
@@ -65,14 +64,33 @@ function escapeRegExp(text) {
 }
 
 function getReplacementConfig(wordReplacements) {
-    const replacements = (wordReplacements || [])
-        .filter((entry) => entry && entry.from && entry.to)
-        .map((entry) => ({
-            from: String(entry.from),
+    const replacements = [];
+    const seenLookupKeys = new Set();
+
+    for (const entry of wordReplacements || []) {
+        if (!entry || entry.from == null || entry.to == null) {
+            continue;
+        }
+
+        const from = String(entry.from).trim();
+        if (!from) {
+            continue;
+        }
+
+        const lookupKey = from.toLowerCase();
+        if (seenLookupKeys.has(lookupKey)) {
+            continue;
+        }
+        seenLookupKeys.add(lookupKey);
+
+        replacements.push({
+            from,
             to: String(entry.to),
-            lookupKey: String(entry.from).toLowerCase()
-        }))
-        .sort((a, b) => b.from.length - a.from.length);
+            lookupKey
+        });
+    }
+
+    replacements.sort((a, b) => b.from.length - a.from.length);
 
     if (!replacements.length) {
         return null;
@@ -89,7 +107,11 @@ function getReplacementConfig(wordReplacements) {
 
 const TARGET_USER_REPLACEMENT_CONFIG = getReplacementConfig(TARGET_USER_WORD_REPLACEMENTS);
 const GLOBAL_REPLACEMENT_CONFIG = getReplacementConfig(GLOBAL_WORD_REPLACEMENTS);
-const TARGET_USERNAME_NORMALIZED = normalizeUsername(TARGET_USERNAME);
+const TARGET_USERNAME_SET = new Set(
+    (Array.isArray(TARGET_USERNAMES) ? TARGET_USERNAMES : [TARGET_USERNAMES])
+        .map(normalizeUsername)
+        .filter(Boolean)
+);
 
 function getMessageRow($messageElement) {
     if (!$messageElement || !$messageElement.length) {
@@ -118,6 +140,16 @@ function getMessageAuthor($row) {
     }
 
     return className.slice("chat-msg-".length).trim();
+}
+
+function isServerMessageRow($row) {
+    if (!$row || !$row.length) {
+        return false;
+    }
+
+    return ($row.attr("class") || "")
+        .split(/\s+/)
+        .some((cls) => cls === "chat-msg-$server$");
 }
 
 function replaceTextNodes(rootElement, replacementConfig) {
@@ -175,7 +207,7 @@ function replaceWordsForTargetUser($messageElement) {
         return;
     }
 
-    if (!TARGET_USERNAME_NORMALIZED) {
+    if (!TARGET_USERNAME_SET.size) {
         return;
     }
 
@@ -185,7 +217,7 @@ function replaceWordsForTargetUser($messageElement) {
     }
 
     const messageAuthor = normalizeUsername(getMessageAuthor($row));
-    if (messageAuthor !== TARGET_USERNAME_NORMALIZED) {
+    if (!TARGET_USERNAME_SET.has(messageAuthor)) {
         return;
     }
 
@@ -205,6 +237,15 @@ function replaceWordsForAllUsers($messageElement) {
 }
 
 function replaceWords($messageElement) {
+    if (!$messageElement || !$messageElement.length) {
+        return;
+    }
+
+    const $row = getMessageRow($messageElement);
+    if (!$row || isServerMessageRow($row)) {
+        return;
+    }
+
     replaceWordsForTargetUser($messageElement);
     replaceWordsForAllUsers($messageElement);
 }
