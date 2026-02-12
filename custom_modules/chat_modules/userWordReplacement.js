@@ -1,6 +1,8 @@
-const TARGET_USERNAME = "iTako";
+// List of usernames to target
+const TARGET_USERNAMES = ["iTako"];
 
-const WORD_REPLACEMENTS = [
+// Anything here will only be replaced if the sender is included in TARGET_USERNAMES
+const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "nigga", to: "I'm racist" },
     { from: "niggas", to: "I'm racist" },
     { from: "nigger", to: "I'm very racist" },
@@ -46,6 +48,11 @@ const WORD_REPLACEMENTS = [
     { from: "madonna", to: "****" }
 ];
 
+// Anything here will be replaced globally regardless of username
+const GLOBAL_WORD_REPLACEMENTS = [
+    {from: "uoh", to:"I miss the good old days where I would spend weeks on the Epstein Island **** and eating children"}
+];
+
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
 
 function normalizeUsername(username) {
@@ -56,15 +63,34 @@ function escapeRegExp(text) {
     return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function getReplacementConfig() {
-    const replacements = WORD_REPLACEMENTS
-        .filter((entry) => entry && entry.from && entry.to)
-        .map((entry) => ({
-            from: String(entry.from),
+function getReplacementConfig(wordReplacements) {
+    const replacements = [];
+    const seenLookupKeys = new Set();
+
+    for (const entry of wordReplacements || []) {
+        if (!entry || entry.from == null || entry.to == null) {
+            continue;
+        }
+
+        const from = String(entry.from).trim();
+        if (!from) {
+            continue;
+        }
+
+        const lookupKey = from.toLowerCase();
+        if (seenLookupKeys.has(lookupKey)) {
+            continue;
+        }
+        seenLookupKeys.add(lookupKey);
+
+        replacements.push({
+            from,
             to: String(entry.to),
-            lookupKey: String(entry.from).toLowerCase()
-        }))
-        .sort((a, b) => b.from.length - a.from.length);
+            lookupKey
+        });
+    }
+
+    replacements.sort((a, b) => b.from.length - a.from.length);
 
     if (!replacements.length) {
         return null;
@@ -79,8 +105,13 @@ function getReplacementConfig() {
     return { regex, replacementLookup };
 }
 
-const REPLACEMENT_CONFIG = getReplacementConfig();
-const TARGET_USERNAME_NORMALIZED = normalizeUsername(TARGET_USERNAME);
+const TARGET_USER_REPLACEMENT_CONFIG = getReplacementConfig(TARGET_USER_WORD_REPLACEMENTS);
+const GLOBAL_REPLACEMENT_CONFIG = getReplacementConfig(GLOBAL_WORD_REPLACEMENTS);
+const TARGET_USERNAME_SET = new Set(
+    (Array.isArray(TARGET_USERNAMES) ? TARGET_USERNAMES : [TARGET_USERNAMES])
+        .map(normalizeUsername)
+        .filter(Boolean)
+);
 
 function getMessageRow($messageElement) {
     if (!$messageElement || !$messageElement.length) {
@@ -109,6 +140,16 @@ function getMessageAuthor($row) {
     }
 
     return className.slice("chat-msg-".length).trim();
+}
+
+function isServerMessageRow($row) {
+    if (!$row || !$row.length) {
+        return false;
+    }
+
+    return ($row.attr("class") || "")
+        .split(/\s+/)
+        .some((cls) => cls === "chat-msg-$server$");
 }
 
 function replaceTextNodes(rootElement, replacementConfig) {
@@ -162,11 +203,11 @@ function replaceTextNodes(rootElement, replacementConfig) {
 }
 
 function replaceWordsForTargetUser($messageElement) {
-    if (!REPLACEMENT_CONFIG) {
+    if (!TARGET_USER_REPLACEMENT_CONFIG) {
         return;
     }
 
-    if (!TARGET_USERNAME_NORMALIZED) {
+    if (!TARGET_USERNAME_SET.size) {
         return;
     }
 
@@ -176,14 +217,40 @@ function replaceWordsForTargetUser($messageElement) {
     }
 
     const messageAuthor = normalizeUsername(getMessageAuthor($row));
-    if (messageAuthor !== TARGET_USERNAME_NORMALIZED) {
+    if (!TARGET_USERNAME_SET.has(messageAuthor)) {
         return;
     }
 
-    replaceTextNodes($messageElement[0], REPLACEMENT_CONFIG);
+    replaceTextNodes($messageElement[0], TARGET_USER_REPLACEMENT_CONFIG);
+}
+
+function replaceWordsForAllUsers($messageElement) {
+    if (!GLOBAL_REPLACEMENT_CONFIG) {
+        return;
+    }
+
+    if (!$messageElement || !$messageElement.length) {
+        return;
+    }
+
+    replaceTextNodes($messageElement[0], GLOBAL_REPLACEMENT_CONFIG);
+}
+
+function replaceWords($messageElement) {
+    if (!$messageElement || !$messageElement.length) {
+        return;
+    }
+
+    const $row = getMessageRow($messageElement);
+    if (!$row || isServerMessageRow($row)) {
+        return;
+    }
+
+    replaceWordsForTargetUser($messageElement);
+    replaceWordsForAllUsers($messageElement);
 }
 
 (async () => {
     await window.waitForFunc("MESSAGE_PROCESSOR");
-    MESSAGE_PROCESSOR.addTap(replaceWordsForTargetUser);
+    MESSAGE_PROCESSOR.addTap(replaceWords);
 })();
