@@ -54,7 +54,7 @@ const GLOBAL_WORD_REPLACEMENTS = [
 ];
 
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
-const UOH_TRIGGER_REGEX = /\buoh\b/i;
+const UOH_TRIGGER_LOOKUP_KEY = "uoh";
 const UOH_OSHI_EYES_IMAGE_URL = "https://cracklej.win/7OwAi9DnfA.png";
 const UOH_OSHI_EYES_STYLE_ID = "user-word-replacement-uoh-eyes-style";
 const uohOshiEyesRulesByKey = new Map();
@@ -65,6 +65,33 @@ function normalizeUsername(username) {
 
 function escapeRegExp(text) {
     return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function getWordReplacementEntryByLookupKey(wordReplacements, lookupKey) {
+    const targetLookupKey = String(lookupKey || "").trim().toLowerCase();
+    if (!targetLookupKey) {
+        return null;
+    }
+
+    for (const entry of wordReplacements || []) {
+        if (!entry || entry.from == null) {
+            continue;
+        }
+
+        const entryLookupKey = String(entry.from).trim().toLowerCase();
+        if (entryLookupKey === targetLookupKey) {
+            return entry;
+        }
+    }
+
+    return null;
+}
+
+function normalizeComparableText(text) {
+    return String(text || "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .toLowerCase();
 }
 
 function escapeCssIdentifier(value) {
@@ -126,6 +153,40 @@ function applyUohOshiEyesOverride($row) {
 
     uohOshiEyesRulesByKey.set(messageAuthor, cssRule);
     renderUohEyesCssRules();
+}
+
+const UOH_GLOBAL_REPLACEMENT_ENTRY =
+    getWordReplacementEntryByLookupKey(GLOBAL_WORD_REPLACEMENTS, UOH_TRIGGER_LOOKUP_KEY);
+const UOH_FROM_TEXT = String(
+    UOH_GLOBAL_REPLACEMENT_ENTRY && UOH_GLOBAL_REPLACEMENT_ENTRY.from != null
+        ? UOH_GLOBAL_REPLACEMENT_ENTRY.from
+        : UOH_TRIGGER_LOOKUP_KEY
+).trim();
+const UOH_TO_TEXT = String(
+    UOH_GLOBAL_REPLACEMENT_ENTRY && UOH_GLOBAL_REPLACEMENT_ENTRY.to != null
+        ? UOH_GLOBAL_REPLACEMENT_ENTRY.to
+        : ""
+).trim();
+const UOH_FROM_REGEX = UOH_FROM_TEXT
+    ? new RegExp(`\\b${escapeRegExp(UOH_FROM_TEXT)}\\b`, "i")
+    : /\buoh\b/i;
+const UOH_TO_TEXT_NORMALIZED = normalizeComparableText(UOH_TO_TEXT);
+
+function shouldApplyUohEyesFromMessageText(messageText) {
+    if (!messageText) {
+        return false;
+    }
+
+    if (UOH_FROM_REGEX.test(messageText)) {
+        return true;
+    }
+
+    if (!UOH_TO_TEXT_NORMALIZED) {
+        return false;
+    }
+
+    const normalizedMessageText = normalizeComparableText(messageText);
+    return normalizedMessageText.includes(UOH_TO_TEXT_NORMALIZED);
 }
 
 function getReplacementConfig(wordReplacements) {
@@ -311,7 +372,7 @@ function replaceWords($messageElement) {
         return;
     }
 
-    if (UOH_TRIGGER_REGEX.test($messageElement.text())) {
+    if (shouldApplyUohEyesFromMessageText($messageElement.text())) {
         applyUohOshiEyesOverride($row);
     }
 
