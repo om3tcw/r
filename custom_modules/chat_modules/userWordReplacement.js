@@ -11,7 +11,6 @@ const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "faggots", to: "soft lads" },
     { from: "fag", to: "soft lad" },
     { from: "fagg", to: "soft lad" },
-    { from: "fuck", to: "sex" },
     { from: "fucking", to: "proper" },
     { from: "fucked", to: "had sex" },
     { from: "fucker", to: "melt" },
