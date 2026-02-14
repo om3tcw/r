@@ -1,5 +1,5 @@
 // List of usernames to target
-const TARGET_USERNAMES = ["iTako"];
+const TARGET_USERNAMES = [];
 
 // Anything here will only be replaced if the sender is included in TARGET_USERNAMES
 const TARGET_USER_WORD_REPLACEMENTS = [
