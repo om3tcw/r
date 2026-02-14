@@ -69,7 +69,8 @@ const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "okay", to: "sound" },
     { from: "fine", to: "boss" },
     { from: "police", to: "bizzy" },
-    { from: "yeah", to: "aye" }
+    { from: "yeah", to: "aye" },
+    { from: "slop", to: "kino" }
 ];
 
 // Anything here will be replaced globally regardless of username
