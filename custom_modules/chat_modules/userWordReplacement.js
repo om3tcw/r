@@ -28,7 +28,7 @@ const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "pussy", to: "fanny" },
     { from: "damn", to: "blimey" },
     { from: "hell", to: "heck" },
-    { from: "motherfucker", to: "MILF" },
+    { from: "motherfucker", to: "yer ma" },
     { from: "mate", to: "la" },
     { from: "good", to: "boss" },
     { from: "great", to: "sound" },
