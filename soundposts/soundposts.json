@@ -394,9 +394,11 @@
 	":hobagispeaki:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/hobagispeaki.mp3"},
 	":speakichowaemon:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/speakichowaemon.ogg"},
 	":ririkaspeaki:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/speaki.ogg"},
-	":ririkasmug:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/bequietvirgin.ogg"}
+	":ririkasmug:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/bequietvirgin.ogg"},
+	"rratbastard" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/rratbastard.ogg"}
 	
 }
+
 
 
 
