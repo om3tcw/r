@@ -43,6 +43,7 @@ const ModulePaths = [
     { TweetEmbed: `chat_modules/tweetEmbed.js`},
     { VideoTitlePreview : `chat_modules/videoTitlePreview.js`},
     { RratButton: `ui_modules/rratButton.js`},
+    { ChatImages: `chat_modules/chatImages.js` },
 ]
 
 //candidate to move to util.js
