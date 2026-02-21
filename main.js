@@ -45,7 +45,7 @@ const ModulePaths = [
     { RratButton: `ui_modules/rratButton.js`},
 ]
 
-//candidate to move to util.js
+//candidate to move to util.js 
 //change ?ver=n to automatically push changes.
 function makeLiveCDNLink(fileName) {
     return  CURRENT_CDN +
