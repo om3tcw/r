@@ -1,7 +1,9 @@
 // List of usernames to target
 const TARGET_USERNAMES = [];
 
-// Anything here will only be replaced if the sender is included in TARGET_USERNAMES
+// Anything here will only be replaced if the sender is included in TARGET_USERNAMES.
+// Emotes can be matched by their exact title (e.g. ":uoh:").
+// For emote-only image swaps, use toImage: { from: ":uoh:", toImage: "https://..." }.
 const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "nigga", to: "I'm racist" },
     { from: "niggas", to: "I'm racist" },
@@ -9,9 +11,12 @@ const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "niggers", to: "I'm very racist" }
 ];
 
-// Anything here will be replaced globally regardless of username
+// Anything here will be replaced globally regardless of username.
+// Emotes can be matched by their exact title (e.g. ":uoh:").
+// For emote-only image swaps, use toImage: { from: ":uoh:", toImage: "https://..." }.
 const GLOBAL_WORD_REPLACEMENTS = [
-    {from: "uoh", to:"I miss the good old days where I would spend weeks on the Epstein Island **** and eating children"}
+    {from: "uoh", to:"I miss the good old days where I would spend weeks on the Epstein Island **** and eating children"},
+    {from: ":lapuoh:", toImage:"https://cracklej.win/gzldV61DX6.jpg"}
 ];
 
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
@@ -24,23 +29,45 @@ const UOH_USERNAME_PREFIX_IMAGE_HEIGHT_PX = 50;
 const UOH_OSHI_EYES_IMAGE_WIDTH_PX = 50;
 const UOH_TIMESTAMP_IMAGE_HEIGHT_PX = 25;
 const UOH_USERNAME_PREFIX_IMAGE_MARGIN_RIGHT_PX = 4;
-const UOH_USERNAME_REPLACEMENT_PREFIX_WORDS = [
-    "David Goldstein",
-    "Isaac Silverman",
-    "Daniel Goldberg",
-    "Jacob Finkelstein",
-    "Abigail Goldman",
-    "Omer Katz",
-    "Adam Horowitz",
-    "Samuel Bernstein",
-    "Abihu Teitelbaum",
-    "Miriam Schwartz"
+const UOH_USERNAME_REPLACEMENT_FIRST_WORDS = [
+    "David",
+    "Isaac",
+    "Daniel",
+    "Jacob",
+    "Abigail",
+    "Omer",
+    "Adam",
+    "Samuel",
+    "Abihu",
+    "Miriam",
+    "Benjamin",
+    "Shlomo",
+    "Noncey",
+    "Schnozz"
 ];
-const UOH_USERNAME_REPLACEMENT_PREFIX_WORDS_NORMALIZED = UOH_USERNAME_REPLACEMENT_PREFIX_WORDS
+const UOH_USERNAME_REPLACEMENT_SECOND_WORDS = [
+    "Goldstein",
+    "Silverman",
+    "Goldberg",
+    "Finkelstein",
+    "Goldman",
+    "Katz",
+    "Horowitz",
+    "Bernstein",
+    "Teitelbaum",
+    "Schwartz",
+    "Diamond",
+    "Rothstein",
+    "Fiddlestein",
+    "Moneylover"
+];
+const UOH_USERNAME_REPLACEMENT_FIRST_WORDS_NORMALIZED = UOH_USERNAME_REPLACEMENT_FIRST_WORDS
+    .map((word) => String(word || "").trim())
+    .filter(Boolean);
+const UOH_USERNAME_REPLACEMENT_SECOND_WORDS_NORMALIZED = UOH_USERNAME_REPLACEMENT_SECOND_WORDS
     .map((word) => String(word || "").trim())
     .filter(Boolean);
 const uohOshiEyesRulesByKey = new Map();
-const uohUsernameReplacementPrefixWordByAuthor = new Map();
 
 function normalizeUsername(username) {
     return String(username || "").trim().toLowerCase();
@@ -48,6 +75,86 @@ function normalizeUsername(username) {
 
 function escapeRegExp(text) {
     return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function escapeHtmlForLookup(value) {
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+}
+
+function getChannelEmoteByName(emoteName) {
+    const normalizedEmoteName = String(emoteName || "").trim();
+    if (!normalizedEmoteName || !window.CHANNEL) {
+        return null;
+    }
+
+    if (CHANNEL.emoteMap) {
+        if (CHANNEL.emoteMap[normalizedEmoteName]) {
+            return CHANNEL.emoteMap[normalizedEmoteName];
+        }
+
+        const escapedLookupName = escapeHtmlForLookup(normalizedEmoteName);
+        if (CHANNEL.emoteMap[escapedLookupName]) {
+            return CHANNEL.emoteMap[escapedLookupName];
+        }
+    }
+
+    if (!Array.isArray(CHANNEL.emotes)) {
+        return null;
+    }
+
+    const lowercaseLookupName = normalizedEmoteName.toLowerCase();
+    return CHANNEL.emotes.find((emote) => {
+        const emoteNameFromList = String(emote && emote.name != null ? emote.name : "").trim().toLowerCase();
+        return emoteNameFromList === lowercaseLookupName;
+    }) || null;
+}
+
+function replaceSingleEmoteNode(emoteNode, replacementEntry) {
+    if (!emoteNode || !replacementEntry) {
+        return;
+    }
+
+    const replacementText = replacementEntry.toText;
+    const replacementImage = String(replacementEntry.toImage || "").trim();
+
+    if (replacementImage) {
+        const replacementNode = emoteNode.cloneNode(true);
+        replacementNode.setAttribute("src", replacementImage);
+
+        const currentTitle = String(emoteNode.getAttribute("title") || "").trim();
+        const replacementTitle = replacementText != null
+            ? String(replacementText)
+            : currentTitle;
+
+        if (replacementTitle) {
+            replacementNode.setAttribute("title", replacementTitle);
+            replacementNode.setAttribute("alt", replacementTitle);
+        }
+
+        emoteNode.replaceWith(replacementNode);
+        return;
+    }
+
+    if (replacementText == null) {
+        return;
+    }
+
+    const replacementEmote = getChannelEmoteByName(replacementText);
+
+    if (!replacementEmote || !replacementEmote.image) {
+        emoteNode.replaceWith(document.createTextNode(String(replacementText)));
+        return;
+    }
+
+    const replacementNode = emoteNode.cloneNode(true);
+    replacementNode.setAttribute("title", replacementEmote.name);
+    replacementNode.setAttribute("alt", replacementEmote.name);
+    replacementNode.setAttribute("src", replacementEmote.image);
+    emoteNode.replaceWith(replacementNode);
 }
 
 function getWordReplacementEntryByLookupKey(wordReplacements, lookupKey) {
@@ -85,37 +192,34 @@ function escapeCssIdentifier(value) {
     return String(value).replace(/[^a-zA-Z0-9_-]/g, (char) => `\\${char}`);
 }
 
-function getUohUsernameReplacementPrefixWordByLastCharacter(normalizedUsername) {
-    if (!normalizedUsername || !UOH_USERNAME_REPLACEMENT_PREFIX_WORDS_NORMALIZED.length) {
-        return "";
-    }
-
-    const lastCharacter = normalizedUsername.charAt(normalizedUsername.length - 1);
-    if (!lastCharacter) {
-        return UOH_USERNAME_REPLACEMENT_PREFIX_WORDS_NORMALIZED[0];
-    }
-
-    const charCode = lastCharacter.charCodeAt(0);
-    const isAsciiLetter = charCode >= 97 && charCode <= 122;
-    const selectionSeed = isAsciiLetter ? charCode - 97 : charCode;
-    const wordIndex = selectionSeed % UOH_USERNAME_REPLACEMENT_PREFIX_WORDS_NORMALIZED.length;
-
-    return UOH_USERNAME_REPLACEMENT_PREFIX_WORDS_NORMALIZED[wordIndex] || UOH_USERNAME_REPLACEMENT_PREFIX_WORDS_NORMALIZED[0];
-}
-
-function getOrCreateUohUsernameReplacementPrefixWord(username) {
+function getUohUsernameReplacementPrefixWord(username) {
     const normalizedUsername = normalizeUsername(username);
     if (!normalizedUsername) {
         return "";
     }
 
-    if (uohUsernameReplacementPrefixWordByAuthor.has(normalizedUsername)) {
-        return uohUsernameReplacementPrefixWordByAuthor.get(normalizedUsername) || "";
+    const firstWordPool = UOH_USERNAME_REPLACEMENT_FIRST_WORDS_NORMALIZED;
+    const secondWordPool = UOH_USERNAME_REPLACEMENT_SECOND_WORDS_NORMALIZED;
+    if (!firstWordPool.length && !secondWordPool.length) {
+        return "";
     }
 
-    const chosenWord = getUohUsernameReplacementPrefixWordByLastCharacter(normalizedUsername);
-    uohUsernameReplacementPrefixWordByAuthor.set(normalizedUsername, chosenWord);
-    return chosenWord;
+    const usernameLength = normalizedUsername.length;
+    const lastCharacter = normalizedUsername.charAt(usernameLength - 1);
+    const lastCharacterCode = lastCharacter ? lastCharacter.charCodeAt(0) : 0;
+
+    const firstWord = firstWordPool.length
+        ? String(firstWordPool[usernameLength % firstWordPool.length] || "").trim()
+        : "";
+    const secondWord = secondWordPool.length
+        ? String(secondWordPool[(lastCharacterCode + usernameLength) % secondWordPool.length] || "").trim()
+        : "";
+
+    if (firstWord && secondWord) {
+        return `${firstWord} ${secondWord}`;
+    }
+
+    return firstWord || secondWord || "";
 }
 
 function applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor) {
@@ -132,7 +236,7 @@ function applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor) {
         return;
     }
 
-    const replacementPrefixWord = getOrCreateUohUsernameReplacementPrefixWord(normalizedMessageAuthor);
+    const replacementPrefixWord = getUohUsernameReplacementPrefixWord(normalizedMessageAuthor);
     if (!replacementPrefixWord) {
         return;
     }
@@ -144,6 +248,26 @@ function applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor) {
     }
 
     $usernameElement.text(`${replacementPrefixWord}: `);
+}
+
+function applyUohUsernameReplacementPrefixToExistingRows(normalizedMessageAuthor) {
+    if (!normalizedMessageAuthor) {
+        return;
+    }
+
+    $(`${MESSAGE_BUFFER_SELECTOR} > div`).each((_, element) => {
+        const $row = $(element);
+        if (!$row.length || isServerMessageRow($row)) {
+            return;
+        }
+
+        const rowAuthor = normalizeUsername(getMessageAuthor($row));
+        if (rowAuthor !== normalizedMessageAuthor) {
+            return;
+        }
+
+        applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor);
+    });
 }
 
 function getMessageClassName($row) {
@@ -186,11 +310,11 @@ function applyUohOshiEyesOverride($row) {
     const messageAuthor = normalizeUsername(getMessageAuthor($row));
     const messageClass = getMessageClassName($row);
     if (!messageAuthor || !messageClass) {
-        return;
+        return false;
     }
 
     if (uohOshiEyesRulesByKey.has(messageAuthor)) {
-        return;
+        return false;
     }
 
     const escapedMessageClass = escapeCssIdentifier(messageClass);
@@ -220,6 +344,7 @@ function applyUohOshiEyesOverride($row) {
 
     uohOshiEyesRulesByKey.set(messageAuthor, cssRule);
     renderUohEyesCssRules();
+    return true;
 }
 
 const UOH_GLOBAL_REPLACEMENT_ENTRY =
@@ -238,6 +363,74 @@ const UOH_FROM_REGEX = UOH_FROM_TEXT
     ? new RegExp(`\\b${escapeRegExp(UOH_FROM_TEXT)}\\b`, "i")
     : /\buoh\b/i;
 const UOH_TO_TEXT_NORMALIZED = normalizeComparableText(UOH_TO_TEXT);
+const UOH_FROM_TEXT_NORMALIZED = normalizeComparableText(UOH_FROM_TEXT);
+const UOH_FROM_TEXT_COMPACT = UOH_FROM_TEXT_NORMALIZED.replace(/:/g, "");
+
+function getMessageContentRootElement($messageElement, $row = null) {
+    if (!$messageElement || !$messageElement.length) {
+        return null;
+    }
+
+    const $messageRow = $row || getMessageRow($messageElement);
+    if ($messageRow && $messageRow.length) {
+        const $messageContentSpan = $messageRow.children("span").last();
+        if ($messageContentSpan.length) {
+            return $messageContentSpan[0];
+        }
+    }
+
+    return $messageElement[0];
+}
+
+function getEmoteNodesFromRoot(rootElement) {
+    if (!rootElement) {
+        return [];
+    }
+
+    const emoteNodes = [];
+    if (rootElement.matches && rootElement.matches(".channel-emote[title]")) {
+        emoteNodes.push(rootElement);
+    }
+
+    if (typeof rootElement.querySelectorAll === "function") {
+        emoteNodes.push(...rootElement.querySelectorAll(".channel-emote[title]"));
+    }
+
+    return emoteNodes;
+}
+
+function shouldApplyUohEyesFromEmoteTitles(rootElement) {
+    const emoteNodes = getEmoteNodesFromRoot(rootElement);
+    if (!emoteNodes.length) {
+        return false;
+    }
+
+    for (const emoteNode of emoteNodes) {
+        const emoteTitleNormalized = normalizeComparableText(
+            emoteNode && typeof emoteNode.getAttribute === "function"
+                ? emoteNode.getAttribute("title")
+                : ""
+        );
+        if (!emoteTitleNormalized) {
+            continue;
+        }
+
+        const emoteTitleCompact = emoteTitleNormalized.replace(/:/g, "");
+        if (UOH_FROM_TEXT_NORMALIZED && emoteTitleNormalized.includes(UOH_FROM_TEXT_NORMALIZED)) {
+            return true;
+        }
+
+        if (UOH_FROM_TEXT_COMPACT && emoteTitleCompact.includes(UOH_FROM_TEXT_COMPACT)) {
+            return true;
+        }
+
+        if (UOH_TO_TEXT_NORMALIZED && emoteTitleNormalized.includes(UOH_TO_TEXT_NORMALIZED)) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 function shouldApplyUohEyesFromMessageText(messageText) {
     if (!messageText) {
@@ -261,12 +454,19 @@ function getReplacementConfig(wordReplacements) {
     const seenLookupKeys = new Set();
 
     for (const entry of wordReplacements || []) {
-        if (!entry || entry.from == null || entry.to == null) {
+        if (!entry || entry.from == null) {
             continue;
         }
 
         const from = String(entry.from).trim();
         if (!from) {
+            continue;
+        }
+
+        const hasToText = Object.prototype.hasOwnProperty.call(entry, "to") && entry.to != null;
+        const toText = hasToText ? String(entry.to) : null;
+        const toImage = entry.toImage == null ? "" : String(entry.toImage).trim();
+        if (!hasToText && !toImage) {
             continue;
         }
 
@@ -278,7 +478,8 @@ function getReplacementConfig(wordReplacements) {
 
         replacements.push({
             from,
-            to: String(entry.to),
+            toText,
+            toImage,
             lookupKey
         });
     }
@@ -292,7 +493,7 @@ function getReplacementConfig(wordReplacements) {
     const pattern = replacements.map((entry) => escapeRegExp(entry.from)).join("|");
     const regex = new RegExp(`\\b(${pattern})\\b`, "gi");
     const replacementLookup = Object.fromEntries(
-        replacements.map((entry) => [entry.lookupKey, entry.to])
+        replacements.map((entry) => [entry.lookupKey, entry])
     );
 
     return { regex, replacementLookup };
@@ -382,8 +583,14 @@ function replaceTextNodes(rootElement, replacementConfig) {
         const originalText = textNode.nodeValue;
         const newText = originalText.replace(
             replacementConfig.regex,
-            (matchedText) =>
-                replacementConfig.replacementLookup[matchedText.toLowerCase()] || matchedText
+            (matchedText) => {
+                const replacementEntry = replacementConfig.replacementLookup[matchedText.toLowerCase()];
+                if (!replacementEntry || replacementEntry.toText == null) {
+                    return matchedText;
+                }
+
+                return replacementEntry.toText;
+            }
         );
 
         if (newText !== originalText) {
@@ -392,29 +599,60 @@ function replaceTextNodes(rootElement, replacementConfig) {
     }
 }
 
-function replaceWordsForTargetUser($messageElement) {
-    if (!TARGET_USER_REPLACEMENT_CONFIG) {
+function replaceEmoteNodes(rootElement, replacementConfig) {
+    if (!rootElement || !replacementConfig || !replacementConfig.replacementLookup) {
         return;
     }
 
-    if (!TARGET_USERNAME_SET.size) {
+    const emoteNodes = getEmoteNodesFromRoot(rootElement);
+    for (const emoteNode of emoteNodes) {
+        const emoteTitle = String(emoteNode.getAttribute("title") || "").trim();
+        if (!emoteTitle) {
+            continue;
+        }
+
+        const replacementEntry = replacementConfig.replacementLookup[emoteTitle.toLowerCase()];
+        if (!replacementEntry) {
+            continue;
+        }
+
+        replaceSingleEmoteNode(emoteNode, replacementEntry);
+    }
+}
+
+function applyReplacementConfigToMessageRoot(messageRootElement, replacementConfig) {
+    if (!messageRootElement || !replacementConfig) {
         return;
     }
 
-    const $row = getMessageRow($messageElement);
-    if (!$row) {
+    replaceTextNodes(messageRootElement, replacementConfig);
+    replaceEmoteNodes(messageRootElement, replacementConfig);
+}
+
+function replaceWordsForTargetUser($messageElement, $row = null, messageRootElement = null) {
+    if (!TARGET_USER_REPLACEMENT_CONFIG || !TARGET_USERNAME_SET.size) {
         return;
     }
 
-    const messageAuthor = normalizeUsername(getMessageAuthor($row));
+    const $messageRow = $row || getMessageRow($messageElement);
+    if (!$messageRow) {
+        return;
+    }
+
+    const messageAuthor = normalizeUsername(getMessageAuthor($messageRow));
     if (!TARGET_USERNAME_SET.has(messageAuthor)) {
         return;
     }
 
-    replaceTextNodes($messageElement[0], TARGET_USER_REPLACEMENT_CONFIG);
+    const rootElement = messageRootElement || getMessageContentRootElement($messageElement, $messageRow);
+    if (!rootElement) {
+        return;
+    }
+
+    applyReplacementConfigToMessageRoot(rootElement, TARGET_USER_REPLACEMENT_CONFIG);
 }
 
-function replaceWordsForAllUsers($messageElement) {
+function replaceWordsForAllUsers($messageElement, messageRootElement = null) {
     if (!GLOBAL_REPLACEMENT_CONFIG) {
         return;
     }
@@ -423,7 +661,12 @@ function replaceWordsForAllUsers($messageElement) {
         return;
     }
 
-    replaceTextNodes($messageElement[0], GLOBAL_REPLACEMENT_CONFIG);
+    const rootElement = messageRootElement || getMessageContentRootElement($messageElement);
+    if (!rootElement) {
+        return;
+    }
+
+    applyReplacementConfigToMessageRoot(rootElement, GLOBAL_REPLACEMENT_CONFIG);
 }
 
 function replaceWords($messageElement) {
@@ -436,13 +679,25 @@ function replaceWords($messageElement) {
         return;
     }
 
-    const normalizedMessageAuthor = normalizeUsername(getMessageAuthor($row));
-    if (shouldApplyUohEyesFromMessageText($messageElement.text())) {
-        applyUohOshiEyesOverride($row);
+    const messageRootElement = getMessageContentRootElement($messageElement, $row);
+    if (!messageRootElement) {
+        return;
     }
 
-    replaceWordsForTargetUser($messageElement);
-    replaceWordsForAllUsers($messageElement);
+    const normalizedMessageAuthor = normalizeUsername(getMessageAuthor($row));
+    const messageText = messageRootElement.textContent || "";
+    if (
+        shouldApplyUohEyesFromMessageText(messageText) ||
+        shouldApplyUohEyesFromEmoteTitles(messageRootElement)
+    ) {
+        const wasActivatedNow = applyUohOshiEyesOverride($row);
+        if (wasActivatedNow) {
+            applyUohUsernameReplacementPrefixToExistingRows(normalizedMessageAuthor);
+        }
+    }
+
+    replaceWordsForTargetUser($messageElement, $row, messageRootElement);
+    replaceWordsForAllUsers($messageElement, messageRootElement);
     applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor);
 }
 
