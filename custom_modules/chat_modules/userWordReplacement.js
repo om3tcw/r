@@ -1,3 +1,4 @@
+// Father forgive me for this file jesus wept, the uoh mode shit is ugly but its a meme so it'll be short lived
 // List of usernames to target
 const TARGET_USERNAMES = [];
 
@@ -14,13 +15,20 @@ const TARGET_USER_WORD_REPLACEMENTS = [
 // Anything here will be replaced globally regardless of username.
 // Emotes can be matched by their exact title (e.g. ":uoh:").
 // For emote-only image swaps, use toImage: { from: ":uoh:", toImage: "https://..." }.
-const GLOBAL_WORD_REPLACEMENTS = [
+const GLOBAL_WORD_REPLACEMENTS = [];
+
+// UOH mode configuration.
+const UOH_MODE_REPLACEMENTS = [
     {from: "uoh", to:"I miss the good old days where I would spend weeks on the Epstein Island **** and eating children"},
     {from: ":lapuoh:", toImage:"https://cracklej.win/gzldV61DX6.jpg"}
 ];
 
+const UOH_MODE_ON = false;
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
 const UOH_TRIGGER_LOOKUP_KEY = "uoh";
+const ACTIVE_GLOBAL_WORD_REPLACEMENTS = UOH_MODE_ON
+    ? [...GLOBAL_WORD_REPLACEMENTS, ...UOH_MODE_REPLACEMENTS]
+    : GLOBAL_WORD_REPLACEMENTS;
 const UOH_USERNAME_PREFIX_IMAGE_URL = "https://cracklej.win/bTrlUfti2F.jpg";
 const UOH_OSHI_EYES_IMAGE_URL = "https://cracklej.win/7OwAi9DnfA.png";
 const UOH_OSHI_EYES_STYLE_ID = "user-word-replacement-uoh-eyes-style";
@@ -43,8 +51,7 @@ const UOH_USERNAME_REPLACEMENT_FIRST_WORDS = [
     "Benjamin",
     "Shlomo",
     "Noncey",
-    "Schnozz",
-    "Rabbi"
+    "Schnozz"
 ];
 const UOH_USERNAME_REPLACEMENT_SECOND_WORDS = [
     "Goldstein",
@@ -70,6 +77,7 @@ const UOH_USERNAME_REPLACEMENT_SECOND_WORDS_NORMALIZED = UOH_USERNAME_REPLACEMEN
     .filter(Boolean);
 const uohOshiEyesRulesByKey = new Map();
 
+// Shared utility helpers.
 function normalizeUsername(username) {
     return String(username || "").trim().toLowerCase();
 }
@@ -193,6 +201,116 @@ function escapeCssIdentifier(value) {
     return String(value).replace(/[^a-zA-Z0-9_-]/g, (char) => `\\${char}`);
 }
 
+function getMessageClassName($row) {
+    if (!$row || !$row.length) {
+        return "";
+    }
+
+    return ($row.attr("class") || "")
+        .split(/\s+/)
+        .find((cls) => cls.startsWith("chat-msg-") && cls !== "chat-msg-$server$") || "";
+}
+
+function getMessageAuthorFromClassName($row) {
+    const messageClass = getMessageClassName($row);
+    if (!messageClass) {
+        return "";
+    }
+
+    return messageClass.slice("chat-msg-".length).trim();
+}
+
+function getMessageRow($messageElement) {
+    if (!$messageElement || !$messageElement.length) {
+        return null;
+    }
+    const $row = $messageElement.closest(`${MESSAGE_BUFFER_SELECTOR} > div`);
+    return $row.length ? $row : null;
+}
+
+function getMessageAuthor($row) {
+    if (!$row || !$row.length) {
+        return "";
+    }
+
+    const classDerivedAuthor = getMessageAuthorFromClassName($row);
+    if (classDerivedAuthor) {
+        return classDerivedAuthor;
+    }
+
+    const usernameText = $row.find("strong.username").first().text();
+    if (usernameText) {
+        return usernameText.replace(/:\s*$/, "").trim();
+    }
+
+    return "";
+}
+
+function isServerMessageRow($row) {
+    if (!$row || !$row.length) {
+        return false;
+    }
+
+    return ($row.attr("class") || "")
+        .split(/\s+/)
+        .some((cls) => cls === "chat-msg-$server$");
+}
+
+function getMessageContentRootElement($messageElement, $row = null) {
+    if (!$messageElement || !$messageElement.length) {
+        return null;
+    }
+
+    const $messageRow = $row || getMessageRow($messageElement);
+    if ($messageRow && $messageRow.length) {
+        const $messageContentSpan = $messageRow.children("span").last();
+        if ($messageContentSpan.length) {
+            return $messageContentSpan[0];
+        }
+    }
+
+    return $messageElement[0];
+}
+
+function getEmoteNodesFromRoot(rootElement) {
+    if (!rootElement) {
+        return [];
+    }
+
+    const emoteNodes = [];
+    if (rootElement.matches && rootElement.matches(".channel-emote[title]")) {
+        emoteNodes.push(rootElement);
+    }
+
+    if (typeof rootElement.querySelectorAll === "function") {
+        emoteNodes.push(...rootElement.querySelectorAll(".channel-emote[title]"));
+    }
+
+    return emoteNodes;
+}
+
+const UOH_GLOBAL_REPLACEMENT_ENTRY =
+    UOH_MODE_ON
+        ? getWordReplacementEntryByLookupKey(UOH_MODE_REPLACEMENTS, UOH_TRIGGER_LOOKUP_KEY)
+        : null;
+const UOH_FROM_TEXT = String(
+    UOH_GLOBAL_REPLACEMENT_ENTRY && UOH_GLOBAL_REPLACEMENT_ENTRY.from != null
+        ? UOH_GLOBAL_REPLACEMENT_ENTRY.from
+        : UOH_TRIGGER_LOOKUP_KEY
+).trim();
+const UOH_TO_TEXT = String(
+    UOH_GLOBAL_REPLACEMENT_ENTRY && UOH_GLOBAL_REPLACEMENT_ENTRY.to != null
+        ? UOH_GLOBAL_REPLACEMENT_ENTRY.to
+        : ""
+).trim();
+const UOH_FROM_REGEX = UOH_FROM_TEXT
+    ? new RegExp(`\\b${escapeRegExp(UOH_FROM_TEXT)}\\b`, "i")
+    : /\buoh\b/i;
+const UOH_TO_TEXT_NORMALIZED = normalizeComparableText(UOH_TO_TEXT);
+const UOH_FROM_TEXT_NORMALIZED = normalizeComparableText(UOH_FROM_TEXT);
+const UOH_FROM_TEXT_COMPACT = UOH_FROM_TEXT_NORMALIZED.replace(/:/g, "");
+
+// UOH mode runtime logic.
 function getUohUsernameReplacementPrefixWord(username) {
     const normalizedUsername = normalizeUsername(username);
     if (!normalizedUsername) {
@@ -271,25 +389,6 @@ function applyUohUsernameReplacementPrefixToExistingRows(normalizedMessageAuthor
     });
 }
 
-function getMessageClassName($row) {
-    if (!$row || !$row.length) {
-        return "";
-    }
-
-    return ($row.attr("class") || "")
-        .split(/\s+/)
-        .find((cls) => cls.startsWith("chat-msg-") && cls !== "chat-msg-$server$") || "";
-}
-
-function getMessageAuthorFromClassName($row) {
-    const messageClass = getMessageClassName($row);
-    if (!messageClass) {
-        return "";
-    }
-
-    return messageClass.slice("chat-msg-".length).trim();
-}
-
 function getOrCreateUohEyesStyleElement() {
     let styleElement = document.getElementById(UOH_OSHI_EYES_STYLE_ID);
     if (styleElement) {
@@ -348,58 +447,6 @@ function applyUohOshiEyesOverride($row) {
     return true;
 }
 
-const UOH_GLOBAL_REPLACEMENT_ENTRY =
-    getWordReplacementEntryByLookupKey(GLOBAL_WORD_REPLACEMENTS, UOH_TRIGGER_LOOKUP_KEY);
-const UOH_FROM_TEXT = String(
-    UOH_GLOBAL_REPLACEMENT_ENTRY && UOH_GLOBAL_REPLACEMENT_ENTRY.from != null
-        ? UOH_GLOBAL_REPLACEMENT_ENTRY.from
-        : UOH_TRIGGER_LOOKUP_KEY
-).trim();
-const UOH_TO_TEXT = String(
-    UOH_GLOBAL_REPLACEMENT_ENTRY && UOH_GLOBAL_REPLACEMENT_ENTRY.to != null
-        ? UOH_GLOBAL_REPLACEMENT_ENTRY.to
-        : ""
-).trim();
-const UOH_FROM_REGEX = UOH_FROM_TEXT
-    ? new RegExp(`\\b${escapeRegExp(UOH_FROM_TEXT)}\\b`, "i")
-    : /\buoh\b/i;
-const UOH_TO_TEXT_NORMALIZED = normalizeComparableText(UOH_TO_TEXT);
-const UOH_FROM_TEXT_NORMALIZED = normalizeComparableText(UOH_FROM_TEXT);
-const UOH_FROM_TEXT_COMPACT = UOH_FROM_TEXT_NORMALIZED.replace(/:/g, "");
-
-function getMessageContentRootElement($messageElement, $row = null) {
-    if (!$messageElement || !$messageElement.length) {
-        return null;
-    }
-
-    const $messageRow = $row || getMessageRow($messageElement);
-    if ($messageRow && $messageRow.length) {
-        const $messageContentSpan = $messageRow.children("span").last();
-        if ($messageContentSpan.length) {
-            return $messageContentSpan[0];
-        }
-    }
-
-    return $messageElement[0];
-}
-
-function getEmoteNodesFromRoot(rootElement) {
-    if (!rootElement) {
-        return [];
-    }
-
-    const emoteNodes = [];
-    if (rootElement.matches && rootElement.matches(".channel-emote[title]")) {
-        emoteNodes.push(rootElement);
-    }
-
-    if (typeof rootElement.querySelectorAll === "function") {
-        emoteNodes.push(...rootElement.querySelectorAll(".channel-emote[title]"));
-    }
-
-    return emoteNodes;
-}
-
 function shouldApplyUohEyesFromEmoteTitles(rootElement) {
     const emoteNodes = getEmoteNodesFromRoot(rootElement);
     if (!emoteNodes.length) {
@@ -450,6 +497,7 @@ function shouldApplyUohEyesFromMessageText(messageText) {
     return normalizedMessageText.includes(UOH_TO_TEXT_NORMALIZED);
 }
 
+// Replacement engine.
 function getReplacementConfig(wordReplacements) {
     const replacements = [];
     const seenLookupKeys = new Set();
@@ -501,48 +549,12 @@ function getReplacementConfig(wordReplacements) {
 }
 
 const TARGET_USER_REPLACEMENT_CONFIG = getReplacementConfig(TARGET_USER_WORD_REPLACEMENTS);
-const GLOBAL_REPLACEMENT_CONFIG = getReplacementConfig(GLOBAL_WORD_REPLACEMENTS);
+const GLOBAL_REPLACEMENT_CONFIG = getReplacementConfig(ACTIVE_GLOBAL_WORD_REPLACEMENTS);
 const TARGET_USERNAME_SET = new Set(
     (Array.isArray(TARGET_USERNAMES) ? TARGET_USERNAMES : [TARGET_USERNAMES])
         .map(normalizeUsername)
         .filter(Boolean)
 );
-
-function getMessageRow($messageElement) {
-    if (!$messageElement || !$messageElement.length) {
-        return null;
-    }
-    const $row = $messageElement.closest(`${MESSAGE_BUFFER_SELECTOR} > div`);
-    return $row.length ? $row : null;
-}
-
-function getMessageAuthor($row) {
-    if (!$row || !$row.length) {
-        return "";
-    }
-
-    const classDerivedAuthor = getMessageAuthorFromClassName($row);
-    if (classDerivedAuthor) {
-        return classDerivedAuthor;
-    }
-
-    const usernameText = $row.find("strong.username").first().text();
-    if (usernameText) {
-        return usernameText.replace(/:\s*$/, "").trim();
-    }
-
-    return "";
-}
-
-function isServerMessageRow($row) {
-    if (!$row || !$row.length) {
-        return false;
-    }
-
-    return ($row.attr("class") || "")
-        .split(/\s+/)
-        .some((cls) => cls === "chat-msg-$server$");
-}
 
 function replaceTextNodes(rootElement, replacementConfig) {
     if (!rootElement || !replacementConfig) {
@@ -687,19 +699,23 @@ function replaceWords($messageElement) {
 
     const normalizedMessageAuthor = normalizeUsername(getMessageAuthor($row));
     const messageText = messageRootElement.textContent || "";
-    if (
-        shouldApplyUohEyesFromMessageText(messageText) ||
-        shouldApplyUohEyesFromEmoteTitles(messageRootElement)
-    ) {
-        const wasActivatedNow = applyUohOshiEyesOverride($row);
-        if (wasActivatedNow) {
-            applyUohUsernameReplacementPrefixToExistingRows(normalizedMessageAuthor);
+    if (UOH_MODE_ON) {
+        if (
+            shouldApplyUohEyesFromMessageText(messageText) ||
+            shouldApplyUohEyesFromEmoteTitles(messageRootElement)
+        ) {
+            const wasActivatedNow = applyUohOshiEyesOverride($row);
+            if (wasActivatedNow) {
+                applyUohUsernameReplacementPrefixToExistingRows(normalizedMessageAuthor);
+            }
         }
     }
 
     replaceWordsForTargetUser($messageElement, $row, messageRootElement);
     replaceWordsForAllUsers($messageElement, messageRootElement);
-    applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor);
+    if (UOH_MODE_ON) {
+        applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor);
+    }
 }
 
 (async () => {
