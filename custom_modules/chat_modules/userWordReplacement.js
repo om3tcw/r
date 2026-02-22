@@ -43,7 +43,8 @@ const UOH_USERNAME_REPLACEMENT_FIRST_WORDS = [
     "Benjamin",
     "Shlomo",
     "Noncey",
-    "Schnozz"
+    "Schnozz",
+    "Rabbi"
 ];
 const UOH_USERNAME_REPLACEMENT_SECOND_WORDS = [
     "Goldstein",
