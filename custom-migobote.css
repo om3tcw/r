@@ -3155,6 +3155,17 @@ img.channel-emote[title$=":santahat:"] {
     content: 'sloptch: ';
 }
 
+.chat-msg-iTako .username {
+    font-size: 0;
+}
+
+.chat-msg-iTako .username:after {
+    font-size: 14px;
+    content: 'uncTako: ';
+}
+
+/* end of username edits */
+
 
 @font-face {
     font-family: Malk;
