@@ -3170,7 +3170,7 @@ img.channel-emote[title$=":santahat:"] {
 
 .chat-msg-NinoValt .username:after {
     font-size: 14px;
-    content: 'NinaValt: ';
+    content: 'NonceValt: ';
 }
 
 /* end of username edits */
@@ -4278,34 +4278,3 @@ form input#chatline {
 [class~="chat-msg-jafafafy" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/blphat.png");
 }
-
-/* Ninoatom */
-.chat-msg-NinoValt .timestamp {
-  color: transparent !important;
-  background-size: 20px 15px !important;
-  background-image: url("https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/doroeyes.png") !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-}
-
-#messagebuffer .chat-msg-NinoValt,
-#messagebuffer .chat-msg-NinoValt span {
-  font-size: 5px !important;
-  line-height: 5px !important;
-}
-
-.chat-msg-NinoValt .username {
-  font-size: 0 !important;
-}
-
-.chat-msg-NinoValt .username::after {
-  font-size: 5px !important;
-  content: "NonceValt: " !important;
-}
-.chat-msg-NinoValt .channel-emote {
-  height: 5px !important;
-  width: auto !important;
-  max-height: 5px !important;
-  vertical-align: middle !important;
-}
-/* end of Ninoatom */
