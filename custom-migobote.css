@@ -3164,6 +3164,15 @@ img.channel-emote[title$=":santahat:"] {
     content: 'uncTako: ';
 }
 
+.chat-msg-NinoValt .username {
+    font-size: 0;
+}
+
+.chat-msg-NinoValt .username:after {
+    font-size: 14px;
+    content: 'NinaValt: ';
+}
+
 /* end of username edits */
 
 
