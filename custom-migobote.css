@@ -3033,6 +3033,14 @@ img.channel-emote[title$=":santahat:"] {
     z-index: 1;
 }
 
+img.channel-emote[title$=":inawinner:"] {
+    left: 200px;
+    z-index: -1;
+    max-height: 250px;
+    bottom: 110px;
+    margin: -112px;
+}
+
 /* might add 'top:5px;' later to do a bottom offset */
 /* End of Emote Animations */
 
