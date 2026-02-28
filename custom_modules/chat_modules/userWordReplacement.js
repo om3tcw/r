@@ -1,6 +1,6 @@
 // Father forgive me for this file jesus wept, the uoh mode shit is ugly but its a meme so it'll be short lived
 // List of usernames to target
-const TARGET_USERNAMES = ["NinoValt];
+const TARGET_USERNAMES = ["NinoValt"];
 
 // Anything here will only be replaced if the sender is included in TARGET_USERNAMES.
 // Emotes can be matched by their exact title (e.g. ":uoh:").
@@ -80,7 +80,7 @@ const UOH_MODE_REPLACEMENTS = [
 
 const UOH_MODE_ON = true;
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
-const UOH_TRIGGER_LOOKUP_KEY = "uoh";
+const UOH_TRIGGER_LOOKUP_KEYS = ["uoh"];
 const ACTIVE_GLOBAL_WORD_REPLACEMENTS = UOH_MODE_ON
     ? [...GLOBAL_WORD_REPLACEMENTS, ...UOH_MODE_REPLACEMENTS]
     : GLOBAL_WORD_REPLACEMENTS;
@@ -241,6 +241,13 @@ function getWordReplacementEntryByLookupKey(wordReplacements, lookupKey) {
     return null;
 }
 
+function normalizeLookupKeys(lookupKeys) {
+    return (Array.isArray(lookupKeys) ? lookupKeys : [lookupKeys])
+        .map((lookupKey) => String(lookupKey || "").trim().toLowerCase())
+        .filter(Boolean)
+        .filter((lookupKey, index, values) => values.indexOf(lookupKey) === index);
+}
+
 function normalizeComparableText(text) {
     return String(text || "")
         .replace(/\s+/g, " ")
@@ -344,26 +351,32 @@ function getEmoteNodesFromRoot(rootElement) {
     return emoteNodes;
 }
 
-const UOH_GLOBAL_REPLACEMENT_ENTRY =
-    UOH_MODE_ON
-        ? getWordReplacementEntryByLookupKey(UOH_MODE_REPLACEMENTS, UOH_TRIGGER_LOOKUP_KEY)
-        : null;
-const UOH_FROM_TEXT = String(
-    UOH_GLOBAL_REPLACEMENT_ENTRY && UOH_GLOBAL_REPLACEMENT_ENTRY.from != null
-        ? UOH_GLOBAL_REPLACEMENT_ENTRY.from
-        : UOH_TRIGGER_LOOKUP_KEY
-).trim();
-const UOH_TO_TEXT = String(
-    UOH_GLOBAL_REPLACEMENT_ENTRY && UOH_GLOBAL_REPLACEMENT_ENTRY.to != null
-        ? UOH_GLOBAL_REPLACEMENT_ENTRY.to
-        : ""
-).trim();
-const UOH_FROM_REGEX = UOH_FROM_TEXT
-    ? new RegExp(`\\b${escapeRegExp(UOH_FROM_TEXT)}\\b`, "i")
+const UOH_TRIGGER_LOOKUP_KEYS_NORMALIZED = normalizeLookupKeys(UOH_TRIGGER_LOOKUP_KEYS);
+const UOH_GLOBAL_REPLACEMENT_ENTRIES = UOH_MODE_ON
+    ? UOH_TRIGGER_LOOKUP_KEYS_NORMALIZED
+        .map((lookupKey) => getWordReplacementEntryByLookupKey(UOH_MODE_REPLACEMENTS, lookupKey))
+        .filter(Boolean)
+    : [];
+const UOH_FROM_TEXTS = UOH_GLOBAL_REPLACEMENT_ENTRIES.length
+    ? UOH_GLOBAL_REPLACEMENT_ENTRIES
+        .map((entry) => String(entry && entry.from != null ? entry.from : "").trim())
+        .filter(Boolean)
+    : UOH_TRIGGER_LOOKUP_KEYS_NORMALIZED;
+const UOH_TO_TEXTS = UOH_GLOBAL_REPLACEMENT_ENTRIES
+    .map((entry) => String(entry && entry.to != null ? entry.to : "").trim())
+    .filter(Boolean);
+const UOH_FROM_REGEX = UOH_FROM_TEXTS.length
+    ? new RegExp(`\\b(${UOH_FROM_TEXTS.map((fromText) => escapeRegExp(fromText)).join("|")})\\b`, "i")
     : /\buoh\b/i;
-const UOH_TO_TEXT_NORMALIZED = normalizeComparableText(UOH_TO_TEXT);
-const UOH_FROM_TEXT_NORMALIZED = normalizeComparableText(UOH_FROM_TEXT);
-const UOH_FROM_TEXT_COMPACT = UOH_FROM_TEXT_NORMALIZED.replace(/:/g, "");
+const UOH_TO_TEXTS_NORMALIZED = UOH_TO_TEXTS
+    .map(normalizeComparableText)
+    .filter(Boolean);
+const UOH_FROM_TEXTS_NORMALIZED = UOH_FROM_TEXTS
+    .map(normalizeComparableText)
+    .filter(Boolean);
+const UOH_FROM_TEXTS_COMPACT = UOH_FROM_TEXTS_NORMALIZED
+    .map((fromTextNormalized) => fromTextNormalized.replace(/:/g, ""))
+    .filter(Boolean);
 
 // UOH mode runtime logic.
 function getUohUsernameReplacementPrefixWord(username) {
@@ -519,15 +532,15 @@ function shouldApplyUohEyesFromEmoteTitles(rootElement) {
         }
 
         const emoteTitleCompact = emoteTitleNormalized.replace(/:/g, "");
-        if (UOH_FROM_TEXT_NORMALIZED && emoteTitleNormalized.includes(UOH_FROM_TEXT_NORMALIZED)) {
+        if (UOH_FROM_TEXTS_NORMALIZED.some((fromTextNormalized) => emoteTitleNormalized.includes(fromTextNormalized))) {
             return true;
         }
 
-        if (UOH_FROM_TEXT_COMPACT && emoteTitleCompact.includes(UOH_FROM_TEXT_COMPACT)) {
+        if (UOH_FROM_TEXTS_COMPACT.some((fromTextCompact) => emoteTitleCompact.includes(fromTextCompact))) {
             return true;
         }
 
-        if (UOH_TO_TEXT_NORMALIZED && emoteTitleNormalized.includes(UOH_TO_TEXT_NORMALIZED)) {
+        if (UOH_TO_TEXTS_NORMALIZED.some((toTextNormalized) => emoteTitleNormalized.includes(toTextNormalized))) {
             return true;
         }
     }
@@ -544,12 +557,12 @@ function shouldApplyUohEyesFromMessageText(messageText) {
         return true;
     }
 
-    if (!UOH_TO_TEXT_NORMALIZED) {
+    if (!UOH_TO_TEXTS_NORMALIZED.length) {
         return false;
     }
 
     const normalizedMessageText = normalizeComparableText(messageText);
-    return normalizedMessageText.includes(UOH_TO_TEXT_NORMALIZED);
+    return UOH_TO_TEXTS_NORMALIZED.some((toTextNormalized) => normalizedMessageText.includes(toTextNormalized));
 }
 
 // Replacement engine.
