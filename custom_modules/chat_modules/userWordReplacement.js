@@ -1,6 +1,6 @@
 // Father forgive me for this file jesus wept, the uoh mode shit is ugly but its a meme so it'll be short lived
 // List of usernames to target
-const TARGET_USERNAMES = [];
+const TARGET_USERNAMES = ["NinoValt];
 
 // Anything here will only be replaced if the sender is included in TARGET_USERNAMES.
 // Emotes can be matched by their exact title (e.g. ":uoh:").
@@ -9,7 +9,59 @@ const TARGET_USER_WORD_REPLACEMENTS = [
     { from: "nigga", to: "I'm racist" },
     { from: "niggas", to: "I'm racist" },
     { from: "nigger", to: "I'm very racist" },
-    { from: "niggers", to: "I'm very racist" }
+    { from: "niggers", to: "I'm very racist" },
+    { from: ":muteninovaltifhecumstothis:", to: "[moderation has been enacted on this post]"},
+    { from: ":mikojork:", to: "[moderation has been enacted on this post]"},
+    { from: ":biboojorking:", to: "[moderation has been enacted on this post]"},
+    { from: ":gigijorkin:", to: "[moderation has been enacted on this post]"},
+    { from: ":jorkingit:", to: "[moderation has been enacted on this post]"},
+    { from: ":shotacum:", to: "[moderation has been enacted on this post]"},
+    { from: ":lamyokcums:", to: "[moderation has been enacted on this post]"},
+    { from: ":sheaskedfornocucumber:", to: "[moderation has been enacted on this post]"},
+    { from: ":coniokcums:", to: "[moderation has been enacted on this post]"},
+    { from: ":rocaokcums:", to: "[moderation has been enacted on this post]"},
+    { from: ":junaokcums:", to: "[moderation has been enacted on this post]"},
+    { from: ":ariaokcums:", to: "[moderation has been enacted on this post]"},
+    { from: ":rosemiokcums:", to: "[moderation has been enacted on this post]"},
+    { from: ":fbkokcums:", to: "[moderation has been enacted on this post]"},
+    { from: ":inaokcumsherfootlong:", to: "[moderation has been enacted on this post]"},
+    { from: ":moriokcums:", to: "[moderation has been enacted on this post]"},
+    { from: ":bijouokcums:", to: "[moderation has been enacted on this post]"},
+    { from: ":irysactualsex:", to: "[moderation has been enacted on this post]"},
+    { from: ":sexpout:", to: "[moderation has been enacted on this post]"},
+    { from: ":sexsmug:", to: "[moderation has been enacted on this post]"},
+    { from: ":sexblush:", to: "[moderation has been enacted on this post]"},
+    { from: ":sexceiling:", to: "[moderation has been enacted on this post]"},
+    { from: ":sex:", to: "[moderation has been enacted on this post]"},
+    { from: ":sex...:", to: "[moderation has been enacted on this post]"},
+    { from: ":irysex:", to: "[moderation has been enacted on this post]"},
+    { from: ":havesex:", to: "[moderation has been enacted on this post]"},
+    { from: ":anyasex:", to: "[moderation has been enacted on this post]"},
+    { from: ":sexsexsex:", to: "[moderation has been enacted on this post]"},
+    { from: ":sexsex:", to: "[moderation has been enacted on this post]"},
+    { from: ":muyuoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":kobouoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":baeuoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":irysuoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":lapuoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":okayuuoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":uohdepraved:", to: "[moderation has been enacted on this post]"},
+    { from: ":faunauoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":takuoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":pikauoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":35puoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":mikouoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":pekouoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":kiauoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":guoh:", to: "[moderation has been enacted on this post]"},
+    { from: ":marineNUT:", to: "[moderation has been enacted on this post]"},
+    { from: ":amelaugh:", to: "[moderation has been enacted on this post]"},
+    { from: ":shiogey:", to: "[moderation has been enacted on this post]"},
+    { from: ":shiorineutralexpression:", to: "[moderation has been enacted on this post]"},
+    { from: ":marinelaugh:", to: "[moderation has been enacted on this post]"},
+    { from: ":gurascared:", to: "[moderation has been enacted on this post]"},
+    { from: ":amewave:", to: "[moderation has been enacted on this post]"},
+    { from: ":kronieawe:", to: "[moderation has been enacted on this post]"}
 ];
 
 // Anything here will be replaced globally regardless of username.
