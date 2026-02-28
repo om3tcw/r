@@ -75,7 +75,7 @@ const UOH_MODE_REPLACEMENTS = [
     {from: ":lapuoh:", toImage:"https://cracklej.win/gzldV61DX6.jpg"}
 ];
 
-const UOH_MODE_ON = true;
+const UOH_MODE_ON = false;
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
 const UOH_TRIGGER_LOOKUP_KEYS = ["uoh"];
 const ACTIVE_GLOBAL_WORD_REPLACEMENTS = UOH_MODE_ON
