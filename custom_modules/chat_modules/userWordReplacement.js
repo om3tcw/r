@@ -72,9 +72,6 @@ const GLOBAL_WORD_REPLACEMENTS = [];
 // UOH mode configuration.
 const UOH_MODE_REPLACEMENTS = [
     {from: "uoh", to:"I miss the good old days where I would spend weeks on the Epstein Island **** and eating children"},
-    {from: "fuck", to:"oy vey"},
-    {from: "shit", to:"oy vey"},
-    {from: "damn", to:"oy vey"},
     {from: ":lapuoh:", toImage:"https://cracklej.win/gzldV61DX6.jpg"}
 ];
 
