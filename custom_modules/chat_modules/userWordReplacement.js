@@ -1,6 +1,6 @@
 // Father forgive me for this file jesus wept, the uoh mode shit is ugly but its a meme so it'll be short lived
 // List of usernames to target
-const TARGET_USERNAMES = ["NinoValt"];
+const TARGET_USERNAMES = [];
 
 // Anything here will only be replaced if the sender is included in TARGET_USERNAMES.
 // Emotes can be matched by their exact title (e.g. ":uoh:").
