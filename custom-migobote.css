@@ -3169,7 +3169,7 @@ img.channel-emote[title$=":inawinner:"] {
 
 .chat-msg-iTako .username:after {
     font-size: 14px;
-    content: 'GroomedTako: ';
+    content: 'SurvivorTako: ';
 }
 
 .chat-msg-NinoValt .username {
@@ -3178,7 +3178,7 @@ img.channel-emote[title$=":inawinner:"] {
 
 .chat-msg-NinoValt .username:after {
     font-size: 14px;
-    content: 'NonceValt: ';
+    content: 'NinaValt: ';
 }
 
 /* end of username edits */
