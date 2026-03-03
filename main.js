@@ -35,6 +35,7 @@ const ModulePaths = [
     { HoloPeek: `holopeek/holoPeek.js` },
     { MessageModifications: `chat_modules/messageModifications.js`},
     { UserWordReplacement: `chat_modules/userWordReplacement.js`},
+    { MigoboteGold: `chat_modules/migobotegold.js`},
     { EnhancedEmotes: `chat_modules/enhancedEmotes.js` },
     { ImagePreview: `chat_modules/imagePreview.js` , isActive: 0, rank: -1},
     { HashUtil: `chat_modules/hashUtil.js` },
