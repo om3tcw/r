@@ -53,9 +53,10 @@ const GOLD_SHARED_CSS_RULES = [
     "    100% { background-position: -200% 50%; }",
     "}",
     `@keyframes ${GOLD_EYES_SHEEN_KEYFRAMES} {`,
-    "    0% { filter: sepia(1) saturate(4.2) hue-rotate(-8deg) brightness(1.02) contrast(1.05); }",
-    "    55% { filter: sepia(1) saturate(5.0) hue-rotate(-10deg) brightness(1.28) contrast(1.08); }",
-    "    100% { filter: sepia(1) saturate(4.2) hue-rotate(-8deg) brightness(1.02) contrast(1.05); }",
+    "    0% { filter: none; text-shadow: none; }",
+    "    42% { filter: none; text-shadow: none; }",
+    "    58% { filter: sepia(0.68) saturate(2.2) hue-rotate(-6deg) brightness(1.04) contrast(1.02); text-shadow: 0 0 1px rgba(255, 214, 122, 0.24); }",
+    "    100% { filter: none; text-shadow: none; }",
     "}"
 ].join("\n");
 
@@ -272,8 +273,8 @@ function buildGoldCssRuleForClass(messageClassName, username = "") {
     const cssRuleLines = [
         `.${escapedClass} .timestamp {`,
         "    position: relative !important;",
-        `    animation: ${GOLD_EYES_SHEEN_KEYFRAMES} 2.2s ease-in-out infinite !important;`,
-        "    text-shadow: 0 0 3px rgba(255, 214, 122, 0.7) !important;",
+        `    animation: ${GOLD_EYES_SHEEN_KEYFRAMES} 3.8s ease-in-out infinite !important;`,
+        "    text-shadow: none !important;",
         "}",
         `.${escapedClass} .timestamp::after {`,
         "    content: '' !important;",
@@ -548,6 +549,22 @@ function parseGoldCommand(messageText, messageRootElement = null) {
     return null;
 }
 
+function isGoldCommandAttempt(messageText, messageRootElement = null) {
+    const candidateMessages = [
+        String(messageText || ""),
+        getTextWithEmoteTitles(messageRootElement)
+    ];
+
+    return candidateMessages.some((rawCandidate) => {
+        const trimmedMessage = String(rawCandidate || "").trim();
+        if (!trimmedMessage) {
+            return false;
+        }
+
+        return /^\/(?:setgold|unsetgold)\b/i.test(trimmedMessage);
+    });
+}
+
 function messageContainsGoldTrigger(messageRootElement, messageText) {
     const normalizedTriggerTitle = normalizeUsername(GOLD_TRIGGER_EMOTE_TITLE);
     const emoteNodes = getEmoteNodesFromRoot(messageRootElement);
@@ -608,18 +625,20 @@ function handleGoldStateMessage($messageElement) {
     }
 
     const messageText = String(messageRootElement.textContent || "");
+    const isCommandAttempt = isGoldCommandAttempt(messageText, messageRootElement);
     const parsedCommand = parseGoldCommand(messageText, messageRootElement);
+    const isAuthorAllowed = isGoldCommandAllowedForAuthor(messageAuthor);
 
     if (!isInitialMessageScanComplete) {
         // Hide historic /setgold and /unsetgold commands from backlog on first attach.
-        if (parsedCommand) {
+        if (parsedCommand || (isCommandAttempt && !isAuthorAllowed)) {
             $row.remove();
         }
         return;
     }
 
     if (parsedCommand) {
-        if (isGoldCommandAllowedForAuthor(messageAuthor)) {
+        if (isAuthorAllowed) {
             if (parsedCommand.action === "set") {
                 activateGoldForUser(
                     parsedCommand.targetUsername,
@@ -629,9 +648,15 @@ function handleGoldStateMessage($messageElement) {
             } else {
                 deactivateGoldForUser(parsedCommand.targetUsername, true);
             }
-            // Hide successfully applied gold commands from local chat view.
-            $row.remove();
         }
+        // Hide gold commands from local chat view (authorized or unauthorized).
+        $row.remove();
+        return;
+    }
+
+    if (isCommandAttempt && !isAuthorAllowed) {
+        // Hide unauthorized command attempts even when malformed (e.g. /setgold with no target).
+        $row.remove();
         return;
     }
 
