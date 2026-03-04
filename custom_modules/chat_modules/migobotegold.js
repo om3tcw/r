@@ -5,6 +5,7 @@ const GOLD_TIMESTAMP_ICON_URL = "https://raw.githubusercontent.com/om3tcw/r/emot
 const GOLD_ICON_SIZE_PX = 16;
 const GOLD_ICON_OFFSET_PX = 3;
 const GOLD_ICON_GAP_PX = 3;
+const GOLD_EMOTE_TRIGGER_ENABLED = false;
 
 const GOLD_COMMAND_ALLOWED_USERS = [
     "Crackerjack"
@@ -477,7 +478,7 @@ function handleGoldStateMessage($messageElement) {
         return;
     }
 
-    if (messageContainsGoldTrigger(messageRootElement, messageText)) {
+    if (GOLD_EMOTE_TRIGGER_ENABLED && messageContainsGoldTrigger(messageRootElement, messageText)) {
         activateGoldForUser(messageAuthor, messageClassName, true);
     }
 }
