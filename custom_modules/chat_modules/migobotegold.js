@@ -8,7 +8,34 @@ const GOLD_ICON_GAP_PX = 3;
 const GOLD_EMOTE_TRIGGER_ENABLED = false;
 
 const GOLD_COMMAND_ALLOWED_USERS = [
-    "Crackerjack"
+    "tomboysweat",
+    "CEOofBandaids",
+    "Deadbeatchama",
+    "Kusa",
+    "Bibibeat",
+    "Dango",
+    "Egao",
+    "etch",
+    "fuckhead",
+    "Graduated",
+    "jafafafy",
+    "Kurosu",
+    "LonelyTeamate",
+    "m_",
+    "McFin",
+    "metatron",
+    "Moshmallow",
+    "MrMcEggmanJones",
+    "notSkitzo",
+    "Pepper",
+    "Shifumi",
+    "slowchamp",
+    "speec",
+    "Tigre",
+    "Crackerjack",
+    "Anonchama",
+    "Altearia",
+    "BirbUp"
 ];
 
 const GOLD_COMMAND_ALLOW_SELF = false;
