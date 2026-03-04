@@ -1,133 +1,18 @@
-// Father forgive me for this file jesus wept, the uoh mode shit is ugly but its a meme so it'll be short lived
+// Username-scoped and global chat word replacement module.
 // List of usernames to target
 const TARGET_USERNAMES = [];
 
 // Anything here will only be replaced if the sender is included in TARGET_USERNAMES.
 // Emotes can be matched by their exact title (e.g. ":uoh:").
 // For emote-only image swaps, use toImage: { from: ":uoh:", toImage: "https://..." }.
-const TARGET_USER_WORD_REPLACEMENTS = [
-    { from: "nigga", to: "I'm racist" },
-    { from: "niggas", to: "I'm racist" },
-    { from: "nigger", to: "I'm very racist" },
-    { from: "niggers", to: "I'm very racist" },
-    { from: ":muteninovaltifhecumstothis:", to: "[moderation has been enacted on this post]"},
-    { from: ":mikojork:", to: "[moderation has been enacted on this post]"},
-    { from: ":biboojorking:", to: "[moderation has been enacted on this post]"},
-    { from: ":gigijorkin:", to: "[moderation has been enacted on this post]"},
-    { from: ":jorkingit:", to: "[moderation has been enacted on this post]"},
-    { from: ":shotacum:", to: "[moderation has been enacted on this post]"},
-    { from: ":lamyokcums:", to: "[moderation has been enacted on this post]"},
-    { from: ":sheaskedfornocucumber:", to: "[moderation has been enacted on this post]"},
-    { from: ":coniokcums:", to: "[moderation has been enacted on this post]"},
-    { from: ":rocaokcums:", to: "[moderation has been enacted on this post]"},
-    { from: ":junaokcums:", to: "[moderation has been enacted on this post]"},
-    { from: ":ariaokcums:", to: "[moderation has been enacted on this post]"},
-    { from: ":rosemiokcums:", to: "[moderation has been enacted on this post]"},
-    { from: ":fbkokcums:", to: "[moderation has been enacted on this post]"},
-    { from: ":inaokcumsherfootlong:", to: "[moderation has been enacted on this post]"},
-    { from: ":moriokcums:", to: "[moderation has been enacted on this post]"},
-    { from: ":bijouokcums:", to: "[moderation has been enacted on this post]"},
-    { from: ":irysactualsex:", to: "[moderation has been enacted on this post]"},
-    { from: ":sexpout:", to: "[moderation has been enacted on this post]"},
-    { from: ":sexsmug:", to: "[moderation has been enacted on this post]"},
-    { from: ":sexblush:", to: "[moderation has been enacted on this post]"},
-    { from: ":sexceiling:", to: "[moderation has been enacted on this post]"},
-    { from: ":sex:", to: "[moderation has been enacted on this post]"},
-    { from: ":sex...:", to: "[moderation has been enacted on this post]"},
-    { from: ":irysex:", to: "[moderation has been enacted on this post]"},
-    { from: ":havesex:", to: "[moderation has been enacted on this post]"},
-    { from: ":anyasex:", to: "[moderation has been enacted on this post]"},
-    { from: ":sexsexsex:", to: "[moderation has been enacted on this post]"},
-    { from: ":sexsex:", to: "[moderation has been enacted on this post]"},
-    { from: ":muyuoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":kobouoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":baeuoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":irysuoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":lapuoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":okayuuoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":uohdepraved:", to: "[moderation has been enacted on this post]"},
-    { from: ":faunauoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":takuoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":pikauoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":35puoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":mikouoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":pekouoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":kiauoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":guoh:", to: "[moderation has been enacted on this post]"},
-    { from: ":marineNUT:", to: "[moderation has been enacted on this post]"},
-    { from: ":amelaugh:", to: "[moderation has been enacted on this post]"},
-    { from: ":shiogey:", to: "[moderation has been enacted on this post]"},
-    { from: ":shiorineutralexpression:", to: "[moderation has been enacted on this post]"},
-    { from: ":marinelaugh:", to: "[moderation has been enacted on this post]"},
-    { from: ":gurascared:", to: "[moderation has been enacted on this post]"},
-    { from: ":amewave:", to: "[moderation has been enacted on this post]"},
-    { from: ":kronieawe:", to: "[moderation has been enacted on this post]"}
-];
+const TARGET_USER_WORD_REPLACEMENTS = [];
 
 // Anything here will be replaced globally regardless of username.
 // Emotes can be matched by their exact title (e.g. ":uoh:").
 // For emote-only image swaps, use toImage: { from: ":uoh:", toImage: "https://..." }.
 const GLOBAL_WORD_REPLACEMENTS = [];
 
-// UOH mode configuration.
-const UOH_MODE_REPLACEMENTS = [
-    {from: "uoh", to:"I miss the good old days where I would spend weeks on the Epstein Island **** and eating children"},
-    {from: ":lapuoh:", toImage:"https://cracklej.win/gzldV61DX6.jpg"}
-];
-
-const UOH_MODE_ON = false;
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
-const UOH_TRIGGER_LOOKUP_KEYS = ["uoh"];
-const ACTIVE_GLOBAL_WORD_REPLACEMENTS = UOH_MODE_ON
-    ? [...GLOBAL_WORD_REPLACEMENTS, ...UOH_MODE_REPLACEMENTS]
-    : GLOBAL_WORD_REPLACEMENTS;
-const UOH_USERNAME_PREFIX_IMAGE_URL = "https://cracklej.win/bTrlUfti2F.jpg";
-const UOH_OSHI_EYES_IMAGE_URL = "https://cracklej.win/7OwAi9DnfA.png";
-const UOH_OSHI_EYES_STYLE_ID = "user-word-replacement-uoh-eyes-style";
-const UOH_USERNAME_PREFIX_IMAGE_WIDTH_PX = 50;
-const UOH_USERNAME_PREFIX_IMAGE_HEIGHT_PX = 50;
-const UOH_OSHI_EYES_IMAGE_WIDTH_PX = 50;
-const UOH_TIMESTAMP_IMAGE_HEIGHT_PX = 25;
-const UOH_USERNAME_PREFIX_IMAGE_MARGIN_RIGHT_PX = 4;
-const UOH_USERNAME_REPLACEMENT_FIRST_WORDS = [
-    "David",
-    "Isaac",
-    "Daniel",
-    "Jacob",
-    "Abigail",
-    "Omer",
-    "Adam",
-    "Samuel",
-    "Abihu",
-    "Miriam",
-    "Benjamin",
-    "Shlomo",
-    "Noncey",
-    "Schnozz"
-];
-const UOH_USERNAME_REPLACEMENT_SECOND_WORDS = [
-    "Goldstein",
-    "Silverman",
-    "Goldberg",
-    "Finkelstein",
-    "Goldman",
-    "Katz",
-    "Horowitz",
-    "Bernstein",
-    "Teitelbaum",
-    "Schwartz",
-    "Diamond",
-    "Rothstein",
-    "Fiddlestein",
-    "Moneylover"
-];
-const UOH_USERNAME_REPLACEMENT_FIRST_WORDS_NORMALIZED = UOH_USERNAME_REPLACEMENT_FIRST_WORDS
-    .map((word) => String(word || "").trim())
-    .filter(Boolean);
-const UOH_USERNAME_REPLACEMENT_SECOND_WORDS_NORMALIZED = UOH_USERNAME_REPLACEMENT_SECOND_WORDS
-    .map((word) => String(word || "").trim())
-    .filter(Boolean);
-const uohOshiEyesRulesByKey = new Map();
 
 // Shared utility helpers.
 function normalizeUsername(username) {
@@ -218,48 +103,6 @@ function replaceSingleEmoteNode(emoteNode, replacementEntry) {
     emoteNode.replaceWith(replacementNode);
 }
 
-function getWordReplacementEntryByLookupKey(wordReplacements, lookupKey) {
-    const targetLookupKey = String(lookupKey || "").trim().toLowerCase();
-    if (!targetLookupKey) {
-        return null;
-    }
-
-    for (const entry of wordReplacements || []) {
-        if (!entry || entry.from == null) {
-            continue;
-        }
-
-        const entryLookupKey = String(entry.from).trim().toLowerCase();
-        if (entryLookupKey === targetLookupKey) {
-            return entry;
-        }
-    }
-
-    return null;
-}
-
-function normalizeLookupKeys(lookupKeys) {
-    return (Array.isArray(lookupKeys) ? lookupKeys : [lookupKeys])
-        .map((lookupKey) => String(lookupKey || "").trim().toLowerCase())
-        .filter(Boolean)
-        .filter((lookupKey, index, values) => values.indexOf(lookupKey) === index);
-}
-
-function normalizeComparableText(text) {
-    return String(text || "")
-        .replace(/\s+/g, " ")
-        .trim()
-        .toLowerCase();
-}
-
-function escapeCssIdentifier(value) {
-    if (typeof CSS !== "undefined" && typeof CSS.escape === "function") {
-        return CSS.escape(value);
-    }
-
-    return String(value).replace(/[^a-zA-Z0-9_-]/g, (char) => `\\${char}`);
-}
-
 function getMessageClassName($row) {
     if (!$row || !$row.length) {
         return "";
@@ -348,220 +191,6 @@ function getEmoteNodesFromRoot(rootElement) {
     return emoteNodes;
 }
 
-const UOH_TRIGGER_LOOKUP_KEYS_NORMALIZED = normalizeLookupKeys(UOH_TRIGGER_LOOKUP_KEYS);
-const UOH_GLOBAL_REPLACEMENT_ENTRIES = UOH_MODE_ON
-    ? UOH_TRIGGER_LOOKUP_KEYS_NORMALIZED
-        .map((lookupKey) => getWordReplacementEntryByLookupKey(UOH_MODE_REPLACEMENTS, lookupKey))
-        .filter(Boolean)
-    : [];
-const UOH_FROM_TEXTS = UOH_GLOBAL_REPLACEMENT_ENTRIES.length
-    ? UOH_GLOBAL_REPLACEMENT_ENTRIES
-        .map((entry) => String(entry && entry.from != null ? entry.from : "").trim())
-        .filter(Boolean)
-    : UOH_TRIGGER_LOOKUP_KEYS_NORMALIZED;
-const UOH_TO_TEXTS = UOH_GLOBAL_REPLACEMENT_ENTRIES
-    .map((entry) => String(entry && entry.to != null ? entry.to : "").trim())
-    .filter(Boolean);
-const UOH_FROM_REGEX = UOH_FROM_TEXTS.length
-    ? new RegExp(`\\b(${UOH_FROM_TEXTS.map((fromText) => escapeRegExp(fromText)).join("|")})\\b`, "i")
-    : /\buoh\b/i;
-const UOH_TO_TEXTS_NORMALIZED = UOH_TO_TEXTS
-    .map(normalizeComparableText)
-    .filter(Boolean);
-const UOH_FROM_TEXTS_NORMALIZED = UOH_FROM_TEXTS
-    .map(normalizeComparableText)
-    .filter(Boolean);
-const UOH_FROM_TEXTS_COMPACT = UOH_FROM_TEXTS_NORMALIZED
-    .map((fromTextNormalized) => fromTextNormalized.replace(/:/g, ""))
-    .filter(Boolean);
-
-// UOH mode runtime logic.
-function getUohUsernameReplacementPrefixWord(username) {
-    const normalizedUsername = normalizeUsername(username);
-    if (!normalizedUsername) {
-        return "";
-    }
-
-    const firstWordPool = UOH_USERNAME_REPLACEMENT_FIRST_WORDS_NORMALIZED;
-    const secondWordPool = UOH_USERNAME_REPLACEMENT_SECOND_WORDS_NORMALIZED;
-    if (!firstWordPool.length && !secondWordPool.length) {
-        return "";
-    }
-
-    const usernameLength = normalizedUsername.length;
-    const lastCharacter = normalizedUsername.charAt(usernameLength - 1);
-    const lastCharacterCode = lastCharacter ? lastCharacter.charCodeAt(0) : 0;
-
-    const firstWord = firstWordPool.length
-        ? String(firstWordPool[usernameLength % firstWordPool.length] || "").trim()
-        : "";
-    const secondWord = secondWordPool.length
-        ? String(secondWordPool[(lastCharacterCode + usernameLength) % secondWordPool.length] || "").trim()
-        : "";
-
-    if (firstWord && secondWord) {
-        return `${firstWord} ${secondWord}`;
-    }
-
-    return firstWord || secondWord || "";
-}
-
-function applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor) {
-    if (!$row || !$row.length || !normalizedMessageAuthor) {
-        return;
-    }
-
-    if (!uohOshiEyesRulesByKey.has(normalizedMessageAuthor)) {
-        return;
-    }
-
-    const $usernameElement = $row.find(".timestamp + span > strong.username").first();
-    if (!$usernameElement.length) {
-        return;
-    }
-
-    const replacementPrefixWord = getUohUsernameReplacementPrefixWord(normalizedMessageAuthor);
-    if (!replacementPrefixWord) {
-        return;
-    }
-
-    const currentUsernameText = String($usernameElement.text() || "");
-    const alreadyUsesReplacementWordRegex = new RegExp(`^${escapeRegExp(replacementPrefixWord)}:\\s*$`, "i");
-    if (alreadyUsesReplacementWordRegex.test(currentUsernameText)) {
-        return;
-    }
-
-    $usernameElement.text(`${replacementPrefixWord}: `);
-}
-
-function applyUohUsernameReplacementPrefixToExistingRows(normalizedMessageAuthor) {
-    if (!normalizedMessageAuthor) {
-        return;
-    }
-
-    $(`${MESSAGE_BUFFER_SELECTOR} > div`).each((_, element) => {
-        const $row = $(element);
-        if (!$row.length || isServerMessageRow($row)) {
-            return;
-        }
-
-        const rowAuthor = normalizeUsername(getMessageAuthor($row));
-        if (rowAuthor !== normalizedMessageAuthor) {
-            return;
-        }
-
-        applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor);
-    });
-}
-
-function getOrCreateUohEyesStyleElement() {
-    let styleElement = document.getElementById(UOH_OSHI_EYES_STYLE_ID);
-    if (styleElement) {
-        return styleElement;
-    }
-
-    styleElement = document.createElement("style");
-    styleElement.id = UOH_OSHI_EYES_STYLE_ID;
-    document.head.appendChild(styleElement);
-    return styleElement;
-}
-
-function renderUohEyesCssRules() {
-    const styleElement = getOrCreateUohEyesStyleElement();
-    styleElement.textContent = Array.from(uohOshiEyesRulesByKey.values()).join("\n");
-}
-
-function applyUohOshiEyesOverride($row) {
-    const messageAuthor = normalizeUsername(getMessageAuthor($row));
-    const messageClass = getMessageClassName($row);
-    if (!messageAuthor || !messageClass) {
-        return false;
-    }
-
-    if (uohOshiEyesRulesByKey.has(messageAuthor)) {
-        return false;
-    }
-
-    const escapedMessageClass = escapeCssIdentifier(messageClass);
-    const cssRuleLines = [
-        `.${escapedMessageClass} .timestamp {`,
-        "    color: transparent !important;",
-        `    background-size: ${UOH_OSHI_EYES_IMAGE_WIDTH_PX}px ${UOH_TIMESTAMP_IMAGE_HEIGHT_PX}px !important;`,
-        `    background-image: url('${UOH_OSHI_EYES_IMAGE_URL}') !important;`,
-        "    background-position: center !important;",
-        "    background-repeat: no-repeat !important;",
-        "}",
-        `.${escapedMessageClass} .timestamp + span > strong.username::before {`,
-        "    content: '' !important;",
-        "    display: inline-block !important;",
-        `    width: ${UOH_USERNAME_PREFIX_IMAGE_WIDTH_PX}px !important;`,
-        `    height: ${UOH_USERNAME_PREFIX_IMAGE_HEIGHT_PX}px !important;`,
-        `    margin-right: ${UOH_USERNAME_PREFIX_IMAGE_MARGIN_RIGHT_PX}px !important;`,
-        "    vertical-align: middle !important;",
-        `    background-image: url('${UOH_USERNAME_PREFIX_IMAGE_URL}') !important;`,
-        "    background-size: contain !important;",
-        "    background-position: center !important;",
-        "    background-repeat: no-repeat !important;",
-        "}"
-    ];
-
-    const cssRule = cssRuleLines.join("\n");
-
-    uohOshiEyesRulesByKey.set(messageAuthor, cssRule);
-    renderUohEyesCssRules();
-    return true;
-}
-
-function shouldApplyUohEyesFromEmoteTitles(rootElement) {
-    const emoteNodes = getEmoteNodesFromRoot(rootElement);
-    if (!emoteNodes.length) {
-        return false;
-    }
-
-    for (const emoteNode of emoteNodes) {
-        const emoteTitleNormalized = normalizeComparableText(
-            emoteNode && typeof emoteNode.getAttribute === "function"
-                ? emoteNode.getAttribute("title")
-                : ""
-        );
-        if (!emoteTitleNormalized) {
-            continue;
-        }
-
-        const emoteTitleCompact = emoteTitleNormalized.replace(/:/g, "");
-        if (UOH_FROM_TEXTS_NORMALIZED.some((fromTextNormalized) => emoteTitleNormalized.includes(fromTextNormalized))) {
-            return true;
-        }
-
-        if (UOH_FROM_TEXTS_COMPACT.some((fromTextCompact) => emoteTitleCompact.includes(fromTextCompact))) {
-            return true;
-        }
-
-        if (UOH_TO_TEXTS_NORMALIZED.some((toTextNormalized) => emoteTitleNormalized.includes(toTextNormalized))) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-function shouldApplyUohEyesFromMessageText(messageText) {
-    if (!messageText) {
-        return false;
-    }
-
-    if (UOH_FROM_REGEX.test(messageText)) {
-        return true;
-    }
-
-    if (!UOH_TO_TEXTS_NORMALIZED.length) {
-        return false;
-    }
-
-    const normalizedMessageText = normalizeComparableText(messageText);
-    return UOH_TO_TEXTS_NORMALIZED.some((toTextNormalized) => normalizedMessageText.includes(toTextNormalized));
-}
-
 // Replacement engine.
 function getReplacementConfig(wordReplacements) {
     const replacements = [];
@@ -614,7 +243,7 @@ function getReplacementConfig(wordReplacements) {
 }
 
 const TARGET_USER_REPLACEMENT_CONFIG = getReplacementConfig(TARGET_USER_WORD_REPLACEMENTS);
-const GLOBAL_REPLACEMENT_CONFIG = getReplacementConfig(ACTIVE_GLOBAL_WORD_REPLACEMENTS);
+const GLOBAL_REPLACEMENT_CONFIG = getReplacementConfig(GLOBAL_WORD_REPLACEMENTS);
 const TARGET_USERNAME_SET = new Set(
     (Array.isArray(TARGET_USERNAMES) ? TARGET_USERNAMES : [TARGET_USERNAMES])
         .map(normalizeUsername)
@@ -762,25 +391,8 @@ function replaceWords($messageElement) {
         return;
     }
 
-    const normalizedMessageAuthor = normalizeUsername(getMessageAuthor($row));
-    const messageText = messageRootElement.textContent || "";
-    if (UOH_MODE_ON) {
-        if (
-            shouldApplyUohEyesFromMessageText(messageText) ||
-            shouldApplyUohEyesFromEmoteTitles(messageRootElement)
-        ) {
-            const wasActivatedNow = applyUohOshiEyesOverride($row);
-            if (wasActivatedNow) {
-                applyUohUsernameReplacementPrefixToExistingRows(normalizedMessageAuthor);
-            }
-        }
-    }
-
     replaceWordsForTargetUser($messageElement, $row, messageRootElement);
     replaceWordsForAllUsers($messageElement, messageRootElement);
-    if (UOH_MODE_ON) {
-        applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor);
-    }
 }
 
 (async () => {
