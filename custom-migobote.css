@@ -3122,6 +3122,24 @@ img.channel-emote[title$=":inawinner:"] {
 
 /* username edits*/
 
+.chat-msg-McFin .username {
+    font-size: 0;
+}
+
+.chat-msg-McFin .username:after {
+    font-size: 14px;
+    content: 'McSmug: ';
+}
+
+.chat-msg-migoSMUG .username {
+    font-size: 0;
+}
+
+.chat-msg-migoSMUG.username:after {
+    font-size: 14px;
+    content: 'migoFIN: ';
+}
+
 .chat-msg-Bimmygarasu .username {
     font-size: 0;
 }
