@@ -3135,7 +3135,7 @@ img.channel-emote[title$=":inawinner:"] {
     font-size: 0;
 }
 
-.chat-msg-migoSMUG.username:after {
+.chat-msg-migoSMUG .username:after {
     font-size: 14px;
     content: 'migoFIN: ';
 }
