@@ -3122,8 +3122,23 @@ img.channel-emote[title$=":inawinner:"] {
 
 /* username edits*/
 
+.chat-msg-Bimmygarasu .username {
+    font-size: 0;
+}
 
+.chat-msg-Bimmygarasu .username:after {
+    font-size: 14px;
+    content: 'Bimmybastard: ';
+}
 
+.chat-msg-rratbastard .username {
+    font-size: 0;
+}
+
+.chat-msg-rratbastard .username:after {
+    font-size: 14px;
+    content: 'rratgarasu: ';
+}
 
 .chat-msg-marble .username {
     font-size: 0;
