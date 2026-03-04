@@ -3134,6 +3134,24 @@ img.channel-emote[title$=":inawinner:"] {
     content: 'justmarble: ';
 }
 
+.chat-msg-cucumbersama .username {
+    font-size: 0;
+}
+
+.chat-msg-cucumbersama .username:after {
+    font-size: 14px;
+    content: 'cucumbertomo: ';
+}
+
+.chat-msg-sodatomo .username {
+    font-size: 0;
+}
+
+.chat-msg-sodatomo .username:after {
+    font-size: 14px;
+    content: 'sodasama: ';
+}
+
 .chat-msg-CEOofBandaids .username {
     font-size: 0;
 }
