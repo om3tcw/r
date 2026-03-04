@@ -170,6 +170,60 @@ function getEmoteNodesFromRoot(rootElement) {
     return emoteNodes;
 }
 
+function getTextWithEmoteTitles(rootElement) {
+    if (!rootElement) {
+        return "";
+    }
+
+    const textChunks = [];
+
+    function walkNode(node) {
+        if (!node) {
+            return;
+        }
+
+        if (node.nodeType === 3) {
+            textChunks.push(String(node.nodeValue || ""));
+            return;
+        }
+
+        if (node.nodeType !== 1) {
+            return;
+        }
+
+        const element = node;
+        if (element.matches && element.matches("img.channel-emote[title]")) {
+            const emoteTitle = String(element.getAttribute("title") || "").trim();
+            if (emoteTitle) {
+                textChunks.push(` ${emoteTitle} `);
+            }
+            return;
+        }
+
+        const childNodes = element.childNodes || [];
+        for (let i = 0; i < childNodes.length; i += 1) {
+            walkNode(childNodes[i]);
+        }
+    }
+
+    walkNode(rootElement);
+    return textChunks.join("");
+}
+
+function normalizeGoldCommandTarget(rawTarget) {
+    const trimmedTarget = String(rawTarget || "").trim();
+    if (!trimmedTarget) {
+        return "";
+    }
+
+    const emoteWrappedTargetMatch = trimmedTarget.match(/^:([^:\s]+):$/);
+    if (emoteWrappedTargetMatch) {
+        return String(emoteWrappedTargetMatch[1] || "").trim();
+    }
+
+    return trimmedTarget;
+}
+
 const GOLD_TRIGGER_TEXT_REGEX = new RegExp(
     `(^|\\s)${escapeRegExp(GOLD_TRIGGER_EMOTE_TITLE)}($|\\s)`,
     "i"
@@ -235,17 +289,24 @@ function buildGoldCssRuleForClass(messageClassName, username = "") {
         `.${escapedClass} .timestamp + span {`,
         `    padding-left: ${iconSpanPaddingPx}px !important;`,
         "}",
-        `.${escapedClass} .timestamp + span > strong.username {`,
-        "    color: #f6dd9a !important;",
-        "    background-image: linear-gradient(115deg, #7d5a1b 0%, #fff4cd 42%, #e0ae4f 52%, #fff8da 60%, #7d5a1b 100%) !important;",
-        "    background-size: 220% 100% !important;",
-        "    background-repeat: no-repeat !important;",
-        "    -webkit-background-clip: text !important;",
-        "    background-clip: text !important;",
-        "    -webkit-text-fill-color: transparent !important;",
-        `    animation: ${GOLD_USERNAME_SHEEN_KEYFRAMES} 2.5s linear infinite !important;`,
-        "    filter: drop-shadow(0.5px 0.5px 0.5px #d6a441) !important;",
-        "    text-shadow: 0 0 1.5px rgba(255, 213, 118, 0.35) !important;",
+        `.${escapedClass} .timestamp + span > strong.username,`,
+        `.${escapedClass} > span > strong.username,`,
+        `.${escapedClass} strong.username {`,
+            "    color: #f6dd9a !important;",
+            "    background-image: linear-gradient(115deg, #7d5a1b 0%, #fff4cd 42%, #e0ae4f 52%, #fff8da 60%, #7d5a1b 100%) !important;",
+            "    background-size: 220% 100% !important;",
+            "    background-repeat: no-repeat !important;",
+            "    -webkit-background-clip: text !important;",
+            "    background-clip: text !important;",
+            "    -webkit-text-fill-color: transparent !important;",
+            "    font-size: inherit !important;",
+            `    animation: ${GOLD_USERNAME_SHEEN_KEYFRAMES} 2.5s linear infinite !important;`,
+            "    filter: drop-shadow(0.5px 0.5px 0.5px #d6a441) !important;",
+            "    text-shadow: 0 0 1.5px rgba(255, 213, 118, 0.35) !important;",
+            "}",
+        `.${escapedClass} strong.username::before,`,
+        `.${escapedClass} strong.username::after {`,
+            "    content: none !important;",
         "}"
     ];
 
@@ -260,13 +321,12 @@ function buildGoldCssRuleForClass(messageClassName, username = "") {
     return cssRuleLines.join("\n");
 }
 
-function postGoldSystemMessage(username) {
-    const safeUsername = String(username || "").trim();
-    if (!safeUsername) {
+function postGoldStatusSystemMessage(message) {
+    const safeMessage = String(message || "").trim();
+    if (!safeMessage) {
         return;
     }
 
-    const message = `System: "${safeUsername}" has purchased Mikobote Gold! Thanks for your support!`;
     const $messageBuffer = $(MESSAGE_BUFFER_SELECTOR);
     if (!$messageBuffer.length) {
         return;
@@ -296,13 +356,35 @@ function postGoldSystemMessage(username) {
 
     $("<span>", {
         class: "server-whisper",
-        text: message
+        text: safeMessage
     }).appendTo($fakeSystemRow);
 
     $messageBuffer.append($fakeSystemRow);
     if (shouldAutoScroll) {
         messageBufferElement.scrollTop = messageBufferElement.scrollHeight;
     }
+}
+
+function postGoldSystemMessage(username) {
+    const safeUsername = String(username || "").trim();
+    if (!safeUsername) {
+        return;
+    }
+
+    postGoldStatusSystemMessage(
+        `System: "${safeUsername}" has purchased Mikobote Gold! Thanks for your support!`
+    );
+}
+
+function postGoldRemovalSystemMessage(username) {
+    const safeUsername = String(username || "").trim();
+    if (!safeUsername) {
+        return;
+    }
+
+    postGoldStatusSystemMessage(
+        `System: "${safeUsername}'s" Card bounced, as such they are no longer a Mikobote Gold member. Broke ass.`
+    );
 }
 
 function findMessageClassForUsername(username) {
@@ -391,6 +473,26 @@ function activateGoldForUser(username, messageClassName = "", shouldAnnounce = t
     return true;
 }
 
+function deactivateGoldForUser(usernameOrKey, shouldAnnounce = true) {
+    const userKey = normalizeUsername(usernameOrKey);
+    if (!userKey || !goldUsersByKey.has(userKey)) {
+        return false;
+    }
+
+    const existingState = goldUsersByKey.get(userKey);
+    goldUsersByKey.delete(userKey);
+    goldRulesByKey.delete(userKey);
+    renderGoldCssRules();
+
+    if (shouldAnnounce) {
+        postGoldRemovalSystemMessage(
+            existingState && existingState.displayName ? existingState.displayName : String(usernameOrKey || "").trim()
+        );
+    }
+
+    return true;
+}
+
 function isGoldCommandAllowedForAuthor(authorUsername) {
     const normalizedAuthor = normalizeUsername(authorUsername);
     if (!normalizedAuthor) {
@@ -409,21 +511,41 @@ function isGoldCommandAllowedForAuthor(authorUsername) {
     return normalizedClientName && normalizedClientName === normalizedAuthor;
 }
 
-function parseSetGoldCommand(messageText) {
-    const trimmedMessage = String(messageText || "").trim();
-    const commandMatch = trimmedMessage.match(/^\/setgold\s+(.+)$/i);
-    if (!commandMatch) {
-        return "";
+function parseGoldCommand(messageText, messageRootElement = null) {
+    const candidateMessages = [
+        String(messageText || ""),
+        getTextWithEmoteTitles(messageRootElement)
+    ];
+
+    for (const rawCandidate of candidateMessages) {
+        const trimmedMessage = String(rawCandidate || "").trim();
+        if (!trimmedMessage) {
+            continue;
+        }
+
+        const commandMatch = trimmedMessage.match(/^\/(setgold|unsetgold)\s+(.+)$/i);
+        if (!commandMatch) {
+            continue;
+        }
+
+        const action = String(commandMatch[1] || "").trim().toLowerCase();
+        const commandArgument = String(commandMatch[2] || "").trim();
+        if (!commandArgument) {
+            continue;
+        }
+
+        // Cytube usernames generally do not contain spaces; keep the parser strict.
+        const firstToken = commandArgument.split(/\s+/)[0];
+        const normalizedTarget = normalizeGoldCommandTarget(firstToken);
+        if (normalizedTarget) {
+            return {
+                action: action === "unsetgold" ? "unset" : "set",
+                targetUsername: normalizedTarget
+            };
+        }
     }
 
-    const commandArgument = String(commandMatch[1] || "").trim();
-    if (!commandArgument) {
-        return "";
-    }
-
-    // Cytube usernames generally do not contain spaces; keep the parser strict.
-    const firstToken = commandArgument.split(/\s+/)[0];
-    return String(firstToken || "").trim();
+    return null;
 }
 
 function messageContainsGoldTrigger(messageRootElement, messageText) {
@@ -486,19 +608,27 @@ function handleGoldStateMessage($messageElement) {
     }
 
     const messageText = String(messageRootElement.textContent || "");
-    const targetFromCommand = parseSetGoldCommand(messageText);
+    const parsedCommand = parseGoldCommand(messageText, messageRootElement);
 
     if (!isInitialMessageScanComplete) {
-        // Hide historic /setgold commands from backlog on first attach.
-        if (targetFromCommand) {
+        // Hide historic /setgold and /unsetgold commands from backlog on first attach.
+        if (parsedCommand) {
             $row.remove();
         }
         return;
     }
 
-    if (targetFromCommand) {
+    if (parsedCommand) {
         if (isGoldCommandAllowedForAuthor(messageAuthor)) {
-            activateGoldForUser(targetFromCommand, findMessageClassForUsername(targetFromCommand), true);
+            if (parsedCommand.action === "set") {
+                activateGoldForUser(
+                    parsedCommand.targetUsername,
+                    findMessageClassForUsername(parsedCommand.targetUsername),
+                    true
+                );
+            } else {
+                deactivateGoldForUser(parsedCommand.targetUsername, true);
+            }
             // Hide successfully applied gold commands from local chat view.
             $row.remove();
         }
