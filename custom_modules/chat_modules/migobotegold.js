@@ -294,7 +294,7 @@ function buildGoldCssRuleForClass(messageClassName, username = "") {
         `.${escapedClass} > span > strong.username,`,
         `.${escapedClass} strong.username {`,
             "    color: #f6dd9a !important;",
-            "    background-image: linear-gradient(115deg, #7d5a1b 0%, #fff4cd 42%, #e0ae4f 52%, #fff8da 60%, #7d5a1b 100%) !important;",
+            "    background-image: linear-gradient(115deg, #cd8f1e 0%, #ffc700 42%, #ffa701 52%, #ffd000 60%, #bc8420 100%) !important;",
             "    background-size: 220% 100% !important;",
             "    background-repeat: no-repeat !important;",
             "    -webkit-background-clip: text !important;",
@@ -314,7 +314,7 @@ function buildGoldCssRuleForClass(messageClassName, username = "") {
     if (escapedUserlistClass) {
         cssRuleLines.push(
             `.${escapedUserlistClass} {`,
-            "    color: rgb(255, 214, 122) !important;",
+            "    color: rgb(255, 179, 0) !important;",
             "}"
         );
     }
