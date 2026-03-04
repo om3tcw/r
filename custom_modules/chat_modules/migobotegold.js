@@ -6,12 +6,10 @@ const GOLD_ICON_SIZE_PX = 16;
 const GOLD_ICON_OFFSET_PX = 3;
 const GOLD_ICON_GAP_PX = 3;
 
-// Add trusted usernames here. Comparisons are case-insensitive.
 const GOLD_COMMAND_ALLOWED_USERS = [
     "Crackerjack"
 ];
 
-// Keep true to let your own client account run /setgold as well.
 const GOLD_COMMAND_ALLOW_SELF = false;
 
 const goldUsersByKey = new Map();
@@ -169,11 +167,27 @@ function renderGoldCssRules() {
     ].join("\n");
 }
 
-function buildGoldCssRuleForClass(messageClassName) {
+function getUserlistClassName(username, messageClassName = "") {
+    const safeUsername = String(username || "").trim();
+    if (safeUsername) {
+        return `userlist-${safeUsername.replace(/[^\w-]/g, "\\$")}`;
+    }
+
+    const classSuffix = String(messageClassName || "").trim().replace(/^chat-msg-/, "");
+    if (!classSuffix) {
+        return "";
+    }
+
+    return `userlist-${classSuffix.replace(/[^\w-]/g, "\\$")}`;
+}
+
+function buildGoldCssRuleForClass(messageClassName, username = "") {
     const escapedClass = escapeCssIdentifier(messageClassName);
+    const userlistClassName = getUserlistClassName(username, messageClassName);
+    const escapedUserlistClass = userlistClassName ? escapeCssIdentifier(userlistClassName) : "";
     const iconSpanPaddingPx = GOLD_ICON_SIZE_PX + GOLD_ICON_OFFSET_PX + GOLD_ICON_GAP_PX;
 
-    return [
+    const cssRuleLines = [
         `.${escapedClass} .timestamp {`,
         "    position: relative !important;",
         `    animation: ${GOLD_EYES_SHEEN_KEYFRAMES} 2.2s ease-in-out infinite !important;`,
@@ -205,7 +219,17 @@ function buildGoldCssRuleForClass(messageClassName) {
         "    filter: drop-shadow(0.5px 0.5px 0.5px #d6a441) !important;",
         "    text-shadow: 0 0 1.5px rgba(255, 213, 118, 0.35) !important;",
         "}"
-    ].join("\n");
+    ];
+
+    if (escapedUserlistClass) {
+        cssRuleLines.push(
+            `.${escapedUserlistClass} {`,
+            "    color: rgb(255, 214, 122) !important;",
+            "}"
+        );
+    }
+
+    return cssRuleLines.join("\n");
 }
 
 function postGoldSystemMessage(username) {
@@ -295,7 +319,7 @@ function upsertGoldRuleForUser(userKey) {
         return;
     }
 
-    const cssRule = buildGoldCssRuleForClass(userState.messageClassName);
+    const cssRule = buildGoldCssRuleForClass(userState.messageClassName, userState.displayName);
     goldRulesByKey.set(userKey, cssRule);
     renderGoldCssRules();
 }
