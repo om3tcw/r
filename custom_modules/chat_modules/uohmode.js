@@ -6,67 +6,21 @@ const UOH_COMMAND_MIN_RANK = typeof Rank !== "undefined" && Rank && Rank.Moderat
     ? Rank.Moderator
     : 2;
 
-const UOH_MODE_REPLACEMENTS = [
-    { from: "uoh", to: "I miss the good old days where I would spend weeks on the Epstein Island **** and eating children" },
-    { from: ":lapuoh:", toImage: "https://cracklej.win/gzldV61DX6.jpg" }
-];
+const UOH_MODE_REPLACEMENTS = [];
 
 const UOH_USER_WORD_REPLACEMENTS = [
     ...UOH_MODE_REPLACEMENTS,
 
 ];
 
-const UOH_USERNAME_PREFIX_IMAGE_URL = "https://cracklej.win/bTrlUfti2F.jpg";
-const UOH_OSHI_EYES_IMAGE_URL = "https://cracklej.win/7OwAi9DnfA.png";
+const UOH_USERNAME_PREFIX_IMAGE_URL = "https://cracklej.win/djtyT473HU.png";
+const UOH_OSHI_EYES_IMAGE_URL = "https://cracklej.win/aje2Uww34L.png";
 const UOH_OSHI_EYES_STYLE_ID = "uohmode-oshieyes-style";
-const UOH_USERNAME_PREFIX_IMAGE_WIDTH_PX = 50;
-const UOH_USERNAME_PREFIX_IMAGE_HEIGHT_PX = 50;
+const UOH_USERNAME_PREFIX_IMAGE_WIDTH_PX = 20;
+const UOH_USERNAME_PREFIX_IMAGE_HEIGHT_PX = 20;
 const UOH_OSHI_EYES_IMAGE_WIDTH_PX = 50;
 const UOH_TIMESTAMP_IMAGE_HEIGHT_PX = 15;
 const UOH_USERNAME_PREFIX_IMAGE_MARGIN_RIGHT_PX = 4;
-
-const UOH_USERNAME_REPLACEMENT_FIRST_WORDS = [
-    "David",
-    "Isaac",
-    "Daniel",
-    "Jacob",
-    "Abigail",
-    "Omer",
-    "Adam",
-    "Samuel",
-    "Abihu",
-    "Miriam",
-    "Benjamin",
-    "Shlomo",
-    "Noncey",
-    "Schnozz",
-    "Holden"
-];
-
-const UOH_USERNAME_REPLACEMENT_SECOND_WORDS = [
-    "Goldstein",
-    "Silverman",
-    "Goldberg",
-    "Finkelstein",
-    "Goldman",
-    "Katz",
-    "Horowitz",
-    "Bernstein",
-    "Teitelbaum",
-    "Schwartz",
-    "Diamond",
-    "Rothstein",
-    "Fiddlestein",
-    "Moneylover",
-    "Bloodfeast"
-];
-
-const UOH_USERNAME_REPLACEMENT_FIRST_WORDS_NORMALIZED = UOH_USERNAME_REPLACEMENT_FIRST_WORDS
-    .map((word) => String(word || "").trim())
-    .filter(Boolean);
-const UOH_USERNAME_REPLACEMENT_SECOND_WORDS_NORMALIZED = UOH_USERNAME_REPLACEMENT_SECOND_WORDS
-    .map((word) => String(word || "").trim())
-    .filter(Boolean);
 const UOH_TRIGGER_LOOKUP_KEYS_NORMALIZED = (Array.isArray(UOH_TRIGGER_LOOKUP_KEYS) ? UOH_TRIGGER_LOOKUP_KEYS : [UOH_TRIGGER_LOOKUP_KEYS])
     .map((lookupKey) => String(lookupKey || "").trim().toLowerCase())
     .filter(Boolean)
@@ -79,7 +33,6 @@ const UOH_COMMAND_ALLOWED_USER_SET = new Set(
         .map(normalizeUsername)
         .filter(Boolean)
 );
-const UOH_USERNAME_ORIGINAL_TEXT_DATA_KEY = "uohOriginalText";
 const UOH_EMOTE_ORIGINAL_SRC_DATA_KEY = "uohOriginalSrc";
 const UOH_EMOTE_ORIGINAL_SRC_PRESENT_DATA_KEY = "uohOriginalSrcPresent";
 const UOH_EMOTE_ORIGINAL_TITLE_DATA_KEY = "uohOriginalTitle";
@@ -92,7 +45,6 @@ const uohRulesByKey = new Map();
 const knownMessageClassByUserKey = new Map();
 const modifiedUohTextNodes = new Set();
 const originalUohTextByNode = new WeakMap();
-const modifiedUohUsernameElements = new Set();
 const modifiedUohEmoteElements = new Set();
 let isUohModeEnabled = false;
 let isUohMessageTapAttached = false;
@@ -172,18 +124,6 @@ function rememberOriginalTextNodeValue(textNode) {
 
     originalUohTextByNode.set(textNode, String(textNode.nodeValue || ""));
     modifiedUohTextNodes.add(textNode);
-}
-
-function rememberOriginalUsernameText(usernameElement) {
-    if (!usernameElement || !usernameElement.dataset) {
-        return;
-    }
-
-    if (!hasDatasetValue(usernameElement, UOH_USERNAME_ORIGINAL_TEXT_DATA_KEY)) {
-        usernameElement.dataset[UOH_USERNAME_ORIGINAL_TEXT_DATA_KEY] = String(usernameElement.textContent || "");
-    }
-
-    modifiedUohUsernameElements.add(usernameElement);
 }
 
 function rememberOriginalElementAttribute(element, valueDataKey, presentDataKey, attributeName) {
@@ -472,84 +412,6 @@ function applyReplacementConfigToMessageRoot(messageRootElement, replacementConf
     replaceEmoteNodes(messageRootElement, replacementConfig);
 }
 
-function getUohUsernameReplacementPrefixWord(username) {
-    const normalizedUsername = normalizeUsername(username);
-    if (!normalizedUsername) {
-        return "";
-    }
-
-    const firstWordPool = UOH_USERNAME_REPLACEMENT_FIRST_WORDS_NORMALIZED;
-    const secondWordPool = UOH_USERNAME_REPLACEMENT_SECOND_WORDS_NORMALIZED;
-    if (!firstWordPool.length && !secondWordPool.length) {
-        return "";
-    }
-
-    const usernameLength = normalizedUsername.length;
-    const lastCharacter = normalizedUsername.charAt(usernameLength - 1);
-    const lastCharacterCode = lastCharacter ? lastCharacter.charCodeAt(0) : 0;
-
-    const firstWord = firstWordPool.length
-        ? String(firstWordPool[usernameLength % firstWordPool.length] || "").trim()
-        : "";
-    const secondWord = secondWordPool.length
-        ? String(secondWordPool[(lastCharacterCode + usernameLength) % secondWordPool.length] || "").trim()
-        : "";
-
-    if (firstWord && secondWord) {
-        return `${firstWord} ${secondWord}`;
-    }
-
-    return firstWord || secondWord || "";
-}
-
-function applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor) {
-    if (!$row || !$row.length || !normalizedMessageAuthor) {
-        return;
-    }
-
-    if (!activatedUohUsersByKey.has(normalizedMessageAuthor)) {
-        return;
-    }
-
-    const $usernameElement = $row.find(".timestamp + span > strong.username, strong.username").first();
-    if (!$usernameElement.length) {
-        return;
-    }
-
-    const replacementPrefixWord = getUohUsernameReplacementPrefixWord(normalizedMessageAuthor);
-    if (!replacementPrefixWord) {
-        return;
-    }
-
-    const desiredUsernameText = `${replacementPrefixWord}: `;
-    if (String($usernameElement.text() || "") === desiredUsernameText) {
-        return;
-    }
-
-    rememberOriginalUsernameText($usernameElement[0]);
-    $usernameElement.text(desiredUsernameText);
-}
-
-function applyUohUsernameReplacementPrefixToExistingRows(normalizedMessageAuthor) {
-    if (!normalizedMessageAuthor) {
-        return;
-    }
-
-    $(`${MESSAGE_BUFFER_SELECTOR} > div`).each((_, element) => {
-        const $row = $(element);
-        if (!$row.length || isServerMessageRow($row)) {
-            return;
-        }
-
-        const rowAuthor = normalizeUsername(getMessageAuthor($row));
-        if (rowAuthor !== normalizedMessageAuthor) {
-            return;
-        }
-
-        applyUohUsernameReplacementPrefixToRow($row, normalizedMessageAuthor);
-    });
-}
-
 function getOrCreateUohEyesStyleElement() {
     let styleElement = document.getElementById(UOH_OSHI_EYES_STYLE_ID);
     if (styleElement) {
@@ -575,17 +437,6 @@ function restoreModifiedTextNodes() {
         }
 
         modifiedUohTextNodes.delete(textNode);
-    }
-}
-
-function restoreModifiedUsernameElements() {
-    for (const usernameElement of Array.from(modifiedUohUsernameElements)) {
-        if (hasDatasetValue(usernameElement, UOH_USERNAME_ORIGINAL_TEXT_DATA_KEY)) {
-            usernameElement.textContent = usernameElement.dataset[UOH_USERNAME_ORIGINAL_TEXT_DATA_KEY];
-            delete usernameElement.dataset[UOH_USERNAME_ORIGINAL_TEXT_DATA_KEY];
-        }
-
-        modifiedUohUsernameElements.delete(usernameElement);
     }
 }
 
@@ -616,7 +467,6 @@ function restoreModifiedEmoteElements() {
 function restoreModifiedUohDom() {
     restoreModifiedTextNodes();
     restoreModifiedEmoteElements();
-    restoreModifiedUsernameElements();
 }
 
 function getFallbackMessageClassForUsername(username) {
@@ -723,7 +573,6 @@ function activateUohForUser(username, messageClassName = "") {
 
         if (changed) {
             upsertUohRuleForUser(userKey);
-            applyUohUsernameReplacementPrefixToExistingRows(userKey);
         }
         return false;
     }
@@ -734,7 +583,6 @@ function activateUohForUser(username, messageClassName = "") {
     });
 
     upsertUohRuleForUser(userKey);
-    applyUohUsernameReplacementPrefixToExistingRows(userKey);
     return true;
 }
 
@@ -814,7 +662,6 @@ function applyUohModeForMessageIfActive($row, messageRootElement) {
     }
 
     applyReplacementConfigToMessageRoot(messageRootElement, UOH_REPLACEMENT_CONFIG);
-    applyUohUsernameReplacementPrefixToRow($row, messageAuthorKey);
 }
 
 function postUohStatusSystemMessage(message) {
