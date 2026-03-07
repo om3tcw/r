@@ -1,5 +1,37 @@
 /* Start of Oshi Eyes */
 
+.chat-msg-WeakestPebble .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/bijou2.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-Its_Novel-EET .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/shiori6.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-AAkuma .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/gigi3.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-KoroneRape .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/korone.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
 .chat-msg-oogay .timestamp {
     color: transparent;
     background-size: 50px 15px;
