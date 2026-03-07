@@ -36,6 +36,7 @@ const ModulePaths = [
     { MessageModifications: `chat_modules/messageModifications.js`},
     { UserWordReplacement: `chat_modules/userWordReplacement.js`},
     { MigoboteGold: `chat_modules/migobotegold.js`},
+    { UohMode: `chat_modules/uohmode.js`},
     { EnhancedEmotes: `chat_modules/enhancedEmotes.js` },
     { ImagePreview: `chat_modules/imagePreview.js` , isActive: 0, rank: -1},
     { HashUtil: `chat_modules/hashUtil.js` },
@@ -52,7 +53,7 @@ function makeLiveCDNLink(fileName) {
     return  CURRENT_CDN +
             "/" +
             fileName +
-            "?ver=1-13-14"
+            "?ver=1-13-15"
 }
 
 //candidate to move to util.js
