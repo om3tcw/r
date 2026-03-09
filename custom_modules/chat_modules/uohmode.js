@@ -1,5 +1,5 @@
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
-const UOH_TRIGGER_LOOKUP_KEYS = ["uoh"];
+const UOH_TRIGGER_LOOKUP_KEYS = ["uoh", "pebblesob"];
 // Trusted live control commands: !uoh on | !uoh off
 const UOH_COMMAND_ALLOWED_USERS = [];
 const UOH_COMMAND_MIN_RANK = typeof Rank !== "undefined" && Rank && Rank.Moderator != null
