@@ -1,5 +1,37 @@
 /* Start of Oshi Eyes */
 
+.chat-msg-lorelinad .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/lorelinad.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-HagMuffLover .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/HagMuffLover.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-unainght .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/unainght.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-funnybloons .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/funnybloons.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
 .chat-msg-WeakestPebble .timestamp {
     color: transparent;
     background-size: 50px 15px;
