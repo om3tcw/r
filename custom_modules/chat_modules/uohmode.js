@@ -1,5 +1,5 @@
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
-const UOH_TRIGGER_LOOKUP_KEYS = ["uoh", "pebblesob"];
+const UOH_TRIGGER_LOOKUP_KEYS = ["uoh", "pebblesob", "pikacryreal"];
 // Trusted live control commands: !uoh on | !uoh off
 const UOH_COMMAND_ALLOWED_USERS = [];
 const UOH_COMMAND_MIN_RANK = typeof Rank !== "undefined" && Rank && Rank.Moderator != null
@@ -712,7 +712,7 @@ function postUohToggleSystemMessage(isEnabled, actorUsername) {
     const safeActor = String(actorUsername || "").trim();
     const actorSuffix = safeActor ? ` by "${safeActor}"` : "";
     postUohStatusSystemMessage(
-        `uoh`
+        ``
     );
 }
 
@@ -792,27 +792,27 @@ function getUohCommandAuthorRank(username) {
     return typeof Rank !== "undefined" && Rank && Rank.Member != null ? Rank.Member : 1;
 }
 
-function isUohCommandAllowedForAuthor(authorUsername) {
+function isCommandAllowedForAuthor(authorUsername) {
     const normalizedAuthor = normalizeUsername(authorUsername);
     if (!normalizedAuthor) {
         return false;
     }
 
-    if (UOH_COMMAND_ALLOWED_USER_SET.has(normalizedAuthor)) {
+    if (_COMMAND_ALLOWED_USER_SET.has(normalizedAuthor)) {
         return true;
     }
 
-    const authorRank = getUohCommandAuthorRank(authorUsername);
-    return Number.isFinite(authorRank) && authorRank >= UOH_COMMAND_MIN_RANK;
+    const authorRank = getCommandAuthorRank(authorUsername);
+    return Number.isFinite(authorRank) && authorRank >= _COMMAND_MIN_RANK;
 }
 
-function parseUohControlCommand(messageText) {
+function parseControlCommand(messageText) {
     const trimmedMessage = String(messageText || "").trim();
     if (!trimmedMessage) {
         return null;
     }
 
-    const commandMatch = trimmedMessage.match(/^(?:!|\/)(?:uoh|uohmode)\s+(on|off|enable|disable)\s*$/i);
+    const commandMatch = trimmedMessage.match(/^(?:!|\/)(?:|mode)\s+(on|off|enable|disable)\s*$/i);
     if (!commandMatch) {
         return null;
     }
@@ -823,27 +823,27 @@ function parseUohControlCommand(messageText) {
     };
 }
 
-function processUohMessageRow($row, messageRootElement, messageText = "") {
+function processMessageRow($row, messageRootElement, messageText = "") {
     const messageAuthor = getMessageAuthor($row);
     const messageClassName = getMessageClassName($row);
     rememberObservedMessageClass(messageAuthor, messageClassName);
 
-    if (shouldActivateUohMode(messageRootElement, messageText)) {
-        activateUohForUser(messageAuthor, messageClassName);
+    if (shouldActivateMode(messageRootElement, messageText)) {
+        activateForUser(messageAuthor, messageClassName);
     }
 
-    applyUohModeForMessageIfActive($row, messageRootElement);
+    applyModeForMessageIfActive($row, messageRootElement);
 }
 
-function clearUohRuntimeState() {
-    activatedUohUsersByKey.clear();
-    uohRulesByKey.clear();
+function clearRuntimeState() {
+    activatedUsersByKey.clear();
+    RulesByKey.clear();
     knownMessageClassByUserKey.clear();
-    renderUohEyesCssRules();
+    renderEyesCssRules();
 }
 
-function rescanExistingMessagesForUoh() {
-    if (!isUohModeEnabled) {
+function rescanExistingMessagesFor() {
+    if (!isModeEnabled) {
         return;
     }
 
@@ -859,43 +859,43 @@ function rescanExistingMessagesForUoh() {
         }
 
         const messageText = String(messageRootElement.textContent || "");
-        if (parseUohControlCommand(messageText)) {
+        if (parseControlCommand(messageText)) {
             return;
         }
 
-        processUohMessageRow($row, messageRootElement, messageText);
+        processMessageRow($row, messageRootElement, messageText);
     });
 }
 
-function setUohModeEnabled(nextEnabled, options = {}) {
+function setModeEnabled(nextEnabled, options = {}) {
     const desiredEnabled = Boolean(nextEnabled);
     const announce = Boolean(options.announce);
     const actorUsername = String(options.actorUsername || "").trim();
     const rescanExisting = Boolean(options.rescanExisting);
-    if (desiredEnabled === isUohModeEnabled) {
-        return isUohModeEnabled;
+    if (desiredEnabled === isModeEnabled) {
+        return isModeEnabled;
     }
 
-    isUohModeEnabled = desiredEnabled;
+    isModeEnabled = desiredEnabled;
     if (desiredEnabled) {
         if (rescanExisting) {
-            rescanExistingMessagesForUoh();
+            rescanExistingMessagesFor();
         }
         if (announce) {
-            postUohToggleSystemMessage(true, actorUsername);
+            postToggleSystemMessage(true, actorUsername);
         }
-        return isUohModeEnabled;
+        return isModeEnabled;
     }
 
-    restoreModifiedUohDom();
-    clearUohRuntimeState();
+    restoreModifiedDom();
+    clearRuntimeState();
     if (announce) {
-        postUohToggleSystemMessage(false, actorUsername);
+        postToggleSystemMessage(false, actorUsername);
     }
-    return isUohModeEnabled;
+    return isModeEnabled;
 }
 
-function handleUohModeMessage($messageElement) {
+function handleModeMessage($messageElement) {
     if (!$messageElement || !$messageElement.length) {
         return;
     }
@@ -912,54 +912,54 @@ function handleUohModeMessage($messageElement) {
     }
 
     const messageText = String(messageRootElement.textContent || "");
-    const parsedCommand = parseUohControlCommand(messageText);
+    const parsedCommand = parseControlCommand(messageText);
     if (parsedCommand) {
-        if (isUohCommandAllowedForAuthor(messageAuthor)) {
+        if (isCommandAllowedForAuthor(messageAuthor)) {
             const shouldEnable = parsedCommand.action === "on";
             $row.remove();
-            setUohModeEnabled(shouldEnable, {
-                announce: isInitialUohMessageScanComplete,
+            setModeEnabled(shouldEnable, {
+                announce: isInitialMessageScanComplete,
                 actorUsername: messageAuthor,
-                rescanExisting: isInitialUohMessageScanComplete && shouldEnable
+                rescanExisting: isInitialMessageScanComplete && shouldEnable
             });
         }
         return;
     }
 
-    if (!isUohModeEnabled) {
+    if (!isModeEnabled) {
         return;
     }
 
-    processUohMessageRow($row, messageRootElement, messageText);
+    processMessageRow($row, messageRootElement, messageText);
 }
 
-function getUohModeState() {
+function getModeState() {
     return {
-        enabled: isUohModeEnabled,
-        activeUsers: activatedUohUsersByKey.size,
-        commandMinRank: UOH_COMMAND_MIN_RANK,
-        allowedUsers: Array.from(UOH_COMMAND_ALLOWED_USER_SET)
+        enabled: isModeEnabled,
+        activeUsers: activatedUsersByKey.size,
+        commandMinRank: _COMMAND_MIN_RANK,
+        allowedUsers: Array.from(_COMMAND_ALLOWED_USER_SET)
     };
 }
 
-window.uohMode = {
-    getState: getUohModeState,
+window.Mode = {
+    getState: getModeState,
     toggle(on) {
-        return setUohModeEnabled(on, { rescanExisting: Boolean(on) });
+        return setModeEnabled(on, { rescanExisting: Boolean(on) });
     }
 };
 
-async function initializeUohMode() {
+async function initializeMode() {
     await window.waitForFunc("MESSAGE_PROCESSOR");
-    if (isUohMessageTapAttached) {
+    if (isMessageTapAttached) {
         return;
     }
 
-    MESSAGE_PROCESSOR.addTap(handleUohModeMessage);
-    isUohMessageTapAttached = true;
-    isInitialUohMessageScanComplete = true;
+    MESSAGE_PROCESSOR.addTap(handleModeMessage);
+    isMessageTapAttached = true;
+    isInitialMessageScanComplete = true;
 }
 
 (async () => {
-    await initializeUohMode();
+    await initializeMode();
 })();
