@@ -242,12 +242,13 @@
 
     #messagebuffer > div.miku-miku-beam-targeting,
     #messagebuffer > div.miku-miku-beam-disintegrating {
-      position: relative;
+      position: sticky;
+      top: 0;
       isolation: isolate;
+      z-index: 3;
     }
 
     #messagebuffer > div.miku-miku-beam-targeting {
-      z-index: 1;
       filter: brightness(1.12) saturate(1.28);
     }
 

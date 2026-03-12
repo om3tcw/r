@@ -424,7 +424,30 @@ function cleanupTargetRowState(rowElement) {
   }
 }
 
-function createBeamShot(shotConfig) {
+function applyBeamShotGeometry(beamShotElements, shotConfig) {
+  if (!beamShotElements || !shotConfig) {
+    return;
+  }
+
+  beamShotElements.currentShotGeometry = shotConfig;
+  beamShotElements.labelElement.style.left = `${shotConfig.labelLeft}px`;
+  beamShotElements.labelElement.style.top = `${shotConfig.labelTop}px`;
+  beamShotElements.emitterElement.style.left = `${shotConfig.originX}px`;
+  beamShotElements.emitterElement.style.top = `${shotConfig.originY}px`;
+  beamShotElements.pivotElement.style.left = `${shotConfig.originX}px`;
+  beamShotElements.pivotElement.style.top = `${shotConfig.originY}px`;
+  beamShotElements.pivotElement.style.transform = `translateY(-50%) rotate(${shotConfig.angleDeg}deg)`;
+  beamShotElements.rayElement.style.width = `${shotConfig.length}px`;
+  beamShotElements.impactElement.style.left = `${shotConfig.targetX}px`;
+  beamShotElements.impactElement.style.top = `${shotConfig.targetY}px`;
+  positionBeamLabelWithinViewport(
+    beamShotElements.labelElement,
+    shotConfig.labelLeft,
+    shotConfig.labelTop,
+  );
+}
+
+function createBeamShot(shotConfig, targetRowElement = null) {
   const overlayElement = getOrCreateBeamOverlayElement();
   const shotElement = document.createElement("div");
   shotElement.className = "miku-miku-beam-shot";
@@ -459,16 +482,61 @@ function createBeamShot(shotConfig) {
 
   const impactElement = document.createElement("div");
   impactElement.className = "miku-miku-beam-impact";
-  impactElement.style.left = `${shotConfig.targetX}px`;
-  impactElement.style.top = `${shotConfig.targetY}px`;
-
   shotElement.append(labelElement, emitterElement, pivotElement, impactElement);
   overlayElement.appendChild(shotElement);
-  positionBeamLabelWithinViewport(
+
+  const beamShotElements = {
+    currentShotGeometry: shotConfig,
+    emitterElement,
+    impactElement,
     labelElement,
-    shotConfig.labelLeft,
-    shotConfig.labelTop,
-  );
+    pivotElement,
+    rayElement,
+    shotElement,
+    trackingHandle: 0,
+  };
+  applyBeamShotGeometry(beamShotElements, shotConfig);
+
+  const stopTracking = () => {
+    if (!beamShotElements.trackingHandle) {
+      return;
+    }
+
+    if (typeof window.cancelAnimationFrame === "function") {
+      window.cancelAnimationFrame(beamShotElements.trackingHandle);
+    } else {
+      window.clearTimeout(beamShotElements.trackingHandle);
+    }
+    beamShotElements.trackingHandle = 0;
+  };
+
+  const trackBeamTarget = () => {
+    beamShotElements.trackingHandle = 0;
+    if (
+      !isNodeStillConnected(shotElement) ||
+      !targetRowElement ||
+      !isNodeStillConnected(targetRowElement)
+    ) {
+      return;
+    }
+
+    const nextShotGeometry = getBeamShotGeometry(targetRowElement);
+    if (nextShotGeometry) {
+      applyBeamShotGeometry(beamShotElements, nextShotGeometry);
+    }
+
+    if (typeof window.requestAnimationFrame === "function") {
+      beamShotElements.trackingHandle =
+        window.requestAnimationFrame(trackBeamTarget);
+      return;
+    }
+
+    beamShotElements.trackingHandle = window.setTimeout(trackBeamTarget, 33);
+  };
+
+  if (targetRowElement) {
+    trackBeamTarget();
+  }
 
   for (const step of MIKU_MIKU_BEAM_COUNTDOWN_STEPS.slice(1)) {
     if (!step || typeof step.text !== "string") {
@@ -491,10 +559,9 @@ function createBeamShot(shotConfig) {
         labelTextElement.classList.remove("miku-miku-beam-step-pop");
         void labelTextElement.offsetWidth;
         labelTextElement.classList.add("miku-miku-beam-step-pop");
-        positionBeamLabelWithinViewport(
-          labelElement,
-          shotConfig.labelLeft,
-          shotConfig.labelTop,
+        applyBeamShotGeometry(
+          beamShotElements,
+          beamShotElements.currentShotGeometry,
         );
       },
       Math.max(0, Number(step.atMs) || 0),
@@ -502,6 +569,7 @@ function createBeamShot(shotConfig) {
   }
 
   window.setTimeout(() => {
+    stopTracking();
     shotElement.remove();
   }, MIKU_MIKU_BEAM_SHOT_DURATION_MS);
 }
@@ -533,7 +601,7 @@ function fireMikuMikuBeamAtRow($targetRow) {
   }
 
   rowElement.classList.add(MIKU_MIKU_BEAM_TARGETING_CLASS);
-  createBeamShot(shotGeometry);
+  createBeamShot(shotGeometry, rowElement);
 
   window.setTimeout(() => {
     if (!isNodeStillConnected(rowElement)) {
