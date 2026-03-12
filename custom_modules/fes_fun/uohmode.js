@@ -1,4 +1,5 @@
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
+const UOH_ACTIVE_ROW_CLASS = "uohmode-active";
 const UOH_TRIGGER_LOOKUP_KEYS = ["uoh", "pebblesob", "pikacryreal"];
 // Trusted live control commands: /uoh on | /uoh off | ./uoh on | ./uoh off
 const UOH_COMMAND_ALLOWED_USERS = [];
@@ -13,12 +14,29 @@ const UOH_USER_WORD_REPLACEMENTS = [...UOH_MODE_REPLACEMENTS];
 
 const UOH_USERNAME_PREFIX_IMAGE_URL = "https://cracklej.win/djtyT473HU.png";
 const UOH_OSHI_EYES_IMAGE_URL = "https://cracklej.win/aje2Uww34L.png";
-const UOH_OSHI_EYES_STYLE_ID = "uohmode-oshieyes-style";
 const UOH_USERNAME_PREFIX_IMAGE_WIDTH_PX = 20;
 const UOH_USERNAME_PREFIX_IMAGE_HEIGHT_PX = 20;
 const UOH_OSHI_EYES_IMAGE_WIDTH_PX = 50;
 const UOH_TIMESTAMP_IMAGE_HEIGHT_PX = 15;
 const UOH_USERNAME_PREFIX_IMAGE_MARGIN_RIGHT_PX = 4;
+const ChatModuleUtils = window.CHAT_MODULE_UTILS;
+
+if (!ChatModuleUtils) {
+  throw new Error("[UohMode] CHAT_MODULE_UTILS is not available");
+}
+
+const {
+  escapeRegExp,
+  getEmoteNodesFromRoot,
+  getMessageAuthor,
+  getMessageContentRootElement,
+  getMessageRow,
+  isAuthorAllowed,
+  isServerMessageRow,
+  normalizeUsername,
+  postStatusSystemMessage,
+  setMessageRowsClassByUsername,
+} = ChatModuleUtils;
 const UOH_TRIGGER_LOOKUP_KEYS_NORMALIZED = (
   Array.isArray(UOH_TRIGGER_LOOKUP_KEYS)
     ? UOH_TRIGGER_LOOKUP_KEYS
@@ -45,8 +63,6 @@ const UOH_EMOTE_ORIGINAL_ALT_DATA_KEY = "uohOriginalAlt";
 const UOH_EMOTE_ORIGINAL_ALT_PRESENT_DATA_KEY = "uohOriginalAltPresent";
 
 const activatedUohUsersByKey = new Map();
-const uohRulesByKey = new Map();
-const knownMessageClassByUserKey = new Map();
 const modifiedUohTextNodes = new Set();
 const originalUohTextByNode = new WeakMap();
 const modifiedUohEmoteElements = new Set();
@@ -54,10 +70,40 @@ let isUohModeEnabled = false;
 let isUohMessageTapAttached = false;
 let isInitialUohMessageScanComplete = false;
 
-function normalizeUsername(username) {
-  return String(username || "")
-    .trim()
-    .toLowerCase();
+function applyUohModeCssVariables() {
+  const rootElement = document.documentElement;
+  if (!rootElement || !rootElement.style) {
+    return;
+  }
+
+  rootElement.style.setProperty(
+    "--uoh-username-prefix-image-url",
+    `url("${UOH_USERNAME_PREFIX_IMAGE_URL}")`,
+  );
+  rootElement.style.setProperty(
+    "--uoh-oshi-eyes-image-url",
+    `url("${UOH_OSHI_EYES_IMAGE_URL}")`,
+  );
+  rootElement.style.setProperty(
+    "--uoh-username-prefix-width",
+    `${UOH_USERNAME_PREFIX_IMAGE_WIDTH_PX}px`,
+  );
+  rootElement.style.setProperty(
+    "--uoh-username-prefix-height",
+    `${UOH_USERNAME_PREFIX_IMAGE_HEIGHT_PX}px`,
+  );
+  rootElement.style.setProperty(
+    "--uoh-username-prefix-margin-right",
+    `${UOH_USERNAME_PREFIX_IMAGE_MARGIN_RIGHT_PX}px`,
+  );
+  rootElement.style.setProperty(
+    "--uoh-oshi-eyes-width",
+    `${UOH_OSHI_EYES_IMAGE_WIDTH_PX}px`,
+  );
+  rootElement.style.setProperty(
+    "--uoh-timestamp-height",
+    `${UOH_TIMESTAMP_IMAGE_HEIGHT_PX}px`,
+  );
 }
 
 function normalizeComparableText(text) {
@@ -67,24 +113,12 @@ function normalizeComparableText(text) {
     .toLowerCase();
 }
 
-function escapeRegExp(text) {
-  return String(text || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
 function escapeHtmlForLookup(value) {
   return String(value || "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
-}
-
-function escapeCssIdentifier(value) {
-  if (typeof CSS !== "undefined" && typeof CSS.escape === "function") {
-    return CSS.escape(value);
-  }
-
-  return String(value).replace(/[^a-zA-Z0-9_-]/g, (char) => `\\${char}`);
 }
 
 function getChannelEmoteByName(emoteName) {
@@ -220,99 +254,6 @@ function replaceSingleEmoteNode(emoteNode, replacementEntry) {
   emoteNode.setAttribute("title", replacementEmote.name);
   emoteNode.setAttribute("alt", replacementEmote.name);
   emoteNode.setAttribute("src", replacementEmote.image);
-}
-
-function getMessageClassName($row) {
-  if (!$row || !$row.length) {
-    return "";
-  }
-
-  return (
-    ($row.attr("class") || "")
-      .split(/\s+/)
-      .find(
-        (cls) => cls.startsWith("chat-msg-") && cls !== "chat-msg-$server$",
-      ) || ""
-  );
-}
-
-function getMessageAuthorFromClassName($row) {
-  const messageClass = getMessageClassName($row);
-  if (!messageClass) {
-    return "";
-  }
-
-  return messageClass.slice("chat-msg-".length).trim();
-}
-
-function getMessageRow($messageElement) {
-  if (!$messageElement || !$messageElement.length) {
-    return null;
-  }
-
-  const $row = $messageElement.closest(`${MESSAGE_BUFFER_SELECTOR} > div`);
-  return $row.length ? $row : null;
-}
-
-function getMessageAuthor($row) {
-  if (!$row || !$row.length) {
-    return "";
-  }
-
-  const classDerivedAuthor = getMessageAuthorFromClassName($row);
-  if (classDerivedAuthor) {
-    return classDerivedAuthor;
-  }
-
-  const usernameText = $row.find("strong.username").first().text();
-  if (usernameText) {
-    return usernameText.replace(/:\s*$/, "").trim();
-  }
-
-  return "";
-}
-
-function isServerMessageRow($row) {
-  if (!$row || !$row.length) {
-    return false;
-  }
-
-  return ($row.attr("class") || "")
-    .split(/\s+/)
-    .some((cls) => cls === "chat-msg-$server$");
-}
-
-function getMessageContentRootElement($messageElement, $row = null) {
-  if (!$messageElement || !$messageElement.length) {
-    return null;
-  }
-
-  const $messageRow = $row || getMessageRow($messageElement);
-  if ($messageRow && $messageRow.length) {
-    const $messageContentSpan = $messageRow.children("span").last();
-    if ($messageContentSpan.length) {
-      return $messageContentSpan[0];
-    }
-  }
-
-  return $messageElement[0] || null;
-}
-
-function getEmoteNodesFromRoot(rootElement) {
-  if (!rootElement) {
-    return [];
-  }
-
-  const emoteNodes = [];
-  if (rootElement.matches && rootElement.matches(".channel-emote[title]")) {
-    emoteNodes.push(rootElement);
-  }
-
-  if (typeof rootElement.querySelectorAll === "function") {
-    emoteNodes.push(...rootElement.querySelectorAll(".channel-emote[title]"));
-  }
-
-  return emoteNodes;
 }
 
 function getReplacementConfig(wordReplacements) {
@@ -461,23 +402,6 @@ function applyReplacementConfigToMessageRoot(
   replaceEmoteNodes(messageRootElement, replacementConfig);
 }
 
-function getOrCreateUohEyesStyleElement() {
-  let styleElement = document.getElementById(UOH_OSHI_EYES_STYLE_ID);
-  if (styleElement) {
-    return styleElement;
-  }
-
-  styleElement = document.createElement("style");
-  styleElement.id = UOH_OSHI_EYES_STYLE_ID;
-  document.head.appendChild(styleElement);
-  return styleElement;
-}
-
-function renderUohEyesCssRules() {
-  const styleElement = getOrCreateUohEyesStyleElement();
-  styleElement.textContent = Array.from(uohRulesByKey.values()).join("\n");
-}
-
 function restoreModifiedTextNodes() {
   for (const textNode of Array.from(modifiedUohTextNodes)) {
     const originalText = originalUohTextByNode.get(textNode);
@@ -542,84 +466,16 @@ function restoreModifiedUohDom() {
   restoreModifiedEmoteElements();
 }
 
-function getFallbackMessageClassForUsername(username) {
-  return `chat-msg-${String(username || "").trim()}`;
-}
-
-function findMessageClassForUsername(username) {
-  const normalizedTarget = normalizeUsername(username);
-  if (!normalizedTarget) {
-    return "";
-  }
-
-  const cached = knownMessageClassByUserKey.get(normalizedTarget);
-  if (cached) {
-    return cached;
-  }
-
-  let foundClassName = "";
-  $(`${MESSAGE_BUFFER_SELECTOR} > div`).each((_, element) => {
-    const $row = $(element);
-    if (!$row.length || isServerMessageRow($row)) {
-      return;
-    }
-
-    const rowAuthor = normalizeUsername(getMessageAuthor($row));
-    if (rowAuthor !== normalizedTarget) {
-      return;
-    }
-
-    foundClassName = getMessageClassName($row);
-    if (foundClassName) {
-      return false;
-    }
-  });
-
-  return foundClassName;
-}
-
-function buildUohCssRuleForClass(messageClassName) {
-  const escapedMessageClass = escapeCssIdentifier(messageClassName);
-
-  return [
-    `.${escapedMessageClass} .timestamp {`,
-    "    color: transparent !important;",
-    `    background-size: ${UOH_OSHI_EYES_IMAGE_WIDTH_PX}px ${UOH_TIMESTAMP_IMAGE_HEIGHT_PX}px !important;`,
-    `    background-image: url('${UOH_OSHI_EYES_IMAGE_URL}') !important;`,
-    "    background-position: center !important;",
-    "    background-repeat: no-repeat !important;",
-    "}",
-    `.${escapedMessageClass} .timestamp + span > strong.username::before,`,
-    `.${escapedMessageClass} > span > strong.username::before,`,
-    `.${escapedMessageClass} strong.username::before {`,
-    "    content: '' !important;",
-    "    display: inline-block !important;",
-    `    width: ${UOH_USERNAME_PREFIX_IMAGE_WIDTH_PX}px !important;`,
-    `    height: ${UOH_USERNAME_PREFIX_IMAGE_HEIGHT_PX}px !important;`,
-    `    margin-right: ${UOH_USERNAME_PREFIX_IMAGE_MARGIN_RIGHT_PX}px !important;`,
-    "    vertical-align: middle !important;",
-    `    background-image: url('${UOH_USERNAME_PREFIX_IMAGE_URL}') !important;`,
-    "    background-size: contain !important;",
-    "    background-position: center !important;",
-    "    background-repeat: no-repeat !important;",
-    "}",
-  ].join("\n");
-}
-
-function upsertUohRuleForUser(userKey) {
-  const userState = activatedUohUsersByKey.get(userKey);
-  if (!userState || !userState.messageClassName) {
-    return;
-  }
-
-  uohRulesByKey.set(
-    userKey,
-    buildUohCssRuleForClass(userState.messageClassName),
+function syncUohVisualStateForUser(username, shouldEnable) {
+  return setMessageRowsClassByUsername(
+    username,
+    UOH_ACTIVE_ROW_CLASS,
+    shouldEnable,
+    { messageBufferSelector: MESSAGE_BUFFER_SELECTOR },
   );
-  renderUohEyesCssRules();
 }
 
-function activateUohForUser(username, messageClassName = "") {
+function activateUohForUser(username) {
   const displayName = String(username || "").trim();
   const userKey = normalizeUsername(displayName);
   if (!displayName || !userKey) {
@@ -627,63 +483,19 @@ function activateUohForUser(username, messageClassName = "") {
   }
 
   const existingState = activatedUohUsersByKey.get(userKey);
-  const resolvedClassName = String(
-    messageClassName ||
-      (existingState && existingState.messageClassName) ||
-      findMessageClassForUsername(displayName) ||
-      getFallbackMessageClassForUsername(displayName),
-  ).trim();
-
   if (existingState) {
-    let changed = false;
-
-    if (
-      resolvedClassName &&
-      resolvedClassName !== existingState.messageClassName
-    ) {
-      existingState.messageClassName = resolvedClassName;
-      changed = true;
-    }
-
     if (displayName && displayName !== existingState.displayName) {
       existingState.displayName = displayName;
-      changed = true;
-    }
-
-    if (changed) {
-      upsertUohRuleForUser(userKey);
+      syncUohVisualStateForUser(displayName, true);
     }
     return false;
   }
 
   activatedUohUsersByKey.set(userKey, {
     displayName,
-    messageClassName: resolvedClassName,
   });
-
-  upsertUohRuleForUser(userKey);
+  syncUohVisualStateForUser(displayName, true);
   return true;
-}
-
-function rememberObservedMessageClass(authorUsername, messageClassName) {
-  const authorKey = normalizeUsername(authorUsername);
-  if (!authorKey || !messageClassName) {
-    return;
-  }
-
-  knownMessageClassByUserKey.set(authorKey, messageClassName);
-
-  const existingState = activatedUohUsersByKey.get(authorKey);
-  if (!existingState) {
-    return;
-  }
-
-  if (existingState.messageClassName === messageClassName) {
-    return;
-  }
-
-  existingState.messageClassName = messageClassName;
-  upsertUohRuleForUser(authorKey);
 }
 
 function shouldActivateUohFromMessageText(messageText) {
@@ -751,6 +563,9 @@ function applyUohModeForMessageIfActive($row, messageRootElement) {
     return;
   }
 
+  if ($row && $row.length) {
+    $row[0].classList.add(UOH_ACTIVE_ROW_CLASS);
+  }
   applyReplacementConfigToMessageRoot(
     messageRootElement,
     UOH_REPLACEMENT_CONFIG,
@@ -758,155 +573,25 @@ function applyUohModeForMessageIfActive($row, messageRootElement) {
 }
 
 function postUohStatusSystemMessage(message) {
-  const safeMessage = String(message || "").trim();
-  if (!safeMessage) {
-    return;
-  }
-
-  const $messageBuffer = $(MESSAGE_BUFFER_SELECTOR);
-  if (!$messageBuffer.length) {
-    return;
-  }
-
-  const messageBufferElement = $messageBuffer[0];
-  const shouldAutoScroll =
-    messageBufferElement.scrollHeight -
-      messageBufferElement.scrollTop -
-      messageBufferElement.clientHeight <
-    20;
-
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(now.getMinutes()).padStart(2, "0");
-  const seconds = String(now.getSeconds()).padStart(2, "0");
-  const formattedTimestamp = `[${hours}:${minutes}:${seconds}] `;
-
-  const $fakeSystemRow = $("<div>", {
-    class: "chat-msg-$server$ uohmode-system-message",
+  postStatusSystemMessage(message, {
+    messageBufferSelector: MESSAGE_BUFFER_SELECTOR,
+    rowClass: "uohmode-system-message",
   });
-
-  $("<span>", {
-    class: "timestamp server-whisper",
-    text: formattedTimestamp,
-  }).appendTo($fakeSystemRow);
-
-  $("<span>", {
-    class: "server-whisper",
-    text: safeMessage,
-  }).appendTo($fakeSystemRow);
-
-  $messageBuffer.append($fakeSystemRow);
-  if (shouldAutoScroll) {
-    messageBufferElement.scrollTop = messageBufferElement.scrollHeight;
-  }
 }
 
 function postUohToggleSystemMessage(isEnabled, actorUsername) {
   const safeActor = String(actorUsername || "").trim();
   const actorSuffix = safeActor ? ` by "${safeActor}"` : "";
-  postUohStatusSystemMessage(``);
-}
-
-function getUserlistNameElement($userlistRow) {
-  if (!$userlistRow || !$userlistRow.length) {
-    return $();
-  }
-
-  return $userlistRow.children().eq(1);
-}
-
-function getUserlistUsernameFromRow($userlistRow) {
-  if (!$userlistRow || !$userlistRow.length) {
-    return "";
-  }
-
-  const dataName = String($userlistRow.data("name") || "").trim();
-  if (dataName) {
-    return dataName;
-  }
-
-  return String(getUserlistNameElement($userlistRow).text() || "").trim();
-}
-
-function findUserlistRowByUsername(username) {
-  const normalizedTarget = normalizeUsername(username);
-  if (!normalizedTarget) {
-    return null;
-  }
-
-  let foundRow = null;
-  $("#userlist .userlist_item").each((_, element) => {
-    const $row = $(element);
-    const rowUsername = normalizeUsername(getUserlistUsernameFromRow($row));
-    if (rowUsername !== normalizedTarget) {
-      return;
-    }
-
-    foundRow = $row;
-    return false;
-  });
-
-  return foundRow;
-}
-
-function getUohCommandAuthorRank(username) {
-  const $userlistRow = findUserlistRowByUsername(username);
-  if (!$userlistRow || !$userlistRow.length) {
-    const normalizedClientName = normalizeUsername(
-      window.CLIENT && CLIENT.name ? CLIENT.name : "",
-    );
-    const normalizedUsername = normalizeUsername(username);
-    if (normalizedClientName && normalizedClientName === normalizedUsername) {
-      return Number(window.CLIENT && CLIENT.rank);
-    }
-
-    return;
-  }
-
-  const dataRank = Number($userlistRow.data("rank"));
-  if (Number.isFinite(dataRank)) {
-    return dataRank;
-  }
-
-  const $nameElement = getUserlistNameElement($userlistRow);
-  if ($nameElement.hasClass("userlist_owner")) {
-    return typeof Rank !== "undefined" && Rank && Rank.Owner != null
-      ? Rank.Owner
-      : 10;
-  }
-  if ($nameElement.hasClass("userlist_admin")) {
-    return typeof Rank !== "undefined" && Rank && Rank.Admin != null
-      ? Rank.Admin
-      : 3;
-  }
-  if ($nameElement.hasClass("userlist_op")) {
-    return typeof Rank !== "undefined" && Rank && Rank.Moderator != null
-      ? Rank.Moderator
-      : 2;
-  }
-  if ($nameElement.hasClass("userlist_guest")) {
-    return typeof Rank !== "undefined" && Rank && Rank.Guest != null
-      ? Rank.Guest
-      : 0;
-  }
-
-  return typeof Rank !== "undefined" && Rank && Rank.Member != null
-    ? Rank.Member
-    : 1;
+  postUohStatusSystemMessage(
+    `UOH mode ${isEnabled ? "enabled" : "disabled"}${actorSuffix}.`,
+  );
 }
 
 function isCommandAllowedForAuthor(authorUsername) {
-  const normalizedAuthor = normalizeUsername(authorUsername);
-  if (!normalizedAuthor) {
-    return false;
-  }
-
-  if (UOH_COMMAND_ALLOWED_USER_SET.has(normalizedAuthor)) {
-    return true;
-  }
-
-  const authorRank = getUohCommandAuthorRank(authorUsername);
-  return Number.isFinite(authorRank) && authorRank >= UOH_COMMAND_MIN_RANK;
+  return isAuthorAllowed(authorUsername, {
+    allowedUsers: UOH_COMMAND_ALLOWED_USER_SET,
+    minRank: UOH_COMMAND_MIN_RANK,
+  });
 }
 
 function parseControlCommand(messageText) {
@@ -932,11 +617,9 @@ function parseControlCommand(messageText) {
 
 function processMessageRow($row, messageRootElement, messageText = "") {
   const messageAuthor = getMessageAuthor($row);
-  const messageClassName = getMessageClassName($row);
-  rememberObservedMessageClass(messageAuthor, messageClassName);
 
   if (shouldActivateUohMode(messageRootElement, messageText)) {
-    activateUohForUser(messageAuthor, messageClassName);
+    activateUohForUser(messageAuthor);
   }
 
   applyUohModeForMessageIfActive($row, messageRootElement);
@@ -944,9 +627,9 @@ function processMessageRow($row, messageRootElement, messageText = "") {
 
 function clearRuntimeState() {
   activatedUohUsersByKey.clear();
-  uohRulesByKey.clear();
-  knownMessageClassByUserKey.clear();
-  renderUohEyesCssRules();
+  $(`${MESSAGE_BUFFER_SELECTOR} > div.${UOH_ACTIVE_ROW_CLASS}`).removeClass(
+    UOH_ACTIVE_ROW_CLASS,
+  );
 }
 
 function rescanExistingMessagesFor() {
@@ -962,7 +645,7 @@ function rescanExistingMessagesFor() {
 
     const messageRootElement = getMessageContentRootElement(
       $row.children().last(),
-      $row,
+      { $row, messageBufferSelector: MESSAGE_BUFFER_SELECTOR },
     );
     if (!messageRootElement) {
       return;
@@ -1018,7 +701,7 @@ function handleModeMessage($messageElement) {
   const messageAuthor = getMessageAuthor($row);
   const messageRootElement = getMessageContentRootElement(
     $messageElement,
-    $row,
+    { $row, messageBufferSelector: MESSAGE_BUFFER_SELECTOR },
   );
   if (!messageRootElement) {
     return;
@@ -1066,6 +749,7 @@ window.uohMode = uohModeApi;
 window.Mode = uohModeApi;
 
 async function initializeMode() {
+  applyUohModeCssVariables();
   await window.waitForFunc("MESSAGE_PROCESSOR");
   if (isUohMessageTapAttached) {
     return;
