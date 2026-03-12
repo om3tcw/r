@@ -33,6 +33,7 @@ const MIKU_MIKU_BEAM_EFFECT_END_MS =
   MIKU_MIKU_BEAM_FIRE_DELAY_MS + MIKU_MIKU_BEAM_ACTIVE_DURATION_MS;
 const MIKU_MIKU_BEAM_SHOT_DURATION_MS =
   MIKU_MIKU_BEAM_EFFECT_END_MS + MIKU_MIKU_BEAM_POST_FIRE_CLEANUP_MS;
+const MIKU_MIKU_BEAM_COOLDOWN_MS = 20000;
 const MIKU_MIKU_BEAM_DISINTEGRATION_DELAY_MS = MIKU_MIKU_BEAM_FIRE_DELAY_MS;
 const MIKU_MIKU_BEAM_ROW_REMOVAL_DELAY_MS = MIKU_MIKU_BEAM_EFFECT_END_MS;
 const MIKU_MIKU_BEAM_EMITTER_VERTICAL_OFFSET_PX = 64;
@@ -49,8 +50,10 @@ if (!ChatModuleUtils) {
 }
 
 const {
+  getMessageContentRootElement,
   getMessageAuthor,
   getMessageRow,
+  getTextWithEmoteTitles,
   isAuthorAllowed,
   isServerMessageRow,
   normalizeUsername,
@@ -88,6 +91,7 @@ function applyMikuMikuBeamCssVariables() {
 let isInitialBeamMessageScanComplete = false;
 let isBeamMessageTapAttached = false;
 let beamSoundTemplate = null;
+let beamCooldownUntilMs = 0;
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
@@ -165,34 +169,61 @@ function normalizeBeamCommandTarget(rawTarget) {
     return "";
   }
 
-  return trimmedTarget.split(/\s+/)[0].replace(/^@+/, "").trim();
-}
-
-function parseBeamCommand(messageText) {
-  const trimmedMessage = String(messageText || "").trim();
-  if (!trimmedMessage) {
-    return null;
+  const emoteWrappedTargetMatch = trimmedTarget.match(/^:([^:\s]+):$/);
+  if (emoteWrappedTargetMatch) {
+    return String(emoteWrappedTargetMatch[1] || "").trim();
   }
 
-  const commandMatch = trimmedMessage.match(
-    MIKU_MIKU_BEAM_COMMAND_WITH_TARGET_REGEX,
+  return trimmedTarget.replace(/^@+/, "").trim();
+}
+
+function parseBeamCommand(messageText, messageRootElement = null) {
+  const candidateMessages = [
+    String(messageText || ""),
+    getTextWithEmoteTitles(messageRootElement),
+  ];
+
+  for (const rawCandidate of candidateMessages) {
+    const trimmedMessage = String(rawCandidate || "").trim();
+    if (!trimmedMessage) {
+      continue;
+    }
+
+    const commandMatch = trimmedMessage.match(
+      MIKU_MIKU_BEAM_COMMAND_WITH_TARGET_REGEX,
+    );
+    if (!commandMatch) {
+      continue;
+    }
+
+    const commandArgument = String(commandMatch[1] || "").trim();
+    if (!commandArgument) {
+      continue;
+    }
+
+    const firstToken = commandArgument.split(/\s+/)[0];
+    const targetUsername = normalizeBeamCommandTarget(firstToken);
+    if (!targetUsername) {
+      continue;
+    }
+
+    return {
+      targetUsername,
+    };
+  }
+
+  return null;
+}
+
+function isBeamCommandAttempt(messageText, messageRootElement = null) {
+  const candidateMessages = [
+    String(messageText || ""),
+    getTextWithEmoteTitles(messageRootElement),
+  ];
+
+  return candidateMessages.some((rawCandidate) =>
+    MIKU_MIKU_BEAM_COMMAND_REGEX.test(String(rawCandidate || "").trim()),
   );
-  if (!commandMatch) {
-    return null;
-  }
-
-  const targetUsername = normalizeBeamCommandTarget(commandMatch[1]);
-  if (!targetUsername) {
-    return null;
-  }
-
-  return {
-    targetUsername,
-  };
-}
-
-function isBeamCommandAttempt(messageText) {
-  return MIKU_MIKU_BEAM_COMMAND_REGEX.test(String(messageText || "").trim());
 }
 
 function getOrCreateBeamOverlayElement() {
@@ -212,6 +243,20 @@ function postBeamStatusSystemMessage(message) {
     messageBufferSelector: MESSAGE_BUFFER_SELECTOR,
     rowClass: "miku-miku-beam-system-message",
   });
+}
+
+function getBeamCooldownRemainingMs(nowMs = Date.now()) {
+  return Math.max(0, beamCooldownUntilMs - Number(nowMs || 0));
+}
+
+function startBeamCooldown(nowMs = Date.now()) {
+  beamCooldownUntilMs =
+    Number(nowMs || 0) + Math.max(0, MIKU_MIKU_BEAM_COOLDOWN_MS);
+}
+
+function formatBeamCooldownRemaining(remainingMs) {
+  const roundedTenths = Math.ceil(Math.max(0, Number(remainingMs) || 0) / 100);
+  return `${(roundedTenths / 10).toFixed(1)}s`;
 }
 
 function getOrCreateBeamSoundTemplate() {
@@ -519,17 +564,44 @@ function fireMikuMikuBeamAtUsername(username, options = {}) {
   return fireMikuMikuBeamAtRow($targetRow);
 }
 
-function triggerMikuMikuBeamAtUsername(username, options = {}) {
+function tryTriggerMikuMikuBeamAtUsername(username, options = {}) {
+  const nowMs = Date.now();
+  const cooldownRemainingMs = getBeamCooldownRemainingMs(nowMs);
+  if (cooldownRemainingMs > 0) {
+    return {
+      didFire: false,
+      reason: "cooldown",
+      cooldownRemainingMs,
+    };
+  }
+
   const beamOptions = Object.assign({}, options);
   const shouldPlaySound = beamOptions.playSound !== false;
   delete beamOptions.playSound;
 
   const didFire = fireMikuMikuBeamAtUsername(username, beamOptions);
-  if (didFire && shouldPlaySound) {
+  if (!didFire) {
+    return {
+      didFire: false,
+      reason: "missingTarget",
+      cooldownRemainingMs: 0,
+    };
+  }
+
+  startBeamCooldown(nowMs);
+  if (shouldPlaySound) {
     playMikuMikuBeamSound();
   }
 
-  return didFire;
+  return {
+    didFire: true,
+    reason: "fired",
+    cooldownRemainingMs: getBeamCooldownRemainingMs(nowMs),
+  };
+}
+
+function triggerMikuMikuBeamAtUsername(username, options = {}) {
+  return tryTriggerMikuMikuBeamAtUsername(username, options).didFire;
 }
 
 function handleMikuMikuBeamMessage($messageElement) {
@@ -542,10 +614,21 @@ function handleMikuMikuBeamMessage($messageElement) {
     return;
   }
 
+  const messageRootElement = getMessageContentRootElement($messageElement, {
+    $row,
+    messageBufferSelector: MESSAGE_BUFFER_SELECTOR,
+  });
+  if (!messageRootElement) {
+    return;
+  }
+
   const messageAuthor = getMessageAuthor($row);
-  const messageText = String($messageElement.text() || "");
-  const parsedCommand = parseBeamCommand(messageText);
-  const isCommandAttempt = isBeamCommandAttempt(messageText);
+  const messageText = String(messageRootElement.textContent || "");
+  const parsedCommand = parseBeamCommand(messageText, messageRootElement);
+  const isCommandAttempt = isBeamCommandAttempt(
+    messageText,
+    messageRootElement,
+  );
   const isAuthorAllowed = isAuthorAllowedForBeam(messageAuthor);
 
   if (!isInitialBeamMessageScanComplete) {
@@ -562,7 +645,7 @@ function handleMikuMikuBeamMessage($messageElement) {
       return;
     }
 
-    const didFire = triggerMikuMikuBeamAtUsername(
+    const triggerResult = tryTriggerMikuMikuBeamAtUsername(
       parsedCommand.targetUsername,
       {
         excludeRowElement: $row[0],
@@ -570,7 +653,14 @@ function handleMikuMikuBeamMessage($messageElement) {
       },
     );
 
-    if (!didFire) {
+    if (!triggerResult.didFire && triggerResult.reason === "cooldown") {
+      postBeamStatusSystemMessage(
+        `Miku Miku Beam is cooling down for ${formatBeamCooldownRemaining(triggerResult.cooldownRemainingMs)}.`,
+      );
+      return;
+    }
+
+    if (!triggerResult.didFire) {
       postBeamStatusSystemMessage(
         `Miku Miku Beam missed: no recent message from "${parsedCommand.targetUsername}".`,
       );
@@ -598,6 +688,8 @@ function getBeamState() {
   return {
     commandMinRank: MIKU_MIKU_BEAM_COMMAND_MIN_RANK,
     allowedUsers: Array.from(MIKU_MIKU_BEAM_COMMAND_ALLOWED_USER_SET),
+    cooldownMs: MIKU_MIKU_BEAM_COOLDOWN_MS,
+    cooldownRemainingMs: getBeamCooldownRemainingMs(),
   };
 }
 
