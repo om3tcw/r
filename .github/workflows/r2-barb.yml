@@ -20,7 +20,7 @@ jobs:
 
     - name: Get files difference
       run: | 
-        git diff --name-status HEAD~10 > FILES_CHANGED.txt
+        git diff --name-status --no-renames HEAD~10 > FILES_CHANGED.txt
 
     - name: Upload differential upgrade
       uses: Rasea-M/CFR2-BARB@master
