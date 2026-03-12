@@ -333,6 +333,22 @@ export const holoPeekObjects = [
         },
     },
     {
+        optionName: "disableMikuBeam",
+        optionDescription: "Disable Miku Beam",
+        optionFunc: () => {
+            (async () => {
+                await window.waitForFunc("mikuMikuBeam");
+                window.mikuMikuBeam.toggle(false);
+            })();
+        },
+        cleanupFunc: () => {
+            (async () => {
+                await window.waitForFunc("mikuMikuBeam");
+                window.mikuMikuBeam.toggle(true);
+            })();
+        },
+    },
+    {
         optionName: "customCSS",
         optionDescription: "Custom CSS",
         type: "textarea",

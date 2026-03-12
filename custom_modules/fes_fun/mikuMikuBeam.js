@@ -90,8 +90,11 @@ function applyMikuMikuBeamCssVariables() {
 
 let isInitialBeamMessageScanComplete = false;
 let isBeamMessageTapAttached = false;
+let isMikuMikuBeamEnabled = true;
 let beamSoundTemplate = null;
 let beamCooldownUntilMs = 0;
+const activeBeamAudios = new Set();
+const activeBeamShots = new Set();
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
@@ -238,6 +241,15 @@ function getOrCreateBeamOverlayElement() {
   return overlayElement;
 }
 
+function removeBeamOverlayElementIfEmpty() {
+  const overlayElement = document.getElementById(MIKU_MIKU_BEAM_OVERLAY_ID);
+  if (!overlayElement || overlayElement.childElementCount) {
+    return;
+  }
+
+  overlayElement.remove();
+}
+
 function postBeamStatusSystemMessage(message) {
   postStatusSystemMessage(message, {
     messageBufferSelector: MESSAGE_BUFFER_SELECTOR,
@@ -292,6 +304,41 @@ function preloadMikuMikuBeamSound() {
   }
 }
 
+function trackActiveBeamAudio(audioElement) {
+  if (!audioElement) {
+    return;
+  }
+
+  const cleanupAudio = () => {
+    audioElement.removeEventListener("ended", cleanupAudio);
+    audioElement.removeEventListener("error", cleanupAudio);
+    activeBeamAudios.delete(audioElement);
+    delete audioElement._mikuMikuBeamCleanup;
+  };
+
+  audioElement._mikuMikuBeamCleanup = cleanupAudio;
+  activeBeamAudios.add(audioElement);
+  audioElement.addEventListener("ended", cleanupAudio);
+  audioElement.addEventListener("error", cleanupAudio);
+}
+
+function stopAllActiveBeamAudio() {
+  for (const audioElement of Array.from(activeBeamAudios)) {
+    try {
+      audioElement.pause();
+      audioElement.currentTime = 0;
+    } catch (error) {
+      console.error("[MikuMikuBeam] Audio stop failed:", error);
+    }
+
+    if (typeof audioElement._mikuMikuBeamCleanup === "function") {
+      audioElement._mikuMikuBeamCleanup();
+    } else {
+      activeBeamAudios.delete(audioElement);
+    }
+  }
+}
+
 function playMikuMikuBeamSound() {
   const soundTemplate = getOrCreateBeamSoundTemplate();
   if (!soundTemplate) {
@@ -304,9 +351,14 @@ function playMikuMikuBeamSound() {
         ? soundTemplate.cloneNode()
         : new Audio(MIKU_MIKU_BEAM_SOUND_URL);
     beamAudio.volume = MIKU_MIKU_BEAM_SOUND_VOLUME;
+    trackActiveBeamAudio(beamAudio);
     const playPromise = beamAudio.play();
     if (playPromise && typeof playPromise.catch === "function") {
       playPromise.catch((error) => {
+        if (typeof beamAudio._mikuMikuBeamCleanup === "function") {
+          beamAudio._mikuMikuBeamCleanup();
+        }
+
         if (error && error.name === "NotAllowedError") {
           return;
         }
@@ -424,6 +476,47 @@ function cleanupTargetRowState(rowElement) {
   }
 }
 
+function clearBeamShotTimeout(handle) {
+  if (handle) {
+    window.clearTimeout(handle);
+  }
+}
+
+function cleanupBeamShot(beamShot) {
+  if (!beamShot || beamShot.isCleanedUp) {
+    return;
+  }
+
+  beamShot.isCleanedUp = true;
+  if (typeof beamShot.stopTracking === "function") {
+    beamShot.stopTracking();
+  }
+
+  clearBeamShotTimeout(beamShot.disintegrationHandle);
+  clearBeamShotTimeout(beamShot.rowRemovalHandle);
+
+  for (const countdownHandle of beamShot.countdownHandles || []) {
+    clearBeamShotTimeout(countdownHandle);
+  }
+
+  if (beamShot.targetRowElement) {
+    cleanupTargetRowState(beamShot.targetRowElement);
+  }
+
+  if (beamShot.shotElement && isNodeStillConnected(beamShot.shotElement)) {
+    beamShot.shotElement.remove();
+  }
+
+  activeBeamShots.delete(beamShot);
+  removeBeamOverlayElementIfEmpty();
+}
+
+function cleanupAllBeamShots() {
+  for (const beamShot of Array.from(activeBeamShots)) {
+    cleanupBeamShot(beamShot);
+  }
+}
+
 function applyBeamShotGeometry(beamShotElements, shotConfig) {
   if (!beamShotElements || !shotConfig) {
     return;
@@ -495,6 +588,15 @@ function createBeamShot(shotConfig, targetRowElement = null) {
     shotElement,
     trackingHandle: 0,
   };
+  const beamShot = {
+    countdownHandles: [],
+    disintegrationHandle: 0,
+    isCleanedUp: false,
+    rowRemovalHandle: 0,
+    shotElement,
+    stopTracking: null,
+    targetRowElement,
+  };
   applyBeamShotGeometry(beamShotElements, shotConfig);
 
   const stopTracking = () => {
@@ -509,6 +611,7 @@ function createBeamShot(shotConfig, targetRowElement = null) {
     }
     beamShotElements.trackingHandle = 0;
   };
+  beamShot.stopTracking = stopTracking;
 
   const trackBeamTarget = () => {
     beamShotElements.trackingHandle = 0;
@@ -543,7 +646,7 @@ function createBeamShot(shotConfig, targetRowElement = null) {
       continue;
     }
 
-    window.setTimeout(
+    const countdownHandle = window.setTimeout(
       () => {
         if (!isNodeStillConnected(labelElement)) {
           return;
@@ -566,15 +669,22 @@ function createBeamShot(shotConfig, targetRowElement = null) {
       },
       Math.max(0, Number(step.atMs) || 0),
     );
+    beamShot.countdownHandles.push(countdownHandle);
   }
 
-  window.setTimeout(() => {
-    stopTracking();
-    shotElement.remove();
+  beamShot.cleanupHandle = window.setTimeout(() => {
+    cleanupBeamShot(beamShot);
   }, MIKU_MIKU_BEAM_SHOT_DURATION_MS);
+  beamShot.countdownHandles.push(beamShot.cleanupHandle);
+  activeBeamShots.add(beamShot);
+  return beamShot;
 }
 
 function fireMikuMikuBeamAtRow($targetRow) {
+  if (!isMikuMikuBeamEnabled) {
+    return false;
+  }
+
   if (!$targetRow || !$targetRow.length) {
     return false;
   }
@@ -601,9 +711,13 @@ function fireMikuMikuBeamAtRow($targetRow) {
   }
 
   rowElement.classList.add(MIKU_MIKU_BEAM_TARGETING_CLASS);
-  createBeamShot(shotGeometry, rowElement);
+  const beamShot = createBeamShot(shotGeometry, rowElement);
+  if (!beamShot) {
+    cleanupTargetRowState(rowElement);
+    return false;
+  }
 
-  window.setTimeout(() => {
+  beamShot.disintegrationHandle = window.setTimeout(() => {
     if (!isNodeStillConnected(rowElement)) {
       cleanupTargetRowState(rowElement);
       return;
@@ -613,7 +727,7 @@ function fireMikuMikuBeamAtRow($targetRow) {
     rowElement.classList.add(MIKU_MIKU_BEAM_DISINTEGRATING_CLASS);
   }, MIKU_MIKU_BEAM_DISINTEGRATION_DELAY_MS);
 
-  window.setTimeout(() => {
+  beamShot.rowRemovalHandle = window.setTimeout(() => {
     cleanupTargetRowState(rowElement);
     if (isNodeStillConnected(rowElement)) {
       rowElement.remove();
@@ -633,6 +747,14 @@ function fireMikuMikuBeamAtUsername(username, options = {}) {
 }
 
 function tryTriggerMikuMikuBeamAtUsername(username, options = {}) {
+  if (!isMikuMikuBeamEnabled) {
+    return {
+      didFire: false,
+      reason: "disabled",
+      cooldownRemainingMs: 0,
+    };
+  }
+
   const nowMs = Date.now();
   const cooldownRemainingMs = getBeamCooldownRemainingMs(nowMs);
   if (cooldownRemainingMs > 0) {
@@ -687,6 +809,10 @@ function handleMikuMikuBeamMessage($messageElement) {
     messageBufferSelector: MESSAGE_BUFFER_SELECTOR,
   });
   if (!messageRootElement) {
+    return;
+  }
+
+  if (!isMikuMikuBeamEnabled) {
     return;
   }
 
@@ -754,6 +880,7 @@ function isAuthorAllowedForBeam(authorUsername) {
 
 function getBeamState() {
   return {
+    enabled: isMikuMikuBeamEnabled,
     commandMinRank: MIKU_MIKU_BEAM_COMMAND_MIN_RANK,
     allowedUsers: Array.from(MIKU_MIKU_BEAM_COMMAND_ALLOWED_USER_SET),
     cooldownMs: MIKU_MIKU_BEAM_COOLDOWN_MS,
@@ -761,11 +888,28 @@ function getBeamState() {
   };
 }
 
+function toggleMikuMikuBeam(nextEnabled) {
+  const desiredEnabled = Boolean(nextEnabled);
+  if (desiredEnabled === isMikuMikuBeamEnabled) {
+    return isMikuMikuBeamEnabled;
+  }
+
+  isMikuMikuBeamEnabled = desiredEnabled;
+  if (!isMikuMikuBeamEnabled) {
+    beamCooldownUntilMs = 0;
+    cleanupAllBeamShots();
+    stopAllActiveBeamAudio();
+  }
+
+  return isMikuMikuBeamEnabled;
+}
+
 const mikuMikuBeamApi = {
   fireAtUser(username, options = {}) {
     return triggerMikuMikuBeamAtUsername(username, options);
   },
   getState: getBeamState,
+  toggle: toggleMikuMikuBeam,
 };
 
 window.mikuMikuBeam = mikuMikuBeamApi;
