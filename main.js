@@ -17,7 +17,7 @@ if (![CHANNEL.name].favicon) {
 const LOCAL_CDN_URL = "https://127.0.0.1:5050"; //change before push
 const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
-const CURRENT_CDN = LOCAL_CDN_URL;
+const CURRENT_CDN = ONLINE_CDN;
 
 const MODULES_FOLDER = "custom_modules/";
 const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`;
@@ -41,7 +41,7 @@ const ModulePaths = [
   { UohMode: `fes_fun/uohmode.js` },
   { EnhancedEmotes: `chat_modules/enhancedEmotes.js` },
   { ImagePreview: `chat_modules/imagePreview.js`, isActive: 0, rank: -1 },
-  { HashUtil: `chat_modules/hashUtil.js` },
+  { HashUtil: `utils/hashUtil.js` },
   { Soundposts: `chat_modules/soundpostModule.js` },
   { NNDChatModule: `chat_modules/nndChatModule.js`, isActive: 1, rank: -1 },
   { TweetEmbed: `chat_modules/tweetEmbed.js` },
