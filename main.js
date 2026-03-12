@@ -66,8 +66,8 @@ const ModuleLoaderPromise = (async () => {
 })();
 
 const ChatModuleUtilsPromise = (async () => {
-  await import(makeLiveCDNLink(CHAT_MODULE_UTILS));
-  return window.CHAT_MODULE_UTILS;
+  const importedModule = await import(makeLiveCDNLink(CHAT_MODULE_UTILS));
+  return importedModule;
 })();
 
 let resolveAllModulesReady;

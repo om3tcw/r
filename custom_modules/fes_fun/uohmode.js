@@ -37,6 +37,7 @@ const {
   postStatusSystemMessage,
   setMessageRowsClassByUsername,
 } = ChatModuleUtils;
+
 const UOH_TRIGGER_LOOKUP_KEYS_NORMALIZED = (
   Array.isArray(UOH_TRIGGER_LOOKUP_KEYS)
     ? UOH_TRIGGER_LOOKUP_KEYS

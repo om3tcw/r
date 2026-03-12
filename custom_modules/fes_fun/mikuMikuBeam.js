@@ -97,9 +97,14 @@ function getViewportDimensions() {
   const documentElement = document.documentElement;
 
   return {
-    width: window.innerWidth || (documentElement && documentElement.clientWidth) || 0,
+    width:
+      window.innerWidth ||
+      (documentElement && documentElement.clientWidth) ||
+      0,
     height:
-      window.innerHeight || (documentElement && documentElement.clientHeight) || 0,
+      window.innerHeight ||
+      (documentElement && documentElement.clientHeight) ||
+      0,
   };
 }
 
@@ -557,10 +562,13 @@ function handleMikuMikuBeamMessage($messageElement) {
       return;
     }
 
-    const didFire = triggerMikuMikuBeamAtUsername(parsedCommand.targetUsername, {
-      excludeRowElement: $row[0],
-      playSound: true,
-    });
+    const didFire = triggerMikuMikuBeamAtUsername(
+      parsedCommand.targetUsername,
+      {
+        excludeRowElement: $row[0],
+        playSound: true,
+      },
+    );
 
     if (!didFire) {
       postBeamStatusSystemMessage(
