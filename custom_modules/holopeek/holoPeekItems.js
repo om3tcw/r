@@ -1,49 +1,47 @@
 function chatToVideoRatio(self) {
-    self.cssData = 
-        `#videowrap { width: ${100 - self.value}%}
+  self.cssData = `#videowrap { width: ${100 - self.value}%}
         #videowrap-header { display: none; }
-        #chatwrap { width: ${self.value}%}}` 
+        #chatwrap { width: ${self.value}%}}`;
 }
 
 function chatTransparency(self) {
-    const alpha = (100 - self.value) / 100;
-    const bgColor = `rgba(0, 0, 0, ${alpha})`;
-    self.cssData = 
-        `#userlist, #messagebuffer { background-color: ${bgColor} !important; }
-        .linewrap { background-color: ${bgColor}; }`
+  const alpha = (100 - self.value) / 100;
+  const bgColor = `rgba(0, 0, 0, ${alpha})`;
+  self.cssData = `#userlist, #messagebuffer { background-color: ${bgColor} !important; }
+        .linewrap { background-color: ${bgColor}; }`;
 }
 
 //test this with localstorage
 //nuke it asap
 function chatVideoOnly(self) {
-    self.lunaButton = $('<button>', {id: 'lunaButton',});
+  self.lunaButton = $("<button>", { id: "lunaButton" });
 
-    $('body').append(self.lunaButton);
-    self.lunaButton.css({
-        'width': '46px',
-        'height': '100px',
-        'background': `url('${CURRENT_CDN}/custom_modules/holopeek/lunapeek.png')`,
-        'position': 'absolute',
-        'right': '0',
-        'top': '0',
-        'padding': '0',
-        'z-index': '2147483647',
-        'border': 'none',
-        'outline': 'none',
-        'opacity': '0',
-        'transition': '.25s'
-        });
-    self.lunaButton.hover(
-        function mouseEnter() {
-            $(this).css('opacity', 1);
-        },
-        function mouseLeave() {
-            $(this).css('opacity', 0);
-        }
-    );
-    
-    const $chatwrap = $(chatwrap);
-    self.cssData = `
+  $("body").append(self.lunaButton);
+  self.lunaButton.css({
+    width: "46px",
+    height: "100px",
+    background: `url('${CURRENT_CDN}/custom_modules/holopeek/lunapeek.png')`,
+    position: "absolute",
+    right: "0",
+    top: "0",
+    padding: "0",
+    "z-index": "2147483647",
+    border: "none",
+    outline: "none",
+    opacity: "0",
+    transition: ".25s",
+  });
+  self.lunaButton.hover(
+    function mouseEnter() {
+      $(this).css("opacity", 1);
+    },
+    function mouseLeave() {
+      $(this).css("opacity", 0);
+    },
+  );
+
+  const $chatwrap = $(chatwrap);
+  self.cssData = `
         #mainpage { padding-top: 0 !important; background: #000 !important; }
         ::-webkit-scrollbar { width: 0 !important; } *{ scrollbar-width: none !important; }
         #chatheader, #userlist, #videowrap-header, #vidchatcontrols, #pollwrap, #MainTabContainer, .timestamp, nav.navbar { display: none !important; }
@@ -104,37 +102,36 @@ function chatVideoOnly(self) {
         input.form-control[type=text]::placeholder { color: #ccc !important; }
         :focus::-webkit-input-placeholder { color: #ccc !important; }
         .embed-responsive { max-height: 100% !important; }
-        #lunaButton { display: block; !important; }`
-    self.lunaButton.on('click', () => {
-    const isToggled = $chatwrap.css('pointer-events') !== 'none';
+        #lunaButton { display: block; !important; }`;
+  self.lunaButton.on("click", () => {
+    const isToggled = $chatwrap.css("pointer-events") !== "none";
 
     $chatwrap.css({
-        'pointer-events': isToggled ? 'none' : 'all',
-        'opacity': isToggled ? 0.25 : 1
+      "pointer-events": isToggled ? "none" : "all",
+      opacity: isToggled ? 0.25 : 1,
     });
-    
-});
+  });
 }
 
-function changeHoloPeekImage(self) { 
-    let imageUrl = self.inputElement.val();
-    let $holoPeekImg = $('#holopeek_img')
-    $holoPeekImg.css("background-image", `url(${imageUrl})`);
-    window.setupAnimationForHoloPeekImg($holoPeekImg, imageUrl);
+function changeHoloPeekImage(self) {
+  let imageUrl = self.inputElement.val();
+  let $holoPeekImg = $("#holopeek_img");
+  $holoPeekImg.css("background-image", `url(${imageUrl})`);
+  window.setupAnimationForHoloPeekImg($holoPeekImg, imageUrl);
 }
 
 //Needs globally visible scope for the tabcontainer
 function cleanupVerticalLayout(self) {
-    window.$tabContainer.show();
+  window.$tabContainer.show();
 }
 
 //Globally visible scope update
 function verticalLayout(self) {
-    if ($("#videowrap").length < 1) {
-        window.restoreVideo();
-    }
-    self.tabs = window.$tabContainer.hide();
-    self.cssData = `
+  if ($("#videowrap").length < 1) {
+    window.restoreVideo();
+  }
+  self.tabs = window.$tabContainer.hide();
+  self.cssData = `
         #chatwrap {
             position: fixed;
             width: 100%;
@@ -161,7 +158,7 @@ function verticalLayout(self) {
             box-shadow: none !important;
         }
         #videowrap-header { display: none !important; }
-        `
+        `;
 }
 
 let blackBg = makeLiveCDNLink("emotes/custom_modules/holopeek/black.png");
@@ -171,187 +168,190 @@ const NND_MODE_ID = "nndMode";
 const NND_EMOTES_ONLY_ID = "nndEmotesOnly";
 
 function disableHoloPeekOption(optionId) {
-    const $checkbox = $(`#${optionId}`);
-    if ($checkbox.length && $checkbox.prop('checked')) {
-        $checkbox.prop('checked', false);
-        $checkbox.triggerHandler('click');
-    }
+  const $checkbox = $(`#${optionId}`);
+  if ($checkbox.length && $checkbox.prop("checked")) {
+    $checkbox.prop("checked", false);
+    $checkbox.triggerHandler("click");
+  }
 }
 
 export const holoPeekObjects = [
-    {
-        optionName: "verticalLayout", 
-        optionDescription: "Vertical Layout", 
-        optionFunc: verticalLayout, 
-        cleanupFunc: cleanupVerticalLayout
+  {
+    optionName: "verticalLayout",
+    optionDescription: "Vertical Layout",
+    optionFunc: verticalLayout,
+    cleanupFunc: cleanupVerticalLayout,
+  },
+  {
+    optionName: "changeBackground",
+    optionDescription: "Custom Background",
+    optionFunc: (self) =>
+      (self.cssData = `body { background-image: url(${self.inputElement.val()}); }`),
+    type: "text",
+    defaultValue: blackBg,
+  },
+  {
+    optionName: "changeHoloPeekImage",
+    optionDescription: "Change HoloPeek Image",
+    optionFunc: changeHoloPeekImage,
+    type: "text",
+    defaultValue: polkaPeek,
+  },
+  {
+    optionName: "imageHover",
+    optionDescription: "Image hover will never be real",
+  },
+  {
+    optionName: "revealSpoilers",
+    optionDescription: "Reveal Spoilers",
+    optionFunc: (self) => (self.cssData = `.spoiler { color: #ff8; }`),
+  },
+  {
+    optionName: "chatToVideoRatio",
+    optionDescription: "Chat:Video Ratio",
+    optionFunc: chatToVideoRatio,
+    type: "range",
+    defaultValue: 50,
+  },
+  {
+    optionName: "chatTransparency",
+    optionDescription: "Chat Transparency",
+    optionFunc: chatTransparency,
+    type: "range",
+    defaultValue: 50,
+  },
+  {
+    optionName: "invertChatPosition",
+    optionDescription: "Invert Chat Position",
+    optionFunc: (self) =>
+      (self.cssData = `#main { flex-direction: row-reverse !important; }`),
+  },
+  {
+    optionName: "hidePlaylist",
+    optionDescription: "Hide Playlist",
+    optionFunc: (self) =>
+      (self.cssData = `#MainTabContainer { display: none; }`),
+  },
+  {
+    optionName: "hideNavBar",
+    optionDescription: "Hide Navbar",
+    optionFunc: (self) =>
+      (self.cssData = `#mainpage { padding-top: 0 !important; }
+            nav.navbar { display: none !important; }`),
+  },
+  {
+    optionName: "hideScrollbars",
+    optionDescription: "Hide Scrollbars",
+    optionFunc: (self) =>
+      (self.cssData = `::-webkit-scrollbar { width: 0 !important; }
+            * { scrollbar-width: none !important; }`),
+  },
+  {
+    optionName: "chatVideoOnly",
+    optionDescription: "Chat & Video only",
+    optionFunc: chatVideoOnly,
+    cleanupFunc: (self) => self.lunaButton.remove(),
+  },
+  {
+    optionName: NND_MODE_ID,
+    optionDescription: "NND Mode",
+    optionFunc: (self) => {
+      const enabled = self.checkbox.prop("checked");
+      if (enabled) {
+        disableHoloPeekOption(NND_EMOTES_ONLY_ID);
+      }
+      localStorage.setItem("holopeek_nndMode", enabled);
+      (async () => {
+        await window.waitForFunc("toggleNNDMode");
+        await window.waitForFunc("setNNDEmotesOnlyMode");
+        window.setNNDEmotesOnlyMode(false);
+        window.toggleNNDMode(enabled);
+      })();
     },
-    {
-        optionName: "changeBackground", 
-        optionDescription: "Custom Background", 
-        optionFunc: (self) => self.cssData = `body { background-image: url(${self.inputElement.val()}); }`, 
-        type: "text", 
-        defaultValue: blackBg
+    cleanupFunc: () => {
+      localStorage.removeItem("holopeek_nndMode");
+      (async () => {
+        await window.waitForFunc("toggleNNDMode");
+        window.toggleNNDMode(false);
+      })();
     },
-    {
-        optionName: "changeHoloPeekImage", 
-        optionDescription: "Change HoloPeek Image", 
-        optionFunc: changeHoloPeekImage,
-        type: "text", 
-        defaultValue: polkaPeek
+  },
+  {
+    optionName: NND_EMOTES_ONLY_ID,
+    optionDescription: "NND Emotes Only",
+    optionFunc: (self) => {
+      const enabled = self.checkbox.prop("checked");
+      if (enabled) {
+        disableHoloPeekOption(NND_MODE_ID);
+      }
+      (async () => {
+        await window.waitForFunc("toggleNNDMode");
+        await window.waitForFunc("setNNDEmotesOnlyMode");
+        window.setNNDEmotesOnlyMode(enabled);
+        window.toggleNNDMode(enabled);
+      })();
     },
-    {
-        optionName: "imageHover",
-        optionDescription: "Image hover will never be real",
+    cleanupFunc: () => {
+      (async () => {
+        await window.waitForFunc("toggleNNDMode");
+        await window.waitForFunc("setNNDEmotesOnlyMode");
+        window.setNNDEmotesOnlyMode(false);
+        window.toggleNNDMode(false);
+      })();
     },
-    {
-        optionName: "revealSpoilers",
-        optionDescription: "Reveal Spoilers",
-        optionFunc: (self) => self.cssData = `.spoiler { color: #ff8; }`,
+  },
+  {
+    optionName: "Embed twitter links",
+    optionDescription: "Embed tweet links",
+    optionFunc: (self) => {
+      (async () => {
+        await window.waitForFunc("tweetPreview");
+        window.tweetPreview.toggle(true);
+      })();
     },
-    {
-        optionName: "chatToVideoRatio", 
-        optionDescription: "Chat:Video Ratio",
-        optionFunc: chatToVideoRatio,
-        type: "range",
-        defaultValue: 50
+    cleanupFunc: (self) => {
+      (async () => {
+        await window.waitForFunc("tweetPreview");
+        window.tweetPreview.toggle(false);
+      })();
     },
-    {
-        optionName: "chatTransparency",
-        optionDescription: "Chat Transparency",
-        optionFunc: chatTransparency,
-        type: "range",
-        defaultValue: 50
+  },
+  {
+    optionName: "Turn YouTube links in chat into video Title",
+    optionDescription: "Preview video titles",
+    optionFunc: (self) => {
+      (async () => {
+        await window.waitForFunc("previewVideoTitle");
+        window.previewVideoTitle.toggle(true);
+      })();
     },
-    {
-        optionName: "invertChatPosition",
-        optionDescription: "Invert Chat Position",
-        optionFunc: (self) => self.cssData = `#main { flex-direction: row-reverse !important; }`
+    cleanupFunc: (self) => {
+      (async () => {
+        await window.waitForFunc("previewVideoTitle");
+        window.previewVideoTitle.toggle(false);
+      })();
     },
-    {
-        optionName: "hidePlaylist",
-        optionDescription: "Hide Playlist",
-        optionFunc: (self) => self.cssData = `#MainTabContainer { display: none; }`
+  },
+  {
+    optionName: "Disables various commands and CSS that can be distracting",
+    optionDescription: "No Fun",
+    optionFunc: () => {
+      (async () => {
+        await window.waitForFunc("fesFun");
+        window.fesFun.setEnabled(false);
+      })();
     },
-    {
-        optionName: "hideNavBar",
-        optionDescription: "Hide Navbar",
-        optionFunc: (self) => self.cssData = 
-            `#mainpage { padding-top: 0 !important; }
-            nav.navbar { display: none !important; }`
+    cleanupFunc: () => {
+      (async () => {
+        await window.waitForFunc("fesFun");
+        window.fesFun.setEnabled(true);
+      })();
     },
-    {
-        optionName: "hideScrollbars",
-        optionDescription: "Hide Scrollbars",
-        optionFunc: (self) => self.cssData = 
-            `::-webkit-scrollbar { width: 0 !important; }
-            * { scrollbar-width: none !important; }`
-    },
-    {
-        optionName: "chatVideoOnly",
-        optionDescription: "Chat & Video only",
-        optionFunc: chatVideoOnly,
-        cleanupFunc: (self) => self.lunaButton.remove(),
-    },
-	{
-        optionName: NND_MODE_ID,
-        optionDescription: "NND Mode",
-        optionFunc: (self) => {
-            const enabled = self.checkbox.prop('checked');
-            if (enabled) {
-                disableHoloPeekOption(NND_EMOTES_ONLY_ID);
-            }
-            localStorage.setItem('holopeek_nndMode', enabled);
-            (async () => {
-                await window.waitForFunc("toggleNNDMode");
-                await window.waitForFunc("setNNDEmotesOnlyMode");
-                window.setNNDEmotesOnlyMode(false);
-                window.toggleNNDMode(enabled);
-            })();
-        },
-        cleanupFunc: () => {
-            localStorage.removeItem('holopeek_nndMode');
-            (async () => {
-                await window.waitForFunc("toggleNNDMode");
-                window.toggleNNDMode(false);
-            })();
-        }
-    },
-	{
-		optionName: NND_EMOTES_ONLY_ID,
-		optionDescription: "NND Emotes Only",
-		optionFunc: (self) => {
-            const enabled = self.checkbox.prop('checked');
-            if (enabled) {
-                disableHoloPeekOption(NND_MODE_ID);
-            }
-            (async () => {
-                await window.waitForFunc("toggleNNDMode");
-                await window.waitForFunc("setNNDEmotesOnlyMode");
-                window.setNNDEmotesOnlyMode(enabled);
-                window.toggleNNDMode(enabled);
-            })();
-        },
-        cleanupFunc: () => {
-            (async () => {
-                await window.waitForFunc("toggleNNDMode");
-                await window.waitForFunc("setNNDEmotesOnlyMode");
-                window.setNNDEmotesOnlyMode(false);
-                window.toggleNNDMode(false);
-            })();
-        }
-	},
-    {
-        optionName: "tweetEmbed",
-        optionDescription: "Embed tweet links",
-        optionFunc: (self) => {
-            (async () => {
-                await window.waitForFunc("tweetPreview");
-                window.tweetPreview.toggle(true);
-            })();
-        },
-        cleanupFunc: (self) => {
-            (async () => {
-                await window.waitForFunc("tweetPreview");
-                window.tweetPreview.toggle(false);
-            })();
-        },
-    },
-    {
-        optionName: "previewVideoTitle",
-        optionDescription: "Preview video titles",
-        optionFunc: (self) => {
-            (async () => {
-                await window.waitForFunc("previewVideoTitle");
-                window.previewVideoTitle.toggle(true);
-            })();
-        },
-        cleanupFunc: (self) => {
-            (async () => {
-                await window.waitForFunc("previewVideoTitle");
-                window.previewVideoTitle.toggle(false);
-            })();
-        },
-    },
-    {
-        optionName: "disableMikuBeam",
-        optionDescription: "Disable Miku Beam",
-        optionFunc: () => {
-            (async () => {
-                await window.waitForFunc("mikuMikuBeam");
-                window.mikuMikuBeam.toggle(false);
-            })();
-        },
-        cleanupFunc: () => {
-            (async () => {
-                await window.waitForFunc("mikuMikuBeam");
-                window.mikuMikuBeam.toggle(true);
-            })();
-        },
-    },
-    {
-        optionName: "customCSS",
-        optionDescription: "Custom CSS",
-        type: "textarea",
-        optionFunc: (self) => self.cssData = self.value
-    }
-]
+  },
+  {
+    optionName: "customCSS",
+    optionDescription: "Custom CSS",
+    type: "textarea",
+    optionFunc: (self) => (self.cssData = self.value),
+  },
+];

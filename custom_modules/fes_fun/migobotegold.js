@@ -8,9 +8,13 @@ const GOLD_ICON_OFFSET_PX = 3;
 const GOLD_ICON_GAP_PX = 3;
 const GOLD_EMOTE_TRIGGER_ENABLED = false;
 const ChatModuleUtils = window.CHAT_MODULE_UTILS;
+const fesFun = window.fesFun;
 
 if (!ChatModuleUtils) {
     throw new Error("[MigoboteGold] CHAT_MODULE_UTILS is not available");
+}
+if (!fesFun) {
+    throw new Error("[MigoboteGold] fesFun controller is not available");
 }
 
 const {
@@ -28,40 +32,15 @@ const {
     setUserlistNameClassByUsername
 } = ChatModuleUtils;
 
-const GOLD_COMMAND_ALLOWED_USERS = [
-    "tomboysweat",
-    "CEOofBandaids",
-    "Deadbeatchama",
-    "Kusa",
-    "Bibibeat",
-    "Dango",
-    "Egao",
-    "etch",
-    "fuckhead",
-    "Graduated",
-    "jafafafy",
-    "Kurosu",
-    "LonelyTeamate",
-    "m_",
-    "McFin",
-    "metatron",
-    "Moshmallow",
-    "MrMcEggmanJones",
-    "notSkitzo",
-    "Pepper",
-    "Shifumi",
-    "slowchamp",
-    "speec",
-    "Tigre",
-    "Crackerjack",
-    "Anonchama",
-    "Altearia",
-    "BirbUp"
-];
-
+const GOLD_COMMAND_ALLOWED_USERS = [];
+const GOLD_COMMAND_MIN_RANK =
+    typeof Rank !== "undefined" && Rank && Rank.Moderator != null
+        ? Rank.Moderator
+        : 2;
 const GOLD_COMMAND_ALLOW_SELF = false;
 
 const goldUsersByKey = new Map();
+let isMigoboteGoldEnabled = true;
 let isInitialMessageScanComplete = false;
 
 const GOLD_COMMAND_ALLOWED_USER_SET = new Set(
@@ -136,6 +115,16 @@ function syncAllGoldVisualState() {
 
         syncGoldVisualStateForUser(userState.displayName, true);
     }
+}
+
+function clearGoldRuntimeState() {
+    goldUsersByKey.clear();
+    $(`${MESSAGE_BUFFER_SELECTOR} > div.${GOLD_ACTIVE_ROW_CLASS}`).removeClass(
+        GOLD_ACTIVE_ROW_CLASS
+    );
+    $(`#userlist .${GOLD_ACTIVE_USERLIST_CLASS}`).removeClass(
+        GOLD_ACTIVE_USERLIST_CLASS
+    );
 }
 
 function postGoldStatusSystemMessage(message) {
@@ -222,6 +211,7 @@ function deactivateGoldForUser(usernameOrKey, shouldAnnounce = true) {
 function isGoldCommandAllowedForAuthor(authorUsername) {
     return isAuthorAllowed(authorUsername, {
         allowedUsers: GOLD_COMMAND_ALLOWED_USER_SET,
+        minRank: GOLD_COMMAND_MIN_RANK,
         allowSelf: GOLD_COMMAND_ALLOW_SELF
     });
 }
@@ -303,6 +293,10 @@ function handleGoldStateMessage($messageElement) {
         return;
     }
 
+    if (!isMigoboteGoldEnabled) {
+        return;
+    }
+
     const $row = getMessageRow($messageElement);
     if (!$row || isServerMessageRow($row)) {
         return;
@@ -363,6 +357,44 @@ function handleGoldStateMessage($messageElement) {
     }
 }
 
+function setMigoboteGoldEnabled(nextEnabled) {
+    const desiredEnabled = Boolean(nextEnabled);
+    if (desiredEnabled === isMigoboteGoldEnabled) {
+        return isMigoboteGoldEnabled;
+    }
+
+    isMigoboteGoldEnabled = desiredEnabled;
+    if (!isMigoboteGoldEnabled) {
+        clearGoldRuntimeState();
+    }
+
+    return isMigoboteGoldEnabled;
+}
+
+function getGoldState() {
+    return {
+        enabled: isMigoboteGoldEnabled,
+        activeUsers: goldUsersByKey.size,
+        commandMinRank: GOLD_COMMAND_MIN_RANK,
+        allowedUsers: Array.from(GOLD_COMMAND_ALLOWED_USER_SET),
+        allowSelf: GOLD_COMMAND_ALLOW_SELF
+    };
+}
+
+const migoboteGoldApi = {
+    getState: getGoldState,
+    toggle(on) {
+        const desiredEnabled = Boolean(on);
+        if (desiredEnabled && !fesFun.isEnabled()) {
+            return false;
+        }
+
+        return setMigoboteGoldEnabled(desiredEnabled);
+    }
+};
+
+window.migoboteGold = migoboteGoldApi;
+
 function attachGoldUserlistObserver() {
     const userlistElement = document.getElementById("userlist");
     if (!userlistElement || goldUserlistObserver) {
@@ -384,6 +416,11 @@ function attachGoldUserlistObserver() {
 
 (async () => {
     applyMigoboteGoldCssVariables();
+    fesFun.registerModule({
+        id: "migoboteGold",
+        setEnabled: setMigoboteGoldEnabled,
+        getState: getGoldState
+    });
     await window.waitForFunc("MESSAGE_PROCESSOR");
     attachGoldUserlistObserver();
     MESSAGE_PROCESSOR.addTap(handleGoldStateMessage);

@@ -20,9 +20,13 @@ const UOH_OSHI_EYES_IMAGE_WIDTH_PX = 50;
 const UOH_TIMESTAMP_IMAGE_HEIGHT_PX = 15;
 const UOH_USERNAME_PREFIX_IMAGE_MARGIN_RIGHT_PX = 4;
 const ChatModuleUtils = window.CHAT_MODULE_UTILS;
+const fesFun = window.fesFun;
 
 if (!ChatModuleUtils) {
   throw new Error("[UohMode] CHAT_MODULE_UTILS is not available");
+}
+if (!fesFun) {
+  throw new Error("[UohMode] fesFun controller is not available");
 }
 
 const {
@@ -67,6 +71,7 @@ const activatedUohUsersByKey = new Map();
 const modifiedUohTextNodes = new Set();
 const originalUohTextByNode = new WeakMap();
 const modifiedUohEmoteElements = new Set();
+let isUohModuleEnabled = true;
 let isUohModeEnabled = false;
 let isUohMessageTapAttached = false;
 let isInitialUohMessageScanComplete = false;
@@ -694,6 +699,10 @@ function handleModeMessage($messageElement) {
     return;
   }
 
+  if (!isUohModuleEnabled) {
+    return;
+  }
+
   const $row = getMessageRow($messageElement);
   if (!$row || isServerMessageRow($row)) {
     return;
@@ -732,6 +741,7 @@ function handleModeMessage($messageElement) {
 
 function getModeState() {
   return {
+    moduleEnabled: isUohModuleEnabled,
     enabled: isUohModeEnabled,
     activeUsers: activatedUohUsersByKey.size,
     commandMinRank: UOH_COMMAND_MIN_RANK,
@@ -739,10 +749,34 @@ function getModeState() {
   };
 }
 
+function setUohModuleEnabled(nextEnabled) {
+  const desiredEnabled = Boolean(nextEnabled);
+  if (desiredEnabled === isUohModuleEnabled) {
+    return isUohModuleEnabled;
+  }
+
+  isUohModuleEnabled = desiredEnabled;
+  if (!isUohModuleEnabled) {
+    setModeEnabled(false, {
+      announce: false,
+      rescanExisting: false,
+    });
+  }
+
+  return isUohModuleEnabled;
+}
+
 const uohModeApi = {
   getState: getModeState,
   toggle(on) {
-    return setModeEnabled(on, { rescanExisting: Boolean(on) });
+    const desiredEnabled = Boolean(on);
+    if (desiredEnabled && !fesFun.isEnabled()) {
+      return false;
+    }
+
+    return setModeEnabled(desiredEnabled, {
+      rescanExisting: desiredEnabled,
+    });
   },
 };
 
@@ -751,6 +785,11 @@ window.Mode = uohModeApi;
 
 async function initializeMode() {
   applyUohModeCssVariables();
+  fesFun.registerModule({
+    id: "uohMode",
+    setEnabled: setUohModuleEnabled,
+    getState: getModeState,
+  });
   await window.waitForFunc("MESSAGE_PROCESSOR");
   if (isUohMessageTapAttached) {
     return;

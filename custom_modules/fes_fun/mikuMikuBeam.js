@@ -44,9 +44,13 @@ const MIKU_MIKU_BEAM_COMMAND_MIN_RANK =
     ? Rank.Moderator
     : 2;
 const ChatModuleUtils = window.CHAT_MODULE_UTILS;
+const fesFun = window.fesFun;
 
 if (!ChatModuleUtils) {
   throw new Error("[MikuMikuBeam] CHAT_MODULE_UTILS is not available");
+}
+if (!fesFun) {
+  throw new Error("[MikuMikuBeam] fesFun controller is not available");
 }
 
 const {
@@ -895,6 +899,11 @@ function toggleMikuMikuBeam(nextEnabled) {
   }
 
   isMikuMikuBeamEnabled = desiredEnabled;
+  if (isMikuMikuBeamEnabled) {
+    preloadMikuMikuBeamSound();
+    return isMikuMikuBeamEnabled;
+  }
+
   if (!isMikuMikuBeamEnabled) {
     beamCooldownUntilMs = 0;
     cleanupAllBeamShots();
@@ -909,14 +918,28 @@ const mikuMikuBeamApi = {
     return triggerMikuMikuBeamAtUsername(username, options);
   },
   getState: getBeamState,
-  toggle: toggleMikuMikuBeam,
+  toggle(on) {
+    const desiredEnabled = Boolean(on);
+    if (desiredEnabled && !fesFun.isEnabled()) {
+      return false;
+    }
+
+    return toggleMikuMikuBeam(desiredEnabled);
+  },
 };
 
 window.mikuMikuBeam = mikuMikuBeamApi;
 
 (async function initializeMikuMikuBeam() {
   applyMikuMikuBeamCssVariables();
-  preloadMikuMikuBeamSound();
+  fesFun.registerModule({
+    id: "mikuMikuBeam",
+    setEnabled: toggleMikuMikuBeam,
+    getState: getBeamState,
+  });
+  if (isMikuMikuBeamEnabled) {
+    preloadMikuMikuBeamSound();
+  }
   await window.waitForFunc("MESSAGE_PROCESSOR");
   if (
     isBeamMessageTapAttached ||

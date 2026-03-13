@@ -22,6 +22,26 @@ const CURRENT_CDN = ONLINE_CDN;
 const MODULES_FOLDER = "custom_modules/";
 const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`;
 const CHAT_MODULE_UTILS = `${MODULES_FOLDER}utils/chatCommandUtils.js`;
+const CLIENT_ENVIRONMENT_UTILS = `${MODULES_FOLDER}utils/clientEnvironmentUtils.js`;
+const FES_FUN_CONTROLLER = `${MODULES_FOLDER}fes_fun/fesFunController.js`;
+
+function applyFesFunMobileGate(moduleConfig, isMobileClient) {
+  if (!moduleConfig || typeof moduleConfig !== "object") {
+    return moduleConfig;
+  }
+
+  const moduleName = Object.keys(moduleConfig)[0];
+  const modulePath = String(moduleConfig[moduleName] || "");
+  if (!isMobileClient || !modulePath.startsWith("fes_fun/")) {
+    return moduleConfig;
+  }
+
+  return {
+    ...moduleConfig,
+    isActive: 0,
+  };
+}
+
 const ModulePaths = [
   { CSSInjection: `custom_css_injection/customCssInjection.js` },
   { MahjongMode: `chat_modules/mahjongMode.js`, isActive: 1, rank: -1 },
@@ -70,6 +90,18 @@ const ChatModuleUtilsPromise = (async () => {
   return importedModule;
 })();
 
+const ClientEnvironmentUtilsPromise = (async () => {
+  const importedModule = await import(
+    makeLiveCDNLink(CLIENT_ENVIRONMENT_UTILS)
+  );
+  return importedModule;
+})();
+
+const FesFunControllerPromise = (async () => {
+  const importedModule = await import(makeLiveCDNLink(FES_FUN_CONTROLLER));
+  return importedModule;
+})();
+
 let resolveAllModulesReady;
 window.allModulesReady = new Promise((resolve, reject) => {
   resolveAllModulesReady = resolve;
@@ -77,8 +109,15 @@ window.allModulesReady = new Promise((resolve, reject) => {
 
 (async function loadLogic() {
   await ChatModuleUtilsPromise;
+  const { shouldTreatAsMobileClient } = await ClientEnvironmentUtilsPromise;
+  await FesFunControllerPromise;
   const ModuleLoaderClass = await ModuleLoaderPromise;
-  const ModuleLoaderInstance = new ModuleLoaderClass(ModulePaths);
+  const isMobileClient = shouldTreatAsMobileClient();
+  const ModuleLoaderInstance = new ModuleLoaderClass(
+    ModulePaths.map((moduleConfig) =>
+      applyFesFunMobileGate(moduleConfig, isMobileClient),
+    ),
+  );
 
   await ModuleLoaderInstance.initialize();
   await ModuleLoaderInstance.allModulesLoaded;
