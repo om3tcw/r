@@ -301,7 +301,7 @@ export const holoPeekObjects = [
     },
   },
   {
-    optionName: "Embed twitter links",
+    optionName: "tweetEmbed",
     optionDescription: "Embed tweet links",
     optionFunc: (self) => {
       (async () => {
@@ -317,7 +317,7 @@ export const holoPeekObjects = [
     },
   },
   {
-    optionName: "Turn YouTube links in chat into video Title",
+    optionName: "previewVideoTitle",
     optionDescription: "Preview video titles",
     optionFunc: (self) => {
       (async () => {
@@ -333,7 +333,7 @@ export const holoPeekObjects = [
     },
   },
   {
-    optionName: "Disables various commands and CSS that can be distracting",
+    optionName: "disableMikuBeam",
     optionDescription: "No Fun",
     optionFunc: () => {
       (async () => {
