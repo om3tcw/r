@@ -1,4 +1,4 @@
-const FES_FUN_STORAGE_KEY = "noFun";
+const FES_FUN_STORAGE_KEY = "disableMikuBeam";
 const registeredFesFunModules = new Map();
 
 function getInitialFesFunEnabledState() {
