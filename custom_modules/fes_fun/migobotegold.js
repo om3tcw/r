@@ -32,37 +32,11 @@ const {
     setUserlistNameClassByUsername
 } = ChatModuleUtils;
 
-const GOLD_COMMAND_ALLOWED_USERS = [
-    "tomboysweat",
-    "CEOofBandaids",
-    "Deadbeatchama",
-    "Kusa",
-    "Bibibeat",
-    "Dango",
-    "Egao",
-    "etch",
-    "fuckhead",
-    "Graduated",
-    "jafafafy",
-    "Kurosu",
-    "LonelyTeamate",
-    "m_",
-    "McFin",
-    "metatron",
-    "Moshmallow",
-    "MrMcEggmanJones",
-    "notSkitzo",
-    "Pepper",
-    "Shifumi",
-    "slowchamp",
-    "speec",
-    "Tigre",
-    "Crackerjack",
-    "Anonchama",
-    "Altearia",
-    "BirbUp"
-];
-
+const GOLD_COMMAND_ALLOWED_USERS = [];
+const GOLD_COMMAND_MIN_RANK =
+    typeof Rank !== "undefined" && Rank && Rank.Moderator != null
+        ? Rank.Moderator
+        : 2;
 const GOLD_COMMAND_ALLOW_SELF = false;
 
 const goldUsersByKey = new Map();
@@ -237,6 +211,7 @@ function deactivateGoldForUser(usernameOrKey, shouldAnnounce = true) {
 function isGoldCommandAllowedForAuthor(authorUsername) {
     return isAuthorAllowed(authorUsername, {
         allowedUsers: GOLD_COMMAND_ALLOWED_USER_SET,
+        minRank: GOLD_COMMAND_MIN_RANK,
         allowSelf: GOLD_COMMAND_ALLOW_SELF
     });
 }
@@ -400,6 +375,7 @@ function getGoldState() {
     return {
         enabled: isMigoboteGoldEnabled,
         activeUsers: goldUsersByKey.size,
+        commandMinRank: GOLD_COMMAND_MIN_RANK,
         allowedUsers: Array.from(GOLD_COMMAND_ALLOWED_USER_SET),
         allowSelf: GOLD_COMMAND_ALLOW_SELF
     };
