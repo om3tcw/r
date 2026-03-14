@@ -4,7 +4,12 @@ When uploading your soundpost, remember to normalize the audio to -6 db.
 You can do this using ffmpeg-normalize using the following function in powershell or command prompt:
 ffmpeg-normalize ".\%%~nxx" -nt peak -t -6 -c:a libvorbis -ext ogg -of .\output
 
-Or use Audacity to set the DB to :suiwhistle: and export as .ogg (Or use this site if you're lazy https://www.audio2edit.com/normalize-audio)
+Or use Audacity:
+To normalize audio in Audacity, select your track, navigate to Effect > Volume and Compression > Normalize. 
+Set the maximum amplitude to -1.0 dB or -3 dB to increase loudness without clipping, 
+Listen to the result if the volume is still too peak decrease the "Peak amplitude". Once done export as .ogg 
+
+(Or use this site if you're lazy https://www.audio2edit.com/normalize-audio)
 
 ## Rare soundposts
 Raresoundposts work based on the chance you set in "chance": its percent based. 
