@@ -3113,6 +3113,23 @@ img.channel-emote[title$=":inawinner:"] {
     margin: -112px;
 }
 
+img.channel-emote[title$=":nerissawithjailbird:"] {
+    left: 200px;
+    z-index: -1;
+    max-height: 250px;
+    bottom: 110px;
+    margin: -112px;
+}
+
+img.channel-emote[title$=":nerissawithjailbirdlonger:"] {
+    left: 200px;
+    z-index: -1;
+    max-height: 340px;
+    bottom: 110px;
+    margin: -112px;
+}
+
+
 /* might add 'top:5px;' later to do a bottom offset */
 /* End of Emote Animations */
 
