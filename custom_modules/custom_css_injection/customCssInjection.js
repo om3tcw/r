@@ -3,6 +3,7 @@ const STYLES = {
     HOLOPEEK_STYLE: `custom_modules/custom_css_injection/holoPeek-css.js`,
     MIKU_MIKU_BEAM_STYLE: `custom_modules/custom_css_injection/mikuMikuBeam-css.js`,
     MIGOBOTE_GOLD_STYLE: `custom_modules/custom_css_injection/migobotegold-css.js`,
+    NINO_MODE_STYLE: `custom_modules/custom_css_injection/ninoMode-css.js`,
     SNOW_STYLE: `custom_modules/custom_css_injection/snow-css.js`,
     UOH_MODE_STYLE: `custom_modules/custom_css_injection/uohmode-css.js`,
     PLAYER_STYLE: `custom_modules/custom_css_injection/sublime-player-css.js`

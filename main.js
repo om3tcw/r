@@ -66,13 +66,14 @@ const ModulePaths = [
   { NNDChatModule: `chat_modules/nndChatModule.js`, isActive: 1, rank: -1 },
   { TweetEmbed: `chat_modules/tweetEmbed.js` },
   { VideoTitlePreview: `chat_modules/videoTitlePreview.js` },
+  { NinoMode: `fes_fun/ninoMode.js` },
   { RratButton: `ui_modules/rratButton.js` },
 ];
 
 //candidate to move to util.js
 //change ?ver=n to automatically push changes.
 function makeLiveCDNLink(fileName) {
-  return CURRENT_CDN + "/" + fileName + "?ver=1-13-22";
+  return CURRENT_CDN + "/" + fileName + "?ver=1-13-23";
 }
 
 //candidate to move to util.js
