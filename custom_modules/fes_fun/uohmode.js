@@ -589,7 +589,7 @@ function postUohToggleSystemMessage(isEnabled, actorUsername) {
   const safeActor = String(actorUsername || "").trim();
   const actorSuffix = safeActor ? ` by "${safeActor}"` : "";
   postUohStatusSystemMessage(
-    `UOH mode ${isEnabled ? "enabled" : "disabled"}${actorSuffix}.`,
+    `Nonce alert`,
   );
 }
 
