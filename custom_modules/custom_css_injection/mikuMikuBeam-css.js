@@ -1,4 +1,8 @@
 (function injectMikuMikuBeamStyles() {
+  const mikuMikuBeamRayImageUrl =
+    typeof makeLiveCDNLink === "function"
+      ? makeLiveCDNLink("other/beam-body.png")
+      : "other/beam-body.png";
   const styleId = "miku-miku-beam-style";
 
   if (document.getElementById(styleId)) {
@@ -8,9 +12,9 @@
   const cssMikuMikuBeam = `
     :root {
       --miku-miku-beam-emitter-image-url: url("https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/takomiku.png");
+      --miku-miku-beam-ray-image-url: url("${mikuMikuBeamRayImageUrl}");
       --miku-miku-beam-active-duration: 8000ms;
       --miku-miku-beam-fire-delay: 10350ms;
-      --miku-miku-beam-impact-spark-delay: 10520ms;
     }
 
     #miku-miku-beam-overlay {
@@ -32,6 +36,7 @@
 
     .miku-miku-beam-label {
       position: fixed;
+      z-index: 5;
       min-width: 230px;
       max-width: min(420px, calc(100vw - 32px));
       padding: 8px 14px;
@@ -77,6 +82,7 @@
 
     .miku-miku-beam-emitter {
       position: fixed;
+      z-index: 3;
       width: 144px;
       height: 144px;
       opacity: 0;
@@ -128,6 +134,7 @@
 
     .miku-miku-beam-pivot {
       position: fixed;
+      z-index: 1;
       width: 0;
       height: 0;
       transform-origin: 0 50%;
@@ -135,23 +142,24 @@
 
     .miku-miku-beam-ray {
       position: absolute;
+      z-index: 1;
       left: 0;
-      top: -15px;
-      height: 30px;
-      border-radius: 999px;
+      top: -16px;
+      height: 32px;
+      border-radius: 0;
       opacity: 0;
       transform: scaleX(0.05);
       transform-origin: 0 50%;
       background:
-        radial-gradient(circle at 0 50%, rgba(255, 255, 255, 0.94) 0 7%, rgba(255, 255, 255, 0) 20%),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0 7%, rgba(218, 255, 252, 0.98) 7% 18%, rgba(145, 255, 239, 0.96) 18% 42%, rgba(82, 232, 255, 0.9) 42% 70%, rgba(63, 176, 255, 0.56) 70% 88%, rgba(63, 176, 255, 0) 100%);
-      box-shadow:
-        0 0 12px rgba(255, 255, 255, 0.88),
-        0 0 28px rgba(39, 255, 232, 0.88),
-        0 0 72px rgba(39, 157, 255, 0.56);
+        var(--miku-miku-beam-ray-image-url, none)
+        left center / 100% 100% no-repeat;
+      box-shadow: none;
+      filter:
+        drop-shadow(0 0 6px rgba(108, 255, 246, 0.72))
+        drop-shadow(0 0 18px rgba(55, 176, 255, 0.42));
       overflow: visible;
       backface-visibility: hidden;
-      will-change: transform, opacity;
+      will-change: transform, opacity, filter;
       animation:
         miku-miku-beam-fire var(--miku-miku-beam-active-duration, 8000ms)
         linear var(--miku-miku-beam-fire-delay, 10350ms) forwards;
@@ -161,43 +169,56 @@
     .miku-miku-beam-ray::after {
       content: "";
       position: absolute;
-      inset: 0;
-      border-radius: inherit;
+      pointer-events: none;
     }
 
     .miku-miku-beam-ray::before {
-      inset: 9px -2px;
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.96) 26%, rgba(255, 255, 255, 0.7) 62%, rgba(255, 255, 255, 0.18) 86%, rgba(255, 255, 255, 0) 100%);
-      box-shadow:
-        0 0 18px rgba(255, 255, 255, 0.96),
-        0 0 32px rgba(196, 255, 255, 0.52);
-      filter: blur(0.3px);
-      animation: miku-miku-beam-core-pulse 1.25s ease-in-out infinite;
+      display: none;
     }
 
     .miku-miku-beam-ray::after {
-      inset: -18px -10px;
+      right: -34px;
+      top: 50%;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
       background:
-        linear-gradient(90deg, rgba(122, 255, 245, 0.1) 0%, rgba(228, 255, 253, 0.36) 18%, rgba(114, 255, 244, 0.26) 54%, rgba(114, 255, 244, 0) 100%);
-      opacity: 0.86;
-      filter: blur(12px);
-      animation: miku-miku-beam-sheen 1.5s linear infinite;
+        radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.96) 0 9%,
+          rgba(182, 255, 249, 0.9) 18%,
+          rgba(92, 227, 255, 0.58) 40%,
+          rgba(92, 227, 255, 0.16) 58%,
+          rgba(92, 227, 255, 0) 76%
+        );
+      opacity: 0.92;
+      filter: blur(7px);
+      transform: translateY(-50%);
     }
 
     .miku-miku-beam-impact {
       position: fixed;
-      width: 108px;
-      height: 108px;
+      z-index: 4;
+      width: 156px;
+      height: 156px;
       border-radius: 50%;
       opacity: 0;
       transform: translate(-50%, -50%) scale(0.2);
       background:
-        radial-gradient(circle, rgba(255, 255, 255, 0.98) 0 10%, rgba(225, 255, 252, 0.96) 10% 24%, rgba(112, 255, 232, 0.84) 24% 42%, rgba(36, 186, 255, 0.4) 42% 70%, rgba(36, 186, 255, 0) 70% 100%);
-      box-shadow:
-        0 0 24px rgba(255, 255, 255, 0.82),
-        0 0 60px rgba(71, 245, 255, 0.84),
-        0 0 100px rgba(31, 151, 255, 0.32);
+        radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.98) 0 10%,
+          rgba(205, 255, 252, 0.94) 18%,
+          rgba(125, 241, 255, 0.72) 34%,
+          rgba(64, 190, 255, 0.34) 52%,
+          rgba(64, 190, 255, 0) 74%
+        );
+      box-shadow: none;
+      filter:
+        drop-shadow(0 0 18px rgba(180, 255, 250, 0.92))
+        drop-shadow(0 0 42px rgba(70, 198, 255, 0.7));
+      overflow: visible;
+      will-change: transform, opacity, filter;
       animation:
         miku-miku-beam-impact var(--miku-miku-beam-active-duration, 8000ms)
         linear var(--miku-miku-beam-fire-delay, 10350ms) forwards;
@@ -208,36 +229,48 @@
       content: "";
       position: absolute;
       inset: 0;
-      border-radius: 50%;
+      pointer-events: none;
     }
 
     .miku-miku-beam-impact::before {
-      border: 2px solid rgba(196, 255, 255, 0.9);
-      box-shadow: 0 0 18px rgba(154, 255, 246, 0.64);
+      inset: -34px;
+      background:
+        radial-gradient(
+          circle,
+          rgba(233, 255, 253, 0.82) 0 14%,
+          rgba(147, 255, 247, 0.72) 26%,
+          rgba(84, 214, 255, 0.42) 46%,
+          rgba(84, 214, 255, 0) 74%
+        );
       opacity: 0;
+      filter: blur(16px) brightness(1.42) saturate(1.3);
       animation:
-        miku-miku-beam-impact-ring 0.56s ease-out
-        var(--miku-miku-beam-impact-spark-delay, 10520ms) forwards;
+        miku-miku-beam-impact-glow
+        var(--miku-miku-beam-active-duration, 8000ms) linear
+        var(--miku-miku-beam-fire-delay, 10350ms) forwards;
     }
 
     .miku-miku-beam-impact::after {
-      inset: -24px;
+      inset: -42px;
       background:
-        conic-gradient(
-          from 0deg,
-          rgba(255, 255, 255, 0) 0deg 32deg,
-          rgba(152, 255, 247, 0.8) 32deg 52deg,
-          rgba(255, 255, 255, 0) 52deg 108deg,
-          rgba(152, 255, 247, 0.72) 108deg 126deg,
-          rgba(255, 255, 255, 0) 126deg 214deg,
-          rgba(152, 255, 247, 0.76) 214deg 238deg,
-          rgba(255, 255, 255, 0) 238deg 360deg
+        radial-gradient(
+          circle,
+          rgba(230, 255, 253, 0.7) 0 10%,
+          rgba(147, 255, 247, 0.58) 22%,
+          rgba(85, 214, 255, 0.3) 42%,
+          rgba(85, 214, 255, 0) 72%
+        ),
+        radial-gradient(
+          ellipse 58% 30% at 30% 50%,
+          rgba(126, 245, 255, 0.34) 0 36%,
+          rgba(126, 245, 255, 0) 100%
         );
-      filter: blur(2px);
       opacity: 0;
+      filter: blur(10px);
       animation:
-        miku-miku-beam-sparks 0.54s ease-out
-        var(--miku-miku-beam-impact-spark-delay, 10520ms) forwards;
+        miku-miku-beam-impact-glow
+        var(--miku-miku-beam-active-duration, 8000ms) linear
+        var(--miku-miku-beam-fire-delay, 10350ms) forwards;
     }
 
     #messagebuffer > div.miku-miku-beam-targeting,
@@ -410,11 +443,21 @@
 
     @keyframes miku-miku-beam-impact {
       0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
-      4% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-      18% { opacity: 0.82; transform: translate(-50%, -50%) scale(1.18); }
-      54% { opacity: 0.74; transform: translate(-50%, -50%) scale(1.08); }
-      86% { opacity: 0.68; transform: translate(-50%, -50%) scale(1.15); }
-      100% { opacity: 0; transform: translate(-50%, -50%) scale(1.32); }
+      4% { opacity: 1; transform: translate(-50%, -50%) scale(1.02); }
+      16% { opacity: 0.96; transform: translate(-50%, -50%) scale(1.16); }
+      58% { opacity: 0.92; transform: translate(-50%, -50%) scale(1.09); }
+      92% { opacity: 0.86; transform: translate(-50%, -50%) scale(1.14); }
+      98% { opacity: 0.54; transform: translate(-50%, -50%) scale(1.2); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1.28); }
+    }
+
+    @keyframes miku-miku-beam-impact-glow {
+      0% { opacity: 0; transform: scale(0.55); }
+      6% { opacity: 0.96; transform: scale(1.02); }
+      18% { opacity: 0.88; transform: scale(1.12); }
+      62% { opacity: 0.8; transform: scale(1.08); }
+      94% { opacity: 0.7; transform: scale(1.18); }
+      100% { opacity: 0; transform: scale(1.34); }
     }
 
     @keyframes miku-miku-beam-impact-ring {

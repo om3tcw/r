@@ -34,6 +34,7 @@ const MIKU_MIKU_BEAM_EFFECT_END_MS =
 const MIKU_MIKU_BEAM_SHOT_DURATION_MS =
   MIKU_MIKU_BEAM_EFFECT_END_MS + MIKU_MIKU_BEAM_POST_FIRE_CLEANUP_MS;
 const MIKU_MIKU_BEAM_COOLDOWN_MS = 20000;
+const MIKU_MIKU_BEAM_SCROLLABLE_OVERFLOW_REGEX = /auto|scroll|overlay/i;
 const MIKU_MIKU_BEAM_DISINTEGRATION_DELAY_MS = MIKU_MIKU_BEAM_FIRE_DELAY_MS;
 const MIKU_MIKU_BEAM_ROW_REMOVAL_DELAY_MS = MIKU_MIKU_BEAM_EFFECT_END_MS;
 const MIKU_MIKU_BEAM_EMITTER_VERTICAL_OFFSET_PX = 64;
@@ -143,31 +144,121 @@ function positionBeamLabelWithinViewport(
   labelElement,
   preferredLeft,
   preferredTop,
+  labelSize = null,
 ) {
   if (!isNodeStillConnected(labelElement)) {
-    return;
+    return labelSize;
   }
 
   const { width: viewportWidth, height: viewportHeight } =
     getViewportDimensions();
   if (!viewportWidth || !viewportHeight) {
-    return;
+    return labelSize;
   }
 
-  const labelRect = labelElement.getBoundingClientRect();
+  const measuredLabelSize =
+    labelSize &&
+    Number(labelSize.width) > 0 &&
+    Number(labelSize.height) > 0
+      ? labelSize
+      : measureBeamElementSize(labelElement);
+  if (!measuredLabelSize.width || !measuredLabelSize.height) {
+    return measuredLabelSize;
+  }
+
   const clampedLeft = clamp(
     preferredLeft,
     16,
-    Math.max(16, viewportWidth - labelRect.width - 16),
+    Math.max(16, viewportWidth - measuredLabelSize.width - 16),
   );
   const clampedTop = clamp(
     preferredTop,
     16,
-    Math.max(16, viewportHeight - labelRect.height - 16),
+    Math.max(16, viewportHeight - measuredLabelSize.height - 16),
   );
 
   labelElement.style.left = `${clampedLeft}px`;
   labelElement.style.top = `${clampedTop}px`;
+  return measuredLabelSize;
+}
+
+function measureBeamElementSize(element) {
+  if (!isNodeStillConnected(element)) {
+    return {
+      width: 0,
+      height: 0,
+    };
+  }
+
+  const width = Number(element.offsetWidth) || 0;
+  const height = Number(element.offsetHeight) || 0;
+  if (width > 0 && height > 0) {
+    return {
+      width,
+      height,
+    };
+  }
+
+  const elementRect = element.getBoundingClientRect();
+  return {
+    width: Math.ceil(Number(elementRect.width) || 0),
+    height: Math.ceil(Number(elementRect.height) || 0),
+  };
+}
+
+function isBeamOverflowScrollable(overflowValue) {
+  return MIKU_MIKU_BEAM_SCROLLABLE_OVERFLOW_REGEX.test(
+    String(overflowValue || ""),
+  );
+}
+
+function getBeamScrollableAncestorElements(node) {
+  if (!node || typeof window.getComputedStyle !== "function") {
+    return [];
+  }
+
+  const scrollableAncestors = [];
+  const seenAncestors = new Set();
+  let currentElement = node.parentElement;
+
+  while (currentElement && currentElement !== document.documentElement) {
+    try {
+      const computedStyle = window.getComputedStyle(currentElement);
+      if (
+        computedStyle &&
+        (isBeamOverflowScrollable(computedStyle.overflow) ||
+          isBeamOverflowScrollable(computedStyle.overflowX) ||
+          isBeamOverflowScrollable(computedStyle.overflowY))
+      ) {
+        if (!seenAncestors.has(currentElement)) {
+          seenAncestors.add(currentElement);
+          scrollableAncestors.push(currentElement);
+        }
+      }
+    } catch (error) {
+      console.error(
+        "[MikuMikuBeam] Failed to inspect scrollable ancestor:",
+        error,
+      );
+    }
+
+    currentElement = currentElement.parentElement;
+  }
+
+  return scrollableAncestors;
+}
+
+function addBeamEventListener(target, eventName, listener, options) {
+  if (!target || typeof target.addEventListener !== "function") {
+    return () => {};
+  }
+
+  target.addEventListener(eventName, listener, options);
+  return () => {
+    if (typeof target.removeEventListener === "function") {
+      target.removeEventListener(eventName, listener, options);
+    }
+  };
 }
 
 function normalizeBeamCommandTarget(rawTarget) {
@@ -537,10 +628,11 @@ function applyBeamShotGeometry(beamShotElements, shotConfig) {
   beamShotElements.rayElement.style.width = `${shotConfig.length}px`;
   beamShotElements.impactElement.style.left = `${shotConfig.targetX}px`;
   beamShotElements.impactElement.style.top = `${shotConfig.targetY}px`;
-  positionBeamLabelWithinViewport(
+  beamShotElements.labelSize = positionBeamLabelWithinViewport(
     beamShotElements.labelElement,
     shotConfig.labelLeft,
     shotConfig.labelTop,
+    beamShotElements.labelSize,
   );
 }
 
@@ -585,12 +677,13 @@ function createBeamShot(shotConfig, targetRowElement = null) {
   const beamShotElements = {
     currentShotGeometry: shotConfig,
     emitterElement,
+    geometrySyncHandle: 0,
     impactElement,
     labelElement,
+    labelSize: null,
     pivotElement,
     rayElement,
     shotElement,
-    trackingHandle: 0,
   };
   const beamShot = {
     countdownHandles: [],
@@ -600,25 +693,29 @@ function createBeamShot(shotConfig, targetRowElement = null) {
     shotElement,
     stopTracking: null,
     targetRowElement,
+    trackingCleanupCallbacks: [],
   };
+  beamShotElements.labelSize = measureBeamElementSize(labelElement);
   applyBeamShotGeometry(beamShotElements, shotConfig);
 
   const stopTracking = () => {
-    if (!beamShotElements.trackingHandle) {
-      return;
+    if (beamShotElements.geometrySyncHandle) {
+      if (typeof window.cancelAnimationFrame === "function") {
+        window.cancelAnimationFrame(beamShotElements.geometrySyncHandle);
+      } else {
+        window.clearTimeout(beamShotElements.geometrySyncHandle);
+      }
+      beamShotElements.geometrySyncHandle = 0;
     }
 
-    if (typeof window.cancelAnimationFrame === "function") {
-      window.cancelAnimationFrame(beamShotElements.trackingHandle);
-    } else {
-      window.clearTimeout(beamShotElements.trackingHandle);
+    for (const cleanupCallback of beamShot.trackingCleanupCallbacks) {
+      cleanupCallback();
     }
-    beamShotElements.trackingHandle = 0;
+    beamShot.trackingCleanupCallbacks = [];
   };
   beamShot.stopTracking = stopTracking;
 
-  const trackBeamTarget = () => {
-    beamShotElements.trackingHandle = 0;
+  const syncBeamGeometry = () => {
     if (
       !isNodeStillConnected(shotElement) ||
       !targetRowElement ||
@@ -631,18 +728,72 @@ function createBeamShot(shotConfig, targetRowElement = null) {
     if (nextShotGeometry) {
       applyBeamShotGeometry(beamShotElements, nextShotGeometry);
     }
+  };
 
-    if (typeof window.requestAnimationFrame === "function") {
-      beamShotElements.trackingHandle =
-        window.requestAnimationFrame(trackBeamTarget);
+  const scheduleBeamGeometrySync = () => {
+    if (
+      beamShotElements.geometrySyncHandle ||
+      !targetRowElement ||
+      !isNodeStillConnected(targetRowElement)
+    ) {
       return;
     }
 
-    beamShotElements.trackingHandle = window.setTimeout(trackBeamTarget, 33);
+    if (typeof window.requestAnimationFrame === "function") {
+      beamShotElements.geometrySyncHandle = window.requestAnimationFrame(() => {
+        beamShotElements.geometrySyncHandle = 0;
+        syncBeamGeometry();
+      });
+      return;
+    }
+
+    beamShotElements.geometrySyncHandle = window.setTimeout(() => {
+      beamShotElements.geometrySyncHandle = 0;
+      syncBeamGeometry();
+    }, 16);
   };
 
   if (targetRowElement) {
-    trackBeamTarget();
+    const handleTrackedScrollChange = () => {
+      scheduleBeamGeometrySync();
+    };
+    const handleTrackedResizeChange = () => {
+      beamShotElements.labelSize = measureBeamElementSize(labelElement);
+      scheduleBeamGeometrySync();
+    };
+    const passiveListenerOptions = {
+      passive: true,
+    };
+
+    beamShot.trackingCleanupCallbacks.push(
+      addBeamEventListener(
+        window,
+        "resize",
+        handleTrackedResizeChange,
+        passiveListenerOptions,
+      ),
+      addBeamEventListener(
+        window,
+        "scroll",
+        handleTrackedScrollChange,
+        passiveListenerOptions,
+      ),
+    );
+
+    for (const scrollableAncestorElement of getBeamScrollableAncestorElements(
+      targetRowElement,
+    )) {
+      beamShot.trackingCleanupCallbacks.push(
+        addBeamEventListener(
+          scrollableAncestorElement,
+          "scroll",
+          handleTrackedScrollChange,
+          passiveListenerOptions,
+        ),
+      );
+    }
+
+    scheduleBeamGeometrySync();
   }
 
   for (const step of MIKU_MIKU_BEAM_COUNTDOWN_STEPS.slice(1)) {
@@ -666,10 +817,15 @@ function createBeamShot(shotConfig, targetRowElement = null) {
         labelTextElement.classList.remove("miku-miku-beam-step-pop");
         void labelTextElement.offsetWidth;
         labelTextElement.classList.add("miku-miku-beam-step-pop");
-        applyBeamShotGeometry(
-          beamShotElements,
-          beamShotElements.currentShotGeometry,
-        );
+        beamShotElements.labelSize = measureBeamElementSize(labelElement);
+        if (targetRowElement) {
+          scheduleBeamGeometrySync();
+        } else {
+          applyBeamShotGeometry(
+            beamShotElements,
+            beamShotElements.currentShotGeometry,
+          );
+        }
       },
       Math.max(0, Number(step.atMs) || 0),
     );
