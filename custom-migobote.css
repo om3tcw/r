@@ -4426,3 +4426,14 @@ form input#chatline {
 [class~="chat-msg-jafafafy" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/blphat.png");
 }
+
+/* St paddys shit */
+#messagebuffer strong.username{
+	display:inline-block;
+	background:linear-gradient(90deg,#169b62 0 33%,#fff 33% 66%,#ff883e 66% 100%);
+	-webkit-background-clip:text;
+	background-clip:text;
+	-webkit-text-fill-color:transparent!important;
+	color:transparent!important
+}
+
