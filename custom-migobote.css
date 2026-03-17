@@ -3741,7 +3741,7 @@ footer {
 /*background css*/
 body {
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/horsebg.png);
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/leprechaun.webp); /* change to horsebg.png after St paddys */
     overflow: visible;
     background-position-x: 00px;
     background-size: auto 100%;
