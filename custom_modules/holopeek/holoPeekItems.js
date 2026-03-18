@@ -177,6 +177,57 @@ function disableHoloPeekOption(optionId) {
 
 export const holoPeekObjects = [
   {
+    optionName: NND_MODE_ID,
+    optionDescription: "NND Mode",
+    group: "Fun Modules",
+    optionFunc: (self) => {
+      const enabled = self.checkbox.prop("checked");
+      if (enabled) {
+        disableHoloPeekOption(NND_EMOTES_ONLY_ID);
+      }
+      localStorage.setItem("holopeek_nndMode", enabled);
+      (async () => {
+        await window.waitForFunc("toggleNNDMode");
+        await window.waitForFunc("setNNDEmotesOnlyMode");
+        window.setNNDEmotesOnlyMode(false);
+        window.toggleNNDMode(enabled);
+      })();
+    },
+    cleanupFunc: () => {
+      localStorage.removeItem("holopeek_nndMode");
+      (async () => {
+        await window.waitForFunc("toggleNNDMode");
+        window.toggleNNDMode(false);
+      })();
+    },
+  },
+  {
+    optionName: NND_EMOTES_ONLY_ID,
+    optionDescription: "NND Emotes Only",
+    group: "Fun Modules",
+    optionFunc: (self) => {
+      const enabled = self.checkbox.prop("checked");
+      if (enabled) {
+        disableHoloPeekOption(NND_MODE_ID);
+      }
+      (async () => {
+        await window.waitForFunc("toggleNNDMode");
+        await window.waitForFunc("setNNDEmotesOnlyMode");
+        window.setNNDEmotesOnlyMode(enabled);
+        window.toggleNNDMode(enabled);
+      })();
+    },
+    cleanupFunc: () => {
+      (async () => {
+        await window.waitForFunc("toggleNNDMode");
+        await window.waitForFunc("setNNDEmotesOnlyMode");
+        window.setNNDEmotesOnlyMode(false);
+        window.toggleNNDMode(false);
+      })();
+    },
+  },
+
+  {
     optionName: "verticalLayout",
     optionDescription: "Vertical Layout",
     optionFunc: verticalLayout,
@@ -253,54 +304,6 @@ export const holoPeekObjects = [
     cleanupFunc: (self) => self.lunaButton.remove(),
   },
   {
-    optionName: NND_MODE_ID,
-    optionDescription: "NND Mode",
-    optionFunc: (self) => {
-      const enabled = self.checkbox.prop("checked");
-      if (enabled) {
-        disableHoloPeekOption(NND_EMOTES_ONLY_ID);
-      }
-      localStorage.setItem("holopeek_nndMode", enabled);
-      (async () => {
-        await window.waitForFunc("toggleNNDMode");
-        await window.waitForFunc("setNNDEmotesOnlyMode");
-        window.setNNDEmotesOnlyMode(false);
-        window.toggleNNDMode(enabled);
-      })();
-    },
-    cleanupFunc: () => {
-      localStorage.removeItem("holopeek_nndMode");
-      (async () => {
-        await window.waitForFunc("toggleNNDMode");
-        window.toggleNNDMode(false);
-      })();
-    },
-  },
-  {
-    optionName: NND_EMOTES_ONLY_ID,
-    optionDescription: "NND Emotes Only",
-    optionFunc: (self) => {
-      const enabled = self.checkbox.prop("checked");
-      if (enabled) {
-        disableHoloPeekOption(NND_MODE_ID);
-      }
-      (async () => {
-        await window.waitForFunc("toggleNNDMode");
-        await window.waitForFunc("setNNDEmotesOnlyMode");
-        window.setNNDEmotesOnlyMode(enabled);
-        window.toggleNNDMode(enabled);
-      })();
-    },
-    cleanupFunc: () => {
-      (async () => {
-        await window.waitForFunc("toggleNNDMode");
-        await window.waitForFunc("setNNDEmotesOnlyMode");
-        window.setNNDEmotesOnlyMode(false);
-        window.toggleNNDMode(false);
-      })();
-    },
-  },
-  {
     optionName: "tweetEmbed",
     optionDescription: "Embed tweet links",
     optionFunc: (self) => {
@@ -333,20 +336,72 @@ export const holoPeekObjects = [
     },
   },
   {
-    optionName: "disableMikuBeam",
-    optionDescription: "No Fun",
+    optionName: "mikuMikuBeam",
+    optionDescription: "Disable Miku Miku Beam",
     optionFunc: () => {
       (async () => {
-        await window.waitForFunc("fesFun");
-        window.fesFun.setEnabled(false);
+        await window.waitForFunc("mikuMikuBeam");
+        window.mikuMikuBeam.toggle(false);
       })();
     },
     cleanupFunc: () => {
       (async () => {
-        await window.waitForFunc("fesFun");
-        window.fesFun.setEnabled(true);
+        await window.waitForFunc("mikuMikuBeam");
+        window.mikuMikuBeam.toggle(true);
       })();
     },
+    group: "Fun Modules",
+  },
+  {
+    optionName: "migoboteGold",
+    optionDescription: "Disable Migobote Gold",
+    optionFunc: () => {
+      (async () => {
+        await window.waitForFunc("migoboteGold");
+        window.migoboteGold.toggle(false);
+      })();
+    },
+    cleanupFunc: () => {
+      (async () => {
+        await window.waitForFunc("migoboteGold");
+        window.migoboteGold.toggle(true);
+      })();
+    },
+    group: "Fun Modules",
+  },
+  {
+    optionName: "ninoMode",
+    optionDescription: "Disable Nino Mode",
+    optionFunc: () => {
+      (async () => {
+        await window.waitForFunc("ninoMode");
+        window.ninoMode.setModuleEnabled(false);
+      })();
+    },
+    cleanupFunc: () => {
+      (async () => {
+        await window.waitForFunc("ninoMode");
+        window.ninoMode.setModuleEnabled(true);
+      })();
+    },
+    group: "Fun Modules",
+  },
+  {
+    optionName: "uohMode",
+    optionDescription: "Disable Uoh Mode",
+    optionFunc: () => {
+      (async () => {
+        await window.waitForFunc("uohMode");
+        window.uohMode.toggle(false);
+      })();
+    },
+    cleanupFunc: () => {
+      (async () => {
+        await window.waitForFunc("uohMode");
+        window.uohMode.toggle(true);
+      })();
+    },
+    group: "Fun Modules",
   },
   {
     optionName: "customCSS",
