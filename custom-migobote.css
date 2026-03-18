@@ -3211,41 +3211,6 @@ img.channel-emote[title$=":nerissawithjailbirdlonger:"] {
 
 /* username edits*/
 
-.chat-msg-McFin .username {
-    font-size: 0;
-}
-
-.chat-msg-McFin .username:after {
-    font-size: 14px;
-    content: 'McSmug: ';
-}
-
-.chat-msg-migoSMUG .username {
-    font-size: 0;
-}
-
-.chat-msg-migoSMUG .username:after {
-    font-size: 14px;
-    content: 'migoFIN: ';
-}
-
-.chat-msg-Bimmygarasu .username {
-    font-size: 0;
-}
-
-.chat-msg-Bimmygarasu .username:after {
-    font-size: 14px;
-    content: 'Bimmybastard: ';
-}
-
-.chat-msg-rratbastard .username {
-    font-size: 0;
-}
-
-.chat-msg-rratbastard .username:after {
-    font-size: 14px;
-    content: 'rratgarasu: ';
-}
 
 .chat-msg-marble .username {
     font-size: 0;
@@ -3254,24 +3219,6 @@ img.channel-emote[title$=":nerissawithjailbirdlonger:"] {
 .chat-msg-marble .username:after {
     font-size: 14px;
     content: 'justmarble: ';
-}
-
-.chat-msg-cucumbersama .username {
-    font-size: 0;
-}
-
-.chat-msg-cucumbersama .username:after {
-    font-size: 14px;
-    content: 'cucumbertomo: ';
-}
-
-.chat-msg-sodatomo .username {
-    font-size: 0;
-}
-
-.chat-msg-sodatomo .username:after {
-    font-size: 14px;
-    content: 'sodasama: ';
 }
 
 .chat-msg-CEOofBandaids .username {
@@ -3283,15 +3230,6 @@ img.channel-emote[title$=":nerissawithjailbirdlonger:"] {
     content: 'CEOofNightmares: ';
 }
 
-
-.chat-msg-Tako225 .username {
-    font-size: 0;
-}
-
-.chat-msg-Tako225 .username:after {
-    font-size: 14px;
-    content: 'Tako267: ';
-}
 
 
 .chat-msg-etch .username {
@@ -3309,7 +3247,7 @@ img.channel-emote[title$=":nerissawithjailbirdlonger:"] {
 
 .chat-msg-iTako .username:after {
     font-size: 14px;
-    content: 'SurvivorTako: ';
+    content: 'frenchTako: ';
 }
 
 .chat-msg-NinoValt .username {
@@ -3741,7 +3679,7 @@ footer {
 /*background css*/
 body {
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/leprechaun.webp); /* change to horsebg.png after St paddys */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/horsebg.png);
     overflow: visible;
     background-position-x: 00px;
     background-size: auto 100%;
@@ -4427,7 +4365,7 @@ form input#chatline {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/blphat.png");
 }
 
-/* St paddys shit */
+/* St paddys shit 
 #messagebuffer strong.username{
 	display:inline-block;
 	background:linear-gradient(90deg,#169b62 0 33%,#fff 33% 66%,#ff883e 66% 100%);
@@ -4435,5 +4373,5 @@ form input#chatline {
 	background-clip:text;
 	-webkit-text-fill-color:transparent!important;
 	color:transparent!important
-}
+} */
 
