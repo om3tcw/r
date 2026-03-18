@@ -56,7 +56,7 @@ const ModulePaths = [
   { HoloPeek: `holopeek/holoPeek.js` },
   { MessageModifications: `chat_modules/messageModifications.js` },
   { MikuMikuBeam: `fes_fun/mikuMikuBeam.js` },
-  { UserWordReplacement: `chat_modules/userWordReplacement.js` },
+  { UserWordReplacement: `fes_fun/userWordReplacement.js` },
   { MigoboteGold: `fes_fun/migobotegold.js` },
   { UohMode: `fes_fun/uohmode.js` },
   { EnhancedEmotes: `chat_modules/enhancedEmotes.js` },

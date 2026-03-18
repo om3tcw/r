@@ -453,6 +453,9 @@ function handleNinoModeMessage($messageElement) {
 
 const ninoModeApi = {
   getState: getNinoModeState,
+  setModuleEnabled(on) {
+    return setNinoModuleEnabled(on);
+  },
   toggle(on) {
     const desiredEnabled = Boolean(on);
     if (desiredEnabled && !fesFun.isEnabled()) {

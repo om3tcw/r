@@ -109,6 +109,22 @@
             height: 80%;
             max-height: 83%;
         }
+        .holoPeekGroup {
+            width: 100%;
+            margin-bottom: 6px;
+        }
+        .holoPeekGroupToggle {
+            width: 95%;
+            text-align: left;
+            border: none;
+            background: #eee;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        .holoPeekGroupItems {
+            padding-top: 4px;
+        }
         #resetButton {
             margin-left: 16px;
         }

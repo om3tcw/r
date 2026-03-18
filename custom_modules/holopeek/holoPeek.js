@@ -8,6 +8,7 @@ let $holoPeekBubble;
 let $holoPeekButton;
 let $holoPeekImage;
 let holoPeekItems = [];
+const holoPeekGroups = {};
 const $holoPeekItemsContainer = $('<div>').attr('id', 'holoPeekItemsContainer');
 let holoPeekSizePx = 60;
 let holoPeekImgUrl = 'https://mikobotecdn.win/emotes/baepeek.png';
@@ -141,12 +142,14 @@ export function createHoloPeekItem({optionName,
                             optionFunc = null,
                             type = null,
                             defaultValue = null,
-                            cleanupFunc = null}) {
+                            cleanupFunc = null,
+                            group = null}) {
     let holoPeekItem = {}
     holoPeekItem.id             = optionName;
     holoPeekItem.description    = optionDescription;
     holoPeekItem.optionFunc     = optionFunc;
     holoPeekItem.cleanupFunc    = cleanupFunc
+    holoPeekItem.group          = group;
     holoPeekItem.checkbox       = createCheckboxForItem(holoPeekItem);
     holoPeekItem.label          = createLabelForItem(holoPeekItem);
     holoPeekItem.cssData        = null;
@@ -268,6 +271,42 @@ function createRangeElement(holoPeekItem) {
     })
 }
 
+function fetchHoloPeekGroupContainer(groupName, prepend = false) {
+    if (!groupName) {
+        return $holoPeekItemsContainer;
+    }
+
+    if (!holoPeekGroups[groupName]) {
+        const $groupItemsContainer = $('<div>', {
+            class: 'holoPeekGroupItems'
+        }).hide();
+
+        const $groupToggle = $('<button>', {
+            class: 'holoPeekGroupToggle',
+            type: 'button',
+            text: groupName,
+            click: () => $groupItemsContainer.toggle()
+        });
+
+        const $groupContainer = $('<div>', {
+            class: 'holoPeekGroup'
+        });
+
+        $groupToggle.appendTo($groupContainer);
+        $groupItemsContainer.appendTo($groupContainer);
+
+        if (prepend) {
+            $groupContainer.prependTo($holoPeekItemsContainer);
+        } else {
+            $groupContainer.appendTo($holoPeekItemsContainer);
+        }
+
+        holoPeekGroups[groupName] = $groupItemsContainer;
+    }
+
+    return holoPeekGroups[groupName];
+}
+
 export function addToHoloPeekContainer(holoPeekItem, prepend = false) {
 
     if (holoPeekItems.includes(holoPeekItem)) {
@@ -277,10 +316,11 @@ export function addToHoloPeekContainer(holoPeekItem, prepend = false) {
     holoPeekItems.push(holoPeekItem);
 
     const $div = $('<div>')
+    const $targetContainer = fetchHoloPeekGroupContainer(holoPeekItem.group, prepend);
     if (prepend) {
-        $div.prependTo($holoPeekItemsContainer);
+        $div.prependTo($targetContainer);
     } else {
-        $div.appendTo($holoPeekItemsContainer);
+        $div.appendTo($targetContainer);
     }
 
     holoPeekItem.checkbox.appendTo($div);
