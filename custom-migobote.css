@@ -3211,41 +3211,6 @@ img.channel-emote[title$=":nerissawithjailbirdlonger:"] {
 
 /* username edits*/
 
-.chat-msg-McFin .username {
-    font-size: 0;
-}
-
-.chat-msg-McFin .username:after {
-    font-size: 14px;
-    content: 'McSmug: ';
-}
-
-.chat-msg-migoSMUG .username {
-    font-size: 0;
-}
-
-.chat-msg-migoSMUG .username:after {
-    font-size: 14px;
-    content: 'migoFIN: ';
-}
-
-.chat-msg-Bimmygarasu .username {
-    font-size: 0;
-}
-
-.chat-msg-Bimmygarasu .username:after {
-    font-size: 14px;
-    content: 'Bimmybastard: ';
-}
-
-.chat-msg-rratbastard .username {
-    font-size: 0;
-}
-
-.chat-msg-rratbastard .username:after {
-    font-size: 14px;
-    content: 'rratgarasu: ';
-}
 
 .chat-msg-marble .username {
     font-size: 0;
@@ -3254,24 +3219,6 @@ img.channel-emote[title$=":nerissawithjailbirdlonger:"] {
 .chat-msg-marble .username:after {
     font-size: 14px;
     content: 'justmarble: ';
-}
-
-.chat-msg-cucumbersama .username {
-    font-size: 0;
-}
-
-.chat-msg-cucumbersama .username:after {
-    font-size: 14px;
-    content: 'cucumbertomo: ';
-}
-
-.chat-msg-sodatomo .username {
-    font-size: 0;
-}
-
-.chat-msg-sodatomo .username:after {
-    font-size: 14px;
-    content: 'sodasama: ';
 }
 
 .chat-msg-CEOofBandaids .username {
@@ -3283,15 +3230,6 @@ img.channel-emote[title$=":nerissawithjailbirdlonger:"] {
     content: 'CEOofNightmares: ';
 }
 
-
-.chat-msg-Tako225 .username {
-    font-size: 0;
-}
-
-.chat-msg-Tako225 .username:after {
-    font-size: 14px;
-    content: 'Tako267: ';
-}
 
 
 .chat-msg-etch .username {
@@ -3309,7 +3247,7 @@ img.channel-emote[title$=":nerissawithjailbirdlonger:"] {
 
 .chat-msg-iTako .username:after {
     font-size: 14px;
-    content: 'SurvivorTako: ';
+    content: 'frenchTako: ';
 }
 
 .chat-msg-NinoValt .username {
