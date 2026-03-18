@@ -3741,7 +3741,7 @@ footer {
 /*background css*/
 body {
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/leprechaun.webp); /* change to horsebg.png after St paddys */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/horsebg.png);
     overflow: visible;
     background-position-x: 00px;
     background-size: auto 100%;
@@ -4427,7 +4427,7 @@ form input#chatline {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/blphat.png");
 }
 
-/* St paddys shit */
+/* St paddys shit 
 #messagebuffer strong.username{
 	display:inline-block;
 	background:linear-gradient(90deg,#169b62 0 33%,#fff 33% 66%,#ff883e 66% 100%);
@@ -4435,5 +4435,5 @@ form input#chatline {
 	background-clip:text;
 	-webkit-text-fill-color:transparent!important;
 	color:transparent!important
-}
+} */
 
