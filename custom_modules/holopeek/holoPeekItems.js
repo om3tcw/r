@@ -167,6 +167,20 @@ let polkaPeek = makeLiveCDNLink("custom_modules/holopeek/polkapeek.png");
 const NND_MODE_ID = "nndMode";
 const NND_EMOTES_ONLY_ID = "nndEmotesOnly";
 
+async function setFesFunHoloPeekModuleEnabled(moduleId, nextEnabled) {
+  await window.waitForFunc("fesFun");
+
+  if (!window.fesFun || typeof window.fesFun.setModuleEnabled !== "function") {
+    return false;
+  }
+
+  const didSetModuleState = window.fesFun.setModuleEnabled(
+    moduleId,
+    nextEnabled,
+  );
+  return didSetModuleState != null ? didSetModuleState : false;
+}
+
 function disableHoloPeekOption(optionId) {
   const $checkbox = $(`#${optionId}`);
   if ($checkbox.length && $checkbox.prop("checked")) {
@@ -340,14 +354,12 @@ export const holoPeekObjects = [
     optionDescription: "Disable Miku Miku Beam",
     optionFunc: () => {
       (async () => {
-        await window.waitForFunc("mikuMikuBeam");
-        window.mikuMikuBeam.toggle(false);
+        await setFesFunHoloPeekModuleEnabled("mikuMikuBeam", false);
       })();
     },
     cleanupFunc: () => {
       (async () => {
-        await window.waitForFunc("mikuMikuBeam");
-        window.mikuMikuBeam.toggle(true);
+        await setFesFunHoloPeekModuleEnabled("mikuMikuBeam", true);
       })();
     },
     group: "Fun Modules",
@@ -357,14 +369,12 @@ export const holoPeekObjects = [
     optionDescription: "Disable Migobote Gold",
     optionFunc: () => {
       (async () => {
-        await window.waitForFunc("migoboteGold");
-        window.migoboteGold.toggle(false);
+        await setFesFunHoloPeekModuleEnabled("migoboteGold", false);
       })();
     },
     cleanupFunc: () => {
       (async () => {
-        await window.waitForFunc("migoboteGold");
-        window.migoboteGold.toggle(true);
+        await setFesFunHoloPeekModuleEnabled("migoboteGold", true);
       })();
     },
     group: "Fun Modules",
@@ -374,14 +384,12 @@ export const holoPeekObjects = [
     optionDescription: "Disable Nino Mode",
     optionFunc: () => {
       (async () => {
-        await window.waitForFunc("ninoMode");
-        window.ninoMode.setModuleEnabled(false);
+        await setFesFunHoloPeekModuleEnabled("ninoMode", false);
       })();
     },
     cleanupFunc: () => {
       (async () => {
-        await window.waitForFunc("ninoMode");
-        window.ninoMode.setModuleEnabled(true);
+        await setFesFunHoloPeekModuleEnabled("ninoMode", true);
       })();
     },
     group: "Fun Modules",
@@ -391,14 +399,12 @@ export const holoPeekObjects = [
     optionDescription: "Disable Uoh Mode",
     optionFunc: () => {
       (async () => {
-        await window.waitForFunc("uohMode");
-        window.uohMode.toggle(false);
+        await setFesFunHoloPeekModuleEnabled("uohMode", false);
       })();
     },
     cleanupFunc: () => {
       (async () => {
-        await window.waitForFunc("uohMode");
-        window.uohMode.toggle(true);
+        await setFesFunHoloPeekModuleEnabled("uohMode", true);
       })();
     },
     group: "Fun Modules",
