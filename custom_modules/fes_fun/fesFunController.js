@@ -1,11 +1,27 @@
-const FES_FUN_STORAGE_KEY = "disableMikuBeam";
+const FES_FUN_STORAGE_KEY = "fesFunEnabled";
+const LEGACY_FES_FUN_STORAGE_KEY = "disableMikuBeam";
 const registeredFesFunModules = new Map();
 
 function getInitialFesFunEnabledState() {
   try {
-    const storedValue =
-      window.localStorage && localStorage.getItem(FES_FUN_STORAGE_KEY);
-    return storedValue !== "1" && storedValue !== "true";
+    if (!window.localStorage) {
+      return true;
+    }
+
+    const storedValue = localStorage.getItem(FES_FUN_STORAGE_KEY);
+    if (storedValue === "1" || storedValue === "true") {
+      return true;
+    }
+    if (storedValue === "0" || storedValue === "false") {
+      return false;
+    }
+
+    // clean up old key
+    if (localStorage.getItem(LEGACY_FES_FUN_STORAGE_KEY) != null) {
+      localStorage.removeItem(LEGACY_FES_FUN_STORAGE_KEY);
+    }
+
+    return true;
   } catch (error) {
     console.error("[fesFun] Failed to read initial state:", error);
     return true;
@@ -13,6 +29,19 @@ function getInitialFesFunEnabledState() {
 }
 
 let isFesFunEnabled = getInitialFesFunEnabledState();
+
+function persistFesFunEnabledState() {
+  try {
+    if (!window.localStorage) {
+      return;
+    }
+
+    localStorage.setItem(FES_FUN_STORAGE_KEY, isFesFunEnabled ? "1" : "0");
+    localStorage.removeItem(LEGACY_FES_FUN_STORAGE_KEY);
+  } catch (error) {
+    console.error("[fesFun] Failed to persist state:", error);
+  }
+}
 
 function applyFesFunStateToModule(moduleRegistration) {
   if (
@@ -52,12 +81,27 @@ function registerFesFunModule(moduleRegistration) {
 
 function setFesFunEnabled(nextEnabled) {
   isFesFunEnabled = Boolean(nextEnabled);
+  persistFesFunEnabledState();
 
   for (const moduleRegistration of registeredFesFunModules.values()) {
     applyFesFunStateToModule(moduleRegistration);
   }
 
   return isFesFunEnabled;
+}
+
+function setFesFunModuleEnabled(moduleId, nextEnabled) {
+  const normalizedModuleId = String(moduleId || "").trim();
+  if (!normalizedModuleId) {
+    return null;
+  }
+
+  const moduleRegistration = registeredFesFunModules.get(normalizedModuleId);
+  if (!moduleRegistration) {
+    return null;
+  }
+
+  return moduleRegistration.setEnabled(Boolean(nextEnabled));
 }
 
 function getFesFunState() {
@@ -82,4 +126,5 @@ window.fesFun = {
   },
   registerModule: registerFesFunModule,
   setEnabled: setFesFunEnabled,
+  setModuleEnabled: setFesFunModuleEnabled,
 };
