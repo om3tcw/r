@@ -5,7 +5,7 @@ const MIKU_MIKU_BEAM_DISINTEGRATING_CLASS = "miku-miku-beam-disintegrating";
 const MIKU_MIKU_BEAM_PENDING_DATA_KEY = "mikuMikuBeamPending";
 const MIKU_MIKU_BEAM_EMITTER_IMAGE_URL =
   "https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/takomiku.png";
-const MIKU_MIKU_BEAM_SOUND_URL = "https://cracklej.win/uejeSDeTSX.mp3";
+const MIKU_MIKU_BEAM_SOUND_URL = "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/mikubeam.mp3";
 const MIKU_MIKU_BEAM_SOUND_VOLUME = 0.2;
 const MIKU_MIKU_BEAM_COMMAND_REGEX =
   /^(?:!|\/|\.\/)(?:mikubeam|mikumikubeam)\b/i;
