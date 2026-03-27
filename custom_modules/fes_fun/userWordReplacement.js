@@ -1,6 +1,6 @@
 // Username-scoped and global chat word replacement module.
 // List of usernames to target
-const TARGET_USERNAMES = ["iTako"];
+const TARGET_USERNAMES = [];
 
 // Anything here will only be replaced if the sender is included in TARGET_USERNAMES.
 // Emotes can be matched by their exact title (e.g. ":uoh:").
