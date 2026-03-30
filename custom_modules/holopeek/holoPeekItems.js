@@ -166,6 +166,30 @@ let polkaPeek = makeLiveCDNLink("custom_modules/holopeek/polkapeek.png");
 
 const NND_MODE_ID = "nndMode";
 const NND_EMOTES_ONLY_ID = "nndEmotesOnly";
+const TIME_TOKEN_FORMAT_PREFERENCE_ID = "timeTokenFormatPreference";
+
+function applyTimeTokenFormatPreference(self) {
+  window.TIME_TOKEN_FORMAT_PREFERENCE = self.value;
+  window.dispatchEvent(
+    new CustomEvent("timeTokenPreferenceChange", {
+      detail: { value: self.value },
+    }),
+  );
+}
+
+async function setFesFunHoloPeekModuleEnabled(moduleId, nextEnabled) {
+  await window.waitForFunc("fesFun");
+
+  if (!window.fesFun || typeof window.fesFun.setModuleEnabled !== "function") {
+    return false;
+  }
+
+  const didSetModuleState = window.fesFun.setModuleEnabled(
+    moduleId,
+    nextEnabled,
+  );
+  return didSetModuleState != null ? didSetModuleState : false;
+}
 
 async function setFesFunHoloPeekModuleEnabled(moduleId, nextEnabled) {
   await window.waitForFunc("fesFun");
@@ -190,6 +214,21 @@ function disableHoloPeekOption(optionId) {
 }
 
 export const holoPeekObjects = [
+  {
+    optionName: TIME_TOKEN_FORMAT_PREFERENCE_ID,
+    optionDescription: "@time Format",
+    group: "Chat",
+    type: "dropdown",
+    alwaysEnabled: true,
+    defaultValue: "dmy24",
+    options: [
+      { value: "dmy24", label: "DD/MM/YY 24-hour" },
+      { value: "dmy12", label: "DD/MM/YY 12-hour" },
+      { value: "mdy24", label: "MM/DD/YY 24-hour" },
+      { value: "mdy12", label: "MM/DD/YY 12-hour" },
+    ],
+    optionFunc: applyTimeTokenFormatPreference,
+  },
   {
     optionName: NND_MODE_ID,
     optionDescription: "NND Mode",
