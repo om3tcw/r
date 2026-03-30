@@ -33,14 +33,33 @@ function setupOnClickForHoloPeek($holoPeekButton, $holoPeekBubble) {
 
 function loadStoredValueForHolopeek(holoPeekItem) {
     let localStorageValue = localStorage.getItem(holoPeekItem.id);
-    if (localStorageValue) {
+    if (localStorageValue !== null) {
         if (holoPeekItem.inputElement) {
             holoPeekItem.value = localStorageValue;
             holoPeekItem.inputElement.val(holoPeekItem.value);
         }
 
+        if (holoPeekItem.alwaysEnabled) {
+            holoPeekItem.checkbox.prop('checked', true);
+            if (holoPeekItem.optionFunc) {
+                holoPeekItem.optionFunc(holoPeekItem);
+            }
+            return;
+        }
+
         holoPeekItem.checkbox.prop('checked', true);
         holoPeekItem.checkbox.triggerHandler('click');
+        return;
+    }
+
+    if (holoPeekItem.alwaysEnabled) {
+        holoPeekItem.checkbox.prop('checked', true);
+        if (holoPeekItem.inputElement && holoPeekItem.value != null) {
+            holoPeekItem.inputElement.val(holoPeekItem.value);
+        }
+        if (holoPeekItem.optionFunc) {
+            holoPeekItem.optionFunc(holoPeekItem);
+        }
     }
 }
 
@@ -142,6 +161,9 @@ export function createHoloPeekItem({optionName,
                             optionFunc = null,
                             type = null,
                             defaultValue = null,
+                            options = null,
+                            alwaysEnabled = false,
+                            hideCheckbox = false,
                             cleanupFunc = null,
                             group = null}) {
     let holoPeekItem = {}
@@ -150,6 +172,9 @@ export function createHoloPeekItem({optionName,
     holoPeekItem.optionFunc     = optionFunc;
     holoPeekItem.cleanupFunc    = cleanupFunc
     holoPeekItem.group          = group;
+    holoPeekItem.options        = options;
+    holoPeekItem.alwaysEnabled  = alwaysEnabled;
+    holoPeekItem.hideCheckbox   = hideCheckbox || alwaysEnabled;
     holoPeekItem.checkbox       = createCheckboxForItem(holoPeekItem);
     holoPeekItem.label          = createLabelForItem(holoPeekItem);
     holoPeekItem.cssData        = null;
@@ -167,6 +192,10 @@ export function createHoloPeekItem({optionName,
         }
         case validOptionTypes.TEXT: {
             $holoPeekInputElement = createShortTextElement(holoPeekItem);
+            break;
+        }
+        case validOptionTypes.DROPDOWN: {
+            $holoPeekInputElement = createDropdownElement(holoPeekItem);
             break;
         }
     }
@@ -187,6 +216,7 @@ function createCheckboxForItem(holoPeekItem) {
     return $('<input>', {
         id: holoPeekItem.id,
         type: 'checkbox',
+        checked: Boolean(holoPeekItem.alwaysEnabled),
         click: (() => holoPeekCheckboxTrigger(holoPeekItem))
     })
 }
@@ -240,6 +270,39 @@ function createShortTextElement(holoPeekItem) {
             }
         }
     })
+}
+
+function createDropdownElement(holoPeekItem) {
+    const $selectElement = $('<select>', {
+        id: `${holoPeekItem.id}_dropdown`,
+        on: {
+            change: (event) => {
+                holoPeekItem.value = event.target.value;
+                if (holoPeekItem.alwaysEnabled) {
+                    if (holoPeekItem.optionFunc) {
+                        holoPeekItem.optionFunc(holoPeekItem);
+                    }
+                    return;
+                }
+
+                holoPeekItem.checkbox.prop('checked', false);
+                holoPeekItem.checkbox.triggerHandler('click');
+            }
+        }
+    });
+
+    (holoPeekItem.options || []).forEach((optionConfig) => {
+        $('<option>', {
+            value: optionConfig.value,
+            text: optionConfig.label
+        }).appendTo($selectElement);
+    });
+
+    if (holoPeekItem.value != null) {
+        $selectElement.val(holoPeekItem.value);
+    }
+
+    return $selectElement;
 }
 
 function createTextAreaElement(holoPeekItem) {
@@ -323,13 +386,17 @@ export function addToHoloPeekContainer(holoPeekItem, prepend = false) {
         $div.appendTo($targetContainer);
     }
 
-    holoPeekItem.checkbox.appendTo($div);
+    if (!holoPeekItem.hideCheckbox) {
+        holoPeekItem.checkbox.appendTo($div);
+    }
 
     holoPeekItem.label.appendTo($div);
 
     loadStoredValueForHolopeek(holoPeekItem);
 
-    $div.after(holoPeekItem.inputElement)
+    if (holoPeekItem.inputElement) {
+        $div.after(holoPeekItem.inputElement)
+    }
 }
 
 (async () => {

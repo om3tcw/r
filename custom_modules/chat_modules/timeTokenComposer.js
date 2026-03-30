@@ -5,6 +5,8 @@ const TIME_TOKEN_OPTION_SELECTOR = ".time-token-composer-option";
 const TIME_TOKEN_RENDERED_SELECTOR = "time.time-token-rendered";
 const TIME_TOKEN_REGEX = /<t:(\d{1,})(?::([tTdDfFR]))?>/g;
 const TIME_TOKEN_TRIGGER_REGEX = /(?:^|\s)@time(?=\s|$)/g;
+const TIME_TOKEN_FORMAT_PREFERENCE_KEY = "timeTokenFormatPreference";
+const TIME_TOKEN_DEFAULT_FORMAT_PREFERENCE = "dmy24";
 const TIME_TOKEN_STYLES = [
   { code: "t", label: "Time" },
   { code: "T", label: "Time + sec" },
@@ -13,6 +15,12 @@ const TIME_TOKEN_STYLES = [
   { code: "f", label: "Date + time" },
   { code: "F", label: "Full" },
 ];
+const TIME_TOKEN_FORMAT_PREFERENCES = Object.freeze({
+  dmy24: { dateOrder: "DMY", use24Hour: true },
+  dmy12: { dateOrder: "DMY", use24Hour: false },
+  mdy24: { dateOrder: "MDY", use24Hour: true },
+  mdy12: { dateOrder: "MDY", use24Hour: false },
+});
 
 const MONTH_INDEX_BY_NAME = {
   jan: 0,
@@ -62,6 +70,21 @@ function getChatInputElement() {
   return document.getElementById("chatline");
 }
 
+function getTimeTokenFormatPreferenceValue() {
+  const storedPreference =
+    window.TIME_TOKEN_FORMAT_PREFERENCE ||
+    localStorage.getItem(TIME_TOKEN_FORMAT_PREFERENCE_KEY) ||
+    TIME_TOKEN_DEFAULT_FORMAT_PREFERENCE;
+
+  return Object.hasOwn(TIME_TOKEN_FORMAT_PREFERENCES, storedPreference)
+    ? storedPreference
+    : TIME_TOKEN_DEFAULT_FORMAT_PREFERENCE;
+}
+
+function getTimeTokenFormatPreference() {
+  return TIME_TOKEN_FORMAT_PREFERENCES[getTimeTokenFormatPreferenceValue()];
+}
+
 function buildLocalDate(year, monthIndex, day, hour, minute) {
   const candidateDate = new Date(year, monthIndex, day, hour, minute, 0, 0);
   if (
@@ -92,6 +115,66 @@ function getFormatter(formatterKey, options) {
   return DATE_TIME_FORMATTERS[formatterKey];
 }
 
+function padNumber(value, length = 2) {
+  return String(value).padStart(length, "0");
+}
+
+function normalizeShortYear(year) {
+  if (!Number.isInteger(year)) {
+    return null;
+  }
+
+  if (year >= 0 && year <= 99) {
+    return 2000 + year;
+  }
+
+  return year;
+}
+
+function parseOrdinalNumber(input) {
+  const normalizedInput = String(input || "").trim().toLowerCase();
+  const ordinalMatch = normalizedInput.match(/^(\d{1,2})(st|nd|rd|th)?$/);
+  if (!ordinalMatch) {
+    return null;
+  }
+
+  const numericValue = Number(ordinalMatch[1]);
+  return Number.isInteger(numericValue) ? numericValue : null;
+}
+
+function formatNumericDate(date, preference = getTimeTokenFormatPreference()) {
+  const year = padNumber(date.getFullYear() % 100);
+  const month = padNumber(date.getMonth() + 1);
+  const day = padNumber(date.getDate());
+  return preference.dateOrder === "MDY"
+    ? `${month}/${day}/${year}`
+    : `${day}/${month}/${year}`;
+}
+
+function formatClockTime(
+  date,
+  options = {},
+  preference = getTimeTokenFormatPreference(),
+) {
+  const includeSeconds = Boolean(options.includeSeconds);
+  const minutes = padNumber(date.getMinutes());
+  const seconds = padNumber(date.getSeconds());
+
+  if (preference.use24Hour) {
+    const hours = padNumber(date.getHours());
+    return includeSeconds
+      ? `${hours}:${minutes}:${seconds}`
+      : `${hours}:${minutes}`;
+  }
+
+  const meridiem = date.getHours() >= 12 ? "PM" : "AM";
+  const hours12 = date.getHours() % 12 || 12;
+  const baseTime = includeSeconds
+    ? `${hours12}:${minutes}:${seconds}`
+    : `${hours12}:${minutes}`;
+  return `${baseTime} ${meridiem}`;
+}
+
 function formatRelativeTime(date) {
   const differenceMs = date.getTime() - Date.now();
   const absoluteDifferenceMs = Math.abs(differenceMs);
@@ -116,50 +199,35 @@ function formatRelativeTime(date) {
 }
 
 function formatDateForStyle(date, styleCode) {
+  const preference = getTimeTokenFormatPreference();
   switch (styleCode) {
     case "t":
-      return getFormatter("t", {
-        hour: "numeric",
-        minute: "2-digit",
-      }).format(date);
+      return formatClockTime(date, {}, preference);
     case "T":
-      return getFormatter("T", {
-        hour: "numeric",
-        minute: "2-digit",
-        second: "2-digit",
-      }).format(date);
+      return formatClockTime(date, { includeSeconds: true }, preference);
     case "d":
-      return getFormatter("d", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      }).format(date);
+      return formatNumericDate(date, preference);
     case "D":
-      return getFormatter("D", {
+      return getFormatter(`D:${getTimeTokenFormatPreferenceValue()}`, {
         year: "numeric",
         month: "long",
         day: "numeric",
       }).format(date);
     case "F":
-      return getFormatter("F", {
+      return getFormatter(`F:${getTimeTokenFormatPreferenceValue()}`, {
         weekday: "long",
         year: "numeric",
         month: "long",
         day: "numeric",
         hour: "numeric",
         minute: "2-digit",
+        hour12: !preference.use24Hour,
       }).format(date);
     case "R":
       return formatRelativeTime(date);
     case "f":
     default:
-      return getFormatter("f", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "2-digit",
-      }).format(date);
+      return `${formatNumericDate(date, preference)} ${formatClockTime(date, {}, preference)}`;
   }
 }
 
@@ -189,14 +257,17 @@ function buildTimeTokenElement(unixSeconds, styleCode) {
 
 function refreshRelativeTimeTokens() {
   document
-    .querySelectorAll(`${TIME_TOKEN_RENDERED_SELECTOR}[data-style="R"]`)
+    .querySelectorAll(TIME_TOKEN_RENDERED_SELECTOR)
     .forEach((element) => {
       const unixSeconds = Number(element.dataset.unix);
       if (!Number.isFinite(unixSeconds)) {
         return;
       }
 
-      element.textContent = formatDateForStyle(new Date(unixSeconds * 1000), "R");
+      element.textContent = formatDateForStyle(
+        new Date(unixSeconds * 1000),
+        element.dataset.style || TIME_TOKEN_DEFAULT_STYLE,
+      );
     });
 }
 
@@ -342,6 +413,78 @@ function createCandidateGroup(date) {
   };
 }
 
+function buildOccurrenceCandidateGroups(monthIndex, day, hour, minute, now) {
+  const upcomingDate = findOccurrenceByDirection(
+    monthIndex,
+    day,
+    hour,
+    minute,
+    now,
+    1,
+  );
+  const previousDate = findOccurrenceByDirection(
+    monthIndex,
+    day,
+    hour,
+    minute,
+    now,
+    -1,
+  );
+
+  return [upcomingDate, previousDate]
+    .filter(Boolean)
+    .map((candidateDate) => createCandidateGroup(candidateDate));
+}
+
+function parseNumericSlashDateQuery(rawQuery, now) {
+  const slashMatch = String(rawQuery || "").match(
+    /^(\d{1,2}(?:st|nd|rd|th)?)\/(\d{1,2}(?:st|nd|rd|th)?)(?:\/(\d{2,4}))?(?:\s+(.+))?$/i,
+  );
+  if (!slashMatch) {
+    return null;
+  }
+
+  const preference = getTimeTokenFormatPreference();
+  const firstNumber = parseOrdinalNumber(slashMatch[1]);
+  const secondNumber = parseOrdinalNumber(slashMatch[2]);
+  const explicitYear = slashMatch[3]
+    ? normalizeShortYear(Number(slashMatch[3]))
+    : null;
+  const timePart = slashMatch[4] ? String(slashMatch[4]).trim() : "";
+  const time = timePart ? parseTimeInput(timePart.replace(/\s+/g, "")) : null;
+  const day = preference.dateOrder === "MDY" ? secondNumber : firstNumber;
+  const month = preference.dateOrder === "MDY" ? firstNumber : secondNumber;
+
+  if (
+    !Number.isInteger(day) ||
+    !Number.isInteger(month) ||
+    day < 1 ||
+    day > 31 ||
+    month < 1 ||
+    month > 12 ||
+    (timePart && !time)
+  ) {
+    return [];
+  }
+
+  const monthIndex = month - 1;
+  const hour = time ? time.hour : 12;
+  const minute = time ? time.minute : 0;
+
+  if (Number.isInteger(explicitYear)) {
+    const explicitDate = buildLocalDate(
+      explicitYear,
+      monthIndex,
+      day,
+      hour,
+      minute,
+    );
+    return explicitDate ? [createCandidateGroup(explicitDate)] : [];
+  }
+
+  return buildOccurrenceCandidateGroups(monthIndex, day, hour, minute, now);
+}
+
 function parseExplicitOrRelativeQuery(tokens, now) {
   if (!tokens.length) {
     return null;
@@ -367,11 +510,16 @@ function parseExplicitOrRelativeQuery(tokens, now) {
     return [createCandidateGroup(candidateDate)];
   }
 
+  const numericSlashCandidates = parseNumericSlashDateQuery(tokens.join(" "), now);
+  if (Array.isArray(numericSlashCandidates)) {
+    return numericSlashCandidates;
+  }
+
   const dayFirstMatch = String(tokens.join(" ")).match(
-    /^(\d{1,2})\s+([a-z.]+)(?:\s+(\d{4}))?(?:\s+(.+))?$/i,
+    /^(\d{1,2}(?:st|nd|rd|th)?)\s+([a-z.]+)(?:\s+(\d{4}))?(?:\s+(.+))?$/i,
   );
   const monthFirstMatch = String(tokens.join(" ")).match(
-    /^([a-z.]+)\s+(\d{1,2})(?:\s+(\d{4}))?(?:\s+(.+))?$/i,
+    /^([a-z.]+)\s+(\d{1,2}(?:st|nd|rd|th)?)(?:\s+(\d{4}))?(?:\s+(.+))?$/i,
   );
   const dateMatch = dayFirstMatch || monthFirstMatch;
 
@@ -380,7 +528,7 @@ function parseExplicitOrRelativeQuery(tokens, now) {
   }
 
   const isDayFirst = dateMatch === dayFirstMatch;
-  const day = Number(isDayFirst ? dateMatch[1] : dateMatch[2]);
+  const day = parseOrdinalNumber(isDayFirst ? dateMatch[1] : dateMatch[2]);
   const monthIndex = parseMonthToken(isDayFirst ? dateMatch[2] : dateMatch[1]);
   const explicitYear = dateMatch[3] ? Number(dateMatch[3]) : null;
   const timePart = dateMatch[4] ? String(dateMatch[4]).trim() : "";
@@ -409,26 +557,7 @@ function parseExplicitOrRelativeQuery(tokens, now) {
     return explicitDate ? [createCandidateGroup(explicitDate)] : [];
   }
 
-  const upcomingDate = findOccurrenceByDirection(
-    monthIndex,
-    day,
-    hour,
-    minute,
-    now,
-    1,
-  );
-  const previousDate = findOccurrenceByDirection(
-    monthIndex,
-    day,
-    hour,
-    minute,
-    now,
-    -1,
-  );
-
-  return [upcomingDate, previousDate]
-    .filter(Boolean)
-    .map((candidateDate) => createCandidateGroup(candidateDate));
+  return buildOccurrenceCandidateGroups(monthIndex, day, hour, minute, now);
 }
 
 function findOccurrenceByDirection(monthIndex, day, hour, minute, now, direction) {
@@ -889,10 +1018,26 @@ function bindComposerEvents() {
   if (!$chatInput.length) {
     return;
   }
+  const chatInputElement = $chatInput[0];
+  const composerNavigationKeys = new Set([
+    "ArrowDown",
+    "ArrowUp",
+    "Enter",
+    "Escape",
+    "Tab",
+  ]);
 
   $chatInput.on(
     "input.timeTokenComposer click.timeTokenComposer keyup.timeTokenComposer focus.timeTokenComposer",
-    () => {
+    (event) => {
+      if (
+        event &&
+        event.type === "keyup" &&
+        composerNavigationKeys.has(event.key)
+      ) {
+        return;
+      }
+
       scheduleComposerRefresh();
     },
   );
@@ -912,13 +1057,17 @@ function bindComposerEvents() {
     }, 0);
   });
 
-  $chatInput.on("keydown.timeTokenComposer", (event) => {
+  const handleComposerKeydown = (event) => {
     if (!timeTokenComposerState.isOpen) {
       return;
     }
 
     if (event.key === "Escape") {
       event.preventDefault();
+      event.stopPropagation();
+      if (typeof event.stopImmediatePropagation === "function") {
+        event.stopImmediatePropagation();
+      }
       closeComposerPopup();
       return;
     }
@@ -930,6 +1079,9 @@ function bindComposerEvents() {
     if (event.key === "ArrowDown") {
       event.preventDefault();
       event.stopPropagation();
+      if (typeof event.stopImmediatePropagation === "function") {
+        event.stopImmediatePropagation();
+      }
       setComposerActiveIndex(timeTokenComposerState.activeIndex + 1);
       return;
     }
@@ -937,16 +1089,28 @@ function bindComposerEvents() {
     if (event.key === "ArrowUp") {
       event.preventDefault();
       event.stopPropagation();
+      if (typeof event.stopImmediatePropagation === "function") {
+        event.stopImmediatePropagation();
+      }
       setComposerActiveIndex(timeTokenComposerState.activeIndex - 1);
       return;
     }
 
-    if (event.key === "Enter" || event.key === "Tab") {
+    if (event.key === "Enter") {
       event.preventDefault();
       event.stopPropagation();
+      if (typeof event.stopImmediatePropagation === "function") {
+        event.stopImmediatePropagation();
+      }
       commitComposerSelection(timeTokenComposerState.activeIndex);
     }
-  });
+  };
+
+  chatInputElement.addEventListener(
+    "keydown",
+    handleComposerKeydown,
+    true,
+  );
 
   $(document).on("mousedown.timeTokenComposer", (event) => {
     if (!timeTokenComposerState.isOpen) {
@@ -968,6 +1132,13 @@ function bindComposerEvents() {
   $(window).on("resize.timeTokenComposer scroll.timeTokenComposer", () => {
     positionComposerPopup();
   });
+
+  $(window).on("timeTokenPreferenceChange.timeTokenComposer", () => {
+    refreshRelativeTimeTokens();
+    if (timeTokenComposerState.isOpen) {
+      scheduleComposerRefresh();
+    }
+  });
 }
 
 (async function initializeTimeTokenComposer() {
@@ -986,4 +1157,5 @@ function bindComposerEvents() {
   }
 
   ensureRelativeRefreshInterval();
+  refreshRelativeTimeTokens();
 })();
