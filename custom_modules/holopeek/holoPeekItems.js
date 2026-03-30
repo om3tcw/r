@@ -191,6 +191,20 @@ async function setFesFunHoloPeekModuleEnabled(moduleId, nextEnabled) {
   return didSetModuleState != null ? didSetModuleState : false;
 }
 
+async function setFesFunHoloPeekModuleEnabled(moduleId, nextEnabled) {
+  await window.waitForFunc("fesFun");
+
+  if (!window.fesFun || typeof window.fesFun.setModuleEnabled !== "function") {
+    return false;
+  }
+
+  const didSetModuleState = window.fesFun.setModuleEnabled(
+    moduleId,
+    nextEnabled,
+  );
+  return didSetModuleState != null ? didSetModuleState : false;
+}
+
 function disableHoloPeekOption(optionId) {
   const $checkbox = $(`#${optionId}`);
   if ($checkbox.length && $checkbox.prop("checked")) {

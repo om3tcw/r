@@ -5,7 +5,15 @@ const TARGET_USERNAMES = [];
 // Anything here will only be replaced if the sender is included in TARGET_USERNAMES.
 // Emotes can be matched by their exact title (e.g. ":uoh:").
 // For emote-only image swaps, use toImage: { from: ":uoh:", toImage: "https://..." }.
-const TARGET_USER_WORD_REPLACEMENTS = [];
+const TARGET_USER_WORD_REPLACEMENTS = [
+    { from: "Fuck", to: "Fork" },
+    { from: "Fucking", to: "Forking" },
+    { from: "Ass", to: "Ash" },
+    { from: "Asshole", to: "Ashhole" },
+    { from: "Shit", to: "Shoot" },
+    { from: "Slop", to: "Kino" }
+    
+];
 
 // Anything here will be replaced globally regardless of username.
 // Emotes can be matched by their exact title (e.g. ":uoh:").

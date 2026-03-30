@@ -69,12 +69,13 @@ const ModulePaths = [
   { VideoTitlePreview: `chat_modules/videoTitlePreview.js` },
   { NinoMode: `fes_fun/ninoMode.js` },
   { RratButton: `ui_modules/rratButton.js` },
+  { EmotelistEnhancement: `ui_modules/emotelistEnhancements.js` },
 ];
 
 //candidate to move to util.js
 //change ?ver=n to automatically push changes.
 function makeLiveCDNLink(fileName) {
-  return CURRENT_CDN + "/" + fileName + "?ver=1-13-24";
+  return CURRENT_CDN + "/" + fileName + "?ver=1-13-26";
 }
 
 //candidate to move to util.js

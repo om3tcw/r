@@ -135,7 +135,7 @@ window.tweetPreview = {
             });
         } else if (data.context == "iframe.resize") {
             document.querySelectorAll(`iframe[src^="${data.src}"]`).forEach(iframe => {
-                iframe.height = data.height + 50;
+                iframe.height = data.height + 30;
             });
         }
     });

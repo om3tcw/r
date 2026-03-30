@@ -1,5 +1,29 @@
 /* Start of Oshi Eyes */
 
+.chat-msg-monomelon .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/ceci4.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-CockroachGirlsAreHot .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/morimelon.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-forsen_1337 .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/bijou3.jpg');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
 .chat-msg-lorelinad .timestamp {
     color: transparent;
     background-size: 50px 15px;
@@ -977,7 +1001,7 @@
 .chat-msg-Moshmallow .timestamp {
     color: transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/moshameeyes.png');
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/eyes/reineheartoshieyes.png');
     background-position: center top;
     background-repeat: no-repeat
 }
@@ -3129,6 +3153,11 @@ img.channel-emote[title$=":nerissawithjailbirdlonger:"] {
     margin: -112px;
 }
 
+img.channel-emote[title$="."] {
+    bottom: -3px;
+    left: -3px;
+    z-index: 1;
+}
 
 /* might add 'top:5px;' later to do a bottom offset */
 /* End of Emote Animations */
@@ -4318,12 +4347,12 @@ form input#chatline {
 
 .chat-msg-Dago552 .timestamp::before,
 [class~="chat-msg-Dago552" i] .timestamp::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/pphat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/ikaphat.png");
 }
 
 .chat-msg-Tako225 .timestamp::before,
 [class~="chat-msg-Tako225" i] .timestamp::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/pphat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/takophat.png");
 }
 
 .chat-msg-undah_skor .timestamp::before,
