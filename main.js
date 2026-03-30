@@ -69,7 +69,7 @@ const ModulePaths = [
   { VideoTitlePreview: `chat_modules/videoTitlePreview.js` },
   { NinoMode: `fes_fun/ninoMode.js` },
   { RratButton: `ui_modules/rratButton.js` },
-  { EmotelistEnhancement: `ui_modules/emotelistEnhancements.js` },
+  { EmotelistEnhancement: `ui_modules/emotelistEnhancements.js` }
 ];
 
 //candidate to move to util.js
