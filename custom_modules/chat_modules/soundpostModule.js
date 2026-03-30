@@ -1,4 +1,3 @@
-let SOUNDPOSTS = {};
 let RARE_SOUNDPOSTS = {};
 let SOUNDPOST_PLAYBACK_STATE = {};
 let PLAYED_SOUNDPOSTS = [];
@@ -8,7 +7,7 @@ const defaultAdditionalPlayTime = 3;
 function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
     const soundpost = SOUNDPOST_PLAYBACK_STATE[emote];
     if (!soundpost) return;
-   
+
     soundpost.totalPlayTime += additionalPlayTime;
     if (!soundpost.isPlaying && soundpost.isPreloaded) {
         soundpost.isPlaying = true;
@@ -24,12 +23,13 @@ function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
         soundpost.totalPlayTime = 0;
     }, playDuration * 1000);
 }
+
 function playLongRare(emote, rareSound, additionalPlayTime = defaultAdditionalPlayTime) {
     const stateKey = `${emote}_rare`;
-   
+
     if (!SOUNDPOST_PLAYBACK_STATE[stateKey]) {
         initializeSoundpost(stateKey, rareSound.soundurl, true);
-       
+
         SOUNDPOST_PLAYBACK_STATE[stateKey].audio.addEventListener(
             "canplaythrough",
             () => {
@@ -40,11 +40,11 @@ function playLongRare(emote, rareSound, additionalPlayTime = defaultAdditionalPl
         );
     } else {
         const state = SOUNDPOST_PLAYBACK_STATE[stateKey];
-       
+
         if (state.isPreloaded && state.audio.duration) {
             const remainingTime = state.audio.duration - state.audio.currentTime;
             const timeToAdd = Math.min(additionalPlayTime, remainingTime);
-           
+
             if (timeToAdd > 0) {
                 playSoundpost(stateKey, timeToAdd);
             }
@@ -57,23 +57,24 @@ function isLongRarePlaying(emote) {
     const state = SOUNDPOST_PLAYBACK_STATE[stateKey];
     return state && state.isPlaying;
 }
-function injectSoundpost($message) {    
+
+function injectSoundpost($message) {
     if (!window.SOUNDPOST_STATE) return;
-   
+
     const $emotes = $message.find(".channel-emote[title]");
-    let hasRolledForRare = false; 
-   
+    let hasRolledForRare = false;
+
     $emotes.each((index, element) => {
         const $emote = $(element);
         const emoteTitle = $emote.attr("title");
-       
+
         const soundpost = SOUNDPOSTS[emoteTitle];
         const rareSound = RARE_SOUNDPOSTS[emoteTitle];
         const longEmotes = [":homuhomu:", ":rratate:", "bakushin", "calliboy", ":mocohoeh:"];
-       
+
         if (rareSound && !hasRolledForRare) {
             hasRolledForRare = true;
-           
+
             if (shouldPlayRareDeterministic($message, emoteTitle, RARE_SOUNDPOSTS)) {
                 console.log(`[Rare Triggered] ${emoteTitle} - deterministic roll succeeded`);
                 try {
@@ -90,12 +91,12 @@ function injectSoundpost($message) {
                 }
             }
         }
-       
+
         if (rareSound && rareSound.isLong && isLongRarePlaying(emoteTitle)) {
             playLongRare(emoteTitle, rareSound, 3);
-            return; 
+            return;
         }
-       
+
         if (soundpost) {
             try {
                 const preload = longEmotes.includes(emoteTitle);
@@ -121,10 +122,11 @@ function injectSoundpost($message) {
             }
         }
     });
-   
+
     PLAYED_SOUNDPOSTS = [];
     cleanupSoundpostPlaybackState();
 }
+
 function cleanupSoundpostPlaybackState() {
     const limit = 40;
     const keys = Object.keys(SOUNDPOST_PLAYBACK_STATE);
@@ -140,6 +142,7 @@ function cleanupSoundpostPlaybackState() {
         });
     }
 }
+
 function initializeSoundpost(emote, soundurl, preload = false) {
     if (!SOUNDPOST_PLAYBACK_STATE[emote]) {
         SOUNDPOST_PLAYBACK_STATE[emote] = {
@@ -150,7 +153,7 @@ function initializeSoundpost(emote, soundurl, preload = false) {
             isPreloaded: false,
         };
         SOUNDPOST_PLAYBACK_STATE[emote].audio.volume = defaultVolume;
-       
+
         if (preload) {
             SOUNDPOST_PLAYBACK_STATE[emote].audio.addEventListener(
                 "canplaythrough",
@@ -162,6 +165,7 @@ function initializeSoundpost(emote, soundurl, preload = false) {
         }
     }
 }
+
 async function loadSoundposts() {
     try {
         const response = await fetch(
@@ -174,6 +178,7 @@ async function loadSoundposts() {
         return {};
     }
 }
+
 async function loadRareSoundposts() {
     try {
         const response = await fetch(
@@ -186,6 +191,7 @@ async function loadRareSoundposts() {
         return {};
     }
 }
+
 function toggleSoundpostButtonImage(soundpostButton) {
     if (window.SOUNDPOST_STATE) {
         soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/schizo.gif')";
@@ -193,6 +199,7 @@ function toggleSoundpostButtonImage(soundpostButton) {
         soundpostButton.style.backgroundImage = "url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/emotes/medicated.png')";
     }
 }
+
 (async () => {
     await window.waitForFunc("MESSAGE_PROCESSOR");
     MESSAGE_PROCESSOR.addTap(injectSoundpost);
@@ -210,14 +217,14 @@ function toggleSoundpostButtonImage(soundpostButton) {
         loadSoundposts(),
         loadRareSoundposts()
     ]);
-   
-    SOUNDPOSTS = soundpostsData;
+
+    window.SOUNDPOSTS = soundpostsData;
     RARE_SOUNDPOSTS = rareSoundpostsData;
-   
+
     const bufferFetch = localStorage.getItem("SOUNDPOST_STATE");
     if (bufferFetch !== null) {
         window.SOUNDPOST_STATE = JSON.parse(bufferFetch);
     }
-   
+
     toggleSoundpostButtonImage(soundpostButton);
 })()
