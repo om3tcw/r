@@ -59,6 +59,8 @@ const timeTokenComposerState = {
   flatOptions: [],
   refreshFrame: null,
   relativeRefreshInterval: null,
+  hasBoundEvents: false,
+  keydownListener: null,
 };
 
 const DATE_TIME_FORMATTERS = {};
@@ -143,7 +145,11 @@ function parseOrdinalNumber(input) {
 }
 
 function formatNumericDate(date, preference = getTimeTokenFormatPreference()) {
-  const year = padNumber(date.getFullYear() % 100);
+  const fullYear = date.getFullYear();
+  const year =
+    fullYear >= 0 && fullYear <= 99
+      ? padNumber(fullYear)
+      : String(fullYear).padStart(4, "0");
   const month = padNumber(date.getMonth() + 1);
   const day = padNumber(date.getDate());
   return preference.dateOrder === "MDY"
@@ -1014,6 +1020,10 @@ function renderTimeTokensInMessage($messageElement) {
 }
 
 function bindComposerEvents() {
+  if (timeTokenComposerState.hasBoundEvents) {
+    return;
+  }
+
   const $chatInput = $("#chatline");
   if (!$chatInput.length) {
     return;
@@ -1106,11 +1116,8 @@ function bindComposerEvents() {
     }
   };
 
-  chatInputElement.addEventListener(
-    "keydown",
-    handleComposerKeydown,
-    true,
-  );
+  timeTokenComposerState.keydownListener = handleComposerKeydown;
+  chatInputElement.addEventListener("keydown", handleComposerKeydown, true);
 
   $(document).on("mousedown.timeTokenComposer", (event) => {
     if (!timeTokenComposerState.isOpen) {
@@ -1139,6 +1146,8 @@ function bindComposerEvents() {
       scheduleComposerRefresh();
     }
   });
+
+  timeTokenComposerState.hasBoundEvents = true;
 }
 
 (async function initializeTimeTokenComposer() {

@@ -278,6 +278,7 @@ function createDropdownElement(holoPeekItem) {
         on: {
             change: (event) => {
                 holoPeekItem.value = event.target.value;
+                localStorage.setItem(holoPeekItem.id, holoPeekItem.value);
                 if (holoPeekItem.alwaysEnabled) {
                     if (holoPeekItem.optionFunc) {
                         holoPeekItem.optionFunc(holoPeekItem);
