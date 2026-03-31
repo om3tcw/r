@@ -70,13 +70,14 @@ const ModulePaths = [
   { NinoMode: `fes_fun/ninoMode.js` },
   { RratButton: `ui_modules/rratButton.js` },
   { EmoteTagStore: `ui_modules/emoteTagStore.js` },
-  { EmotelistEnhancement: `ui_modules/emotelistEnhancements.js` }
+  { EmoteTagSearchUI: `ui_modules/emoteTagSearchUI.js` },
+  { EmotelistEnhancement: `ui_modules/emotelistEnhancements.js` },
 ];
 
 //candidate to move to util.js
 //change ?ver=n to automatically push changes.
 function makeLiveCDNLink(fileName) {
-  return CURRENT_CDN + "/" + fileName + "?ver=1-13-30";
+  return CURRENT_CDN + "/" + fileName + "?ver=1-13-33";
 }
 
 //candidate to move to util.js

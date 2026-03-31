@@ -21,24 +21,22 @@
       margin-bottom: 10px;
     }
 
-    #emotelist-toolbar-search,
-    #emotelist-toolbar-controls,
-    #emotelist-toolbar-search > .pull-left,
-    #emotelist-toolbar-controls > .pull-right {
+    #emotelist-toolbar-row > .pull-left,
+    #emotelist-toolbar-row > .pull-right {
       float: none !important;
       margin: 0;
     }
 
-    #emotelist-toolbar-search {
+    #emotelist-toolbar-row > .pull-left {
       width: 100%;
       position: relative;
     }
 
-    #emotelist-toolbar-search .emotelist-search {
+    #emotelist-toolbar-row > .pull-left .emotelist-search {
       width: 100%;
     }
 
-    #emotelist-toolbar-controls {
+    #emotelist-toolbar-row > .pull-right {
       display: flex;
       align-items: center;
       gap: 8px;

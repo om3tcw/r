@@ -35,7 +35,6 @@ function getEmoteSearchInput() {
 
 function getSearchContainer() {
   return (
-    document.querySelector("#emotelist-toolbar-search") ||
     document.querySelector("#emotelist-toolbar-row > .pull-left") ||
     document.querySelector("#emotelist .modal-body .pull-left")
   );
