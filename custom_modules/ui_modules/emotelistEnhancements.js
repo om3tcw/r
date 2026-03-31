@@ -16,52 +16,39 @@ function getEmoteModalBody() {
 }
 
 function getEmoteToolbarContainer() {
-  const toolbarLayout = installToolbarLayout();
-  return toolbarLayout ? toolbarLayout.controlsSlot : null;
+  return (
+    document.querySelector("#emotelist .modal-body div.pull-right") ||
+    getEmoteModalBody()
+  );
 }
 
 function installToolbarLayout() {
   const modalBody = getEmoteModalBody();
-  if (!modalBody) {
-    return null;
+  const searchContainer = document.querySelector(
+    "#emotelist .modal-body .pull-left",
+  );
+  const controlsContainer = document.querySelector(
+    "#emotelist .modal-body .pull-right",
+  );
+
+  if (!modalBody || !searchContainer || !controlsContainer) {
+    return;
   }
 
   let toolbarRow = document.querySelector("#emotelist-toolbar-row");
   if (!toolbarRow) {
     toolbarRow = document.createElement("div");
     toolbarRow.id = "emotelist-toolbar-row";
-    modalBody.insertBefore(toolbarRow, modalBody.firstChild);
+    modalBody.insertBefore(toolbarRow, searchContainer);
   }
 
-  let searchSlot = document.querySelector("#emotelist-toolbar-search");
-  if (!searchSlot) {
-    searchSlot = document.createElement("div");
-    searchSlot.id = "emotelist-toolbar-search";
-    toolbarRow.appendChild(searchSlot);
+  if (searchContainer.parentNode !== toolbarRow) {
+    toolbarRow.appendChild(searchContainer);
   }
 
-  let controlsSlot = document.querySelector("#emotelist-toolbar-controls");
-  if (!controlsSlot) {
-    controlsSlot = document.createElement("div");
-    controlsSlot.id = "emotelist-toolbar-controls";
-    toolbarRow.appendChild(controlsSlot);
+  if (controlsContainer.parentNode !== toolbarRow) {
+    toolbarRow.appendChild(controlsContainer);
   }
-
-  const searchContainer = modalBody.querySelector(".pull-left");
-  if (searchContainer && searchContainer.parentNode !== searchSlot) {
-    searchSlot.appendChild(searchContainer);
-  }
-
-  const controlsContainer = modalBody.querySelector(".pull-right");
-  if (controlsContainer && controlsContainer.parentNode !== controlsSlot) {
-    controlsSlot.appendChild(controlsContainer);
-  }
-
-  return {
-    controlsSlot,
-    searchSlot,
-    toolbarRow,
-  };
 }
 
 function addSoundpostButton(emote_img) {
