@@ -345,46 +345,90 @@ function buildSharedTtsControls() {
     document.querySelector("#chatinputrow")?.append(container);
 }
 
-function collapseSharedTtsChatMessage($messageElement) {
-    if (!$messageElement || typeof $messageElement.text !== "function") {
+function normalizeSharedTtsMessageText(value) {
+    return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function isSharedTtsCommandMessage(messageText) {
+    return /^!dec[a-z]*\b/i.test(messageText);
+}
+
+function shouldKeepSharedTtsBotMessage(messageText) {
+    return /\bqueue\s+full\b/i.test(messageText) ||
+        /\berror\b/i.test(messageText) ||
+        /\bfailed\b/i.test(messageText);
+}
+
+function getChatRowUsername(rowElement) {
+    const usernameElement = rowElement?.querySelector("strong.username");
+    return normalizeSharedTtsMessageText(
+        String(usernameElement?.textContent || "").replace(/:\s*$/, ""),
+    );
+}
+
+function getChatRowMessageText(rowElement) {
+    if (!(rowElement instanceof Element)) {
+        return "";
+    }
+
+    const directSpanChildren = Array.from(rowElement.children).filter(
+        (child) => child.tagName === "SPAN",
+    );
+    const messageSpan = directSpanChildren[directSpanChildren.length - 1];
+    return normalizeSharedTtsMessageText(messageSpan?.textContent || rowElement.textContent);
+}
+
+function shouldHideSharedTtsChatRow(rowElement) {
+    const messageText = getChatRowMessageText(rowElement);
+    if (!messageText) {
+        return false;
+    }
+
+    if (isSharedTtsCommandMessage(messageText)) {
+        return true;
+    }
+
+    return getChatRowUsername(rowElement) === "MigoBot" &&
+        !shouldKeepSharedTtsBotMessage(messageText);
+}
+
+function pruneSharedTtsChatRow(rowElement) {
+    if (!(rowElement instanceof Element) || rowElement.dataset.sharedTtsPruned === "1") {
         return;
     }
 
-    const originalText = String($messageElement.text() || "").trim();
-    if (!originalText || $messageElement.data("sharedTtsCollapsed")) {
+    rowElement.dataset.sharedTtsPruned = "1";
+    if (shouldHideSharedTtsChatRow(rowElement)) {
+        rowElement.remove();
+    }
+}
+
+function watchSharedTtsChatMessages() {
+    const messageBuffer = document.querySelector("#messagebuffer");
+    if (!(messageBuffer instanceof Element) || messageBuffer.dataset.sharedTtsObserverAttached === "1") {
         return;
     }
 
-    const match = /^(?:!)(dec|decpart)\s+([\s\S]+)$/i.exec(originalText);
-    if (!match) {
-        return;
-    }
+    messageBuffer.dataset.sharedTtsObserverAttached = "1";
+    Array.from(messageBuffer.children).forEach(pruneSharedTtsChatRow);
 
-    const commandName = match[1].toLowerCase();
-    const payload = String(match[2] || "").trim();
-    if (!payload) {
-        return;
-    }
+    const observer = new MutationObserver((records) => {
+        for (const record of records) {
+            for (const node of record.addedNodes) {
+                pruneSharedTtsChatRow(node);
+            }
+        }
+    });
 
-    const label = commandName === "decpart"
-        ? `!decpart [DECtalk chunk hidden, ${payload.length} chars]`
-        : `!dec [DECtalk payload hidden, ${payload.length} chars]`;
-
-    $messageElement
-        .attr("title", originalText)
-        .text(label)
-        .data("sharedTtsCollapsed", true);
+    observer.observe(messageBuffer, { childList: true });
 }
 
 (async () => {
     await window.waitForFunc("DOMrebuiltPromise");
     await window.DOMrebuiltPromise;
     await waitForHoloPeekGroupHelper();
-    await window.waitForFunc("MESSAGE_PROCESSOR");
     buildSharedTtsControls();
-    if (window.MESSAGE_PROCESSOR && typeof MESSAGE_PROCESSOR.addTap === "function") {
-        MESSAGE_PROCESSOR.addTap(collapseSharedTtsChatMessage);
-    }
+    watchSharedTtsChatMessages();
     connectSharedTtsEvents();
     fetchSharedTtsState();
 })();
