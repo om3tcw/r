@@ -125,6 +125,25 @@
         .holoPeekGroupItems {
             padding-top: 4px;
         }
+        #shared-tts-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 95%;
+            padding: 4px 5px 8px;
+        }
+        #shared-tts-controls .shared-tts-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #shared-tts-controls .shared-tts-row button {
+            flex: 1 1 auto;
+        }
+        #shared-tts-controls input[type="range"] {
+            width: 100%;
+            margin: 0;
+        }
         #resetButton {
             margin-left: 16px;
         }
