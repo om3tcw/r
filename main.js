@@ -70,7 +70,7 @@ const ModulePaths = [
   { NinoMode: `fes_fun/ninoMode.js` },
   { RratButton: `ui_modules/rratButton.js` },
   { EmoteTagStore: `ui_modules/emoteTagStore.js` },
-  { EmotelistEnhancement: `ui_modules/emotelistEnhancements.js` },
+  { EmotelistEnhancement: `ui_modules/emotelistEnhancements.js` }
 ];
 
 //candidate to move to util.js
