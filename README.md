@@ -7,6 +7,7 @@
   Please keep emote names the same as they are on cytube <br> 
   If you rename an emote on the cytube, please rename the file here on the github as well <br> 
   for the filenames, emotes with "?" and "/" in the name have those characters changed, ? becomes - and / becomes _ <br> 
+  Emote tags are defined in "emote-tags.json" you can edit them from here or from inside cytube <br>
   
   TO UPLOAD EMOTES: <br> 
     1. Click on the "emotes" folder <br> 

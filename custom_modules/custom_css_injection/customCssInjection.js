@@ -1,4 +1,5 @@
 const STYLES = {
+    EMOTE_TAG_UI_STYLE: `custom_modules/custom_css_injection/emoteTagUI-css.js`,
     CONFETTI_STYLE: `custom_modules/custom_css_injection/confetti-css.js`,
     HOLOPEEK_STYLE: `custom_modules/custom_css_injection/holoPeek-css.js`,
     MIKU_MIKU_BEAM_STYLE: `custom_modules/custom_css_injection/mikuMikuBeam-css.js`,
