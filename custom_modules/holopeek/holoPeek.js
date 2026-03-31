@@ -335,7 +335,7 @@ function createRangeElement(holoPeekItem) {
     })
 }
 
-function fetchHoloPeekGroupContainer(groupName, prepend = false) {
+export function fetchHoloPeekGroupContainer(groupName, prepend = false) {
     if (!groupName) {
         return $holoPeekItemsContainer;
     }
@@ -369,6 +369,19 @@ function fetchHoloPeekGroupContainer(groupName, prepend = false) {
     }
 
     return holoPeekGroups[groupName];
+}
+
+export function appendToHoloPeekGroup(groupName, content, prepend = false) {
+    const $targetContainer = fetchHoloPeekGroupContainer(groupName, prepend);
+    const $content = $(content);
+
+    if (prepend) {
+        $content.prependTo($targetContainer);
+    } else {
+        $content.appendTo($targetContainer);
+    }
+
+    return $content;
 }
 
 export function addToHoloPeekContainer(holoPeekItem, prepend = false) {
