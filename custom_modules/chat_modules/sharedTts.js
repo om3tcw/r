@@ -36,7 +36,7 @@ const sharedTtsState = {
     audioElement: null,
     currentJobId: "",
     currentStartAt: 0,
-    enabled: readStoredBoolean(SHARED_TTS_ENABLED_KEY, true),
+    enabled: readStoredBoolean(SHARED_TTS_ENABLED_KEY, false),
     eventSource: null,
     playTimer: null,
     serverOffsetMs: 0,
