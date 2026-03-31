@@ -19,6 +19,8 @@ const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
 const CURRENT_CDN = ONLINE_CDN;
 
+const SHARED_TTS_API_BASE_URL = "https://tts.mikobote.uk"; // April fools shit
+
 const MODULES_FOLDER = "custom_modules/";
 const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`;
 const CHAT_MODULE_UTILS = `${MODULES_FOLDER}utils/chatCommandUtils.js`;
@@ -64,6 +66,7 @@ const ModulePaths = [
   { ImagePreview: `chat_modules/imagePreview.js`, isActive: 0, rank: -1 },
   { HashUtil: `utils/hashUtil.js` },
   { Soundposts: `chat_modules/soundpostModule.js` },
+  { SharedTts: `chat_modules/sharedTts.js` }, // April fools shit
   { NNDChatModule: `chat_modules/nndChatModule.js`, isActive: 1, rank: -1 },
   { TweetEmbed: `chat_modules/tweetEmbed.js` },
   { VideoTitlePreview: `chat_modules/videoTitlePreview.js` },
