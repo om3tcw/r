@@ -41,7 +41,7 @@ const GOLD_COMMAND_ALLOW_SELF = false;
 
 const goldUsersByKey = new Map();
 let isMigoboteGoldEnabled = true;
-let isInitialMessageScanComplete = false;
+let isGoldMessageHandlerAttached = false;
 
 const GOLD_COMMAND_ALLOWED_USER_SET = new Set(
     GOLD_COMMAND_ALLOWED_USERS
@@ -107,24 +107,32 @@ function syncGoldVisualStateForUser(username, shouldEnable) {
     );
 }
 
-function syncAllGoldVisualState() {
-    for (const userState of goldUsersByKey.values()) {
-        if (!userState || !userState.displayName) {
-            continue;
-        }
-
-        syncGoldVisualStateForUser(userState.displayName, true);
+function syncAllGoldUserlistState() {
+  for (const userState of goldUsersByKey.values()) {
+    if (!userState || !userState.displayName) {
+      continue;
     }
+
+    setUserlistNameClassByUsername(
+        userState.displayName,
+        GOLD_ACTIVE_USERLIST_CLASS,
+        true
+    );
+  }
 }
 
-function clearGoldRuntimeState() {
-    goldUsersByKey.clear();
+function clearGoldVisualState() {
     $(`${MESSAGE_BUFFER_SELECTOR} > div.${GOLD_ACTIVE_ROW_CLASS}`).removeClass(
         GOLD_ACTIVE_ROW_CLASS
     );
     $(`#userlist .${GOLD_ACTIVE_USERLIST_CLASS}`).removeClass(
         GOLD_ACTIVE_USERLIST_CLASS
     );
+}
+
+function clearGoldRuntimeState() {
+    goldUsersByKey.clear();
+    clearGoldVisualState();
 }
 
 function postGoldStatusSystemMessage(message) {
@@ -288,6 +296,54 @@ function messageContainsGoldTrigger(messageRootElement, messageText) {
     return GOLD_TRIGGER_TEXT_REGEX.test(String(messageText || ""));
 }
 
+function processBacklogMessage($messageElement) {
+    if (!$messageElement || !$messageElement.length) {
+        return;
+    }
+
+    if (!isMigoboteGoldEnabled || !goldUsersByKey.size) {
+        return;
+    }
+
+    const $row = getMessageRow($messageElement);
+    if (!$row || isServerMessageRow($row)) {
+        return;
+    }
+
+    const messageRootElement = getMessageContentRootElement($messageElement, {
+        $row,
+        messageBufferSelector: MESSAGE_BUFFER_SELECTOR
+    });
+    if (!messageRootElement) {
+        return;
+    }
+
+    const messageText = String(messageRootElement.textContent || "");
+    if (parseGoldCommand(messageText, messageRootElement)) {
+        return;
+    }
+
+    const messageAuthor = getMessageAuthor($row);
+    if (!goldUsersByKey.has(normalizeUsername(messageAuthor))) {
+        return;
+    }
+
+    $row[0].classList.add(GOLD_ACTIVE_ROW_CLASS);
+    setUserlistNameClassByUsername(
+        messageAuthor,
+        GOLD_ACTIVE_USERLIST_CLASS,
+        true
+    );
+}
+
+function rescanExistingMessagesForGoldState() {
+    if (!isMigoboteGoldEnabled || !goldUsersByKey.size) {
+        return Promise.resolve(0);
+    }
+
+    return fesFun.runBacklogScan(processBacklogMessage);
+}
+
 function handleGoldStateMessage($messageElement) {
     if (!$messageElement || !$messageElement.length) {
         return;
@@ -325,14 +381,6 @@ function handleGoldStateMessage($messageElement) {
     const parsedCommand = parseGoldCommand(messageText, messageRootElement);
     const isAuthorAllowed = isGoldCommandAllowedForAuthor(messageAuthor);
 
-    if (!isInitialMessageScanComplete) {
-        // Hide historic /setgold and /unsetgold commands from backlog on first attach.
-        if (parsedCommand || (isCommandAttempt && !isAuthorAllowed)) {
-            $row.remove();
-        }
-        return;
-    }
-
     if (parsedCommand) {
         if (isAuthorAllowed) {
             if (parsedCommand.action === "set") {
@@ -364,10 +412,13 @@ function setMigoboteGoldEnabled(nextEnabled) {
     }
 
     isMigoboteGoldEnabled = desiredEnabled;
-    if (!isMigoboteGoldEnabled) {
-        clearGoldRuntimeState();
+    if (isMigoboteGoldEnabled) {
+        syncAllGoldUserlistState();
+        rescanExistingMessagesForGoldState();
+        return isMigoboteGoldEnabled;
     }
 
+    clearGoldVisualState();
     return isMigoboteGoldEnabled;
 }
 
@@ -406,7 +457,7 @@ function attachGoldUserlistObserver() {
             return;
         }
 
-        syncAllGoldVisualState();
+        syncAllGoldUserlistState();
     });
     goldUserlistObserver.observe(userlistElement, {
         childList: true,
@@ -423,6 +474,10 @@ function attachGoldUserlistObserver() {
     });
     await window.waitForFunc("MESSAGE_PROCESSOR");
     attachGoldUserlistObserver();
-    MESSAGE_PROCESSOR.addTap(handleGoldStateMessage);
-    isInitialMessageScanComplete = true;
+    if (isGoldMessageHandlerAttached) {
+        return;
+    }
+
+    fesFun.registerLiveMessageHandler(handleGoldStateMessage);
+    isGoldMessageHandlerAttached = true;
 })();

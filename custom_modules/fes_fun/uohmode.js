@@ -73,8 +73,7 @@ const originalUohTextByNode = new WeakMap();
 const modifiedUohEmoteElements = new Set();
 let isUohModuleEnabled = true;
 let isUohModeEnabled = false;
-let isUohMessageTapAttached = false;
-let isInitialUohMessageScanComplete = false;
+let isUohMessageHandlerAttached = false;
 
 function applyUohModeCssVariables() {
   const rootElement = document.documentElement;
@@ -638,32 +637,42 @@ function clearRuntimeState() {
   );
 }
 
-function rescanExistingMessagesFor() {
-  if (!isUohModeEnabled) {
+function processBacklogMessage($messageElement) {
+  if (!$messageElement || !$messageElement.length) {
     return;
   }
 
-  $(`${MESSAGE_BUFFER_SELECTOR} > div`).each((_, element) => {
-    const $row = $(element);
-    if (!$row.length || isServerMessageRow($row)) {
-      return;
-    }
+  if (!isUohModuleEnabled || !isUohModeEnabled) {
+    return;
+  }
 
-    const messageRootElement = getMessageContentRootElement(
-      $row.children().last(),
-      { $row, messageBufferSelector: MESSAGE_BUFFER_SELECTOR },
-    );
-    if (!messageRootElement) {
-      return;
-    }
+  const $row = getMessageRow($messageElement);
+  if (!$row || isServerMessageRow($row)) {
+    return;
+  }
 
-    const messageText = String(messageRootElement.textContent || "");
-    if (parseControlCommand(messageText)) {
-      return;
-    }
+  const messageRootElement = getMessageContentRootElement(
+    $messageElement,
+    { $row, messageBufferSelector: MESSAGE_BUFFER_SELECTOR },
+  );
+  if (!messageRootElement) {
+    return;
+  }
 
-    processMessageRow($row, messageRootElement, messageText);
-  });
+  const messageText = String(messageRootElement.textContent || "");
+  if (parseControlCommand(messageText)) {
+    return;
+  }
+
+  processMessageRow($row, messageRootElement, messageText);
+}
+
+function rescanExistingMessagesFor() {
+  if (!isUohModuleEnabled || !isUohModeEnabled) {
+    return Promise.resolve(0);
+  }
+
+  return fesFun.runBacklogScan(processBacklogMessage);
 }
 
 function setModeEnabled(nextEnabled, options = {}) {
@@ -724,9 +733,9 @@ function handleModeMessage($messageElement) {
       const shouldEnable = parsedCommand.action === "on";
       $row.remove();
       setModeEnabled(shouldEnable, {
-        announce: isInitialUohMessageScanComplete,
+        announce: true,
         actorUsername: messageAuthor,
-        rescanExisting: isInitialUohMessageScanComplete && shouldEnable,
+        rescanExisting: shouldEnable,
       });
     }
     return;
@@ -791,13 +800,12 @@ async function initializeMode() {
     getState: getModeState,
   });
   await window.waitForFunc("MESSAGE_PROCESSOR");
-  if (isUohMessageTapAttached) {
+  if (isUohMessageHandlerAttached) {
     return;
   }
 
-  MESSAGE_PROCESSOR.addTap(handleModeMessage);
-  isUohMessageTapAttached = true;
-  isInitialUohMessageScanComplete = true;
+  fesFun.registerLiveMessageHandler(handleModeMessage);
+  isUohMessageHandlerAttached = true;
 }
 
 (async () => {
