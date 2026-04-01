@@ -33,5 +33,5 @@
   Commands below are mod+ <br>  
   /setgold TARGET, /unsetgold TARGET <br> 
   /mikubeam TARGET <br> 
-  /ninomode TARGET <br> 
+  /ninomode TARGET, TARGET2, TARGET3, /ninomode off <br> 
   /uoh on, /uoh off <br> 
