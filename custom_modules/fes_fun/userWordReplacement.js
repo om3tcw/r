@@ -21,6 +21,11 @@ const TARGET_USER_WORD_REPLACEMENTS = [
 const GLOBAL_WORD_REPLACEMENTS = [];
 
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
+const fesFun = window.fesFun;
+
+if (!fesFun) {
+    throw new Error("[UserWordReplacement] fesFun controller is not available");
+}
 
 // Shared utility helpers.
 function normalizeUsername(username) {
@@ -257,6 +262,11 @@ const TARGET_USERNAME_SET = new Set(
         .map(normalizeUsername)
         .filter(Boolean)
 );
+const HAS_ANY_TARGET_REPLACEMENTS =
+    TARGET_USERNAME_SET.size > 0 && TARGET_USER_REPLACEMENT_CONFIG != null;
+const HAS_ANY_GLOBAL_REPLACEMENTS = GLOBAL_REPLACEMENT_CONFIG != null;
+const SHOULD_ATTACH_WORD_REPLACEMENT =
+    HAS_ANY_TARGET_REPLACEMENTS || HAS_ANY_GLOBAL_REPLACEMENTS;
 
 function replaceTextNodes(rootElement, replacementConfig) {
     if (!rootElement || !replacementConfig) {
@@ -404,6 +414,10 @@ function replaceWords($messageElement) {
 }
 
 (async () => {
+    if (!SHOULD_ATTACH_WORD_REPLACEMENT) {
+        return;
+    }
+
     await window.waitForFunc("MESSAGE_PROCESSOR");
-    MESSAGE_PROCESSOR.addTap(replaceWords);
+    fesFun.registerLiveMessageHandler(replaceWords);
 })();

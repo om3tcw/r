@@ -1,6 +1,12 @@
 const FES_FUN_STORAGE_KEY = "fesFunEnabled";
 const LEGACY_FES_FUN_STORAGE_KEY = "disableMikuBeam";
+const FES_FUN_BACKLOG_CHUNK_SIZE = 25;
+const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
 const registeredFesFunModules = new Map();
+const registeredFesFunLiveMessageHandlers = new Set();
+const queuedFesFunBacklogScans = [];
+let isFesFunBacklogScanRunning = false;
+let isFesFunLiveChatListenerAttached = false;
 
 function getInitialFesFunEnabledState() {
   try {
@@ -119,12 +125,187 @@ function getFesFunState() {
   };
 }
 
+function getLatestChatMessageElement() {
+  if (typeof window.fetchLastChatElement !== "function") {
+    return null;
+  }
+
+  try {
+    const $messageElement = window.fetchLastChatElement();
+    if ($messageElement && $messageElement.length) {
+      return $messageElement;
+    }
+  } catch (error) {
+    console.error("[fesFun] Failed to resolve latest chat element:", error);
+  }
+
+  return null;
+}
+
+function ensureFesFunLiveChatListener() {
+  if (isFesFunLiveChatListenerAttached) {
+    return true;
+  }
+
+  if (!window.socket || typeof window.socket.on !== "function") {
+    return false;
+  }
+
+  window.socket.on("chatMsg", () => {
+    const $messageElement = getLatestChatMessageElement();
+    if (!$messageElement || !$messageElement.length) {
+      return;
+    }
+
+    for (const handler of Array.from(registeredFesFunLiveMessageHandlers)) {
+      try {
+        handler($messageElement);
+      } catch (error) {
+        console.error("[fesFun] Live chat handler failed:", error);
+      }
+    }
+  });
+
+  isFesFunLiveChatListenerAttached = true;
+  return true;
+}
+
+function registerLiveMessageHandler(handler) {
+  if (typeof handler !== "function") {
+    throw new Error("[fesFun] registerLiveMessageHandler requires a function");
+  }
+
+  registeredFesFunLiveMessageHandlers.add(handler);
+  ensureFesFunLiveChatListener();
+  return handler;
+}
+
+function unregisterLiveMessageHandler(handler) {
+  registeredFesFunLiveMessageHandlers.delete(handler);
+}
+
+function normalizeBacklogHandlers(handlersOrHandler) {
+  const handlers = Array.isArray(handlersOrHandler)
+    ? handlersOrHandler
+    : [handlersOrHandler];
+
+  return handlers.filter((handler) => typeof handler === "function");
+}
+
+function scheduleBacklogStep(step) {
+  if (typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(() => {
+      step();
+    });
+    return;
+  }
+
+  window.setTimeout(step, 0);
+}
+
+function processQueuedBacklogScans() {
+  if (isFesFunBacklogScanRunning || !queuedFesFunBacklogScans.length) {
+    return;
+  }
+
+  const scanTask = queuedFesFunBacklogScans.shift();
+  if (!scanTask) {
+    return;
+  }
+
+  const messageBufferElement = document.querySelector(MESSAGE_BUFFER_SELECTOR);
+  if (!messageBufferElement) {
+    scanTask.resolve(0);
+    processQueuedBacklogScans();
+    return;
+  }
+
+  isFesFunBacklogScanRunning = true;
+  const rowElements = Array.from(messageBufferElement.children);
+  let index = 0;
+  let processedCount = 0;
+
+  const finishScan = () => {
+    isFesFunBacklogScanRunning = false;
+    scanTask.resolve(processedCount);
+    processQueuedBacklogScans();
+  };
+
+  const step = () => {
+    const maxIndex = Math.min(
+      index + scanTask.chunkSize,
+      rowElements.length,
+    );
+
+    for (; index < maxIndex; index += 1) {
+      const rowElement = rowElements[index];
+      if (!(rowElement instanceof Element)) {
+        continue;
+      }
+
+      const $row = $(rowElement);
+      if (!$row.length) {
+        continue;
+      }
+
+      const $messageElement = $row.children().last();
+      if (!$messageElement.length) {
+        continue;
+      }
+
+      for (const handler of scanTask.handlers) {
+        try {
+          handler($messageElement);
+        } catch (error) {
+          console.error("[fesFun] Backlog handler failed:", error);
+        }
+      }
+
+      processedCount += 1;
+    }
+
+    if (index < rowElements.length) {
+      scheduleBacklogStep(step);
+      return;
+    }
+
+    finishScan();
+  };
+
+  scheduleBacklogStep(step);
+}
+
+function runBacklogScan(handlersOrHandler, options = {}) {
+  const handlers = normalizeBacklogHandlers(handlersOrHandler);
+  if (!handlers.length) {
+    return Promise.resolve(0);
+  }
+
+  const requestedChunkSize = Number(options.chunkSize);
+  const chunkSize =
+    Number.isFinite(requestedChunkSize) && requestedChunkSize > 0
+      ? Math.floor(requestedChunkSize)
+      : FES_FUN_BACKLOG_CHUNK_SIZE;
+
+  return new Promise((resolve) => {
+    queuedFesFunBacklogScans.push({
+      chunkSize,
+      handlers,
+      resolve,
+    });
+    processQueuedBacklogScans();
+  });
+}
+
 window.fesFun = {
   getState: getFesFunState,
   isEnabled() {
     return isFesFunEnabled;
   },
   registerModule: registerFesFunModule,
+  registerLiveMessageHandler,
+  runBacklogScan,
   setEnabled: setFesFunEnabled,
   setModuleEnabled: setFesFunModuleEnabled,
+  unregisterLiveMessageHandler,
 };

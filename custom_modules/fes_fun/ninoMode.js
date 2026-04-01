@@ -9,6 +9,7 @@ const NINOMODE_BUFFER_ID = "ninomode-buffer";
 const NINOMODE_TARGET_USERNAME = "Ninovalt";
 const NINOMODE_COMMAND_REGEX = /^(?:!|\/|\.\/)ninomode\b/i;
 const NINOMODE_EXACT_COMMAND_REGEX = /^(?:!|\/|\.\/)ninomode\s*$/i;
+const NINOMODE_DEFAULT_MAX_ROWS = 100;
 const NINOMODE_COMMAND_ALLOWED_USERS = [];
 const NINOMODE_COMMAND_MIN_RANK =
   typeof Rank !== "undefined" && Rank && Rank.Moderator != null
@@ -44,8 +45,7 @@ const NINOMODE_COMMAND_ALLOWED_USER_SET = new Set(
 
 let isNinoModuleEnabled = true;
 let isNinoModeEnabled = false;
-let isInitialNinoMessageScanComplete = false;
-let isNinoMessageTapAttached = false;
+let isNinoMessageHandlerAttached = false;
 let ninomodeUserlistObserver = null;
 let panelElements = null;
 const extractedRows = [];
@@ -205,6 +205,15 @@ function scrollPanelBufferToBottom() {
   panelElements.buffer.scrollTop = panelElements.buffer.scrollHeight;
 }
 
+function getMaxExtractedRows() {
+  const configuredMaxRows = Number(window.CHATMAXSIZE);
+  if (Number.isFinite(configuredMaxRows) && configuredMaxRows > 0) {
+    return Math.floor(configuredMaxRows);
+  }
+
+  return NINOMODE_DEFAULT_MAX_ROWS;
+}
+
 function shouldExtractRow($row) {
   if (!$row || !$row.length) {
     return false;
@@ -253,38 +262,93 @@ function extractRow(rowElement) {
     placeholderNode,
     rowElement,
   });
+  trimExtractedRows();
   updatePanelState();
   return true;
+}
+
+function removeExtractedEntry(entry) {
+  if (!entry) {
+    return;
+  }
+
+  const { placeholderNode, rowElement } = entry;
+  if (placeholderNode && placeholderNode.parentNode) {
+    placeholderNode.remove();
+  }
+
+  if (rowElement && rowElement.parentNode) {
+    rowElement.remove();
+  }
+}
+
+function trimExtractedRows() {
+  const maxExtractedRows = getMaxExtractedRows();
+  if (!Number.isFinite(maxExtractedRows) || maxExtractedRows < 1) {
+    return 0;
+  }
+
+  let removedCount = 0;
+  while (extractedRows.length > maxExtractedRows) {
+    const oldestEntry = extractedRows.shift();
+    removeExtractedEntry(oldestEntry);
+    removedCount += 1;
+  }
+
+  return removedCount;
+}
+
+function processBacklogMessage($messageElement) {
+  if (!$messageElement || !$messageElement.length) {
+    return;
+  }
+
+  if (!isNinoModuleEnabled || !isNinoModeEnabled || !isTargetConnected()) {
+    return;
+  }
+
+  const $row = getMessageRow($messageElement, {
+    messageBufferSelector: MESSAGE_BUFFER_SELECTOR,
+  });
+  if (!$row || isServerMessageRow($row)) {
+    return;
+  }
+
+  const messageRootElement = getMessageContentRootElement($messageElement, {
+    $row,
+    messageBufferSelector: MESSAGE_BUFFER_SELECTOR,
+  });
+  if (!messageRootElement) {
+    return;
+  }
+
+  const messageText = String(messageRootElement.textContent || "").trim();
+  if (isNinoModeCommandAttempt(messageText)) {
+    return;
+  }
+
+  if (shouldExtractRow($row)) {
+    extractRow($row[0]);
+  }
 }
 
 function extractExistingTargetRows() {
   if (!isTargetConnected()) {
     updatePanelState();
-    return 0;
+    return Promise.resolve(0);
   }
 
   const messageBufferElement = getMessageBufferElement();
   if (!messageBufferElement) {
     updatePanelState();
-    return 0;
+    return Promise.resolve(0);
   }
 
   ensurePanel();
-  let extractedCount = 0;
-
-  for (const rowElement of Array.from(messageBufferElement.children)) {
-    const $row = $(rowElement);
-    if (!shouldExtractRow($row)) {
-      continue;
-    }
-
-    if (extractRow(rowElement)) {
-      extractedCount += 1;
-    }
-  }
-
-  updatePanelState();
-  return extractedCount;
+  return fesFun.runBacklogScan(processBacklogMessage).then((processedCount) => {
+    updatePanelState();
+    return processedCount;
+  });
 }
 
 function restoreExtractedRows() {
@@ -416,18 +480,6 @@ function handleNinoModeMessage($messageElement) {
   const messageText = String(messageRootElement.textContent || "").trim();
   const isCommandAttempt = isNinoModeCommandAttempt(messageText);
 
-  if (!isInitialNinoMessageScanComplete) {
-    if (isCommandAttempt) {
-      $row.remove();
-      return;
-    }
-
-    if (isNinoModeEnabled && shouldExtractRow($row)) {
-      extractRow($row[0]);
-    }
-    return;
-  }
-
   if (isCommandAttempt) {
     const messageAuthor = getMessageAuthor($row);
     const isAuthorAllowed = isCommandAllowedForAuthor(messageAuthor);
@@ -478,17 +530,13 @@ function initializeNinoMode() {
   });
   attachUserlistObserver();
   if (
-    isNinoMessageTapAttached ||
-    typeof MESSAGE_PROCESSOR === "undefined" ||
-    !MESSAGE_PROCESSOR ||
-    typeof MESSAGE_PROCESSOR.addTap !== "function"
+    isNinoMessageHandlerAttached
   ) {
     return;
   }
 
-  MESSAGE_PROCESSOR.addTap(handleNinoModeMessage);
-  isNinoMessageTapAttached = true;
-  isInitialNinoMessageScanComplete = true;
+  fesFun.registerLiveMessageHandler(handleNinoModeMessage);
+  isNinoMessageHandlerAttached = true;
 }
 
 (async function startNinoMode() {

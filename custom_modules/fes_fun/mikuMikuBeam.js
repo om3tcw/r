@@ -93,8 +93,7 @@ function applyMikuMikuBeamCssVariables() {
   );
 }
 
-let isInitialBeamMessageScanComplete = false;
-let isBeamMessageTapAttached = false;
+let isBeamMessageHandlerAttached = false;
 let isMikuMikuBeamEnabled = true;
 let beamSoundTemplate = null;
 let beamCooldownUntilMs = 0;
@@ -985,13 +984,6 @@ function handleMikuMikuBeamMessage($messageElement) {
   );
   const isAuthorAllowed = isAuthorAllowedForBeam(messageAuthor);
 
-  if (!isInitialBeamMessageScanComplete) {
-    if (parsedCommand || isCommandAttempt) {
-      $row.remove();
-    }
-    return;
-  }
-
   if (parsedCommand) {
     $row.remove();
 
@@ -1098,15 +1090,11 @@ window.mikuMikuBeam = mikuMikuBeamApi;
   }
   await window.waitForFunc("MESSAGE_PROCESSOR");
   if (
-    isBeamMessageTapAttached ||
-    typeof MESSAGE_PROCESSOR === "undefined" ||
-    !MESSAGE_PROCESSOR ||
-    typeof MESSAGE_PROCESSOR.addTap !== "function"
+    isBeamMessageHandlerAttached
   ) {
     return;
   }
 
-  MESSAGE_PROCESSOR.addTap(handleMikuMikuBeamMessage);
-  isBeamMessageTapAttached = true;
-  isInitialBeamMessageScanComplete = true;
+  fesFun.registerLiveMessageHandler(handleMikuMikuBeamMessage);
+  isBeamMessageHandlerAttached = true;
 })();
