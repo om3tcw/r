@@ -1,5 +1,8 @@
-const SHARED_TTS_ENABLED_KEY = `${CHANNEL.name}_sharedTtsEnabled`;
-const SHARED_TTS_VOLUME_KEY = `${CHANNEL.name}_sharedTtsVolume`;
+const SHARED_TTS_STORAGE_VERSION = "v2";
+const SHARED_TTS_ENABLED_KEY = `${CHANNEL.name}_sharedTtsEnabled_${SHARED_TTS_STORAGE_VERSION}`;
+const SHARED_TTS_VOLUME_KEY = `${CHANNEL.name}_sharedTtsVolume_${SHARED_TTS_STORAGE_VERSION}`;
+const SHARED_TTS_DEFAULT_ENABLED = true;
+const SHARED_TTS_DEFAULT_VOLUME = 0.25;
 function normalizeBaseUrl(value) {
     return String(value || "").trim().replace(/\/+$/, "");
 }
@@ -36,11 +39,11 @@ const sharedTtsState = {
     audioElement: null,
     currentJobId: "",
     currentStartAt: 0,
-    enabled: readStoredBoolean(SHARED_TTS_ENABLED_KEY, false),
+    enabled: readStoredBoolean(SHARED_TTS_ENABLED_KEY, SHARED_TTS_DEFAULT_ENABLED),
     eventSource: null,
     playTimer: null,
     serverOffsetMs: 0,
-    volume: readStoredVolume(SHARED_TTS_VOLUME_KEY, 0.5),
+    volume: readStoredVolume(SHARED_TTS_VOLUME_KEY, SHARED_TTS_DEFAULT_VOLUME),
 };
 
 function getSharedTtsConfig() {
@@ -427,6 +430,7 @@ function watchSharedTtsChatMessages() {
     await window.waitForFunc("DOMrebuiltPromise");
     await window.DOMrebuiltPromise;
     await waitForHoloPeekGroupHelper();
+    persistSharedTtsState();
     buildSharedTtsControls();
     watchSharedTtsChatMessages();
     connectSharedTtsEvents();
