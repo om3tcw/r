@@ -3616,7 +3616,7 @@ col-lg-9 {
     margin-left: 0;
     max-height: 500px;
     overflow-y: auto;
-    background-image: url(https://mikobotecdn.win/other/holotalk.jpg);
+    background-image: url("https://mikobotecdn.win/other/holotalk.webp");
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center
@@ -3708,7 +3708,7 @@ footer {
 /*background css*/
 body {
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("https://mikobotecdn.win/other/horsebg.png");
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("https://mikobotecdn.win/other/horsebg.webp");
     overflow: visible;
     background-position-x: 00px;
     background-size: auto 100%;
