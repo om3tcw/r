@@ -613,7 +613,7 @@
 .chat-msg-om3tcw .timestamp {
     color: transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/om3tcw.gif');
+    background-image: url('https://mikobotecdn.win/emotes/om3tcw.gif');
     background-position: center;
     background-repeat: no-repeat
 }
@@ -646,7 +646,7 @@
 .chat-msg-salman .timestamp {
     color: transparent;
     background-size: 50px 15px;
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/salman.gif');
+    background-image: url('https://mikobotecdn.win/emotes/salman.gif');
     background-position: center;
     background-repeat: no-repeat
 }
@@ -3423,7 +3423,7 @@ body.fluid>#wrap,
 
 /*https://raw.githubusercontent.com/om3tcw/r/emotes/other/roll.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/climb.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/boat.gif https://raw.githubusercontent.com/om3tcw/r/emotes/other/snow.gif alternatives */
 #chatline {
-    background-image: url(https://raw.githubusercontent.com/om3tcw/r/emotes/other/roll.gif), url(), url();
+    background-image: url(https://mikobotecdn.win/other/roll.gif), url(), url();
     background-repeat: repeat, no-repeat;
     background-position: center;
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/anya.cur'), auto;
@@ -3616,7 +3616,7 @@ col-lg-9 {
     margin-left: 0;
     max-height: 500px;
     overflow-y: auto;
-    background-image: url(https://raw.githubusercontent.com/om3tcw/r/emotes/other/holotalk.jpg);
+    background-image: url(https://mikobotecdn.win/other/holotalk.jpg);
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center
@@ -3685,7 +3685,7 @@ div#plmeta {
 
 /*header css*/
 a.navbar-brand {
-    background-image: url("https://raw.githubusercontent.com/om3tcw/r/emotes/other/om3tcw.gif");
+    background-image: url("https://mikobotecdn.win/other/om3tcw.gif");
     background-repeat: no-repeat;
     width: 90px;
     background-position: center;
@@ -3708,7 +3708,7 @@ footer {
 /*background css*/
 body {
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(https://mikobotecdn.win/other/horsebg.png);
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("https://mikobotecdn.win/other/horsebg.png");
     overflow: visible;
     background-position-x: 00px;
     background-size: auto 100%;
@@ -3894,7 +3894,7 @@ textarea.form-control {
 }
 
 #emotelistbtn {
-    background-image: url('https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/angey.png');
+    background-image: url('https://mikobotecdn.win/emotes/angey.png');
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: 60%;    
@@ -4112,7 +4112,7 @@ textarea.form-control {
 }
 
 #motdwrap {
-    background-image: url(https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/garchomp.png);
+    background-image: url(https://mikobotecdn.win/emotes/garchomp.png);
     background-repeat: no-repeat;
     background-size: contain;
     font-size: 12px;
