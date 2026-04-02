@@ -1,3 +1,4 @@
+//cache test 6767rokunana
 //XaeModules leftover
 
 if (!window[CHANNEL.name]) {
