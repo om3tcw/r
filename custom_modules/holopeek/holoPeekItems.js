@@ -161,7 +161,7 @@ function verticalLayout(self) {
         `;
 }
 
-let blackBg = makeLiveCDNLink("emotes/custom_modules/holopeek/black.png");
+let blackBg = makeLiveCDNLink("custom_modules/holopeek/black.png");
 let polkaPeek = makeLiveCDNLink("custom_modules/holopeek/polkapeek.png");
 
 const NND_MODE_ID = "nndMode";
