@@ -364,6 +364,7 @@ function installTagSuggestions() {
       event.stopPropagation();
       return;
     }
+}); 
   
   searchInput.addEventListener("keydown", (event) => {
     const panel = getTagSuggestionPanel();
