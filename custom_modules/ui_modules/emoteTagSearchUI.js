@@ -352,6 +352,20 @@ function installTagSuggestions() {
   });
 
   searchInput.addEventListener("keydown", (event) => {
+    if (
+      event.ctrlKey &&
+      !event.shiftKey &&
+      !event.altKey &&
+      event.key.toLowerCase() === "a"
+    ) {
+      searchInput.focus();
+      searchInput.select();
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+  
+  searchInput.addEventListener("keydown", (event) => {
     const panel = getTagSuggestionPanel();
     const suggestionsVisible = panel && !panel.hidden;
     if (!suggestionsVisible) {
