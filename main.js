@@ -70,7 +70,7 @@ const ModulePaths = [
   { NNDChatModule: `chat_modules/nndChatModule.js`, isActive: 1, rank: -1 },
   { TweetEmbed: `chat_modules/tweetEmbed.js` },
   { VideoTitlePreview: `chat_modules/videoTitlePreview.js` },
-  { NinoMode: `fes_fun/ninoMode.js` },
+  { NinoMode: `fes_fun/ninoMode.js`, isActive: 0},
   { RratButton: `ui_modules/rratButton.js` },
   { EmoteTagStore: `ui_modules/emoteTagStore.js` },
   { EmoteTagSearchUI: `ui_modules/emoteTagSearchUI.js` },
