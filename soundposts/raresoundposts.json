@@ -1,29 +1,29 @@
 {
     ":raoraspin:": { 
-      "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/raresounds/OIIA_OIIA.ogg",
-      "Chance": 10,
+      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/OIIA_OIIA.ogg",
+      "Chance": 8,
       "isLong": true 
       },
 
     ":aus:": { 
-      "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/raresounds/THIS_IS_DEMOCRACY_MANIFEST.ogg",
-      "Chance": 40,
+      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/THIS_IS_DEMOCRACY_MANIFEST.ogg",
+      "Chance": 35,
       "isLong": false 
       },
 
     ":lapuoh:": { 
-      "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/raresounds/Miners.ogg",        
-      "Chance": 20,
+      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/Miners.ogg",        
+      "Chance": 40,
       "isLong": false 
       },
 
-    ":testemote1:": { 
+    ":watalarm:": { 
       "soundurl": "https://mikobotecdn.win/soundposts/raresounds/tutorialsiren.ogg",        
-      "Chance": 2,
+      "Chance": 5,
       "isLong": false 
       },
 
-    ":testemote2:": { 
+    ":selllow:": { 
       "soundurl": "https://mikobotecdn.win/soundposts/raresounds/brokesiren.ogg",        
       "Chance": 5,
       "isLong": false 
