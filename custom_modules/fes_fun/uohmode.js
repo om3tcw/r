@@ -12,8 +12,8 @@ const UOH_MODE_REPLACEMENTS = [];
 
 const UOH_USER_WORD_REPLACEMENTS = [...UOH_MODE_REPLACEMENTS];
 
-const UOH_USERNAME_PREFIX_IMAGE_URL = "https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/offenderpin.png"; //Why have I defined this twice here and in the css?
-const UOH_OSHI_EYES_IMAGE_URL = "https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/epperseyes.png";
+const UOH_USERNAME_PREFIX_IMAGE_URL = "https://mikobotecdn.win/other/offenderpin.png"; //Why have I defined this twice here and in the css?
+const UOH_OSHI_EYES_IMAGE_URL = "https://mikobotecdn.win/other/epperseyes.png";
 const UOH_USERNAME_PREFIX_IMAGE_WIDTH_PX = 20;
 const UOH_USERNAME_PREFIX_IMAGE_HEIGHT_PX = 20;
 const UOH_OSHI_EYES_IMAGE_WIDTH_PX = 50;
