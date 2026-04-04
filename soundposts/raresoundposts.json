@@ -15,6 +15,18 @@
       "soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/raresounds/Miners.ogg",        
       "Chance": 20,
       "isLong": false 
+      },
+
+    ":testemote1:": { 
+      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/tutorialsiren.ogg",        
+      "Chance": 2,
+      "isLong": false 
+      },
+
+    ":testemote2:": { 
+      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/brokesiren.ogg",        
+      "Chance": 5,
+      "isLong": false 
       }
     
 }
