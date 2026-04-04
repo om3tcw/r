@@ -7,8 +7,8 @@
 
   const cssUohMode = `
     :root {
-      --uoh-username-prefix-image-url: url("https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/offenderpin.png");
-      --uoh-oshi-eyes-image-url: url("https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/epperseyes.png");
+      --uoh-username-prefix-image-url: url("https://mikobotecdn.win/other/offenderpin.png");
+      --uoh-oshi-eyes-image-url: url("https://mikobotecdn.win/other/epperseyes.png");
       --uoh-username-prefix-width: 20px;
       --uoh-username-prefix-height: 20px;
       --uoh-username-prefix-margin-right: 4px;
