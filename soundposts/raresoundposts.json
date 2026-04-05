@@ -31,7 +31,7 @@
 
     ".": { 
       "soundurl": "https://mikobotecdn.win/soundposts/raresounds/mhperiod.ogg",        
-      "Chance": 50,
+      "Chance": 10,
       "isLong": false 
       }  
     
