@@ -1,8 +1,32 @@
 let RARE_SOUNDPOSTS = {};
 let SOUNDPOST_PLAYBACK_STATE = {};
 let PLAYED_SOUNDPOSTS = [];
+const SOUNDPOST_VOLUME_CONTROL_ID = "soundposts";
+const SOUNDPOST_PREVIEW_URL =
+    "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mambo.ogg";
 const defaultVolume = 0.1;
 const defaultAdditionalPlayTime = 3;
+
+function getSoundpostVolume() {
+    if (typeof window.getVolumeControlValue === "function") {
+        return window.getVolumeControlValue(SOUNDPOST_VOLUME_CONTROL_ID);
+    }
+
+    return defaultVolume;
+}
+
+function applySoundpostVolume(audioElement) {
+    if (!audioElement) {
+        return audioElement;
+    }
+
+    if (typeof window.applyVolumeControl === "function") {
+        return window.applyVolumeControl(SOUNDPOST_VOLUME_CONTROL_ID, audioElement);
+    }
+
+    audioElement.volume = getSoundpostVolume();
+    return audioElement;
+}
 
 function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
     const soundpost = SOUNDPOST_PLAYBACK_STATE[emote];
@@ -11,6 +35,7 @@ function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
     soundpost.totalPlayTime += additionalPlayTime;
     if (!soundpost.isPlaying && soundpost.isPreloaded) {
         soundpost.isPlaying = true;
+        applySoundpostVolume(soundpost.audio);
         soundpost.audio.play().catch(err => console.error('[Soundpost] Play failed:', err));
     }
     clearTimeout(soundpost.timeout);
@@ -82,7 +107,7 @@ function injectSoundpost($message) {
                         playLongRare(emoteTitle, rareSound, 5);
                     } else {
                         const myaudio = new Audio(rareSound.soundurl);
-                        myaudio.volume = defaultVolume;
+                        applySoundpostVolume(myaudio);
                         myaudio.play().catch(err => console.error('[Rare Soundpost] Play failed:', err));
                     }
                     return;
@@ -113,7 +138,7 @@ function injectSoundpost($message) {
                     );
                 } else if (!PLAYED_SOUNDPOSTS.includes(soundpost.soundurl)) {
                     const myaudio = new Audio(soundpost.soundurl);
-                    myaudio.volume = defaultVolume;
+                    applySoundpostVolume(myaudio);
                     myaudio.play().catch(err => console.error('[Soundpost] Play failed:', err));
                     PLAYED_SOUNDPOSTS.push(soundpost.soundurl);
                 }
@@ -152,7 +177,7 @@ function initializeSoundpost(emote, soundurl, preload = false) {
             timeout: null,
             isPreloaded: false,
         };
-        SOUNDPOST_PLAYBACK_STATE[emote].audio.volume = defaultVolume;
+        applySoundpostVolume(SOUNDPOST_PLAYBACK_STATE[emote].audio);
 
         if (preload) {
             SOUNDPOST_PLAYBACK_STATE[emote].audio.addEventListener(
@@ -201,6 +226,15 @@ function toggleSoundpostButtonImage(soundpostButton) {
 }
 
 (async () => {
+    await window.waitForFunc("registerVolumeControl");
+    window.registerVolumeControl({
+        id: SOUNDPOST_VOLUME_CONTROL_ID,
+        label: "Soundposts",
+        order: 50,
+        defaultVolume,
+        previewUrl: SOUNDPOST_PREVIEW_URL,
+    });
+
     await window.waitForFunc("MESSAGE_PROCESSOR");
     MESSAGE_PROCESSOR.addTap(injectSoundpost);
     const soundpostButton = document.createElement("button");
