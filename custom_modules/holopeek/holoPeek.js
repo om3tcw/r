@@ -9,6 +9,7 @@ let $holoPeekButton;
 let $holoPeekImage;
 let holoPeekItems = [];
 const holoPeekGroups = {};
+const holoPeekResetHandlers = [];
 const $holoPeekItemsContainer = $('<div>').attr('id', 'holoPeekItemsContainer');
 let holoPeekSizePx = 60;
 let holoPeekImgUrl = 'https://mikobotecdn.win/emotes/baepeek.png';
@@ -145,15 +146,32 @@ function buildHoloPeekFrame() {
         html: 'Reset<img width="24" height="24" alt="save" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAAPElEQVQ4y2NgGAJAgeE+w38ovA/k4QH/8UDqaCADkGw+WRqIERvVMNQ1PMKaMB7h1uDB8BhD+WOg6OAGADZZd6fzGEl6AAAAAElFTkSuQmCC">',
         click: () => {
             if (confirm("Are you sure you want to reset all the options to their defaults? THIS WILL RELOAD THE PAGE")) {
+                for (const resetHandler of holoPeekResetHandlers) {
+                    try {
+                        resetHandler();
+                    } catch (error) {
+                        console.error("[HoloPeek] Reset handler failed:", error);
+                    }
+                }
+
                 holoPeekItems.forEach(holoPeekItem => {
                     const optionName = holoPeekItem.id;
                     localStorage.removeItem(optionName)
-                    location.reload();
                 });
+                location.reload();
             }
         }
     }).appendTo(localStorageButtonsDiv);
 
+}
+
+export function registerHoloPeekResetHandler(handler) {
+    if (typeof handler !== 'function') {
+        return false;
+    }
+
+    holoPeekResetHandlers.push(handler);
+    return true;
 }
 
 export function createHoloPeekItem({optionName,

@@ -144,6 +144,48 @@
             width: 100%;
             margin: 0;
         }
+        #volume-control-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 95%;
+            padding: 4px 5px 8px;
+        }
+        .volume-control-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 6px 0;
+            border-bottom: 1px solid #e6e6e6;
+        }
+        .volume-control-row:last-child {
+            border-bottom: none;
+        }
+        .volume-control-row-main {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .volume-control-label {
+            flex: 1 1 auto;
+            margin: 0;
+        }
+        .volume-control-value {
+            min-width: 42px;
+            text-align: right;
+            color: #555;
+            font-size: 12px;
+        }
+        .volume-control-play {
+            flex: 0 0 auto;
+        }
+        .volume-control-choice {
+            width: 100%;
+        }
+        #holoPeekBubble .volume-control-range {
+            width: 100%;
+            margin: 0;
+        }
         #resetButton {
             margin-left: 16px;
         }

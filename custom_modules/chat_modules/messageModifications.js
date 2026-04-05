@@ -1,4 +1,23 @@
 const defaultVolume = 0.1;
+const YAY_VOLUME_CONTROL_ID = "yayCommand";
+const BOO_VOLUME_CONTROL_ID = "booCommand";
+const YAY_PREVIEW_URL =
+    "https://www.dl.dropboxusercontent.com/s/z0n3hnw8ky79rwhdokfso/nenesmile.ogg?rlkey=bezzj2pn6c9rj0pqco5kbf7bk&st=ythhncur&dl=0";
+const BOO_PREVIEW_URL =
+    "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/boo.ogg";
+
+function applyCommandSoundVolume(volumeControlId, audioElement) {
+    if (!audioElement) {
+        return audioElement;
+    }
+
+    if (typeof window.applyVolumeControl === "function") {
+        return window.applyVolumeControl(volumeControlId, audioElement);
+    }
+
+    audioElement.volume = defaultVolume;
+    return audioElement;
+}
 
 function surroundTextSelection($textField, leftSurroundString, rightSurroundString) {
     let textFieldDOM = $textField[0]
@@ -241,21 +260,37 @@ function formatCommandMessage($messageElement) {
 
 function playNeneYaySound() {
     if (window.SOUNDPOST_STATE) {
-        let myaudio = new Audio("https://www.dl.dropboxusercontent.com/s/z0n3hnw8ky79rwhdokfso/nenesmile.ogg?rlkey=bezzj2pn6c9rj0pqco5kbf7bk&st=ythhncur&dl=0");
-        myaudio.volume = defaultVolume;
+        let myaudio = new Audio(YAY_PREVIEW_URL);
+        applyCommandSoundVolume(YAY_VOLUME_CONTROL_ID, myaudio);
         myaudio.play();
     }
 }
 
 function playBooSound() {
     if (window.SOUNDPOST_STATE) {
-        let myaudio = new Audio("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/boo.ogg");
-        myaudio.volume = defaultVolume;
+        let myaudio = new Audio(BOO_PREVIEW_URL);
+        applyCommandSoundVolume(BOO_VOLUME_CONTROL_ID, myaudio);
         myaudio.play();
     }
 }
 
 (async () => {
+    await window.waitForFunc("registerVolumeControl");
+    window.registerVolumeControl({
+        id: YAY_VOLUME_CONTROL_ID,
+        label: "/yay",
+        order: 60,
+        defaultVolume,
+        previewUrl: YAY_PREVIEW_URL,
+    });
+    window.registerVolumeControl({
+        id: BOO_VOLUME_CONTROL_ID,
+        label: "/boo",
+        order: 70,
+        defaultVolume,
+        previewUrl: BOO_PREVIEW_URL,
+    });
+
     await window.waitForFunc("MESSAGE_PROCESSOR");
     MESSAGE_PROCESSOR.addTap(formatCommandMessage);
 })();

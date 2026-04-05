@@ -6,7 +6,8 @@ const MIKU_MIKU_BEAM_PENDING_DATA_KEY = "mikuMikuBeamPending";
 const MIKU_MIKU_BEAM_EMITTER_IMAGE_URL =
   "https://raw.githubusercontent.com/om3tcw/r/emotes/emotes/takomiku.png";
 const MIKU_MIKU_BEAM_SOUND_URL = "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/mikubeam.mp3";
-const MIKU_MIKU_BEAM_SOUND_VOLUME = 0.2;
+const MIKU_MIKU_BEAM_SOUND_VOLUME = 0.1;
+const MIKU_MIKU_BEAM_VOLUME_CONTROL_ID = "mikuMikuBeam";
 const MIKU_MIKU_BEAM_COMMAND_REGEX =
   /^(?:!|\/|\.\/)(?:mikubeam|mikumikubeam)\b/i;
 const MIKU_MIKU_BEAM_COMMAND_WITH_TARGET_REGEX =
@@ -444,7 +445,11 @@ function playMikuMikuBeamSound() {
       typeof soundTemplate.cloneNode === "function"
         ? soundTemplate.cloneNode()
         : new Audio(MIKU_MIKU_BEAM_SOUND_URL);
-    beamAudio.volume = MIKU_MIKU_BEAM_SOUND_VOLUME;
+    if (typeof window.applyVolumeControl === "function") {
+      window.applyVolumeControl(MIKU_MIKU_BEAM_VOLUME_CONTROL_ID, beamAudio);
+    } else {
+      beamAudio.volume = MIKU_MIKU_BEAM_SOUND_VOLUME;
+    }
     trackActiveBeamAudio(beamAudio);
     const playPromise = beamAudio.play();
     if (playPromise && typeof playPromise.catch === "function") {
@@ -1080,6 +1085,14 @@ window.mikuMikuBeam = mikuMikuBeamApi;
 
 (async function initializeMikuMikuBeam() {
   applyMikuMikuBeamCssVariables();
+  await window.waitForFunc("registerVolumeControl");
+  window.registerVolumeControl({
+    id: MIKU_MIKU_BEAM_VOLUME_CONTROL_ID,
+    label: "Miku Beam",
+    order: 80,
+    defaultVolume: MIKU_MIKU_BEAM_SOUND_VOLUME,
+    previewUrl: MIKU_MIKU_BEAM_SOUND_URL,
+  });
   fesFun.registerModule({
     id: "mikuMikuBeam",
     setEnabled: toggleMikuMikuBeam,
