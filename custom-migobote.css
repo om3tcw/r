@@ -1702,6 +1702,7 @@
     background-repeat: no-repeat
 }
 
+.chat-msg-SeisoFlamingo .timestamp,
 .chat-msg-MofuMofuRisu .timestamp {
     color: transparent;
     background-size: 50px 15px;
@@ -3214,6 +3215,7 @@ img.channel-emote[title$="."] {
     filter: drop-shadow(1px 1px 1px #89ebfa);
 }
 
+.chat-msg-SeisoFlamingo .username,
 .chat-msg-MofuMofuRisu .username {
     filter: drop-shadow(1px 1px 1px #c29876);
 }
