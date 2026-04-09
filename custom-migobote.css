@@ -4417,5 +4417,7 @@ form input#chatline {
     font-size: 14px;
     content: 'Shitfumi: ';
 }
-
+.chat-msg-Shifumi .username {
+    color: rgb(102, 52, 0);
+}
 
