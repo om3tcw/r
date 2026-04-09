@@ -1,7 +1,3 @@
-.userlist-Shifumi
-{
-    color: rgb(102, 52, 0) !important;
-}
 /* Start of Oshi Eyes */
 
 .chat-msg-monomelon .timestamp {
@@ -4407,4 +4403,8 @@ form input#chatline {
 	-webkit-text-fill-color:transparent!important;
 	color:transparent!important
 } */
+.userlist-Shifumi
+{
+    color: rgb(102, 52, 0) !important;
+}
 
