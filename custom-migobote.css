@@ -3289,28 +3289,6 @@ img.channel-emote[title$="."] {
     font-size: 14px;
     content: 'NinaValt: ';
 }
-
-.userlist-Shifumi
-{
-    color: rgb(102, 52, 0) !important;
-}
-.chat-msg-Shifumi .username {
-    font-size: 0;
-}
-
-.chat-msg-Shifumi .username:after {
-    font-size: 14px;
-    content: 'Shitfumi: ';
-}
-
-.chat-msg-rratbastard .username {
-    font-size: 0;
-}
-.chat-msg-rratbastard .username:after {
-    font-size: 14px;
-    content: 'sccatbastard: ';
-}
-
 /* end of username edits */
 
 
