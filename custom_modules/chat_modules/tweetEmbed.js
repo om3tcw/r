@@ -33,6 +33,11 @@ function getTweetId(tweetUrl) {
     return tweetRegex.exec(tweetUrl)[2];
 }
 
+function stopIframeMedia(iframe) {
+    // Tells the iframe we're hiding it so we can stop any video playbacks
+    iframe.contentWindow.postMessage(JSON.stringify({ context: "iframe.hide" }), "*");
+}
+
 // Using an iframe to hide the referrer so twitter doesn't block us
 function addPreviewIframe(linkElement) {
     let tweetId = getTweetId(linkElement.href);
@@ -56,6 +61,7 @@ function addPreviewIframe(linkElement) {
         if (target.innerText == "Remove") {
             iframe.style.display = "none";
             target.innerText = "Embed";
+            stopIframeMedia(iframe);
         } else {
             iframe.style.display = "";
             target.innerText = "Remove";
@@ -110,7 +116,13 @@ window.tweetPreview = {
             document.querySelectorAll(".tweet-inline-shit").forEach(el => { el.style.display = ""});
         } else {
             MESSAGE_PROCESSOR.unsubscribe(addTweetPreview);
-            document.querySelectorAll(".tweet-inline-shit").forEach(el => { el.style.display = "none"});
+            document.querySelectorAll(".tweet-inline-shit").forEach(el => {
+                el.style.display = "none"
+                let iframe = el.querySelector("iframe");
+                if (iframe) {
+                    stopIframeMedia(iframe);
+                }
+            });
         }
     }
 };
