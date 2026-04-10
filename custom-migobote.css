@@ -4421,3 +4421,12 @@ form input#chatline {
     color: rgb(102, 52, 0);
 }
 
+.chat-msg-rratbastard .username {
+    font-size: 0;
+}
+.chat-msg-rratbastard .username:after {
+    font-size: 14px;
+    content: 'sccatbastard: ';
+}
+
+
