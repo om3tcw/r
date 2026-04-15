@@ -401,7 +401,10 @@
 	":kroniismoke:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/kroniismoke.ogg"},
 	":nerissapenis:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/nerissapenis.ogg"},
 	":lecalamar:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/fuck%20you%20enemy.ogg"},
-	":botanlaugh:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/botanlaugh.ogg"}
+	":botanlaugh:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/botanlaugh.ogg"},
+	"Moshmallow" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/Moshmellow.ogg"},
+	":immerlove:" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/immerlove.ogg"},
+	"etch" : {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/etch.ogg"}
 	
 }
 
