@@ -17,7 +17,8 @@ let holoPeekImgUrl = 'https://mikobotecdn.win/emotes/baepeek.png';
 function setupOnClickForHoloPeek($holoPeekButton, $holoPeekBubble) {
     $holoPeekButton.on('click.holoPeek', (event) => {
         if ($(event.target).is($holoPeekButton)) {
-            $(this).toggleClass('holoAnim');
+            event.preventDefault();
+            $holoPeekButton.toggleClass('holoAnim');
             $holoPeekBubble.toggle();
             $(document).off('click.holoPeekRemove');
         } 
@@ -25,7 +26,7 @@ function setupOnClickForHoloPeek($holoPeekButton, $holoPeekBubble) {
         event.stopPropagation();
 
         $(document).one('click.holoPeekRemove', (event) => {
-            if ($(event.target).not($holoPeekButton)) {
+            if (!$holoPeekButton[0].contains(event.target)) {
                 $holoPeekBubble.hide();
             }
         })
@@ -82,14 +83,31 @@ function scaledHeightForImageConstraint(constraintSquareSize, imageWidth, imageH
     return newHeight;
 }
 
-function appendHoloPeekToDOM() {
-    $holoPeekButton = $('<button>', {
-        id: 'holopeek', 
-        css: {
-            "width": `${holoPeekSizePx}px`,
-            "height": `${holoPeekSizePx}px`
-        }
-    });
+function getHoloPeekNavbarList({
+    HOLOPEEK_NAVBAR_LIST_SELECTOR,
+    shouldMountHoloPeekInNavbar
+} = {}) {
+    const canUseNavbarMount =
+        typeof shouldMountHoloPeekInNavbar === 'function' &&
+        shouldMountHoloPeekInNavbar(window.CLIENT_ENVIRONMENT_UTILS);
+
+    return canUseNavbarMount
+        ? $(HOLOPEEK_NAVBAR_LIST_SELECTOR)
+        : $();
+}
+
+function createHoloPeekButton(isNavbarMount) {
+    if (isNavbarMount) {
+        $holoPeekImage = null;
+        return $('<a>', {
+            id: 'holopeek',
+            href: 'javascript:void(0)',
+            role: 'button',
+            title: 'Holopeek',
+            'aria-label': 'Holopeek',
+            text: 'Holopeek'
+        });
+    }
 
     $holoPeekImage = $('<div>', {
         id: 'holopeek_img',
@@ -98,10 +116,42 @@ function appendHoloPeekToDOM() {
         }
     });
 
-    setupAnimationForHoloPeekImg($holoPeekImage, holoPeekImgUrl)
+    const $button = $('<button>', {
+        id: 'holopeek',
+        type: 'button',
+        title: 'HoloPeek',
+        'aria-label': 'HoloPeek',
+        css: {
+            "width": `${holoPeekSizePx}px`,
+            "height": `${holoPeekSizePx}px`
+        }
+    });
 
-    $('body').append($holoPeekButton);
-    $holoPeekButton.append($holoPeekImage);
+    setupAnimationForHoloPeekImg($holoPeekImage, holoPeekImgUrl);
+    $button.append($holoPeekImage);
+
+    return $button;
+}
+
+function mountHoloPeekButton($navbarList) {
+    if ($navbarList.length) {
+        $('<li>', {
+            id: 'holopeek-navbar-item',
+            class: 'holopeek-navbar-item'
+        })
+            .append($holoPeekButton)
+            .appendTo($navbarList);
+        return;
+    }
+
+    $("body").append($holoPeekButton);
+}
+
+function appendHoloPeekToDOM(mountHelpers) {
+    const $navbarList = getHoloPeekNavbarList(mountHelpers);
+    const isNavbarMount = Boolean($navbarList.length);
+    $holoPeekButton = createHoloPeekButton(isNavbarMount);
+    mountHoloPeekButton($navbarList);
 
     $holoPeekBubble = $('<div>', {
         id: "holoPeekBubble"
@@ -432,7 +482,11 @@ export function addToHoloPeekContainer(holoPeekItem, prepend = false) {
 }
 
 (async () => {
-    appendHoloPeekToDOM();
+    const mountHelpers = await import(
+        makeLiveCDNLink(`${MODULES_FOLDER}holopeek/holoPeekMount.js`)
+    );
+
+    appendHoloPeekToDOM(mountHelpers);
     buildHoloPeekFrame();
     let defaultItemsURL = `${MODULES_FOLDER}holopeek/holoPeekItems.js`
     import(makeLiveCDNLink(defaultItemsURL)).then((data) => {

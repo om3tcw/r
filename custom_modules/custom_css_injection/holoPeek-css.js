@@ -32,6 +32,15 @@
             animation: peek-in ease-out 0.2s both;
         }
 
+        #holopeek-navbar-item > #holopeek {
+            position: relative;
+            z-index: 40000;
+            bottom: auto;
+            right: auto;
+            display: block;
+            cursor: pointer;
+        }
+
 
         @keyframes peek-in {
         from { background-position-y: calc(100% + var(--holoPeek-img-y-offset)); }
@@ -52,6 +61,27 @@
             background: #fff;
             border-radius: 8px;
             height: 50%;
+        }
+        #holopeek-navbar-item #holoPeekBubble {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: fixed;
+            top: 52px;
+            right: 8px;
+            bottom: auto;
+            left: 8px;
+            width: auto;
+            height: min(62vh, 420px);
+            max-height: calc(100vh - 120px);
+        }
+        #holopeek-navbar-item #holoPeekItemsContainer {
+            align-items: center;
+            width: 100%;
+        }
+        #holopeek-navbar-item .holoPeekGroupToggle {
+            text-align: center;
         }
         #holoPeekBubbleTail {
             width: 7vw;
