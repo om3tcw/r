@@ -17,14 +17,48 @@ $($audioOnly).click(() => {
     $videowrap.toggle();
 });
 
-const $togglemotd = $('<li><a id="togglemotd" href="javascript:void(0)">MOTD</a></li>');
 const $motdwrap = $(motdwrap);
-$motdwrap.on('click', () => $motdwrap.hide())
-$togglemotd.appendTo($navBar);
-$togglemotd.on('click', () => { 
-    $motdwrap.toggle()
-    $(motd).toggle();
-})
+const $motd = $(motd);
+const $navbarMotdToggle = $('<li>').append($('<a>', {
+    id: 'navbar-motd-toggle',
+    href: 'javascript:void(0)',
+    text: 'MOTD',
+}));
+
+function showIntegratedMotd() {
+    $motdwrap.show();
+    $motd.show();
+    $('#togglemotd').find('.glyphicon-plus')
+        .removeClass('glyphicon-plus')
+        .addClass('glyphicon-minus');
+}
+
+function hideIntegratedMotd() {
+    $motdwrap.hide();
+    $motd.hide();
+    $('#togglemotd').find('.glyphicon-minus')
+        .removeClass('glyphicon-minus')
+        .addClass('glyphicon-plus');
+}
+
+$navbarMotdToggle.appendTo($navBar);
+$navbarMotdToggle.on('click', () => {
+    if ($motdwrap.is(':visible') && $motd.is(':visible')) {
+        hideIntegratedMotd();
+        return;
+    }
+
+    showIntegratedMotd();
+});
+
+const baseSetMotd = Callbacks.setMotd;
+Callbacks.setMotd = function (newMotd) {
+    baseSetMotd.apply(this, arguments);
+
+    if (newMotd !== "") {
+        showIntegratedMotd();
+    }
+};
 
 const $userlist = $(userlist);
 const $messagebuffer = $(messagebuffer);
