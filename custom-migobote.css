@@ -4031,6 +4031,10 @@ textarea.form-control {
 
 @media (max-width: 992px) {
 
+    #main.flex {
+        overflow: visible;
+    }
+
     #main,
     #chatwrap,
     #videowrap {
@@ -4108,6 +4112,10 @@ textarea.form-control {
 }
 
 @media (max-width: 992px) {
+
+    #main.flex {
+        overflow: visible;
+    }
 
     #main,
     #chatwrap,
