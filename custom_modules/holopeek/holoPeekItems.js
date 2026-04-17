@@ -132,32 +132,32 @@ function verticalLayout(self) {
   }
   self.tabs = window.$tabContainer.hide();
   self.cssData = `
-        #chatwrap {
+        #main.flex > #chatwrap {
             position: fixed;
             width: 100%;
-            height: auto;
-            top: 60vw;
+            height: auto !important;
+            top: min(60vw, calc(100vh - 180px));
             bottom: 0;
         }
-        #videowrap {
+        #main.flex > #videowrap {
             width: 100vw;
-            height: 56.25vw;
-            max-height: 100vh;
+            height: 56.25vw !important;
+            max-height: calc(100vh - 32px);
             max-width: 177.78vh;
             position: absolute;
             margin: 0 0 0 auto !important;
             padding: 0 !important;
             top: 32px;
-            bottom: 0;
+            bottom: auto;
             left: 0;
             right: 0;
         }
-        #main { height: 100% !important; }
+        #main.flex { height: 100% !important; }
         .linewrap {
             background-color: #0000 !important;
             box-shadow: none !important;
         }
-        #videowrap-header { display: none !important; }
+        #main.flex > #videowrap > #videowrap-header { display: none !important; }
         `;
 }
 
