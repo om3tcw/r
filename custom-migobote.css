@@ -3371,11 +3371,14 @@ button {
     text-shadow: none
 }
 
-#main {
+#main.flex {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap !important;
-    height: 100% !important;
+    height: auto !important;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
 }
 
 #mainpage {
@@ -3385,15 +3388,22 @@ button {
 html,
 html>body.fluid,
 body.fluid>#wrap,
-#wrap>#mainpage,
-#mainpage>[class|="container"] {
+#wrap>#mainpage {
     height: 100%;
 }
 
-[class|="container"]>#main {
-    height: 99.9%;
+#mainpage>[class|="container"] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+[class|="container"]>#main.flex {
+    height: auto;
     flex-direction: row;
     flex-wrap: nowrap;
+    min-height: 0;
 }
 
 /*chat and pm css*/
@@ -3565,6 +3575,10 @@ body.fluid>#wrap,
     background: #0005;
     border-radius: 0;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+#MainTabContainer #rightcontrols,
+#MainTabContainer #rightpane {
     width: 100%;
 }
 
@@ -3666,11 +3680,15 @@ div#plmeta {
 }
 
 #videowrap {
-    height: 100%;
     margin-bottom: 0;
     z-index: 1;
+}
+
+#main.flex>#videowrap {
+    height: 100%;
     flex-grow: 1;
     flex-shrink: 0;
+    min-height: 0;
     overflow-y: auto !important;
     overflow-x: hidden !important;
 }
@@ -3738,10 +3756,11 @@ body {
 
 #motdrow {
     display: block;
-    position: absolute;
     width: 100%;
-    z-index: 9999;
+    flex: 0 0 auto;
     opacity: 1;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 #motdrow .well {
@@ -3753,16 +3772,17 @@ body {
     margin-bottom: 0;
     padding-left: 0;
     padding-right: 0;
-    height: 100%;
     z-index: 2;
-    flex-grow: 0;
-    flex-shrink: 0;
 }
 
 #main.flex>#chatwrap {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    height: 100%;
+    min-height: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
     box-shadow: none
 }
 
@@ -3790,6 +3810,7 @@ body {
 #chatdisplayrow {
 
     flex-grow: 1;
+    min-height: 0;
     overflow: hidden;
 }
 
@@ -4120,6 +4141,9 @@ textarea.form-control {
     color: white;
     padding: 0px 0px !important;
     min-height: 12px !important;
+    max-height: min(120px, 20vh);
+    overflow-y: auto;
+    margin-bottom: 5px;
 }
 
 #motdwrap .close {
