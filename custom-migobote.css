@@ -3289,6 +3289,16 @@ img.channel-emote[title$="."] {
     font-size: 14px;
     content: 'NinaValt: ';
 }
+
+.chat-msg-keibu .username {
+    font-size: 0;
+}
+
+.chat-msg-keibu .username:after {
+    font-size: 14px;
+    content: 'kirkbu: ';
+}
+
 /* end of username edits */
 
 
