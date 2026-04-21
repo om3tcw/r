@@ -4349,6 +4349,24 @@ form input#chatline {
   pointer-events: none;
 }
 
+[class^="chat-msg-"] .timestamp::after {
+  content: "";
+  position: absolute;
+
+  top: -8px;
+  left: 14px;
+
+  width: 18px;
+  height: 18px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transform: rotate(-15deg);
+  transform-origin: bottom center;
+  pointer-events: none;
+}
+
 
 
 
@@ -4378,6 +4396,15 @@ form input#chatline {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/pinkphat.png");
 }
 
+.chat-msg-keibu .timestamp::after,
+[class~="chat-msg-keibu" i] .timestamp::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/fellforitagain.png");
+}
+
+.chat-msg-keibuhi .timestamp::after,
+[class~="chat-msg-keibuhi" i] .timestamp::after {
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/fellforitagain.png");
+}
 .chat-msg-Enemy .timestamp::before,
 [class~="chat-msg-Enemy" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/rphat.png");
