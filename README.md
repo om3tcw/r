@@ -19,6 +19,30 @@
 
   Information pertaining to soundposts can be found in the soundpost folder
 
+## MOTD
+
+This is basically just the "cytube plus" motd ripped out.
+
+Plain text or normal HTML still works. If you want tabs, put each tab in a
+top-level element with `data-motd-tab`.
+
+```html
+<div data-motd-tab="Home">
+  <p>Welcome to /hlgg/.</p>
+</div>
+
+<div data-motd-tab="Rules">
+  <ul>
+    <li>Rule one</li>
+    <li>Rule two</li>
+  </ul>
+</div>
+
+<div data-motd-tab="Links">
+  <p><a href="https://om3tcw.com/r/hlgg">Channel link</a></p>
+</div>
+```
+
 ## Updating js/css 
 
   After making changes on github the changes are sync'd to cloudflare. The bote then pulls the files from CF and serves them, the sync can take 1-2 minutes so wait before asking for a channel refresh. <br> 
@@ -33,5 +57,5 @@
   Commands below are mod+ <br>  
   /setgold TARGET, /unsetgold TARGET <br> 
   /mikubeam TARGET <br> 
-  /ninomode TARGET, TARGET2, TARGET3, /ninomode off <br> 
+  /ninomode TARGET, TARGET2, TARGET3, /ninomode off - Currently disabled. <br> 
   /uoh on, /uoh off <br> 

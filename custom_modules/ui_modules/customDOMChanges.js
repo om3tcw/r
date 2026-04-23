@@ -17,15 +17,6 @@ $($audioOnly).click(() => {
     $videowrap.toggle();
 });
 
-const $togglemotd = $('<li><a id="togglemotd" href="javascript:void(0)">MOTD</a></li>');
-const $motdwrap = $(motdwrap);
-$motdwrap.on('click', () => $motdwrap.hide())
-$togglemotd.appendTo($navBar);
-$togglemotd.on('click', () => { 
-    $motdwrap.toggle()
-    $(motd).toggle();
-})
-
 const $userlist = $(userlist);
 const $messagebuffer = $(messagebuffer);
 const $chatheader = $(chatheader);
