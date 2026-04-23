@@ -18,7 +18,7 @@ if (![CHANNEL.name].favicon) {
 const LOCAL_CDN_URL = "https://127.0.0.1:5050"; //change before push
 const ONLINE_CDN = "https://mikobotecdn.win";
 //CHANGE WHEN DEVELOPING/LIVE
-const CURRENT_CDN = ONLINE_CDN;
+const CURRENT_CDN = LOCAL_CDN_URL;
 
 const MODULES_FOLDER = "custom_modules/";
 const MODULE_LOADER = `${MODULES_FOLDER}module_orchestration/ModuleLoader.js`;
@@ -49,6 +49,7 @@ const ModulePaths = [
   { ChatMessageProcessor: `module_orchestration/chatMessageProcessor.js` },
   { TabsBelowVideo: `ui_modules/tabsBelowVideo.js` }, //I wouldn't disable this one
   { CustomDOMChanges: `ui_modules/customDOMChanges.js` },
+  { MOTD: `ui_modules/MOTD.js` },
   { BetterPlaylist: `ui_modules/betterPlaylist.js` },
   { BetterPms: `ui_modules/betterPms.js` },
   { SoundNotifications: `soundNotifications.js` },
@@ -80,7 +81,7 @@ const ModulePaths = [
 //candidate to move to util.js
 //change ?ver=n to automatically push changes.
 function makeLiveCDNLink(fileName) {
-  return CURRENT_CDN + "/" + fileName + "?ver=1-14-01";
+  return CURRENT_CDN + "/" + fileName + "?ver=1-14-03";
 }
 
 //candidate to move to util.js
