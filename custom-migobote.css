@@ -1,5 +1,13 @@
 /* Start of Oshi Eyes */
 
+.chat-msg-Brittney .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://mikobotecdn.win/eyes/allah.webp');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
 .chat-msg-monomelon .timestamp {
     color: transparent;
     background-size: 50px 15px;
