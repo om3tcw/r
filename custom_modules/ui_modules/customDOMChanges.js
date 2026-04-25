@@ -45,7 +45,7 @@ mikoDing.loop = true;
 mikoDing.volume = 0.1;
 
 const $navBarBrand = $('.navbar-brand');
-$navBarBrand.attr('href', 'https://files.catbox.moe/om3tcw.webm');
+$navBarBrand.attr('href', 'https://files.catbox.moe/g9r8l8.webm');
 $navBarBrand.on('mouseenter', () => mikoDing.play());
 $navBarBrand.on('mouseleave', () => mikoDing.pause());
 
