@@ -9,6 +9,8 @@ const HOLOPEEK_NAVBAR_MOBILE_STYLE_MODULE =
 let $holoPeekBubble;
 let $holoPeekButton;
 let $holoPeekImage;
+let holoPeekMountHelpers = null;
+let isHoloPeekNavbarMount = false;
 let holoPeekItems = [];
 const holoPeekGroups = {};
 const holoPeekResetHandlers = [];
@@ -149,9 +151,100 @@ function mountHoloPeekButton($navbarList) {
     $("body").append($holoPeekButton);
 }
 
+function isElementHidden($element) {
+    if (!$element || !$element.length) {
+        return false;
+    }
+
+    const style = window.getComputedStyle($element[0]);
+    return (
+        style.display === 'none' ||
+        style.visibility === 'hidden' ||
+        style.visibility === 'collapse'
+    );
+}
+
+function isHoloPeekNavbarHidden() {
+    return isElementHidden($('nav.navbar').first());
+}
+
+function isHoloPeekNavbarMountHidden() {
+    return isHoloPeekNavbarMount && isHoloPeekNavbarHidden();
+}
+
+function remountHoloPeekAsDesktopFallback() {
+    if (!isHoloPeekNavbarMount || !$holoPeekBubble || !$holoPeekBubble.length) {
+        return false;
+    }
+
+    const wasOpen = $holoPeekBubble.is(':visible');
+    const $oldButton = $holoPeekButton;
+    const $oldNavbarItem = $oldButton.closest('#holopeek-navbar-item');
+    $holoPeekBubble.detach();
+    $oldButton.remove();
+    $oldNavbarItem.remove();
+
+    isHoloPeekNavbarMount = false;
+    $holoPeekButton = createHoloPeekButton(false);
+    $('body').append($holoPeekButton);
+    $holoPeekButton.append($holoPeekBubble);
+    setupOnClickForHoloPeek($holoPeekButton, $holoPeekBubble);
+
+    if (wasOpen) {
+        $holoPeekBubble.show();
+    }
+
+    return true;
+}
+
+function remountHoloPeekToNavbar($navbarList) {
+    if (
+        isHoloPeekNavbarMount ||
+        !$navbarList ||
+        !$navbarList.length ||
+        !$holoPeekBubble ||
+        !$holoPeekBubble.length
+    ) {
+        return false;
+    }
+
+    const wasOpen = $holoPeekBubble.is(':visible');
+    const $oldButton = $holoPeekButton;
+    $holoPeekBubble.detach();
+    $oldButton.remove();
+
+    isHoloPeekNavbarMount = true;
+    $holoPeekButton = createHoloPeekButton(true);
+    mountHoloPeekButton($navbarList);
+    $holoPeekButton.append($holoPeekBubble);
+    setupOnClickForHoloPeek($holoPeekButton, $holoPeekBubble);
+
+    if (wasOpen) {
+        $holoPeekBubble.show();
+    }
+
+    return true;
+}
+
+function ensureHoloPeekReachable() {
+    if (isHoloPeekNavbarMountHidden()) {
+        remountHoloPeekAsDesktopFallback();
+        return;
+    }
+
+    if (!isHoloPeekNavbarMount && holoPeekMountHelpers) {
+        const $navbarList = getHoloPeekNavbarList(holoPeekMountHelpers);
+        if ($navbarList.length && !isHoloPeekNavbarHidden()) {
+            remountHoloPeekToNavbar($navbarList);
+        }
+    }
+}
+
 function appendHoloPeekToDOM(mountHelpers) {
+    holoPeekMountHelpers = mountHelpers;
     const $navbarList = getHoloPeekNavbarList(mountHelpers);
     const isNavbarMount = Boolean($navbarList.length);
+    isHoloPeekNavbarMount = isNavbarMount;
     $holoPeekButton = createHoloPeekButton(isNavbarMount);
     mountHoloPeekButton($navbarList);
 
@@ -308,12 +401,14 @@ function holoPeekCheckboxTrigger(holoPeekItem) {
             holoPeekItem.style = createStyleForItem(holoPeekItem)
             holoPeekItem.style.appendTo('head');
         }
+        ensureHoloPeekReachable();
     } else {
         if (holoPeekItem.cleanupFunc) {
             holoPeekItem.cleanupFunc(holoPeekItem)
         }
         holoPeekItem.cssData = null;
         removeDuplicateStyles(holoPeekItem);
+        ensureHoloPeekReachable();
     }
 }
 
@@ -400,6 +495,7 @@ function createRangeElement(holoPeekItem) {
             input: function(event) {
                 holoPeekItem.value = event.currentTarget.value;
                 holoPeekCheckboxTrigger(holoPeekItem);
+                ensureHoloPeekReachable();
                 }
             }
     })
@@ -488,6 +584,7 @@ export function addToHoloPeekContainer(holoPeekItem, prepend = false) {
     await import(makeLiveCDNLink(HOLOPEEK_NAVBAR_MOBILE_STYLE_MODULE));
     appendHoloPeekToDOM(mountHelpers);
     buildHoloPeekFrame();
+    ensureHoloPeekReachable();
     let defaultItemsURL = `${MODULES_FOLDER}holopeek/holoPeekItems.js`
     import(makeLiveCDNLink(defaultItemsURL)).then((data) => {
         for (const item of data.holoPeekObjects) {
