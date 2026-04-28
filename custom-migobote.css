@@ -3168,6 +3168,13 @@ img.channel-emote[title$="."] {
     z-index: 1;
 }
 
+img.channel-emote[title$=":YoshiPoint:"] {
+    bottom: 0px;
+    right: 120px;
+    max-width: 150px;
+    z-index: 1;
+}
+
 /* might add 'top:5px;' later to do a bottom offset */
 /* End of Emote Animations */
 
