@@ -4072,6 +4072,20 @@ textarea.form-control {
         padding-left: 0;
     }
 
+    #pmbar {
+        max-width: 100vw;
+    }
+
+    #pmbar .pm-panel {
+        width: 320px;
+        max-width: calc(100vw - 16px);
+    }
+
+    #pmbar .pm-buffer {
+        max-height: 40vh;
+        overflow-y: auto;
+    }
+
     #videowrap {
         margin: 0;
         margin-top: 15px;

@@ -4,6 +4,45 @@
 (function(CyTube_BetterPM) {
     return CyTube_BetterPM(window, document, window.jQuery)
 })(function(window, document, $, undefined) {
+    var PM_PANEL_MOBILE_VIEWPORT_MARGIN = 8;
+    var PM_PANEL_DESKTOP_VIEWPORT_MARGIN = 0;
+    var PM_PANEL_FALLBACK_WIDTH = 320;
+    function isMobileViewport() {
+        if (typeof window.matchMedia === "function") {
+            return window.matchMedia("(max-width: 992px)").matches
+        }
+        var viewportWidth = window.innerWidth || (document.documentElement && document.documentElement.clientWidth);
+        return viewportWidth > 0 && viewportWidth <= 992
+    }
+    function getPanelViewportMargin(isMobile) {
+        return isMobile ? PM_PANEL_MOBILE_VIEWPORT_MARGIN : PM_PANEL_DESKTOP_VIEWPORT_MARGIN
+    }
+    function clampPanelLeft(left, panelWidth, viewportWidth, margin) {
+        left = parseFloat(left);
+        panelWidth = parseFloat(panelWidth);
+        viewportWidth = parseFloat(viewportWidth);
+        margin = parseFloat(margin);
+        if (!isFinite(left)) {
+            left = 0
+        }
+        if (!isFinite(panelWidth) || panelWidth <= 0) {
+            panelWidth = PM_PANEL_FALLBACK_WIDTH
+        }
+        if (!isFinite(viewportWidth) || viewportWidth <= 0) {
+            return left
+        }
+        if (!isFinite(margin) || margin < 0) {
+            margin = PM_PANEL_MOBILE_VIEWPORT_MARGIN
+        }
+        if (margin > 0) {
+            panelWidth = Math.max(panelWidth, PM_PANEL_FALLBACK_WIDTH)
+        }
+        return Math.max(margin, Math.min(left, viewportWidth - panelWidth - margin))
+    }
+    window.HLGGBetterPmLayout = {
+        clampPanelLeft: clampPanelLeft,
+        getPanelViewportMargin: getPanelViewportMargin
+    };
     if (typeof Storage === "undefined") {
         console.error("[XaeTube: Better PMs]", "localStorage not supported. Aborting load.");
         return
@@ -106,6 +145,9 @@
             if (!body.is(":hidden")) {
                 placeholder = $("<div/>").addClass("pm-panel-placeholder").attr("id", "pm-placeholder-" + user).insertAfter(pm);
                 var left = pm.position().left;
+                var panelWidth = pm.outerWidth() || PM_PANEL_FALLBACK_WIDTH;
+                var viewportWidth = window.innerWidth || (document.documentElement && document.documentElement.clientWidth);
+                left = clampPanelLeft(left, panelWidth, viewportWidth, getPanelViewportMargin(isMobileViewport()));
                 pm.css("position", "absolute").css("bottom", "0px").css("left", left)
             } else {
                 pm.css("position", "");
