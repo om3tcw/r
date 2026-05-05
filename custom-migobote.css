@@ -3293,7 +3293,7 @@ img.channel-emote[title$=":YoshiPoint:"] {
 
 .chat-msg-iTako .username:after {
     font-size: 14px;
-    content: 'frenchTako: ';
+    content: 'hackedTako: ';
 }
 
 .chat-msg-NinoValt .username {
