@@ -8965,5 +8965,656 @@
     "roomba",
     "gif",
     "animated"
+  ],
+  ":ogameido:": [
+    "oga",
+    "maid",
+    "done",
+    "holostars3rdgeneration"
+  ],
+  ":rrat:": [
+    "rrat",
+    "ogey",
+    "pekora",
+    "fantasy"
+  ],
+  ":ogey?:": [
+    "ogey",
+    "pekora",
+    "fantasy",
+    "?",
+    "huh"
+  ],
+  ":ogey??:": [
+    "ogey",
+    "pekora",
+    "fantasy",
+    "?",
+    "huh"
+  ],
+  ":ogey2:": [
+    "ogey",
+    "pekora",
+    "fantasy",
+    "glow"
+  ],
+  ":ogeyaaa:": [
+    "ogey",
+    "pekora",
+    "fantasy",
+    "aaa",
+    "glow"
+  ],
+  ":ogeyblocks:": [
+    "ogey",
+    "pekora",
+    "fantasy",
+    "blocks",
+    "weird"
+  ],
+  ":mumeismile:": [
+    "mumei",
+    "promise",
+    "happy",
+    "smile"
+  ],
+  ":mumeiptsd:": [
+    "mumei",
+    "promise",
+    "ptsd",
+    "shock",
+    "stare"
+  ],
+  ":mumeihopium:": [
+    "mumei",
+    "promise",
+    "hopium"
+  ],
+  ":mumeipet:": [
+    "mumei",
+    "promise",
+    "pet",
+    "pat",
+    "gif"
+  ],
+  ":mumeihopium...:": [
+    "mumei",
+    "promise",
+    "hopium",
+    "copium",
+    "..."
+  ],
+  ":mumeiforgor:": [
+    "mumei",
+    "promise",
+    "forgor",
+    "forgot",
+    "tears"
+  ],
+  ":mumeigun:": [
+    "mumei",
+    "promise",
+    "gun",
+    "shooting"
+  ],
+  ":mumeivibe:": [
+    "mumei",
+    "promise",
+    "vibe",
+    "rave",
+    "gif"
+  ],
+  ":mumeitears:": [
+    "mumei",
+    "promise",
+    "tears",
+    "sob"
+  ],
+  ":mumeidrool:": [
+    "mumei",
+    "promise",
+    "drool",
+    "dum"
+  ],
+  ":mumeiahopiumtruth:": [
+    "mumei",
+    "promise",
+    "hopium"
+  ],
+  ":mumeicopiumfactory:": [
+    "mumei",
+    "promise",
+    "copium",
+    "hopium",
+    "factory"
+  ],
+  ":mumeimybeloved:": [
+    "mumei",
+    "promise",
+    "my beloved",
+    "gif",
+    "love",
+    "heart"
+  ],
+  ":mumeiprocessing:": [
+    "mumei",
+    "promise",
+    "loading",
+    "process",
+    "gif"
+  ],
+  ":mumeiling:": [
+    "mumei",
+    "promise",
+    "china",
+    "stare"
+  ],
+  ":mumeirember:": [
+    "mumei",
+    "promise",
+    "rember",
+    "remember",
+    "happy"
+  ],
+  ":mumeiyes:": [
+    "mumei",
+    "promise",
+    "yes",
+    "naruhodo"
+  ],
+  ":mumeipout:": [
+    "mumei",
+    "promise",
+    "pout",
+    "stare",
+    "mad"
+  ],
+  ":mumeiheh:": [
+    "mumei",
+    "promise",
+    "heh",
+    "happy"
+  ],
+  ":mumeimelancholy:": [
+    "mumei",
+    "promise",
+    "sad",
+    "melancholy"
+  ],
+  ":mumeilook:": [
+    "mumei",
+    "promise",
+    "look",
+    "stare",
+    "smile"
+  ],
+  ":mumeisleep:": [
+    "mumei",
+    "promise",
+    "sleep",
+    "tired",
+    "gif"
+  ],
+  ":mumeided:": [
+    "mumei",
+    "promise",
+    "dead",
+    "ded",
+    "animated"
+  ],
+  ":mumeibaby:": [
+    "mumei",
+    "promise",
+    "baby",
+    "happy"
+  ],
+  ":mumeivoid:": [
+    "mumei",
+    "promise",
+    "void",
+    "glasses"
+  ],
+  ":mumeihype:": [
+    "mumei",
+    "promise",
+    "hype",
+    "happy",
+    "gif"
+  ],
+  ":mumeisphere:": [
+    "mumei",
+    "promise",
+    "sphere",
+    "hello",
+    "orb"
+  ],
+  ":bmumei:": [
+    "mumei",
+    "promise",
+    "blanket",
+    "comfy"
+  ],
+  ":mumeibananashi:": [
+    "mumei",
+    "promise",
+    "banana"
+  ],
+  ":mumeirice:": [
+    "mumei",
+    "promise",
+    "rice",
+    "ptsd",
+    "gif"
+  ],
+  ":mumeismug:": [
+    "mumei",
+    "promise",
+    "smug",
+    "heh"
+  ],
+  ":mumeitap:": [
+    "mumei",
+    "promise",
+    "pat",
+    "tap",
+    "patpatpat",
+    "taptapap",
+    "gif"
+  ],
+  ":mumeighost:": [
+    "mumei",
+    "promise",
+    "ghost",
+    "halloween"
+  ],
+  ":mumeirave:": [
+    "mumei",
+    "promise",
+    "ghost",
+    "halloween",
+    "gif",
+    "rave"
+  ],
+  ":padorumumei:": [
+    "mumei",
+    "promise",
+    "padoru"
+  ],
+  ":mumeiburger:": [
+    "mumei",
+    "promise",
+    "burger",
+    "food",
+    "gif"
+  ],
+  ":mumeilon:": [
+    "mumei",
+    "promise",
+    "melon"
+  ],
+  ":mumeischizo:": [
+    "mumei",
+    "promise",
+    "schizo",
+    "soundpost",
+    "gif"
+  ],
+  ":mumeidoot:": [
+    "mumei",
+    "promise",
+    "toot",
+    "doot",
+    "trumpet",
+    "soundpost"
+  ],
+  ":mumeifly:": [
+    "mumei",
+    "promise",
+    "fly",
+    "gif"
+  ],
+  ":mumeipiano:": [
+    "mumei",
+    "promise",
+    "piano",
+    "play",
+    "soundpost"
+  ],
+  ":mumeinanyashi:": [
+    "mumei",
+    "promise",
+    "anya eyes",
+    "anya",
+    "holoro"
+  ],
+  ":mumeicoffe:": [
+    "mumei",
+    "promise",
+    "coffee",
+    "drink"
+  ],
+  ":pomumenhera:": [
+    "pomu",
+    "nijisanji",
+    "menhera",
+    "flushed"
+  ],
+  ":mumeipeek:": [
+    "mumei",
+    "promise",
+    "peek",
+    "gif"
+  ],
+  ":mumeitako:": [
+    "mumei",
+    "promise",
+    "tako",
+    "takodachi",
+    "myth"
+  ],
+  ":mumeihands:": [
+    "mumei",
+    "promise",
+    "hands",
+    "happy",
+    "smile"
+  ],
+  ":mumei?:": [
+    "mumei",
+    "promise",
+    "huh",
+    "what",
+    "?",
+    "gif"
+  ],
+  ":mumeisip:": [
+    "mumei",
+    "promise",
+    "sip",
+    "speed",
+    "zoom",
+    "caffeine",
+    "gif"
+  ],
+  ":mumeid:": [
+    "mumei",
+    "promise",
+    "smile",
+    ":d"
+  ],
+  ":mumeismiley:": [
+    "mumei",
+    "promise",
+    "smile",
+    ":d"
+  ],
+  ":mumeistare:": [
+    "mumei",
+    "promise",
+    "stare",
+    "yandere"
+  ],
+  ":mumeiblood:": [
+    "mumei",
+    "promise",
+    "blood",
+    "slaughter",
+    "berries"
+  ],
+  ":mumei2:": [
+    "mumei",
+    "promise",
+    "blush",
+    "comfy",
+    "flushed"
+  ],
+  ":mumeitired:": [
+    "mumei",
+    "promise",
+    "coffee",
+    "tired",
+    "done"
+  ],
+  ":mumeidead:": [
+    "mumei",
+    "promise",
+    "ded",
+    "dead"
+  ],
+  ":mumeiappear:": [
+    "mumei",
+    "promise",
+    "peek",
+    "appear",
+    "gif"
+  ],
+  ":mumeiberry:": [
+    "mumei",
+    "promise",
+    "berries",
+    "food"
+  ],
+  ":mumeibrave:": [
+    "mumei",
+    "promise",
+    "brave",
+    "weapon",
+    "bat",
+    "gif"
+  ],
+  ":mumeimad:": [
+    "mumei",
+    "promise",
+    "mad",
+    "miffed",
+    "angry"
+  ],
+  ":mumeinap:": [
+    "mumei",
+    "promise",
+    "nap",
+    "tired",
+    "gif"
+  ],
+  ":mumeisparkle:": [
+    "mumei",
+    "promise",
+    "sparkle",
+    "heh",
+    "stars",
+    "amazeballs"
+  ],
+  ":mumeitehepero:": [
+    "mumei",
+    "promise",
+    "tehepero",
+    "peace",
+    "wink"
+  ],
+  ":mumeitilt:": [
+    "mumei",
+    "promise",
+    "tilt",
+    "stare",
+    "gif"
+  ],
+  ":MUMSA:": [
+    "mumei",
+    "promise",
+    "usa",
+    "soundpost"
+  ],
+  ":mumeidoublepeace:": [
+    "mumei",
+    "promise",
+    "double peace",
+    "peace"
+  ],
+  ":mumeipoint:": [
+    "mumei",
+    "promise",
+    "point",
+    "soundpost",
+    "haha"
+  ],
+  ":mumeithumbsup:": [
+    "mumei",
+    "promise",
+    "thumbs"
+  ],
+  ":mumeidoxx:": [
+    "mumei",
+    "promise",
+    "dox",
+    "irl"
+  ],
+  ":mumeiballin:": [
+    "mumei",
+    "promise",
+    "soundpost",
+    "balling"
+  ],
+  ":mumeiyay:": [
+    "mumei",
+    "promise",
+    "yay",
+    "gif",
+    "hooray"
+  ],
+  ":mumei:": [
+    "mumei",
+    "promise",
+    "music",
+    "gif"
+  ],
+  ":mumeisniff:": [
+    "mumei",
+    "promise",
+    "sniff",
+    "soundpost"
+  ],
+  ":mumeiautism:": [
+    "mumei",
+    "promise",
+    "doro",
+    "autism"
+  ],
+  ":mumeibread:": [
+    "mumei",
+    "promise",
+    "bread",
+    "food",
+    "gif"
+  ],
+  ":mumeitsk:": [
+    "mumei",
+    "promise",
+    "tsk",
+    "disappointed"
+  ],
+  ":mumeilove:": [
+    "mumei",
+    "promise",
+    "love",
+    "heart"
+  ],
+  ":mumerican:": [
+    "mumei",
+    "promise",
+    "burger",
+    "usa"
+  ],
+  ":mumeicrimes:": [
+    "mumei",
+    "promise",
+    "crimes",
+    "gif"
+  ],
+  ":mumeiaccordion:": [
+    "mumei",
+    "promise",
+    "accordion",
+    "play",
+    "gif"
+  ],
+  ":youstareatbreastsmumeistaresatyoursoul:": [
+    "mumei",
+    "promise",
+    "boobs",
+    "stare",
+    "angry",
+    "gif"
+  ],
+  ":mumeihowdy:": [
+    "mumei",
+    "promise",
+    "howdy",
+    "cowboy",
+    "cowgirl"
+  ],
+  ":mumeiairhump:": [
+    "mumei",
+    "promise",
+    "hump",
+    "cry",
+    "sob",
+    "gif"
+  ],
+  ":mumeiwitch:": [
+    "mumei",
+    "promise",
+    "witch",
+    "mage",
+    "magic"
+  ],
+  ":mumeinod:": [
+    "mumei",
+    "promise",
+    "nod",
+    "headbang",
+    "gif"
+  ],
+  ":mumeipointing:": [
+    "mumei",
+    "promise",
+    "point",
+    "look at that",
+    "offset emote"
+  ],
+  ":mumeihearts:": [
+    "mumei",
+    "promise",
+    "heart",
+    "love",
+    "mlem"
+  ],
+  ":mumeikeyboard:": [
+    "mumei",
+    "promise",
+    "play",
+    "keyboard",
+    "piano",
+    "gif"
+  ],
+  ":mumeispillsthemilk:": [
+    "mumei",
+    "promise",
+    "coom",
+    "cum",
+    "milk"
+  ],
+  ":aveglorytomumei:": [
+    "mumei",
+    "promise",
+    "ave",
+    "glory",
+    "roman"
+  ],
+  ":mumeicowgirl:": [
+    "mumei",
+    "promise",
+    "howdy",
+    "cowboy",
+    "cowgirl"
   ]
 }
