@@ -124,7 +124,8 @@
   ":kroniithink?:": [
     "kronii",
     "promise",
-    "think"
+    "think",
+    "?"
   ],
   ":mintothink:": [
     "mint",
@@ -1374,7 +1375,8 @@
     "kronii",
     "smile",
     "laugh",
-    "haha"
+    "haha",
+    "promise"
   ],
   ":ririkalaugh:": [
     "ririka",
@@ -10424,5 +10426,429 @@
     "voms",
     "awooga",
     "boobs"
+  ],
+  ":kroniicopter:": [
+    "kronii",
+    "promise",
+    "helicopter",
+    "fly",
+    "gif"
+  ],
+  ":kroniiwink:": [
+    "kronii",
+    "promise",
+    "wink",
+    "smile"
+  ],
+  ":kroniidashian:": [
+    "kronii",
+    "promise",
+    "slay",
+    "queen",
+    "makeup"
+  ],
+  ":kroniiblush:": [
+    "kronii",
+    "promise",
+    "blush",
+    "lewd"
+  ],
+  ":kroniidisgust:": [
+    "kronii",
+    "promise",
+    "disgust",
+    "hatred"
+  ],
+  ":kroniishock:": [
+    "kronii",
+    "promise",
+    "shock",
+    "stare"
+  ],
+  ":kroniismug:": [
+    "kronii",
+    "promise",
+    "smug",
+    "heh"
+  ],
+  ":kroniihappy:": [
+    "kronii",
+    "promise",
+    "happy",
+    "smile"
+  ],
+  ":kroniisad:": [
+    "kronii",
+    "promise",
+    "sad"
+  ],
+  ":kroniisquee:": [
+    "kronii",
+    "promise",
+    "soundpost",
+    "squee",
+    "autism",
+    "gif"
+  ],
+  ":kroniipleasure:": [
+    "kronii",
+    "promise",
+    "pleased",
+    "pleasure",
+    "smile"
+  ],
+  ":kroniitoot:": [
+    "kronii",
+    "promise",
+    "toot",
+    "doot",
+    "trumpet",
+    "soundpost"
+  ],
+  ":kroniiiiiii:": [
+    "kronii",
+    "promise",
+    "aaa",
+    "iii",
+    "cry",
+    "yell",
+    "soundpost",
+    "gwak"
+  ],
+  ":bkronii:": [
+    "kronii",
+    "promise",
+    "blanket",
+    "comfy"
+  ],
+  ":kroniivibe:": [
+    "kronii",
+    "promise",
+    "vibe",
+    "shake",
+    "gif"
+  ],
+  ":kroniiblaze:": [
+    "kronii",
+    "promise",
+    "blaze",
+    "blunt",
+    "smoke"
+  ],
+  ":kroniistare:": [
+    "kronii",
+    "promise",
+    "stare",
+    "autism",
+    "soundpost"
+  ],
+  ":padorukronii:": [
+    "kronii",
+    "promise",
+    "padoru",
+    "xmas"
+  ],
+  ":kroniipeek:": [
+    "kronii",
+    "promise",
+    "peek",
+    "check",
+    "gif"
+  ],
+  ":kroniihuh:": [
+    "kronii",
+    "promise",
+    "huh",
+    "what"
+  ],
+  ":kroniitako:": [
+    "kronii",
+    "promise",
+    "tako",
+    "takodachi",
+    "myth"
+  ],
+  ":kroniisob:": [
+    "kronii",
+    "promise",
+    "sob",
+    "cry"
+  ],
+  ":kroniifacepalm:": [
+    "kronii",
+    "promise",
+    "facepalm",
+    "fail"
+  ],
+  ":kroniitwerk:": [
+    "kronii",
+    "promise",
+    "twerk",
+    "dance",
+    "gif"
+  ],
+  ":kroniidogeza:": [
+    "kronii",
+    "promise",
+    "dogeza",
+    "gif"
+  ],
+  ":kroniigws:": [
+    "kronii",
+    "promise",
+    "gws",
+    "get well",
+    "meds"
+  ],
+  ":kroniismugger:": [
+    "kronii",
+    "promise",
+    "smug",
+    "heh"
+  ],
+  ":kroniicringe:": [
+    "kronii",
+    "promise",
+    "cringe",
+    "haha..."
+  ],
+  ":kroniiman:": [
+    "kronii",
+    "promise",
+    "man",
+    "depresso"
+  ],
+  ":kroniisalute:": [
+    "kronii",
+    "promise",
+    "salute",
+    "o7"
+  ],
+  ":kroniiboobslap:": [
+    "kronii",
+    "promise",
+    "boing",
+    "boobs",
+    "slap",
+    "gif",
+    "soundpost"
+  ],
+  ":kronii3:": [
+    "kronii",
+    "promise",
+    ":3",
+    "smile"
+  ],
+  ":kroniidoublepeace:": [
+    "kronii",
+    "promise",
+    "peace",
+    "double peace"
+  ],
+  ":kroniienter:": [
+    "kronii",
+    "promise",
+    "enter",
+    "gif",
+    "car"
+  ],
+  ":kroniieyeroll:": [
+    "kronii",
+    "promise",
+    "eyeroll",
+    "gif"
+  ],
+  ":kroniipog:": [
+    "kronii",
+    "promise",
+    "pog",
+    "wow"
+  ],
+  ":kroniiponder:": [
+    "kronii",
+    "promise",
+    "ponder",
+    "think"
+  ],
+  ":kroniishock2:": [
+    "kronii",
+    "promise",
+    "shock",
+    "stare"
+  ],
+  ":kroniismuggerer:": [
+    "kronii",
+    "promise",
+    "smug",
+    "blaze"
+  ],
+  ":kroniiwarp:": [
+    "kronii",
+    "promise",
+    "warp",
+    "power",
+    "gif"
+  ],
+  ":shadowwizardkronii:": [
+    "kronii",
+    "promise",
+    "shadow wizard money gang",
+    "magic",
+    "mage",
+    "witch",
+    "soundpost"
+  ],
+  ":kroniitpose:": [
+    "kronii",
+    "promise",
+    "tpose"
+  ],
+  ":kroniisummer:": [
+    "kronii",
+    "promise",
+    "summer",
+    "smile"
+  ],
+  ":kroniiskill:": [
+    "kronii",
+    "promise",
+    "skill issue",
+    "gif"
+  ],
+  ":kroniidance:": [
+    "kronii",
+    "promise",
+    "dance",
+    "fortnite",
+    "gif"
+  ],
+  ":kronk:": [
+    "kronk",
+    "pull the lever",
+    "watchalong related",
+    "movie related"
+  ],
+  ":kroniismile:": [
+    "kronii",
+    "promise",
+    "smile",
+    "gif"
+  ],
+  ":kroniihawktuah:": [
+    "kronii",
+    "promise",
+    "hawk tuah",
+    "gif",
+    "soundpost"
+  ],
+  ":kroniinerd:": [
+    "kronii",
+    "promise",
+    "nerd",
+    "actually"
+  ],
+  ":kroniistickman:": [
+    "kronii",
+    "promise",
+    "doodle",
+    "stickman",
+    "thumbs up"
+  ],
+  ":kroniifuneral:": [
+    "kronii",
+    "promise",
+    "death",
+    "ded",
+    "funeral"
+  ],
+  ":cubekronie:": [
+    "kronii",
+    "promise",
+    "kronie",
+    "minecraft"
+  ],
+  ":cubekronieformademucama:": [
+    "kronii",
+    "promise",
+    "kronie",
+    "minecraft"
+  ],
+  ":kronieawe:": [
+    "kronii",
+    "promise",
+    "kronie",
+    "look up",
+    "awe",
+    "boobs"
+  ],
+  ":kroniihips:": [
+    "kronii",
+    "promise",
+    "hips",
+    "egyptian",
+    "gif"
+  ],
+  ":kroniiblunt:": [
+    "kronii",
+    "promise",
+    "blunt",
+    "smoke",
+    "weed",
+    "blaze",
+    "zaza",
+    "kush",
+    "cannabis",
+    "choof",
+    "ganja",
+    "green",
+    "herb",
+    "pot",
+    "wacky tobaccy"
+  ],
+  ":kroniicheese:": [
+    "kronii",
+    "promise",
+    "say cheese",
+    "against 4th wall",
+    "boobs"
+  ],
+  ":kroniismall:": [
+    "kronii",
+    "promise",
+    "small"
+  ],
+  ":kroniismaller:": [
+    "kronii",
+    "promise",
+    "small",
+    "?"
+  ],
+  ":kroniipissbaby:": [
+    "kronii",
+    "promise",
+    "pissbaby",
+    "cry",
+    "sob",
+    "ueh",
+    "uuu"
+  ],
+  ":kroniireddit:": [
+    "kronii",
+    "promise",
+    "reddit",
+    "upvote"
+  ],
+  ":kroniieyeroll2:": [
+    "kronii",
+    "promise",
+    "eyeroll",
+    "gif"
+  ],
+  ":kronii67:": [
+    "kronii",
+    "promise",
+    "67",
+    "gif",
+    "defeated woman"
   ]
 }
