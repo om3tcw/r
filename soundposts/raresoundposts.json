@@ -30,9 +30,14 @@
       },
 
     ".": { 
-      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/mhperiod.ogg",        
+      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/mhperiod.ogg",
       "Chance": 10,
       "isLong": false 
-      }  
+      },
+    ":otomodance:": { 
+      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/otomodanceaudio.ogg",        
+      "Chance": 25,
+      "isLong": false 
+      } 
     
 }
