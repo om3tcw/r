@@ -4446,12 +4446,17 @@ form input#chatline {
 
 .chat-msg-Dago552 .timestamp::before,
 [class~="chat-msg-Dago552" i] .timestamp::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/ikaphat.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/takophat.png");
 }
 
 .chat-msg-Tako225 .timestamp::before,
 [class~="chat-msg-Tako225" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/takophat.png");
+}
+
+.chat-msg-Egao .timestamp::before,
+[class~="chat-msg-Dago552" i] .timestamp::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/ikaphat.png");
 }
 
 .chat-msg-undah_skor .timestamp::before,
