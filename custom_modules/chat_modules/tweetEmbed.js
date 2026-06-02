@@ -1,5 +1,5 @@
 const tweetRegex = /https:\/\/(x|twitter|xcancel).com\/.*?\/status\/(\d+)/;
-const apiUrl = "https://unable-diet-least-attorneys.trycloudflare.com";
+const apiUrl = "https://denpa.uk/tweet";
 
 let tweetInfoCache = {};
 
