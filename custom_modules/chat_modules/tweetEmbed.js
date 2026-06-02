@@ -132,7 +132,7 @@ window.tweetPreview = {
 
     // Auto resize embed based on content
     window.addEventListener("message", (event) => {
-        if (event.origin !== apiUrl) return;
+        if (event.origin !== new URL(apiUrl).origin) return;
 
         try {
             var data = JSON.parse(event.data);
