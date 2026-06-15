@@ -9036,3 +9036,94 @@ body {
     background-repeat: repeat;
     background-attachment: fixed;
 }
+
+
+.chat-msg-keibu .username {
+    font-size: 0;
+}
+
+.chat-msg-keibu .username:after {
+    font-size: 14px;
+    content: 'gaybu: ';
+}
+
+.chat-msg-migoSMUG .username {
+    font-size: 0;
+}
+
+.chat-msg-migoSMUG .username:after {
+    font-size: 14px;
+    content: 'migoGAY: ';
+}
+
+.chat-msg-henmera .username {
+    font-size: 0;
+}
+
+.chat-msg-henmera .username:after {
+    font-size: 14px;
+    content: 'gaymera: ';
+}
+
+.chat-msg-Pepper .username {
+    font-size: 0;
+}
+
+.chat-msg-Pepper .username:after {
+    font-size: 14px;
+    content: 'Pepperbutgay: ';
+}
+
+.chat-msg-jafafafy .username {
+    font-size: 0;
+}
+
+.chat-msg-jafafafy .username:after {
+    font-size: 14px;
+    content: 'jafagagy: ';
+}
+
+.chat-msg-NikkaGaming .username {
+    font-size: 0;
+}
+
+.chat-msg-NikkaGaming .username:after {
+    font-size: 14px;
+    content: 'NikkaGayming: ';
+}
+
+.chat-msg-Mcfin .username {
+    font-size: 0;
+}
+
+.chat-msg-Mcfin .username:after {
+    font-size: 14px;
+    content: 'Mcock: ';
+}
+
+.chat-msg-Tako255 .username {
+    font-size: 0;
+}
+
+.chat-msg-Tako255 .username:after {
+    font-size: 14px;
+    content: 'Fago255: ';
+}
+
+.chat-msg-Kei .username {
+    font-size: 0;
+}
+
+.chat-msg-Kei .username:after {
+    font-size: 14px;
+    content: 'Gay: ';
+}
+
+.chat-msg-Deadbeatchama .username {
+    font-size: 0;
+}
+
+.chat-msg-Deadbeatchama .username:after {
+    font-size: 14px;
+    content: 'Deadbeatoffmenchama: ';
+}
