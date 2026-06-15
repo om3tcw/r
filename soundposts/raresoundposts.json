@@ -38,6 +38,11 @@
       "soundurl": "https://mikobotecdn.win/soundposts/raresounds/otomodanceaudio.ogg",        
       "Chance": 25,
       "isLong": false 
+      },
+        ":pride:": { 
+      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/YMCA.ogg",        
+      "Chance": 80,
+      "isLong": true 
       } 
     
 }
