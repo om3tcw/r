@@ -9101,11 +9101,11 @@ body {
     content: 'Mcock: ';
 }
 
-.chat-msg-Tako255 .username {
+.chat-msg-Tako225 .username {
     font-size: 0;
 }
 
-.chat-msg-Tako255 .username:after {
+.chat-msg-Tako225 .username:after {
     font-size: 14px;
     content: 'Fago255: ';
 }
@@ -9126,4 +9126,28 @@ body {
 .chat-msg-Deadbeatchama .username:after {
     font-size: 14px;
     content: 'Deadbeatoffmenchama: ';
+}
+.chat-msg-etch .username {
+    font-size: 0;
+}
+
+.chat-msg-etch .username:after {
+    font-size: 14px;
+    content: 'sloppytoppych: ';
+}
+.chat-msg-Skeleton .username {
+    font-size: 0;
+}
+
+.chat-msg-Skeleton .username:after {
+    font-size: 14px;
+    content: 'GaySkeleton: ';
+}
+.chat-msg-MofuMofuRisu .username {
+    font-size: 0;
+}
+
+.chat-msg-MofuMofuRisu .username:after {
+    font-size: 14px;
+    content: 'MofuMofuCocku: ';
 }
