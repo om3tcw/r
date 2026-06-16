@@ -9213,3 +9213,10 @@ form input#chatline {
     font-size: 14px;
     content: 'sodomytomo: ';
 }
+.chat-msg-Moruru .username {
+    font-size: 0;
+}
+.chat-msg-Moruru .username:after {
+    font-size: 14px;
+    content: 'Morurugmuncher: ';
+}
