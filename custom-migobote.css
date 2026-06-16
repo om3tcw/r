@@ -9205,3 +9205,11 @@ form input#chatline {
     font-size: 14px;
     content: 'rratbummer: ';
 }
+.chat-msg-sodatomo .username {
+    font-size: 0;
+}
+
+.chat-msg-sodatomo .username:after {
+    font-size: 14px;
+    content: 'sodomytomo: ';
+}
