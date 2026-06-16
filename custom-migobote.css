@@ -9197,3 +9197,11 @@ form input#chatline {
     font-size: 14px;
     content: 'Kusack: ';
 }
+.chat-msg-rratbastard .username {
+    font-size: 0;
+}
+
+.chat-msg-rratbastard .username:after {
+    font-size: 14px;
+    content: 'rratbummer: ';
+}
