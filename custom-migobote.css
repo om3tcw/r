@@ -9027,16 +9027,6 @@ form input#chatline {
 	filter: saturate(1.3) contrast(1.15)
 		drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
 }
-body {
-    cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("https://cracklej.win/Fo5UbLnTfH.jpg");
-    overflow: visible;
-    background-position-x: 00px;
-    background-size: auto 20%;
-    background-repeat: repeat;
-    background-attachment: fixed;
-}
-
 
 .chat-msg-keibu .username {
     font-size: 0;
@@ -9044,7 +9034,7 @@ body {
 
 .chat-msg-keibu .username:after {
     font-size: 14px;
-    content: 'gaybu: ';
+    content: 'Pegbu: ';
 }
 
 .chat-msg-migoSMUG .username {
@@ -9053,7 +9043,7 @@ body {
 
 .chat-msg-migoSMUG .username:after {
     font-size: 14px;
-    content: 'migoGAY: ';
+    content: 'migoSMEG: ';
 }
 
 .chat-msg-henmera .username {
@@ -9062,7 +9052,7 @@ body {
 
 .chat-msg-henmera .username:after {
     font-size: 14px;
-    content: 'gaymera: ';
+    content: 'Hardmenra: ';
 }
 
 .chat-msg-Pepper .username {
@@ -9071,7 +9061,7 @@ body {
 
 .chat-msg-Pepper .username:after {
     font-size: 14px;
-    content: 'Pepperbutgay: ';
+    content: 'Pegger: ';
 }
 
 .chat-msg-jafafafy .username {
@@ -9080,7 +9070,7 @@ body {
 
 .chat-msg-jafafafy .username:after {
     font-size: 14px;
-    content: 'jafagagy: ';
+    content: 'jafaggy: ';
 }
 
 .chat-msg-NikkaGaming .username {
@@ -9098,7 +9088,7 @@ body {
 
 .chat-msg-Mcfin .username:after {
     font-size: 14px;
-    content: 'Mcock: ';
+    content: 'McFellatio: ';
 }
 
 .chat-msg-Tako225 .username {
@@ -9107,7 +9097,7 @@ body {
 
 .chat-msg-Tako225 .username:after {
     font-size: 14px;
-    content: 'Fago255: ';
+    content: 'Gwako255: ';
 }
 
 .chat-msg-Kei .username {
@@ -9141,7 +9131,7 @@ body {
 
 .chat-msg-Skeleton .username:after {
     font-size: 14px;
-    content: 'GaySkeleton: ';
+    content: 'Rimmerton: ';
 }
 .chat-msg-MofuMofuRisu .username {
     font-size: 0;
@@ -9150,4 +9140,28 @@ body {
 .chat-msg-MofuMofuRisu .username:after {
     font-size: 14px;
     content: 'MofuMofuCocku: ';
+}
+.chat-msg-M_ .username {
+    font-size: 0;
+}
+
+.chat-msg-M_ .username:after {
+    font-size: 14px;
+    content: 'F_: ';
+}
+.chat-msg-Egao .username {
+    font-size: 0;
+}
+
+.chat-msg-Egao .username:after {
+    font-size: 14px;
+    content: 'Egay: ';
+}
+.chat-msg-iTako .username {
+    font-size: 0;
+}
+
+.chat-msg-iTako .username:after {
+    font-size: 14px;
+    content: 'iTrans: ';
 }
