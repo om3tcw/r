@@ -9141,13 +9141,13 @@ form input#chatline {
     font-size: 14px;
     content: 'MofuMofuCocku: ';
 }
-.chat-msg-M_ .username {
+.chat-msg-m_ .username {
     font-size: 0;
 }
 
-.chat-msg-M_ .username:after {
+.chat-msg-m_ .username:after {
     font-size: 14px;
-    content: 'F_: ';
+    content: 'f_: ';
 }
 .chat-msg-Egao .username {
     font-size: 0;
@@ -9164,4 +9164,36 @@ form input#chatline {
 .chat-msg-iTako .username:after {
     font-size: 14px;
     content: 'iTrans: ';
+}
+.chat-msg-Namoro .username {
+    font-size: 0;
+}
+
+.chat-msg-Namoro .username:after {
+    font-size: 14px;
+    content: 'Namtrano: ';
+}
+.chat-msg-notSkitzo .username {
+    font-size: 0;
+}
+
+.chat-msg-notSkitzo .username:after {
+    font-size: 14px;
+    content: 'notStraight: ';
+}
+.chat-msg-slowchamp .username {
+    font-size: 0;
+}
+
+.chat-msg-slowchamp .username:after {
+    font-size: 14px;
+    content: 'slowchub: ';
+}
+.chat-msg-Kusa .username {
+    font-size: 0;
+}
+
+.chat-msg-Kusa .username:after {
+    font-size: 14px;
+    content: 'Kusack: ';
 }
