@@ -9017,15 +9017,13 @@ form input#chatline {
 		#ffe119 37.5% 50%,
 		#198a35 50% 62.5%,
 		#08d4c3 62.5% 75%,
-		#4b00a8 75% 87.5%,
+		#7100ff 75% 87.5%,
 		#a900d6 87.5% 100%
 	);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent !important;
-	color: transparent !important;
-	filter: saturate(1.3) contrast(1.15)
-		drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+
 }
 
 .chat-msg-keibu .username {
