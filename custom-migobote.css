@@ -9234,3 +9234,10 @@ form input#chatline {
     font-size: 14px;
     content: 'Bussy: ';
 }
+.chat-msg-Anonchama .username {
+    font-size: 0;
+}
+.chat-msg-Anonchama .username:after {
+    font-size: 14px;
+    content: 'AnalCrackStuffer: ';
+}
