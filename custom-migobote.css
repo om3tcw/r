@@ -9220,3 +9220,17 @@ form input#chatline {
     font-size: 14px;
     content: 'Morurugmuncher: ';
 }
+.chat-msg-recipient .username {
+    font-size: 0;
+}
+.chat-msg-recipient .username:after {
+    font-size: 14px;
+    content: 'recipientofcock: ';
+}
+.chat-msg-Cunny .username {
+    font-size: 0;
+}
+.chat-msg-Cunny .username:after {
+    font-size: 14px;
+    content: 'Bussy: ';
+}
