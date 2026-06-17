@@ -9163,7 +9163,7 @@ form input#chatline {
 
 .chat-msg-iTako .username:after {
     font-size: 14px;
-    content: 'biTako on the TPTP: ';
+    content: 'biTako on TPTP: ';
 }
 .chat-msg-Namoro .username {
     font-size: 0;
