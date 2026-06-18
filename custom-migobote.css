@@ -9239,3 +9239,7 @@ form input#chatline {
     font-size: 14px;
     content: 'AnalCrackStuffer: ';
 }
+.chat-msg-Crackerjack .username:after {
+    font-size: 14px;
+    content: 'Crackernonce: ';
+}
