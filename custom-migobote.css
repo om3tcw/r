@@ -9243,3 +9243,6 @@ form input#chatline {
     font-size: 14px;
     content: 'Crackernonce: ';
 }
+.chat-msg-Crackerjack .username {
+    font-size: 0;
+}
