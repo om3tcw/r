@@ -18,7 +18,10 @@ const TARGET_USER_WORD_REPLACEMENTS = [
 // Anything here will be replaced globally regardless of username.
 // Emotes can be matched by their exact title (e.g. ":uoh:").
 // For emote-only image swaps, use toImage: { from: ":uoh:", toImage: "https://..." }.
-const GLOBAL_WORD_REPLACEMENTS = [];
+const GLOBAL_WORD_REPLACEMENTS = [
+    { from: "soccar", to: "Football" },
+    { from: "soccer", to: "Football" }
+];
 
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
 const fesFun = window.fesFun;
