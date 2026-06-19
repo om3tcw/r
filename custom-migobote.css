@@ -9006,7 +9006,7 @@ form input#chatline {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/blphat.png");
 }
 
-/* Funny shit, comment out or delete to remove */
+/* Funny shit, comment out or delete to remove
 #messagebuffer strong.username {
 	display: inline-block;
 	background: linear-gradient(
@@ -9245,4 +9245,4 @@ form input#chatline {
 }
 .chat-msg-Crackerjack .username {
     font-size: 0;
-}
+} */
