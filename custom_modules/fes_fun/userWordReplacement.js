@@ -20,7 +20,9 @@ const TARGET_USER_WORD_REPLACEMENTS = [
 // For emote-only image swaps, use toImage: { from: ":uoh:", toImage: "https://..." }.
 const GLOBAL_WORD_REPLACEMENTS = [
     { from: "soccar", to: "Football" },
-    { from: "soccer", to: "Football" }
+    { from: "soccer", to: "Football" },
+    { from: "s o c c e r", to: "Football" },
+    { from: "s o c c a r", to: "Football" }
 ];
 
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
