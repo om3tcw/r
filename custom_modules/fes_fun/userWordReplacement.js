@@ -22,7 +22,14 @@ const GLOBAL_WORD_REPLACEMENTS = [
     { from: "soccar", to: "Football" },
     { from: "soccer", to: "Football" },
     { from: "s o c c e r", to: "Football" },
-    { from: "s o c c a r", to: "Football" }
+    { from: "s o c c a r", to: "Football" },
+    { from: "s0ccer", to: "Football" },
+    { from: "s0ccar", to: "Football" },
+    { from: "$occar", to: "Football" },
+    { from: "$occer", to: "Football" },
+    { from: "$0ccar", to: "Football" },
+    { from: "$0ccer", to: "Football" },
+    { from: "𝓈𝑜𝒸𝒸𝑒𝓇", to: "Football" }
 ];
 
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
