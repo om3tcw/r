@@ -2,6 +2,10 @@ const SEARCH_DEBOUNCE_MS = 120;
 const SEARCH_EVENT_GRACE_MS = 50;
 const MAX_TAG_SUGGESTIONS = 8;
 const LOWERCASE_EMOTE_NAME_CACHE = new Map();
+const TAG_CLAUSE_PATTERN = /^(.*?)(?:\s+|^)tags?:\s*(.*)$/i;
+const TAG_CONTEXT_PATTERN = /^(.*?)(\s+|^)(tags?:\s*)(.*)$/i;
+const HASHTAG_PATTERN = /(^|[\s,])#([^,]*)(,?)/g;
+const HASHTAG_CONTEXT_PATTERN = /(^|[\s,])#([^,]*)$/;
 
 let searchDebounceTimer = null;
 let lastSearchInputEventAt = 0;
@@ -40,11 +44,45 @@ function getSearchContainer() {
   );
 }
 
+function normalizeHashtagTerm(term) {
+  return term.replace(/,+$/, "").trim().toLowerCase();
+}
+
+function parseHashtagSearch(query) {
+  const tagTerms = [];
+  const nameQuery = query
+    .replace(HASHTAG_PATTERN, (match, leadingWhitespace, tag) => {
+      const normalizedTag = normalizeHashtagTerm(tag);
+      if (normalizedTag) {
+        tagTerms.push(normalizedTag);
+      }
+
+      return leadingWhitespace === "," ? " " : leadingWhitespace;
+    })
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!tagTerms.length) {
+    return null;
+  }
+
+  return {
+    hasTagClause: true,
+    nameQuery,
+    tagTerms,
+  };
+}
+
 function parseSearchQuery() {
   const query = (getEmoteSearchInput()?.value || "").trim();
-  const tagSplit = query.match(/^(.*?)(?:\s+|^)tags:\s*(.*)$/i);
+  const tagSplit = query.match(TAG_CLAUSE_PATTERN);
 
   if (!tagSplit) {
+    const hashtagSearch = parseHashtagSearch(query);
+    if (hashtagSearch) {
+      return hashtagSearch;
+    }
+
     return {
       hasTagClause: false,
       nameQuery: query,
@@ -66,12 +104,26 @@ function getTagSearchContext() {
   }
 
   const query = searchInput.value || "";
-  const tagSplit = query.match(/^(.*?)(tags:\s*)(.*)$/i);
+  const tagSplit = query.match(TAG_CONTEXT_PATTERN);
   if (!tagSplit) {
-    return null;
+    const hashtagSplit = query.match(HASHTAG_CONTEXT_PATTERN);
+    if (!hashtagSplit) {
+      return null;
+    }
+
+    const hashStartIndex = hashtagSplit.index + hashtagSplit[1].length;
+    const completedSearch = parseHashtagSearch(query.slice(0, hashStartIndex));
+
+    return {
+      completionSuffix: ", ",
+      currentTerm: normalizeHashtagTerm(hashtagSplit[2]),
+      prefix: query.slice(0, hashStartIndex + 1),
+      searchInput,
+      selectedTerms: completedSearch ? completedSearch.tagTerms : [],
+    };
   }
 
-  const tagSection = tagSplit[3];
+  const tagSection = tagSplit[4];
   const lastCommaIndex = tagSection.lastIndexOf(",");
   const completedTagSection =
     lastCommaIndex >= 0 ? tagSection.slice(0, lastCommaIndex + 1) : "";
@@ -79,11 +131,13 @@ function getTagSearchContext() {
     lastCommaIndex >= 0 ? tagSection.slice(lastCommaIndex + 1) : tagSection;
   const leadingWhitespace = rawCurrentTerm.match(/^\s*/)?.[0] || "";
   const currentTerm = rawCurrentTerm.trim().toLowerCase();
-  const selectedTerms = window.EMOTE_TAG_STORE.parseTagInput(completedTagSection);
+  const selectedTerms =
+    window.EMOTE_TAG_STORE.parseTagInput(completedTagSection);
 
   return {
+    completionSuffix: ", ",
     currentTerm,
-    prefix: `${tagSplit[1]}${tagSplit[2]}${completedTagSection}${leadingWhitespace}`,
+    prefix: `${tagSplit[1]}${tagSplit[2]}${tagSplit[3]}${completedTagSection}${leadingWhitespace}`,
     searchInput,
     selectedTerms,
   };
@@ -156,7 +210,7 @@ function applyTagSuggestion(tag) {
     return;
   }
 
-  context.searchInput.value = `${context.prefix}${tag}, `;
+  context.searchInput.value = `${context.prefix}${tag}${context.completionSuffix}`;
   hideTagSuggestions();
   runImmediateRefresh(() => {
     if (typeof EMOTELIST !== "undefined") {
@@ -176,10 +230,7 @@ function updateTagSuggestionSelection() {
   panel
     .querySelectorAll(".emotelist-tag-suggestion")
     .forEach((button, index) => {
-      button.classList.toggle(
-        "is-active",
-        index === activeTagSuggestionIndex,
-      );
+      button.classList.toggle("is-active", index === activeTagSuggestionIndex);
     });
 }
 
@@ -198,7 +249,8 @@ function renderSuggestions() {
   panel.innerHTML = "";
   suggestions.forEach(({ tag, count }, index) => {
     const suggestionButton = document.createElement("button");
-    suggestionButton.className = "emotelist-tag-suggestion btn btn-xs btn-default";
+    suggestionButton.className =
+      "emotelist-tag-suggestion btn btn-xs btn-default";
     suggestionButton.type = "button";
     suggestionButton.dataset.index = String(index);
     suggestionButton.innerHTML = `
@@ -312,7 +364,10 @@ function getLowercaseEmoteName(emote) {
 
 function installSearchDebounce() {
   const searchInput = getEmoteSearchInput();
-  if (!searchInput || searchInput.dataset.emoteSearchDebounceInstalled === "1") {
+  if (
+    !searchInput ||
+    searchInput.dataset.emoteSearchDebounceInstalled === "1"
+  ) {
     return;
   }
 
@@ -364,8 +419,8 @@ function installTagSuggestions() {
       event.stopPropagation();
       return;
     }
-}); 
-  
+  });
+
   searchInput.addEventListener("keydown", (event) => {
     const panel = getTagSuggestionPanel();
     const suggestionsVisible = panel && !panel.hidden;
@@ -402,7 +457,10 @@ function installTagSuggestions() {
   searchInput.addEventListener("blur", () => {
     window.setTimeout(() => {
       const activeElement = document.activeElement;
-      if (!activeElement || !activeElement.closest("#emotelist-tag-suggestions")) {
+      if (
+        !activeElement ||
+        !activeElement.closest("#emotelist-tag-suggestions")
+      ) {
         hideTagSuggestions();
       }
     }, 0);
@@ -418,7 +476,7 @@ function installPlaceholder() {
   }
 
   searchInput.placeholder =
-    'Search by name "emote name" by tag "tags: 1, 2" or both "anya tags: laugh, gif"';
+    'Search by name "emote name" by tag "tags: 1, 2", hashtags "anya #laugh, #gif" or both';
 }
 
 function install() {
