@@ -41,7 +41,12 @@
       },
         ":pride:": { 
       "soundurl": "https://mikobotecdn.win/soundposts/raresounds/YMCA.ogg",        
-      "Chance": 80,
+      "Chance": 50,
+      "isLong": true 
+      },
+        "england": { 
+      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/england.ogg",        
+      "Chance": 25,
       "isLong": true 
       } 
     
