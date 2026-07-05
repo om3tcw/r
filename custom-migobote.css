@@ -1,4 +1,28 @@
 /* Start of Oshi Eyes */
+.chat-msg-iryslover .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/eyes/irys7.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-juniiiii .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://mikobotecdn.win/eyes/mumei7.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.chat-msg-pluto16s .timestamp {
+    color: transparent;
+    background-size: 50px 15px;
+    background-image: url('https://mikobotecdn.win/eyes/gura4.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
 .chat-msg-Brittney .timestamp {
     color: transparent;
     background-size: 50px 15px;
