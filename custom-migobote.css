@@ -1224,6 +1224,14 @@
     src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/papyrus.ttf);
 }
 
+[class^="chat-msg-"] {
+    font-family: Papy2, system-ui;
+}
+@font-face {
+    font-family: Papy2;
+    src: url(https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/itstime.ttf);
+}
+
 .chat-msg-Shifumi .timestamp {
     color: transparent;
     background-size: 50px 15px;
