@@ -52,7 +52,7 @@
         ":islamicrepublicofjapan:": { 
       "soundurl": "https://mikobotecdn.win/soundposts/raresounds/islamicrepublicofjapan.ogg",        
       "Chance": 25,
-      "isLong": true 
+      "isLong": false 
       } 
     
 }
