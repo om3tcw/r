@@ -48,6 +48,11 @@
       "soundurl": "https://mikobotecdn.win/soundposts/raresounds/england.ogg",        
       "Chance": 25,
       "isLong": true 
+      },
+        ":islamicrepublicofjapan:": { 
+      "soundurl": "https://mikobotecdn.win/soundposts/raresounds/islamicrepublicofjapan.ogg",        
+      "Chance": 25,
+      "isLong": true 
       } 
     
 }
