@@ -3213,6 +3213,14 @@ img.channel-emote[title$=":tankbuster:"] {
     z-index: 1;
 }
 
+img.channel-emote[title$=":danburn:"] {
+    left: 350px;
+    z-index: -1;
+    max-height: 340px;
+    bottom: 110px;
+    margin: -112px;
+}
+
 /* might add 'top:5px;' later to do a bottom offset */
 /* End of Emote Animations */
 
