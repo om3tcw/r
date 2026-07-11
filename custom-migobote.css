@@ -3214,9 +3214,9 @@ img.channel-emote[title$=":tankbuster:"] {
 }
 
 img.channel-emote[title$=":danburn:"] {
-    left: 350px;
+    left: 250px;
     z-index: -1;
-    max-height: 340px;
+    max-height: 590px;
     bottom: 110px;
     margin: -112px;
 }
