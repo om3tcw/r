@@ -19,17 +19,7 @@ const TARGET_USER_WORD_REPLACEMENTS = [
 // Emotes can be matched by their exact title (e.g. ":uoh:").
 // For emote-only image swaps, use toImage: { from: ":uoh:", toImage: "https://..." }.
 const GLOBAL_WORD_REPLACEMENTS = [
-    { from: "football", to: "headball" },
-    { from: "futball", to: "headball" },
-    { from: "f o o t b a l l", to: "headball" },
-    { from: "f  o  o  t  b  a  l  l", to: "headball" },
-    { from: "f00tball", to: "headball" },
-    { from: "f0otball", to: "headball" },
-    { from: "fo0tball", to: "headball" },
-    { from: "footb&ll", to: "headball" },
-    { from: "soccer", to: "headball" },
-    { from: "footy", to: "heady" },
-    { from: "footie", to: "headie" }
+
 ];
 
 const MESSAGE_BUFFER_SELECTOR = "#messagebuffer";
