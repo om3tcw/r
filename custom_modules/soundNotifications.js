@@ -21,7 +21,7 @@ const NOTIFICATION_DEFAULT_CHOICE_IDS = Object.freeze({
 });
 const NOTIFICATION_BASE_CHOICES = Object.freeze({
   newPoll:
-    "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/ogeyrrat.ogg",
+    "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/poll.mp3",
   privateMessage:
     "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/sharkmail.ogg",
   yourVideoPlays:
