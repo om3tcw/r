@@ -19,6 +19,7 @@ const NOTIFICATION_DEFAULT_CHOICE_IDS = Object.freeze({
   Priv: "privateMessage",
   Video: "yourVideoPlays",
 });
+// lemme test something
 const NOTIFICATION_BASE_CHOICES = Object.freeze({
   newPoll:
     "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/ogeyrrat.ogg",
