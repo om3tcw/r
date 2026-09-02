@@ -417,5 +417,5 @@
     ":havesex:": {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/havesex.ogg"},
     ":ninomissing:": {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/ninomissing.ogg"},
     ":timSPACE:": {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/timSPACE.ogg"},
-    "Namoro:": {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/namoro.ogg"}
+    "Namoro": {"soundurl": "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/namoro.ogg"}
 }
