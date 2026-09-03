@@ -348,13 +348,35 @@ export const holoPeekObjects = [
     optionFunc: (self) => {
       (async () => {
         await window.waitForFunc("tweetPreview");
+        // Wait for the previewVideoTitle option to be initialized
+        while (!window.tweetPreview.autoHideCheck) {
+            await new Promise((resolve) => setTimeout(resolve, 5));
+        }
         window.tweetPreview.toggle(true);
+        $("#tweetEmbedAutoHide")[0].disabled = false;
       })();
     },
     cleanupFunc: (self) => {
       (async () => {
         await window.waitForFunc("tweetPreview");
         window.tweetPreview.toggle(false);
+        $("#tweetEmbedAutoHide")[0].disabled = true;
+      })();
+    },
+  },
+  {
+    optionName: "tweetEmbedAutoHide",
+    optionDescription: "Hide Tweet Embed by default",
+    optionFunc: (self) => {
+      (async () => {
+        await window.waitForFunc("tweetPreview");
+        window.tweetPreview.toggleAutoHide(true);
+      })();
+    },
+    cleanupFunc: (self) => {
+      (async () => {
+        await window.waitForFunc("tweetPreview");
+        window.tweetPreview.toggleAutoHide(false);
       })();
     },
   },

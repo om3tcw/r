@@ -2,6 +2,7 @@ const tweetRegex = /https:\/\/(x|twitter|xcancel).com\/.*?\/status\/(\d+)/;
 const apiUrl = "https://denpa.uk/tweet";
 
 let tweetInfoCache = {};
+let autoHide = false;
 
 function createStyle() {
     let css = `
@@ -54,9 +55,16 @@ function addPreviewIframe(linkElement) {
     previewDiv.appendChild(iframe);
 
     let toggleButton = document.createElement("span");
-    toggleButton.innerText = `Remove`;
+    toggleButton.classList.add("tweet-button-toggle", "tweet-inline-shit");
     toggleButton.role = "button";
-    toggleButton.classList.add("tweet-button-toggle");
+
+    if (autoHide) {
+        iframe.style.display = "none";
+        toggleButton.innerText = "Embed";
+    } else {
+        toggleButton.innerText = `Remove`;
+    }
+
     toggleButton.addEventListener("click", ({target}) => {
         if (target.innerText == "Remove") {
             iframe.style.display = "none";
@@ -67,7 +75,6 @@ function addPreviewIframe(linkElement) {
             target.innerText = "Remove";
         }
     });
-    toggleButton.classList.add("tweet-inline-shit");
 
     let lspan = document.createElement("span");
     let rspan = document.createElement("span");
@@ -124,7 +131,12 @@ window.tweetPreview = {
                 }
             });
         }
-    }
+    },
+    toggleAutoHide : function(on) {
+        autoHide = on;
+        window.tweetPreview.autoHideCheck = true;
+    },
+    autoHideCheck : false
 };
 
 (async () => {
