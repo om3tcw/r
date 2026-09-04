@@ -348,10 +348,10 @@ export const holoPeekObjects = [
     optionFunc: (self) => {
       (async () => {
         await window.waitForFunc("tweetPreview");
-        // Wait for the previewVideoTitle option to be initialized
-        while (!window.tweetPreview.autoHideCheck) {
-            await new Promise((resolve) => setTimeout(resolve, 5));
-        }
+
+        let autoHide = localStorage.getItem("tweetEmbedAutoHide");
+        window.tweetPreview.toggleAutoHide(autoHide == "1");
+
         window.tweetPreview.toggle(true);
         $("#tweetEmbedAutoHide")[0].disabled = false;
       })();

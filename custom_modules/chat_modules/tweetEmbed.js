@@ -134,9 +134,7 @@ window.tweetPreview = {
     },
     toggleAutoHide : function(on) {
         autoHide = on;
-        window.tweetPreview.autoHideCheck = true;
-    },
-    autoHideCheck : false
+    }
 };
 
 (async () => {
