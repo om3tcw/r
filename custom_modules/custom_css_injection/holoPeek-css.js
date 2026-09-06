@@ -28,7 +28,7 @@
             animation: peek-out ease-in 0.2s both;
         }
 
-        #holopeek:hover > #holopeek_img {
+        #holopeek:hover > #holopeek_img, #holopeek:focus-within > #holopeek_img {
             animation: peek-in ease-out 0.2s both;
         }
 
