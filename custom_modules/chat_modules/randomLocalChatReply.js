@@ -1,7 +1,7 @@
-const RANDOM_CHAT_REPLY_CHANCE = 1 / 500;
+const RANDOM_CHAT_REPLY_CHANCE = 1 / 5000;
 
 const RANDOM_CHAT_REPLY_MESSAGE =
-    "This ClaudeChatCompanion is at 95% token usage limit, please add more funds to prevent loss of service.";
+    "I've been keeping something from you guys, I feel comfortable enough to reveal it now.";
 
 const RANDOM_CHAT_REPLY_DELAY = 250;
 const PATCH_KEY = "__randomLocalChatReplyPatch";
