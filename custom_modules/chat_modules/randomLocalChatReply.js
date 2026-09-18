@@ -1,5 +1,5 @@
-const RANDOM_CHAT_REPLY_CHANCE = 1 / 5;
-const RANDOM_CHAT_REPLY_MESSAGE = "test message";
+const RANDOM_CHAT_REPLY_CHANCE = 1 / 500;
+const RANDOM_CHAT_REPLY_MESSAGE = "This ClaudeChatCompanion is at 95% token usage limit, please add more funds to prevent loss of service.";
 const PATCH_KEY = "__randomLocalChatReplyPatch";
 
 function installRandomLocalChatReply() {
