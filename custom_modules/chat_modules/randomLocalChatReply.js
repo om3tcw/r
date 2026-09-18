@@ -1,4 +1,4 @@
-const RANDOM_CHAT_REPLY_CHANCE = 1 / 200;
+const RANDOM_CHAT_REPLY_CHANCE = 1 / 500;
 
 const RANDOM_CHAT_REPLY_MESSAGE =
     "This ClaudeChatCompanion is at 95% token usage limit, please add more funds to prevent loss of service.";
