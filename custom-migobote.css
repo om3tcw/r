@@ -3359,6 +3359,16 @@ img.channel-emote[title$=":tankbuster:"] {
     content: 'kirkbu: ';
 }
 
+.chat-msg-McFin .username {
+    font-size: 0;
+}
+
+.chat-msg-McFin .username:after {
+    font-size: 14px;
+    content: 'McFoid: ';
+    color: #FF46A2 !important;
+}
+
 /* end of username edits */
 
 
@@ -4542,4 +4552,6 @@ form input#chatline {
 [class~="chat-msg-jafafafy" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/blphat.png");
 }
+
+
 
