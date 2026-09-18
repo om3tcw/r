@@ -1,8 +1,91 @@
 export const MOTD_NAVBAR_TOGGLE_ID = "navbar-motd-toggle";
 export const MOTD_TAB_SELECTOR = "[data-motd-tab]";
+export const MOTD_TIME_SELECTOR = "[data-hlgg-motd-time]";
 
 const MOTD_EVENT_NAMESPACE = ".hlggMotd";
 const DEFAULT_MOTD_LOGO_URL = "https://mikobotecdn.win/emotes/garchomp.png";
+
+function isValidTimeZone(timeZone) {
+  if (!timeZone || timeZone === "auto") {
+    return false;
+  }
+
+  try {
+    new Intl.DateTimeFormat("en-GB", { timeZone }).format();
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+export function resolveMotdTimeZone(overrideTimeZone, browserTimeZone) {
+  if (isValidTimeZone(overrideTimeZone)) {
+    return overrideTimeZone;
+  }
+
+  if (isValidTimeZone(browserTimeZone)) {
+    return browserTimeZone;
+  }
+
+  return "UTC";
+}
+
+export function formatMotdTimestamp(unixSeconds, timeZone) {
+  if (unixSeconds === "" || unixSeconds === null || unixSeconds === undefined) {
+    return "";
+  }
+
+  const numericSeconds = Number(unixSeconds);
+  if (!Number.isFinite(numericSeconds)) {
+    return "";
+  }
+
+  const date = new Date(numericSeconds * 1000);
+  if (Number.isNaN(date.getTime())) {
+    return "";
+  }
+
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: resolveMotdTimeZone(timeZone, "UTC"),
+    day: "2-digit",
+    month: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(date);
+  const values = Object.fromEntries(
+    parts.map((part) => [part.type, part.value]),
+  );
+  return `${values.day}/${values.month} ${values.hour}:${values.minute}`;
+}
+
+function getMotdTimeZone() {
+  let browserTimeZone = "";
+  try {
+    browserTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+  } catch (error) {}
+
+  return resolveMotdTimeZone(window.MOTD_TIME_ZONE, browserTimeZone);
+}
+
+function renderMotdTimes(rootElement) {
+  if (!rootElement || typeof rootElement.querySelectorAll !== "function") {
+    return;
+  }
+
+  const timeZone = getMotdTimeZone();
+  rootElement.querySelectorAll(MOTD_TIME_SELECTOR).forEach((element) => {
+    const renderedTime = formatMotdTimestamp(
+      element.getAttribute("data-hlgg-motd-time"),
+      timeZone,
+    );
+
+    if (renderedTime) {
+      element.textContent = renderedTime;
+      element.setAttribute("title", timeZone);
+    }
+  });
+}
 
 export function createMotdStorageKey(channelName) {
   return `${channelName || "cytube"}_motd_active_tab`;
@@ -139,7 +222,8 @@ function selectMotdTab($shell, tabs, tabId, storageKey) {
     $button.attr("tabindex", isActive ? "0" : "-1");
   });
 
-  $shell.find("#hlgg-motd-panel").html(selectedTab.html);
+  const $panel = $shell.find("#hlgg-motd-panel").html(selectedTab.html);
+  renderMotdTimes($panel[0]);
   storeActiveTab(storageKey, selectedTab.id);
 }
 
@@ -191,10 +275,14 @@ function buildMotdShell(tabs, storageKey) {
     role: "tabpanel",
   }).appendTo($main);
 
-  $shell.on(`click${MOTD_EVENT_NAMESPACE}`, ".hlgg-motd-tab", function onTabClick(event) {
-    event.preventDefault();
-    selectMotdTab($shell, tabs, $(this).attr("data-motd-tab-id"), storageKey);
-  });
+  $shell.on(
+    `click${MOTD_EVENT_NAMESPACE}`,
+    ".hlgg-motd-tab",
+    function onTabClick(event) {
+      event.preventDefault();
+      selectMotdTab($shell, tabs, $(this).attr("data-motd-tab-id"), storageKey);
+    },
+  );
 
   selectMotdTab($shell, tabs, activeTabId, storageKey);
 
@@ -231,11 +319,15 @@ function ensureMotdNavbarToggle() {
     $("<li>").append($toggle).appendTo($navbarList);
   }
 
-  $toggle.off(MOTD_EVENT_NAMESPACE).on(`click${MOTD_EVENT_NAMESPACE}`, function onToggleClick(event) {
-    event.preventDefault();
-    const shouldShow = !($("#motdwrap").is(":visible") && $("#motd").is(":visible"));
-    setMotdVisible(shouldShow);
-  });
+  $toggle
+    .off(MOTD_EVENT_NAMESPACE)
+    .on(`click${MOTD_EVENT_NAMESPACE}`, function onToggleClick(event) {
+      event.preventDefault();
+      const shouldShow = !(
+        $("#motdwrap").is(":visible") && $("#motd").is(":visible")
+      );
+      setMotdVisible(shouldShow);
+    });
 }
 
 function bindMotdCloseButton() {
@@ -243,11 +335,13 @@ function bindMotdCloseButton() {
   const $closeButton = $motdWrap.find("#togglemotd");
 
   $motdWrap.off("click");
-  $closeButton.off("click").on(`click${MOTD_EVENT_NAMESPACE}`, function onCloseClick(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    setMotdVisible(false);
-  });
+  $closeButton
+    .off("click")
+    .on(`click${MOTD_EVENT_NAMESPACE}`, function onCloseClick(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      setMotdVisible(false);
+    });
 }
 
 function getRawMotdHtml($motd) {
@@ -285,7 +379,12 @@ function renderCurrentMotd() {
     return;
   }
 
-  $motd.append(buildMotdShell(tabs, createMotdStorageKey(window.CHANNEL && window.CHANNEL.name)));
+  $motd.append(
+    buildMotdShell(
+      tabs,
+      createMotdStorageKey(window.CHANNEL && window.CHANNEL.name),
+    ),
+  );
   setMotdVisible(true);
 }
 
@@ -317,6 +416,11 @@ function initializeMotdModule() {
     bindMotdCloseButton();
     wrapSetMotdCallback();
     renderCurrentMotd();
+    $(window)
+      .off(`motdTimeZoneChange${MOTD_EVENT_NAMESPACE}`)
+      .on(`motdTimeZoneChange${MOTD_EVENT_NAMESPACE}`, () => {
+        renderMotdTimes(document.getElementById("hlgg-motd-panel"));
+      });
   });
 }
 
