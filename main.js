@@ -76,12 +76,13 @@ const ModulePaths = [
   { EmoteTagStore: `ui_modules/emoteTagStore.js` },
   { EmoteTagSearchUI: `ui_modules/emoteTagSearchUI.js` },
   { EmotelistEnhancement: `ui_modules/emotelistEnhancements.js` },
+  { RandomLocalChatReply: `chat_modules/randomLocalChatReply.js` },
 ];
 
 //candidate to move to util.js
 //change ?ver=n to automatically push changes.
 function makeLiveCDNLink(fileName) {
-  return CURRENT_CDN + "/" + fileName + "?ver=1-14-13";
+  return CURRENT_CDN + "/" + fileName + "?ver=1-14-14";
 }
 
 //candidate to move to util.js
