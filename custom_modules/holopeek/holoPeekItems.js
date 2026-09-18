@@ -1,3 +1,5 @@
+import { formatTimeZoneOptionLabel } from "../utils/timeZoneLabel.js";
+
 function chatToVideoRatio(self) {
   self.cssData = `#videowrap { width: ${100 - self.value}%}
         #videowrap-header { display: none; }
@@ -167,6 +169,54 @@ let polkaPeek = makeLiveCDNLink("custom_modules/holopeek/polkapeek.png");
 const NND_MODE_ID = "nndMode";
 const NND_EMOTES_ONLY_ID = "nndEmotesOnly";
 const TIME_TOKEN_FORMAT_PREFERENCE_ID = "timeTokenFormatPreference";
+const MOTD_TIME_ZONE_PREFERENCE_ID = "motdTimeZone";
+
+function getMotdTimeZoneOptions() {
+  let detectedTimeZone = "UTC";
+  try {
+    detectedTimeZone =
+      Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  } catch (error) {}
+
+  let supportedTimeZones = [];
+  try {
+    supportedTimeZones = Intl.supportedValuesOf("timeZone");
+  } catch (error) {
+    supportedTimeZones = [
+      "UTC",
+      "Europe/London",
+      "America/New_York",
+      "America/Los_Angeles",
+      "Asia/Tokyo",
+      "Australia/Sydney",
+    ];
+  }
+
+  const selectableTimeZones = [
+    "UTC",
+    ...supportedTimeZones.filter((timeZone) => timeZone !== "UTC"),
+  ];
+
+  return [
+    {
+      value: "auto",
+      label: `Automatic (${formatTimeZoneOptionLabel(detectedTimeZone)})`,
+    },
+    ...selectableTimeZones.map((timeZone) => ({
+      value: timeZone,
+      label: formatTimeZoneOptionLabel(timeZone),
+    })),
+  ];
+}
+
+function applyMotdTimeZonePreference(self) {
+  window.MOTD_TIME_ZONE = self.value === "auto" ? "" : self.value;
+  window.dispatchEvent(
+    new CustomEvent("motdTimeZoneChange", {
+      detail: { value: window.MOTD_TIME_ZONE },
+    }),
+  );
+}
 
 function applyTimeTokenFormatPreference(self) {
   window.TIME_TOKEN_FORMAT_PREFERENCE = self.value;
@@ -200,6 +250,16 @@ function disableHoloPeekOption(optionId) {
 }
 
 export const holoPeekObjects = [
+  {
+    optionName: MOTD_TIME_ZONE_PREFERENCE_ID,
+    optionDescription: "MOTD Timezone",
+    group: "Chat",
+    type: "dropdown",
+    alwaysEnabled: true,
+    defaultValue: "auto",
+    options: getMotdTimeZoneOptions(),
+    optionFunc: applyMotdTimeZonePreference,
+  },
   {
     optionName: TIME_TOKEN_FORMAT_PREFERENCE_ID,
     optionDescription: "@time Format",
