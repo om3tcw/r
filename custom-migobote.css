@@ -1527,7 +1527,7 @@
 .chat-msg-McFin .timestamp {
     color: transparent;
     background-size: 50px 15px;
-    background-image: url('https://mikobotecdn.win/eyes/removethisbitforhisoldeyes-fbk2.png');
+    background-image: url('https://mikobotecdn.win/eyes/fbk2.png');
     background-position: center;
     background-repeat: no-repeat
 }
@@ -3367,16 +3367,6 @@ img.channel-emote[title$=":tankbuster:"] {
     content: 'kirkbu: ';
 }
 
-.chat-msg-McFin .username {
-    font-size: 0;
-}
-
-.chat-msg-McFin .username:after {
-    font-size: 14px;
-    content: 'McFoid: ';
-    color: #FF69B4 !important;
-}
-
 /* end of username edits */
 
 
@@ -4559,23 +4549,6 @@ form input#chatline {
 .chat-msg-jafafafy .timestamp::before,
 [class~="chat-msg-jafafafy" i] .timestamp::before {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/blphat.png");
-}
-
-/* FUCK YOU MCFIN */
-#messagebuffer .chat-msg-McFin strong.username {
-  display: inline-block;
-  background: linear-gradient(
-    to right,
-    #5bcefa 0% 20%,
-    #f5a9b8 20% 40%,
-    #ffffff 40% 60%,
-    #f5a9b8 60% 80%,
-    #5bcefa 80% 100%
-  ) !important;
-  background-clip: text !important;
-  -webkit-background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
 }
 
 
