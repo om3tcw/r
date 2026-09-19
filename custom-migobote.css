@@ -1527,7 +1527,7 @@
 .chat-msg-McFin .timestamp {
     color: transparent;
     background-size: 50px 15px;
-    background-image: url('https://mikobotecdn.win/eyes/fbk2.png');
+    background-image: url('https://mikobotecdn.win/eyes/removethisbitforhisoldeyes-fbk2.png');
     background-position: center;
     background-repeat: no-repeat
 }
@@ -4561,5 +4561,21 @@ form input#chatline {
   background-image: url("https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/blphat.png");
 }
 
+/* FUCK YOU MCFIN */
+#messagebuffer .chat-msg-McFin strong.username {
+  display: inline-block;
+  background: linear-gradient(
+    to right,
+    #5bcefa 0% 20%,
+    #f5a9b8 20% 40%,
+    #ffffff 40% 60%,
+    #f5a9b8 60% 80%,
+    #5bcefa 80% 100%
+  ) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
 
 
