@@ -10,25 +10,37 @@
   let delayTimer = null;
   let emotesOnlyMode = false;
   let nndEnabled = false;
+  let playerOnlyMode = false;
 
   const CONFIG = {
-    maxMessages: 15,         // Max messages on screen at once
-    maxQueueSize: 500,       // Hard limit on queued messages
-    delayWhenFull: 1500,	 // Delay in ms when full (1500 = 1.5 seconds)
-    minDuration: 4,			 // Fastest scroll time (seconds)
-    maxDuration: 9,			 // Slowest scroll time (seconds)
-    fontSize: '2.6rem',		 // Text size
-    emojiHeight: '2.8em',	 // Emote size
-    colors: ['#FFFFFF','#FFFF00','#FF00FF','#00FFFF','#FF8000','#00FF00','#FF0080','#0088FF','#FF1493','#7FFF00']
+    maxMessages: 15, // Max messages on screen at once
+    maxQueueSize: 500, // Hard limit on queued messages
+    delayWhenFull: 1500, // Delay in ms when full (1500 = 1.5 seconds)
+    minDuration: 4, // Fastest scroll time (seconds)
+    maxDuration: 9, // Slowest scroll time (seconds)
+    fontSize: "2.6rem", // Text size
+    emojiHeight: "2.8em", // Emote size
+    colors: [
+      "#FFFFFF",
+      "#FFFF00",
+      "#FF00FF",
+      "#00FFFF",
+      "#FF8000",
+      "#00FF00",
+      "#FF0080",
+      "#0088FF",
+      "#FF1493",
+      "#7FFF00",
+    ],
   };
 
   function init() {
     if (container) return;
-    style = document.createElement('style');
+    style = document.createElement("style");
     style.textContent = `
       .nnd-container{position:fixed;inset:0;pointer-events:none;z-index:9998;overflow:hidden;display:none}
       .nnd-msg{
-        position:absolute;white-space:nowrap;font-weight:bold;
+        position:absolute;left:100%;white-space:nowrap;font-weight:bold;
         font-size:${CONFIG.fontSize};line-height:1.1;
         text-shadow:none;background:transparent!important;padding:0!important;
         animation:nnd-scroll linear forwards;will-change:transform
@@ -37,28 +49,50 @@
         height:${CONFIG.emojiHeight}!important;width:auto!important;
         vertical-align:middle;image-rendering:pixelated;margin:0 3px;display:inline-block
       }
-      @keyframes nnd-scroll{from{transform:translateX(110vw)}to{transform:translateX(-100%)}}
+      @keyframes nnd-scroll{from{left:100%;transform:translateX(0)}to{left:0;transform:translateX(-100%)}}
     `;
     document.head.appendChild(style);
-    container = document.createElement('div');
-    container.className = 'nnd-container';
+    container = document.createElement("div");
+    container.className = "nnd-container";
     document.body.appendChild(container);
+    applyOverlayScope();
+  }
+
+  function applyOverlayScope(clearMessages = false) {
+    if (!container) return false;
+    const target = playerOnlyMode
+      ? document.querySelector("#videowrap .embed-responsive")
+      : document.body;
+    if (!target) {
+      container.style.display = "none";
+      return false;
+    }
+    const position = playerOnlyMode ? "absolute" : "fixed";
+    const scopeChanged =
+      container.parentNode !== target || container.style.position !== position;
+    if (clearMessages && scopeChanged) {
+      container.innerHTML = "";
+      activeMessages = 0;
+    }
+    target.appendChild(container);
+    container.style.position = position;
+    container.style.display = nndEnabled ? "block" : "none";
+    return true;
   }
 
   function spawnMessage(html) {
-    const el = document.createElement('div');
-    el.className = 'nnd-msg';
-    const temp = document.createElement('div');
+    const el = document.createElement("div");
+    el.className = "nnd-msg";
+    const temp = document.createElement("div");
     temp.innerHTML = html;
 
-    temp.querySelectorAll('.username').forEach(u => u.remove());
+    temp.querySelectorAll(".username").forEach((u) => u.remove());
 
-    
     if (temp.firstChild && temp.firstChild.nodeType === Node.TEXT_NODE) {
       let text = temp.firstChild.textContent;
       const trimmed = text.trim();
-      if (trimmed.startsWith('/')) {
-        const spaceIdx = text.indexOf(' ');
+      if (trimmed.startsWith("/")) {
+        const spaceIdx = text.indexOf(" ");
         if (spaceIdx !== -1) {
           temp.firstChild.textContent = text.substring(spaceIdx + 1);
         } else {
@@ -67,21 +101,28 @@
       }
     }
 
-    while (temp.firstChild && temp.firstChild.nodeType === Node.TEXT_NODE && temp.firstChild.textContent.trim() === '') {
+    while (
+      temp.firstChild &&
+      temp.firstChild.nodeType === Node.TEXT_NODE &&
+      temp.firstChild.textContent.trim() === ""
+    ) {
       temp.removeChild(temp.firstChild);
     }
 
-    temp.querySelectorAll('a').forEach(a => a.remove());
+    temp.querySelectorAll("a").forEach((a) => a.remove());
 
     if (emotesOnlyMode) {
-      const emoteNodes = temp.querySelectorAll('.channel-emote[title]');
-      temp.innerHTML = '';
+      const emoteNodes = temp.querySelectorAll(".channel-emote[title]");
+      temp.innerHTML = "";
       emoteNodes.forEach((node, index) => {
-        const emote = node.tagName === 'IMG' ? node.cloneNode(true) : node.querySelector('img')?.cloneNode(true);
+        const emote =
+          node.tagName === "IMG"
+            ? node.cloneNode(true)
+            : node.querySelector("img")?.cloneNode(true);
         if (!emote) return;
         temp.appendChild(emote);
         if (index < emoteNodes.length - 1) {
-          temp.appendChild(document.createTextNode(' '));
+          temp.appendChild(document.createTextNode(" "));
         }
       });
     }
@@ -90,27 +131,35 @@
     if (!finalHTML) return;
 
     el.innerHTML = finalHTML;
-    el.style.top = Math.random() * 90 + 5 + 'vh';
-    const duration = Math.random() * (CONFIG.maxDuration - CONFIG.minDuration) + CONFIG.minDuration;
-    el.style.animationDuration = duration + 's';
-    el.style.color = CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
+    el.style.top = Math.random() * 90 + 5 + "%";
+    const duration =
+      Math.random() * (CONFIG.maxDuration - CONFIG.minDuration) +
+      CONFIG.minDuration;
+    el.style.animationDuration = duration + "s";
+    el.style.color =
+      CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
 
     container.appendChild(el);
     activeMessages++;
 
-    el.addEventListener('animationend', () => {
-      el.remove();
-      activeMessages--;
-      processQueue();
-    }, { once: true });
+    el.addEventListener(
+      "animationend",
+      () => {
+        el.remove();
+        activeMessages--;
+        processQueue();
+      },
+      { once: true },
+    );
   }
 
   function processQueue() {
     if (queue.length === 0) return;
 
-    
     if (queue.length > CONFIG.maxQueueSize) {
-      console.warn(`NND queue capped at ${CONFIG.maxQueueSize}. Dropping ${queue.length - CONFIG.maxQueueSize} excess messages.`);
+      console.warn(
+        `NND queue capped at ${CONFIG.maxQueueSize}. Dropping ${queue.length - CONFIG.maxQueueSize} excess messages.`,
+      );
       queue = queue.slice(-CONFIG.maxQueueSize);
     }
 
@@ -128,11 +177,11 @@
   }
 
   function shouldHideMessage(html) {
-    const temp = document.createElement('div');
+    const temp = document.createElement("div");
     temp.innerHTML = html;
-    if (temp.querySelector('.spoiler')) return true;
-    const text = (temp.textContent || '').toLowerCase();
-    if (text.includes('[sp]') && text.includes('[/sp]')) return true;
+    if (temp.querySelector(".spoiler")) return true;
+    const text = (temp.textContent || "").toLowerCase();
+    if (text.includes("[sp]") && text.includes("[/sp]")) return true;
     return false;
   }
 
@@ -140,7 +189,6 @@
     init();
     if (shouldHideMessage(html)) return;
 
-    
     if (queue.length >= CONFIG.maxQueueSize) {
       queue.shift();
     }
@@ -152,20 +200,23 @@
   function enable() {
     if (listener) return;
     init();
-    container.style.display = 'block';
     nndEnabled = true;
-    listener = d => {
-      if (d.msg.startsWith('/me ') || d.username === '[server]') return;
-      if (d.meta && d.meta.addClass === 'spoiler') return;
+    applyOverlayScope();
+    listener = (d) => {
+      if (d.msg.startsWith("/me ") || d.username === "[server]") return;
+      if (d.meta && d.meta.addClass === "spoiler") return;
       createMessage(d.msg);
     };
-    socket.on('chatMsg', listener);
+    socket.on("chatMsg", listener);
   }
 
   function disable() {
-    if (container) container.style.display = 'none';
-    if (listener) { socket.off('chatMsg', listener); listener = null; }
-    if (container) container.innerHTML = '';
+    if (container) container.style.display = "none";
+    if (listener) {
+      socket.off("chatMsg", listener);
+      listener = null;
+    }
+    if (container) container.innerHTML = "";
     queue = [];
     activeMessages = 0;
     nndEnabled = false;
@@ -173,14 +224,14 @@
     if (delayTimer) clearTimeout(delayTimer);
   }
 
-  window.toggleNNDMode = on => {
+  window.toggleNNDMode = (on) => {
     if (on) {
       enable();
       return;
     }
     disable();
   };
-  window.setNNDEmotesOnlyMode = on => {
+  window.setNNDEmotesOnlyMode = (on) => {
     emotesOnlyMode = Boolean(on);
     if (emotesOnlyMode && !nndEnabled) {
       enable();
@@ -188,5 +239,12 @@
     if (!emotesOnlyMode && !nndEnabled) {
       return;
     }
+  };
+  window.setNNDPlayerOnlyMode = (on) => {
+    const nextPlayerOnlyMode = Boolean(on);
+    const scopeChanged = nextPlayerOnlyMode !== playerOnlyMode;
+    playerOnlyMode = nextPlayerOnlyMode;
+    init();
+    applyOverlayScope(scopeChanged);
   };
 })();
