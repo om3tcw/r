@@ -168,6 +168,7 @@ let polkaPeek = makeLiveCDNLink("custom_modules/holopeek/polkapeek.png");
 
 const NND_MODE_ID = "nndMode";
 const NND_EMOTES_ONLY_ID = "nndEmotesOnly";
+const NND_PLAYER_ONLY_ID = "nndPlayerOnly";
 const TIME_TOKEN_FORMAT_PREFERENCE_ID = "timeTokenFormatPreference";
 const MOTD_TIME_ZONE_PREFERENCE_ID = "motdTimeZone";
 
@@ -322,6 +323,26 @@ export const holoPeekObjects = [
         await window.waitForFunc("setNNDEmotesOnlyMode");
         window.setNNDEmotesOnlyMode(false);
         window.toggleNNDMode(false);
+      })();
+    },
+  },
+  {
+    optionName: NND_PLAYER_ONLY_ID,
+    optionDescription: "NND Player Only",
+    group: "Fun Modules",
+    optionFunc: (self) => {
+      const enabled = self.checkbox.prop("checked");
+      localStorage.setItem(NND_PLAYER_ONLY_ID, enabled);
+      (async () => {
+        await window.waitForFunc("setNNDPlayerOnlyMode");
+        window.setNNDPlayerOnlyMode(enabled);
+      })();
+    },
+    cleanupFunc: () => {
+      localStorage.removeItem(NND_PLAYER_ONLY_ID);
+      (async () => {
+        await window.waitForFunc("setNNDPlayerOnlyMode");
+        window.setNNDPlayerOnlyMode(false);
       })();
     },
   },
