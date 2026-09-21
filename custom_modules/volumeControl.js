@@ -1,4 +1,5 @@
-export const VOLUME_CONTROL_DEFAULT_VOLUME = 0.1;
+export const VOLUME_CONTROL_MAX_VOLUME = 0.1;
+export const VOLUME_CONTROL_DEFAULT_VOLUME = VOLUME_CONTROL_MAX_VOLUME;
 
 const VOLUME_CONTROL_GROUP_NAME = "Volume Controls";
 const VOLUME_CONTROL_PANEL_ID = "volume-control-panel";
@@ -33,10 +34,27 @@ export function clampVolumeControlValue(
 ) {
   const numericValue = Number(value);
   if (!Number.isFinite(numericValue)) {
-    return Math.min(Math.max(Number(fallbackValue) || 0, 0), 1);
+    return Math.min(
+      Math.max(Number(fallbackValue) || 0, 0),
+      VOLUME_CONTROL_MAX_VOLUME,
+    );
   }
 
-  return Math.min(Math.max(numericValue, 0), 1);
+  return Math.min(Math.max(numericValue, 0), VOLUME_CONTROL_MAX_VOLUME);
+}
+
+export function volumeToDisplayPercent(volume) {
+  return Math.round(
+    (clampVolumeControlValue(volume) / VOLUME_CONTROL_MAX_VOLUME) * 100,
+  );
+}
+
+export function displayPercentToVolume(percent) {
+  const numericPercent = Number(percent);
+  const clampedPercent = Number.isFinite(numericPercent)
+    ? Math.min(Math.max(numericPercent, 0), 100)
+    : 100;
+  return clampedPercent / (100 / VOLUME_CONTROL_MAX_VOLUME);
 }
 
 function readStoredValue(storage, key) {
@@ -119,7 +137,9 @@ function normalizeDefinition(definition) {
   return {
     id,
     label: String(definition.label || id),
-    order: Number.isFinite(Number(definition.order)) ? Number(definition.order) : 0,
+    order: Number.isFinite(Number(definition.order))
+      ? Number(definition.order)
+      : 0,
     choices,
     defaultChoiceId,
     defaultVolume: clampVolumeControlValue(
@@ -231,7 +251,10 @@ export function createVolumeControlStore({
       }
 
       const normalizedChoiceId = String(nextChoiceId || "").trim();
-      if (!normalizedChoiceId || definition.choices[normalizedChoiceId] == null) {
+      if (
+        !normalizedChoiceId ||
+        definition.choices[normalizedChoiceId] == null
+      ) {
         removeStoredValue(storage, getChoiceKey(id));
         return definition.defaultChoiceId;
       }
@@ -458,23 +481,29 @@ function createVolumeControlRow(definition) {
 
   const syncVolumeDisplay = () => {
     const nextVolume = runtimeVolumeControlStore.getVolume(definition.id);
-    const percentValue = Math.round(nextVolume * 100);
+    const percentValue = volumeToDisplayPercent(nextVolume);
     rangeElement.value = String(percentValue);
     percentElement.textContent = `${percentValue}%`;
   };
 
   rangeElement.addEventListener("input", (event) => {
-    const nextVolume = Number(event.currentTarget.value) / 100;
+    const nextVolume = displayPercentToVolume(event.currentTarget.value);
     runtimeVolumeControlStore.setVolume(definition.id, nextVolume);
     syncVolumeDisplay();
   });
 
   rowElement.append(topRow, rangeElement);
 
-  if (shouldRenderChoiceSelector(definition) && Object.keys(definition.choices).length) {
+  if (
+    shouldRenderChoiceSelector(definition) &&
+    Object.keys(definition.choices).length
+  ) {
     const selectElement = document.createElement("select");
     selectElement.className = "form-control input-sm volume-control-choice";
-    selectElement.setAttribute("aria-label", `${definition.label} sound choice`);
+    selectElement.setAttribute(
+      "aria-label",
+      `${definition.label} sound choice`,
+    );
 
     for (const [choiceId, choiceUrl] of Object.entries(definition.choices)) {
       if (!choiceUrl) {
@@ -489,7 +518,10 @@ function createVolumeControlRow(definition) {
 
     selectElement.value = runtimeVolumeControlStore.getChoiceId(definition.id);
     selectElement.addEventListener("change", (event) => {
-      runtimeVolumeControlStore.setChoiceId(definition.id, event.currentTarget.value);
+      runtimeVolumeControlStore.setChoiceId(
+        definition.id,
+        event.currentTarget.value,
+      );
       updateRowPreviewButtonState(rowElement, definition);
     });
 
@@ -509,8 +541,9 @@ function renderVolumeControlPanel(panelElement, definitions) {
   stopCurrentPreviewAudio();
   panelElement.replaceChildren();
 
-  const sortedDefinitions = [...definitions].sort((left, right) =>
-    left.order - right.order || left.label.localeCompare(right.label),
+  const sortedDefinitions = [...definitions].sort(
+    (left, right) =>
+      left.order - right.order || left.label.localeCompare(right.label),
   );
 
   for (const definition of sortedDefinitions) {
