@@ -42,7 +42,8 @@ const secretMJEmotes = [
   { name: ":sharingiscaring:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/sharingiscaring.png" },
   { name: ":pardner:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/pardner.png" },
   { name: ":nyaggerfed:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfed.png" },
-  { name: ":nyaggerfish:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfish.png" }  
+  { name: ":nyaggerfish:", image: "https://raw.githubusercontent.com/puchigire/r/emotes/emotes/nyaggerfish.png" },
+  { name: ":tsuzurireaction:", image: "https://cracklej.win/lWXDxZragt.png" }  
 ]
 
 function sanitizeText(str) {
