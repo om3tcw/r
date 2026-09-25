@@ -110,5 +110,5 @@ function canReadMJMessages() {
   await window.waitForFunc("MESSAGE_PROCESSOR")
 
   MESSAGE_PROCESSOR.addTap(formatMJMessage);
-  turnMahjongEmotesReal(secretMJEmotes);  
+  // turnMahjongEmotesReal(secretMJEmotes);  
 })();
