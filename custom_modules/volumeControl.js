@@ -1,5 +1,5 @@
-export const VOLUME_CONTROL_MAX_VOLUME = 0.1;
-export const VOLUME_CONTROL_DEFAULT_VOLUME = VOLUME_CONTROL_MAX_VOLUME;
+export const VOLUME_CONTROL_MAX_VOLUME = 0.2;
+export const VOLUME_CONTROL_DEFAULT_VOLUME = 0.1;
 
 const VOLUME_CONTROL_GROUP_NAME = "Volume Controls";
 const VOLUME_CONTROL_PANEL_ID = "volume-control-panel";
@@ -164,7 +164,7 @@ export function createVolumeControlStore({
   const storagePrefix = `${String(channelName || "global")}_VolumeControl_`;
 
   function getVolumeKey(id) {
-    return `${storagePrefix}${id}_volume`;
+    return `${storagePrefix}${id}_volume_v2`;
   }
 
   function getChoiceKey(id) {
