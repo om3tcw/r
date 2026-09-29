@@ -3805,9 +3805,9 @@ footer {
 /*background css*/
 body {
     cursor: url('https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/other/kiara.cur'), auto;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("https://raw.githubusercontent.com/om3tcw/r/refs/heads/emotes/other/28787_melty_pepper_jack_steak_burrito_1025x480.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("https://mikobotecdn.win/other/horsebg.webp");
     overflow: visible;
-    background-position-x: -500px;
+    background-position-x: 00px;
     background-size: auto 100%;
     background-repeat: repeat;
     background-attachment: fixed;
