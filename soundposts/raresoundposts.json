@@ -51,7 +51,7 @@
       },
         ":gremember:": { 
       "soundurl": "https://mikobotecdn.win/soundposts/raresounds/7thofsept.ogg",        
-      "Chance": 95,
+      "Chance": 5,
       "isLong": true 
       } 
     
