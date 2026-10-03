@@ -1,7 +1,7 @@
-const RANDOM_CHAT_REPLY_CHANCE = 1 / 5000;
+const RANDOM_CHAT_REPLY_CHANCE = 1 / 50000;
 
 const RANDOM_CHAT_REPLY_MESSAGE =
-    "I've been keeping something from you guys, I feel comfortable enough to reveal it now.";
+    "https://x.com/HoloEN_News/status/1326355021093498880";
 
 const RANDOM_CHAT_REPLY_DELAY = 250;
 const PATCH_KEY = "__randomLocalChatReplyPatch";
