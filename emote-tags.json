@@ -5985,51 +5985,56 @@
     "promise",
     "bounce",
     "gif",
-    "hop"
+    "hop",
+    "irys 1.0"
   ],
   ":irysex:": [
     "irys",
     "promise",
     "sex",
     "soundpost",
-    "irys1.0"
+    "irys 1.0"
   ],
   ":irysgey:": [
     "irys",
     "promise",
-    "ogey"
+    "ogey",
+    "irys 1.0"
   ],
   ":irysjail:": [
     "irys",
     "promise",
-    "jail"
+    "jail",
+    "irys 1.0"
   ],
   ":irysjailbreak:": [
     "irys",
     "promise",
     "jail",
-    "jailbreak"
+    "jailbreak",
+    "irys 1.0"
   ],
   ":iryslove:": [
     "irys",
     "promise",
     "heart",
     "love",
-    "irys1.0"
+    "irys 1.0"
   ],
   ":irysmybeloved:": [
     "irys",
     "promise",
     "heart",
     "love",
-    "irys1.0",
+    "irys 1.0",
     "my beloved",
     "gif"
   ],
   ":iryspeek:": [
     "irys",
     "promise",
-    "peek"
+    "peek",
+    "irys 1.0"
   ],
   ":isthatreal:": [
     "is that real",
@@ -11109,7 +11114,13 @@
     "boobs"
   ],
   ":irystofu:": [
-    "boobs"
+    "irys",
+    "irys 2.0",
+    "promise",
+    "boobs",
+    "tofu",
+    "shake",
+    "gif"
   ],
   ":moonaeclipse:": [
     "boobs"
@@ -16257,5 +16268,568 @@
     "mori",
     "smile",
     "myth"
+  ],
+  ":birys:": [
+    "blanket",
+    "comfy",
+    "irys",
+    "promise",
+    "irys 1.0"
+  ],
+  ":irysgoblin:": [
+    "goblin",
+    "irys",
+    "melt",
+    "promise",
+    "irys 1.0"
+  ],
+  ":andirys:": [
+    "and",
+    "irys",
+    "promise",
+    "irys 1.0",
+    "heart",
+    "love",
+    "my beloved",
+    "gif"
+  ],
+  ":iryshock:": [
+    "shock",
+    "irys",
+    "promise",
+    "irys 1.0"
+  ],
+  ":iryspanties:": [
+    "irys",
+    "halloween",
+    "doll",
+    "promise",
+    "panties",
+    "irys 1.0"
+  ],
+  ":padoruirys:": [
+    "padoru",
+    "irys",
+    "xmas",
+    "christmas",
+    "promise",
+    "irys 1.0"
+  ],
+  ":irysdrool:": [
+    "irys",
+    "drool",
+    "promise",
+    "irys 1.0"
+  ],
+  ":irysmad:": [
+    "irys",
+    "promise",
+    "mad",
+    "irys 1.0"
+  ],
+  ":irysfuki:": [
+    "irys",
+    "fuki",
+    "fukkireta",
+    "promise",
+    "gif",
+    "irys 1.0"
+  ],
+  ":irysmile:": [
+    "irys",
+    "smile",
+    "promise",
+    "irys 1.0"
+  ],
+  ":iryshake:": [
+    "irys",
+    "shake",
+    "dance",
+    "gif",
+    "irys 1.0",
+    "promise"
+  ],
+  ":irystako:": [
+    "irys",
+    "tako",
+    "ina",
+    "myth",
+    "promise",
+    "irys 1.0"
+  ],
+  ":irysded:": [
+    "irys",
+    "dead",
+    "ded",
+    "cheebs",
+    "promise",
+    "irys 1.0",
+    "animated"
+  ],
+  ":irysded2:": [
+    "irys",
+    "ded",
+    "dead",
+    "cheebs",
+    "promise",
+    "irys 1.0"
+  ],
+  ":irysdance:": [
+    "irys",
+    "dance",
+    "nso",
+    "gif",
+    "promise",
+    "irys 1.0",
+    "soundpost",
+    "needy streamer overdose"
+  ],
+  ":iryshugs:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "gloom",
+    "bloom",
+    "hug",
+    "gif"
+  ],
+  ":irystare:": [
+    "irys",
+    "irys 1.0",
+    "beegsmols",
+    "promise",
+    "stare"
+  ],
+  ":irysuoh:": [
+    "irys",
+    "irys 1.0",
+    "beegsmols",
+    "promise",
+    "uoh",
+    "sob",
+    "cry"
+  ],
+  ":irysohorny:": [
+    "irys",
+    "irys 1.0",
+    "beegsmols",
+    "promise",
+    "horny",
+    "drool",
+    "soundpost"
+  ],
+  ":ojirys:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "oji",
+    "male"
+  ],
+  ":irysbreakdance:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "cheebs",
+    "dance",
+    "breakdance",
+    "gif"
+  ],
+  ":irysrun:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "run",
+    "gif"
+  ],
+  ":iryssmug:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "smug"
+  ],
+  ":iryswave:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "wave"
+  ],
+  ":irysinnocent:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "angel",
+    "innocent"
+  ],
+  ":iryscool:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "cool",
+    "glasses"
+  ],
+  ":irysbread:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "bread",
+    "eat"
+  ],
+  ":irysheart:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "heart",
+    "crystal",
+    "love"
+  ],
+  ":iryscrazy:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "crazy",
+    "mad"
+  ],
+  ":iryspat:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "pet",
+    "pat"
+  ],
+  ":irysohorny2:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "horny",
+    "drool",
+    "soundpost"
+  ],
+  ":irysnerd:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "nerd",
+    "glasses"
+  ],
+  ":irysdrive:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "drive",
+    "drift",
+    "gif"
+  ],
+  ":irysportal:": [
+    "irys",
+    "irys 1.0",
+    "promise",
+    "hand",
+    "portal",
+    "darkness will fade away",
+    "light will guide your way",
+    "hope has descended",
+    "and you're not alone"
+  ],
+  ":iryscared:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "scared",
+    "sob"
+  ],
+  ":irysmile2:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "smile",
+    "happy"
+  ],
+  ":iryshypno:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "hypno",
+    "spiral",
+    "gif"
+  ],
+  ":irysevil:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "evil",
+    "aura",
+    "gif"
+  ],
+  ":irysdistress:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "distress",
+    "shock",
+    "sad"
+  ],
+  ":irysexy:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "sexy",
+    "smile"
+  ],
+  ":iryspeace:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "peace",
+    "v"
+  ],
+  ":irysfear:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "fear",
+    "scared"
+  ],
+  ":irysactualsex:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "sex",
+    "hump",
+    "gif",
+    "mermaid"
+  ],
+  ":iryswow:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "wow",
+    "sparkle"
+  ],
+  ":irysgamer:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "gamer",
+    "glasses"
+  ],
+  ":iryscheming:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "scheme",
+    "glasses",
+    "spiral"
+  ],
+  ":irysdorky:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "dork",
+    "spiral",
+    "glasses"
+  ],
+  ":irysawooga:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "awooga",
+    "booba"
+  ],
+  ":iryships:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "hips",
+    "ass",
+    "shake",
+    "gif"
+  ],
+  ":irysseespoliticaldiscussioninthecytubeshewantsittocease:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "i would rename this but meh",
+    "ded",
+    "dead",
+    "tired",
+    "done"
+  ],
+  ":IrysO:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "oh",
+    "wow",
+    "dumb"
+  ],
+  ":irysdork2:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "dork",
+    "spiral",
+    "glasses",
+    "soundpost",
+    "stupid"
+  ],
+  ":irysmelt:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "melt",
+    "puddle"
+  ],
+  ":iryscry:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "cry",
+    "floor",
+    "sob"
+  ],
+  ":iryscute:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "cute",
+    "smile"
+  ],
+  ":iryssniffingwhatlookslikeacanofsoda:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "sniff",
+    "soda",
+    "gif",
+    "kpop demon hunters"
+  ],
+  ":irysfolded:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "fold",
+    "sit",
+    "sad"
+  ],
+  ":irysdab:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "dab"
+  ],
+  ":irysdead:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "dead",
+    "ded",
+    "yamcha pit",
+    "dragonball"
+  ],
+  ":irysmug:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "smug",
+    "heh"
+  ],
+  ":iryswhat:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "what",
+    "shock"
+  ],
+  ":irysarona:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "arona",
+    "blue archive",
+    "gif",
+    "dance",
+    "bringing sexy back"
+  ],
+  ":iryswiggle:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "wiggle",
+    "ass",
+    "giantess",
+    "gif"
+  ],
+  ":iryskabedon:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "kabedon",
+    "lick",
+    "gif"
+  ],
+  ":irysmash:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "smash",
+    "mad",
+    "rage",
+    "gif",
+    "computer"
+  ],
+  ":irysglass:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "glass",
+    "smash",
+    "punch",
+    "gif",
+    "bae"
+  ],
+  ":irysCHAD:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "chad",
+    "gigachad",
+    "man"
+  ],
+  ":irysconsiderthis:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "consider",
+    "this",
+    "point"
+  ],
+  ":iryscheer:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "cheer",
+    "xd",
+    "wave"
+  ],
+  ":irysfullbodysex:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "gif",
+    "zoom",
+    "sex",
+    "tits and pits",
+    "tummy",
+    "thighs"
+  ],
+  ":irysmirk:": [
+    "irys",
+    "irys 2.0",
+    "promise",
+    "zoom",
+    "smirk",
+    "heh",
+    "drive",
+    "gif"
   ]
 }
