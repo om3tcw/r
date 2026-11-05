@@ -354,6 +354,22 @@ export const holoPeekObjects = [
     cleanupFunc: cleanupVerticalLayout,
   },
   {
+    optionName: "removeVideo",
+    optionDescription: "Remove Video",
+    optionFunc: () => {
+      (async () => {
+        await window.waitForFunc("removeVideo");
+        window.removeVideo(true);
+      })();
+    },
+    cleanupFunc: () => {
+      (async () => {
+        await window.waitForFunc("restoreVideo");
+        window.restoreVideo(false);
+      })();
+    },
+  },
+  {
     optionName: "changeBackground",
     optionDescription: "Custom Background",
     optionFunc: (self) =>
