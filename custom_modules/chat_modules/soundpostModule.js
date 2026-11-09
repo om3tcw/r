@@ -1,6 +1,7 @@
 let RARE_SOUNDPOSTS = {};
 let SOUNDPOST_PLAYBACK_STATE = {};
 let PLAYED_SOUNDPOSTS = [];
+const ACTIVE_CHAT_SOUNDPOST_AUDIO = new Set();
 const SOUNDPOST_VOLUME_CONTROL_ID = "soundposts";
 const SOUNDPOST_PREVIEW_URL =
     "https://cdn.jsdelivr.net/gh/om3tcw/r@emotes/soundposts/sounds/mambo.ogg";
@@ -28,24 +29,69 @@ function applySoundpostVolume(audioElement) {
     return audioElement;
 }
 
+function stopChatSoundpostAudio(audioElement) {
+    if (!audioElement) return;
+
+    try {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+    } catch (err) {
+        console.error('[Soundpost] Stop failed:', err);
+    }
+
+    ACTIVE_CHAT_SOUNDPOST_AUDIO.delete(audioElement);
+}
+
+function playChatSoundpostAudio(audioElement, errorLabel = "Soundpost") {
+    if (!audioElement || !window.SOUNDPOST_STATE) return false;
+
+    applySoundpostVolume(audioElement);
+    ACTIVE_CHAT_SOUNDPOST_AUDIO.add(audioElement);
+    audioElement.addEventListener(
+        "ended",
+        () => ACTIVE_CHAT_SOUNDPOST_AUDIO.delete(audioElement),
+        { once: true }
+    );
+    audioElement.play().catch((err) => {
+        ACTIVE_CHAT_SOUNDPOST_AUDIO.delete(audioElement);
+        console.error(`[${errorLabel}] Play failed:`, err);
+    });
+    return true;
+}
+
+function stopAllChatSoundposts() {
+    Array.from(ACTIVE_CHAT_SOUNDPOST_AUDIO).forEach(stopChatSoundpostAudio);
+
+    Object.values(SOUNDPOST_PLAYBACK_STATE).forEach((state) => {
+        if (!state) return;
+        if (state.timeout !== null) {
+            clearTimeout(state.timeout);
+        }
+        state.timeout = null;
+        state.isPlaying = false;
+        state.totalPlayTime = 0;
+    });
+}
+
 function playSoundpost(emote, additionalPlayTime = defaultAdditionalPlayTime) {
+    if (!window.SOUNDPOST_STATE) return;
+
     const soundpost = SOUNDPOST_PLAYBACK_STATE[emote];
     if (!soundpost) return;
 
     soundpost.totalPlayTime += additionalPlayTime;
     if (!soundpost.isPlaying && soundpost.isPreloaded) {
         soundpost.isPlaying = true;
-        applySoundpostVolume(soundpost.audio);
-        soundpost.audio.play().catch(err => console.error('[Soundpost] Play failed:', err));
+        playChatSoundpostAudio(soundpost.audio);
     }
     clearTimeout(soundpost.timeout);
     const remainingTime = soundpost.audio.duration - soundpost.audio.currentTime;
     const playDuration = Math.min(soundpost.totalPlayTime, remainingTime);
     soundpost.timeout = setTimeout(() => {
-        soundpost.audio.pause();
+        stopChatSoundpostAudio(soundpost.audio);
         soundpost.isPlaying = false;
-        soundpost.audio.currentTime = 0;
         soundpost.totalPlayTime = 0;
+        soundpost.timeout = null;
     }, playDuration * 1000);
 }
 
@@ -107,8 +153,7 @@ function injectSoundpost($message) {
                         playLongRare(emoteTitle, rareSound, 5);
                     } else {
                         const myaudio = new Audio(rareSound.soundurl);
-                        applySoundpostVolume(myaudio);
-                        myaudio.play().catch(err => console.error('[Rare Soundpost] Play failed:', err));
+                        playChatSoundpostAudio(myaudio, "Rare Soundpost");
                     }
                     return;
                 } catch (err) {
@@ -138,8 +183,7 @@ function injectSoundpost($message) {
                     );
                 } else if (!PLAYED_SOUNDPOSTS.includes(soundpost.soundurl)) {
                     const myaudio = new Audio(soundpost.soundurl);
-                    applySoundpostVolume(myaudio);
-                    myaudio.play().catch(err => console.error('[Soundpost] Play failed:', err));
+                    playChatSoundpostAudio(myaudio);
                     PLAYED_SOUNDPOSTS.push(soundpost.soundurl);
                 }
             } catch (err) {
@@ -160,7 +204,7 @@ function cleanupSoundpostPlaybackState() {
         toDelete.forEach((key) => {
             const state = SOUNDPOST_PLAYBACK_STATE[key];
             if (state && state.audio) {
-                state.audio.pause();
+                stopChatSoundpostAudio(state.audio);
                 state.audio.src = "";
             }
             delete SOUNDPOST_PLAYBACK_STATE[key];
@@ -244,6 +288,9 @@ function toggleSoundpostButtonImage(soundpostButton) {
     $(chatinputrow).append(soundpostButton);
     $(soundpostButton).on("click.schizo", () => {
         window.SOUNDPOST_STATE = !window.SOUNDPOST_STATE;
+        if (!window.SOUNDPOST_STATE) {
+            stopAllChatSoundposts();
+        }
         localStorage.setItem("SOUNDPOST_STATE", window.SOUNDPOST_STATE);
         toggleSoundpostButtonImage(soundpostButton);
     });
